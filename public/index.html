@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+    <title>ComplexityViewer</title>
+    <script src="https://d3js.org/d3.v5.min.js"></script>
+    <!--<script src="https://dagrejs.github.io/project/dagre/latest/dagre.min.js"></script>-->
+    <script src="https://dagrejs.github.io/project/graphlib-dot/latest/graphlib-dot.min.js"></script>
+    <script src="https://dagrejs.github.io/project/dagre-d3/latest/dagre-d3.min.js"></script>
+    
+    
+    <style id="css">
+        /* This sets the color for the selected node to a light blue green. */
+        g.selectedNode > rect {
+          fill: #00ffd0;
+        }
+        
+        /* Controls style on equality clusters */
+        .clusters rect {
+          fill: #d3d7e8;
+          stroke: #999;
+          stroke-width: 1.5px;
+        }
+
+        text {
+          font-weight: 300;
+          font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+          font-size: 14px;
+        }
+
+        .node rect {
+          stroke: #999;
+          fill: #fff;
+          stroke-width: 1.5px;
+        }
+
+        .edgePath path {
+          stroke: #333;
+          stroke-width: 1.5px;
+        }
+    </style>
+
+    <style>
+        body {
+            height: 100%;
+            overflow: hidden;
+        }
+        
+        #treeDiv {
+            height: 100vh;
+            border: 1px solid black;
+            overflow-y: hidden;
+        }
+        #svgDiv {
+            height: 97%;
+            overflow-y: auto;
+        }
+        #detailsDiv {
+            height: 100%;
+            overflow-y: scroll;
+            border: 1px solid black;
+        }
+        
+        #treeDiv {
+            float: left;
+            width: 75%;
+            overflow-x: scroll;
+        }
+        #detailsDiv {
+            float: right;
+            width: 25%;
+        }
+        #treeSvg {
+            width: 100%;
+        }
+    </style>
+</head>
+<body>
+    <div id="treeDiv">Click and drag to move. Zoom with pinch/scroll wheel/two-fingered scroll on a touchpad. Click a class to see details.<div id="svgDiv"><svg id="treeSvg"></svg></div></div>
+    <input type="text" id="searchBar" oninput="searchFunction()" placeholder="Search for classes..">
+    <button id="plusButton" onclick="changePriority(1)">+</button>
+    <button id="minusButton" onclick="changePriority(-1)">-</button>
+    <input type="checkbox" id="showEq" name="showEq" oninput="drawGraph()">
+    <label for="showEq">Show equal classes?</label>
+    <div id="detailsDiv"></div>
+    <script src="./main.js"></script>
+</body>
+</html>
