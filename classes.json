@@ -1,6 +1,6 @@
 {
 //Basic comments are supported, but they must start with // at the start of the line.
-//useful characters: ≤ ≥ ⊂ ⊆ ⊃ ⊇ ≠ = ∩ ⟹ Ω Σ Π Δ
+//useful characters: ≤ ≥ ⊂ ⊆ ⊃ ⊇ ⊈ ⊉ = ∩ ⟹ Ω Σ Π Δ
   "problem types":[
     {"name":"Language",
      "desc":"A language is an acceptable set of YES strings. Everything else is a NO string.",
@@ -43,6 +43,11 @@
   "classes":[
 //first are all the languages, in alphabetical order.
 //non-language classes like PromiseBPP, FPT, or PPLS come after.
+    {"name":"A_0PP",
+     "type":"Language",
+     "desc":"TODO. Defined in {ref:Vya03}.",
+     "related":["PP","AWPP","SBP"]
+    },
     {"name":"AC",
      "type":"Language",
      "desc":"Unbounded Fanin Polylogarithmic-Depth Circuits. The class of decision problems solvable by a nonuniform family of Boolean circuits, with polynomial size, depth O(log^k(n)), and unbounded fanin, for some k. The gates allowed are AND, OR, and NOT. For a given k, we get AC^k, such as AC^1. The class AC^0 is when k=0 i.e. constant depth. Equal to NC and TC.",
@@ -75,8 +80,8 @@
     },
     {"name":"AM",
      "type":"Language",
-     "desc":"Arthur-Merlin games",
-     "related":["NP","MA"],
+     "desc":"Arthur-Merlin games. In general, AM[k] is k-round interactive protocols between am omniscient Merlin and a polytime Arthur. Arthur has randomness, but Merlin can see all of Arthur's randomness, and they exchange polynomial size messages, and Arthur becomes convinced with 2/3 soundness and completeness. It turns out that AM[k]=AM[2] for any constant k, TODO reference, and then the class AM is defined as AM[2]. This doesn't translate to polynomial k, as the message sizes grows by at least a constant factor with each removed round, leading to exponential slowdown if you tried to run AM[poly] as a AM[2] protocol. As other cases, there are AM[0]=BPP, AM[1]=MA, and AM[poly(n)]=IP. There is also the odd one AM[polylog(n)].\n Compare with IP[k], which has private coins: Merlin can't see Arthur's random choices.",
+     "related":["NP","MA","IP"],
      "notes":"todo def"
     },
     {"name":"AP",
@@ -84,6 +89,11 @@
      "desc":"Alternating polynomial time. Polynomial time with unlimited switches between an \"NP\"-like \"OR\" mode, and a coNP \"AND\" mode.",
      "related":["PSPACE","PH"],
      "notes":"todo def"
+    },
+    {"name":"AWPP",
+     "type":"Language",
+     "desc":"TODO",
+     "related":["A_0PP","SBP"]
     },
 
     {"name":"BPP",
@@ -200,6 +210,12 @@
      "desc":"Graph Isomorphism with Karp reductions. Languages that can be polynomial-time Karp reduced to Graph Automorphism.",
      "related":["GI","GAK"]
     },
+      
+    {"name":"IP",
+     "type":"Language",
+     "desc":"Interactive Proofs. In general, IP[r] means a proof where a player exchanges r rounds with a polynomial time verifier; the verifier has private random coins. The class IP is defined as IP[poly(n)], and it turns out that IP=PSPACE, see {ref:Sha90}. For IP[r] with a constant r, it turns to be equal to AM; see AM for more. {ref:BM88} also proved that IP[f(n)]=IP[c*f(n)].",
+     "related":["QIP","MIP","AM","PSPACE"]
+    },
 
     {"name":"L",
      "type":"Language",
@@ -207,12 +223,32 @@
      "solver":"DSPACE(log(n))",
      "notes":"todo SL"
     },
+    {"name":"LOGCFL",
+     "type":"Language",
+     "desc":"The class of decision problems reducible in L to the problem of deciding membership in a context-free language. In order words, the closure under L-reductions of {lang:CFL}. Equivalently, LOGCFL is the class of decision problems solvable by a _uniform_ family of AC1 circuits, in which no AND gate has fan-in exceeding 2, see {ref:Joh90}{ref:Ven91}. When the circuits aren't uniform, we get the LOGCFL/poly = SAC^1, see {lang:SAC^1}.",
+     "related":["CFL","SAC^1"]
+    },
 
     {"name":"MA",
      "type":"Language",
      "desc":"Merlin-Arthur games",
      "related":["NP","AM","QMA"],
      "notes":"todo def. todo MA=MA1"
+    },
+    {"name":"MIP",
+     "type":"Language",
+     "desc":"Multiple-player Interactive Proofs. In general, MIP[p,r] means a proof with p player who cannot communicate, and r rounds of interaction with a referee. (The final round is always a message to the referee, as a final message to a player cannot be useful.) As it turns out, MIP[p,r]=MIP[2,1] for any p>=2 and r>=1, so the distinction is largely unnecessary. MIP[1,r] is better known as AM[r], see AM for more. \n And of course MIP[p,0] is just P. :)\n\nMIP[p,r]=MIP[2,poly] is proved in {ref:BFL91}. I can't find a source for the statement that MIP[2,poly]=MIP[2,1].",
+     "related":["AM","IP","QIP","MIP*","MIPco","NEXP"]
+    },
+    {"name":"MIP*",
+     "type":"Language",
+     "desc":"Multiple-player Interactive Proofs, with entanglement. Traditionally defined with polynomially many players and rounds, but it turns out that MIP*[poly,poly]=MIP*[2,1], so one can just think of as two players and one round. \n When the provers are allowed to have (unbounded) entanglement, this allows them to cheat at some games, so it is not obvious that MIP* is as big as MIP; it is only clear that one can ignore all but one player and get the class IP as a lower bound. But, having entanglement also means we can ask more from the players -- much more, and it turns out that MIP*=RE, and includes undecidable problems.",
+     "related":["MIP","MIPco","RE"]
+    },
+    {"name":"MIPco",
+     "type":"Language",
+     "desc":"Multiple-player Interactive Proofs, with entanglement, in the _commuting_ operator framework. This was expected to be equal to MIP*, but this isn't the case: MIP*=RE, while MIPco is contained in coRE. (It is expected that MIPco=coRE.) Nothing contained in coRE can equal RE!",
+     "related":["coRE","MIPco","MIP*"]
     },
 
     {"name":"NC",
@@ -235,6 +271,11 @@
      "desc":"Log^2-Depth Nick's Class",
      "related":["AC^1","DET","NC"]
     },
+    {"name":"NEXP",
+     "type":"Language",
+     "desc":"Nondeterministic Exponential Time; also called NEXPTIME. Equivalently, problems with an EXP-size witness that can be verified by a polytime verifier (whose runtime is polynomial in the size of the input *and* the witness).",
+     "related":["NP","EXP"]
+    },
     {"name":"NISQ",
      "type":"Language",
      "desc":"Problems solvable by a classical computer in poly(n) time with poly(n) queries to an λ-NQC oracle, which outputs samples from a λ-noisy quantum circuit: after each gate single gate, a λ-noise depolarizing channel is applied simultaneously to every qubit.",
@@ -254,9 +295,8 @@
     },
     {"name":"NQP",
      "type":"Language",
-     "desc":"Nondeterministic Polynomial time. Problems decided in polynomial time by a nondeterministic Turing machine.",
-     "solver":"NTIME(n^O(1))",
-     "notes":"todo: verifier definition"
+     "desc":"Nondeterministic Quantum Polynomial time. The class of decision problems solvable by a QTM in polynomial time such that a particular \"|Accept>\" state has nonzero amplitude at the end of the computation, if and only if the answer is \"yes.\"",
+     "related":["QMA","BQP"]
     },
     
     {"name":"P",
@@ -298,6 +338,11 @@
      "type":"Language",
      "desc":"Quantum-Classical Merlin-Arthur. Like QMA, but Merlin's proof is a classical string; like NP, but the verifier has a quantum computer (BQP machine).",
      "related":["QMA"]
+    },
+    {"name":"QIP",
+     "type":"Language",
+     "desc":"Quantum Interactive Proofs. Like IP, but now messages can be quanutum. Only a single prover. For a different kind of 'quantum' interactive proof, there's the much harder MIP* and MIPco.",
+     "related":["IP","MIP*","MIPco"]
     },
     {"name":"QMA",
      "type":"Language",
@@ -366,9 +411,25 @@
      "related":["RNC","RNC^0"]
     },
       
-    {"name":"Starfree",
+    {"name":"SAC^0",
      "type":"Language",
-     "desc":"Star-free languages, see https://en.wikipedia.org/wiki/Star-free_language. A subset of regular languages, where constant terms are allowed, and then we take the closure under complementation, union, and concatenation. Intersection comes for free. The regex (ab)^* is not in this class.",
+     "desc":"SAC^k is the class of decision problems solvable by a family of depth-O(logkn) circuits with unbounded-fanin OR & bounded-fanin AND gates. Negations are only allowed at the input level. A uniformity condition may also be imposed. SAC^k sits naturally 'halfway' between NC^k and AC^k.",
+     "related":["SAC^1","AC^0"]
+    },
+    {"name":"SAC^1",
+     "type":"Language",
+     "desc":"Semi-Unbounded-Fanin AC^1. See {ref:SAC^0} for definition. SAC^1 (with a uniformity condition) = LOGCFL, and without a uniformity condition = LOGCFL/poly, see {ref:Joh90}{ref:Ven91}.",
+     "related":["SAC^0","AC^1","LOGCFL"]
+    },
+    {"name":"SBP",
+     "type":"Language",
+     "desc":"Small Bounded-Error Probability. The class of decision problems for which the following holds. There exists a #P function f and an FP function g such that, for all inputs x,\n If the answer is \"yes\" then f(x) > g(x).\n If the answer is \"no\" then f(x) < g(x)/2.\n Defined in {ref:BGM02}.",
+     "related":["AM","MA","AWPP","A_0PP"],
+     "notes":"TODO closed under union, ref BGM02."
+    },
+    {"name":"SF",
+     "type":"Language",
+     "desc":"Star-free languages, see https://en.wikipedia.org/wiki/Star-free_language. A subset of regular languages, where constant terms are allowed, and then we take the closure under complementation, union, and concatenation. Intersection comes for free. For example, the regex (ab)* is in this class, but (aa)* is not.",
      "related":["REG"]
     },
     {"name":"SZK",
@@ -564,11 +625,11 @@
   
   "conjectures":[
     {"name":"P!=NP",
-     "content":"P≠NP",
+     "content":"P⊂NP",
      "implies":["P!=PSPACE"]
     },
     {"name":"P!=PSPACE",
-     "content":"P≠PSPACE",
+     "content":"P⊂PSPACE",
      "implies":[]
     },
     {"name":"P=BPP",
@@ -582,34 +643,34 @@
 //Metatheorems. The relevant reified consequences are given immediately below.
     {"name":"Deterministic space hierarchy theorem",
      "ref":"https://en.wikipedia.org/wiki/Space_hierarchy_theorem",
-     "content":"{f}SpaceConstructible(f)⟹(DSPACE(f)≠DSPACE(o(f)))",
+     "content":"{f}SpaceConstructible(f)⟹(DSPACE(f)⊃DSPACE(o(f)))",
      "related":["Nondeterministic space hierarchy theorem"]
     },
-            {"name":"L≠PSPACE",
-             "content":"L≠PSPACE",
+            {"name":"L⊂PSPACE",
+             "content":"L⊂PSPACE",
              "impliedby":"Deterministic space hierarchy theorem"
             },
     {"name":"Nondeterministic space hierarchy theorem",
      "ref":"https://en.wikipedia.org/wiki/Space_hierarchy_theorem",
-     "content":"{f}SpaceConstructible(f)⟹(NSPACE(f)≠NSPACE(o(f)))",
+     "content":"{f}SpaceConstructible(f)⟹(NSPACE(f)⊃NSPACE(o(f)))",
      "related":["Deterministic space hierarchy theorem"]
     },
     {"name":"Deterministic time hierarchy theorem",
      "ref":"https://en.wikipedia.org/wiki/Time_hierarchy_theorem",
-     "content":"{f}TimeConstructible(f)⟹(DTIME(o(f/log(f)))≠DTIME(f))",
+     "content":"{f}TimeConstructible(f)⟹(DTIME(o(f/log(f)))⊃DTIME(f))",
      "related":["Nondeterministic time hierarchy theorem"]
     },
-            {"name":"P≠E",
-             "content":"P≠E",
+            {"name":"P⊂E",
+             "content":"P⊂E",
              "impliedby":"Deterministic time hierarchy theorem"
             },
-            {"name":"E≠EXP",
-             "content":"E≠EXP",
+            {"name":"E⊂EXP",
+             "content":"E⊂EXP",
              "impliedby":"Deterministic time hierarchy theorem"
             },
     {"name":"Noneterministic time hierarchy theorem",
      "ref":"https://en.wikipedia.org/wiki/Time_hierarchy_theorem",
-     "content":"{f}TimeConstructible(f)⟹(NTIME(f)≠NTIME(f^2))",
+     "content":"{f}TimeConstructible(f)⟹(NTIME(f)⊂NTIME(f^2))",
      "related":["Deterministic time hierarchy theorem"],
      "notes":"todo stronger statement -- currently not as tight as could be"
     },
@@ -700,34 +761,107 @@
      "content":"L⊆DQC1",
      "ref":"https://arxiv.org/abs/quant-ph/0608132 shows that the one clean qubit can be magnified to log(n) clean qubits without changing the class, so any computation in quantum logspace (without measurements) is in DQC1. This includes all reversible logspace, which is equal to deterministic logspace, see Lange, McKenzie and Tapp [LMT00]."
     },
-    {"name":"Starfree⊆AC^0",
-     "content":"Starfree⊆AC^0" ,
+    {"name":"SF⊆AC^0",
+     "content":"SF⊆AC^0" ,
      "ref":"Stated without reference on Wikipedia: https://en.wikipedia.org/wiki/Star-free_language"
     },
     {"name":"CFL⊆NP",
      "content":"CFL⊆NP" ,
      "ref":"This is the characterization that CFLs are recognized by (nondeterministic) pushdown automata. Can be tightened to NLIN, TODO add that class. TODO add that DCL is in P, specifically in LIN."
     },
-    {"name":"PARITY≠AC^0",
-     "content":"PARITY≠AC^0",
+    {"name":"PARITY⊈AC^0",
+     "content":"PARITY⊈AC^0",
      "ref":"PARITY, the one-language class of recognizing the parity of a string, cannot be computed by an AC^0 circuit. The same is true for any mod-m parity problem. See {ref:Raz87}{ref:Smo87}."
     },
-    {"name":"ACC⊊PP",
-     "content":"ACC⊊PP" ,
+    {"name":"ACC^0⊂PP",
+     "content":"ACC^0⊂PP" ,
      "ref":"{ref:AG95}"
     },
-    {"name":"ACC⊊E",
-     "content":"ACC⊊E" ,
+    {"name":"ACC^0⊂E",
+     "content":"ACC^0⊂E" ,
      "ref":"{ref:Wil11}"
     },
-    {"name":"ACC⊊NQP",
-     "content":"ACC⊊NQP",
+    {"name":"ACC^0⊂NQP",
+     "content":"ACC^0⊂NQP",
      "ref":"{ref:MW18}"
     },
+    {"name":"LOGCFL=SAC^1",
+     "content":"LOGCFL=SAC^1",
+     "ref":"Mentioned in {ref:Joh90}{ref:Ven91}, don't know where it was actually proved.",
+     "notes":"Technically LOGCFL = uniform-SAC^1, and LOGCFL/poly = SAC^1. Got to make this more precise."
+    },
+    {"name":"IP=PSPACE",
+     "content":"PSPACE⊆IP",
+     "ref":"Proved in {ref:Sha90}. The other direction, that IP⊆PSPACE and so IP=PSPACE, from a simulation argument -- see {thm:IP⊆PSPACE}."
+    },
+    {"name":"MIP=NEXP",
+     "content":"MIP=NEXP",
+     "ref":"{ref:BFL91}"
+    },
+    {"name":"MIP*=RE",
+     "content":"MIP*=RE",
+     "ref":"{ref:JNVWY20}"
+    },
+    {"name":"NEXP⊆MIPco",
+     "content":"NEXP⊆MIPco",
+     "ref":"{ref:Lin23}"
+    },
+    {"name":"MIPco⊆coRE",
+     "content":"MIPco⊆coRE",
+     "ref":"A consequence of {ref:NPA08}, as they give a hierarchy that converges to the MIPco value of a game from one above. This is contrast to MIP*, where trying gradually larger Hilbert spaces converges from below, so it is contained in RE."
+    },
+    {"name":"IP⊆PSPACE",
+     "content":"IP⊆PSPACE",
+     "ref":"This is often stated as a simple protocol simulation question, but this misses the fact that IP has private coins, and the protocol simulation approach requires public coins. See the discussion [here](https://cs.stackexchange.com/q/162804/11900). Taking the protocol simulation as the 'easy' step, this was really proved in {ref:GS86} where they showed the equivalence between private and public coins.\nTODO: Technically they show that IP[f]⊆AM[f+2] for all f(n). Then since AM[f]⊆IP[f], and AM[poly]⊆PSPACE by simulation, IP=IP[poly]⊆AM[poly]⊆PSPACE."
+    },
+    {"name":"QIP⊆PSPACE",
+     "content":"QIP⊆PSPACE",
+     "ref":"{ref:JJUW09}"
+    },
+    {"name":"NQP⊆PSPACE",
+     "content":"NQP⊆PSPACE",
+     "ref":"Strong simulation of quantum circuits in PSPACE.",
+     "notes":"TODO find a reference for the strong simulation."
+    },
+    {"name":"NQP⊆A_0PP",
+     "content":"NQP⊆A_0PP",
+     "ref":"{ref:Vya03}"
+    },
+    {"name":"QMA⊆A_0PP",
+     "content":"QMA⊆A_0PP",
+     "ref":"{ref:Vya03}."
+    },
+    {"name":"AWPP⊆A_0PP",
+     "content":"AWPP⊆A_0PP",
+     "ref":"{ref:Vya03}. Is this obvious? Not sure..."
+    },
+    {"name":"A_0PP⊆PP",
+     "content":"A_0PP⊆PP",
+     "ref":"{ref:Vya03}.",
+     "notes":"It is possible this proof is very simple and should be marked as 'obvious', I haven't looked at it yet."
+    },
+      
+    {"name":"BQP⊆AWPP",
+     "content":"BQP⊆AWPP",
+     "ref":"{ref:FR98}."
+    },
+      
+    {"name":"MA⊆SBP",
+     "content":"MA⊆SBP",
+     "ref":"{ref:BGM02}."
+    },
+    {"name":"SBP⊆AM",
+     "content":"SBP⊆AM",
+     "ref":"{ref:BGM02}."
+    },
+    //From zoo:
+    // SBP contains WAPP, and ∃BPP.
+    // SBP is contained in AM and BPPpath.
+    // There exists an oracle relative to which SBP is not contained in Σ2P.
 
 //Very simple results that still don't follow immediately from definitions
-    {"name":"NC^0≠AC^0",
-     "content":"NC^0≠AC^0",
+    {"name":"NC^0⊂AC^0",
+     "content":"NC^0⊂AC^0",
      "ref":"NC^0 circuits can only depend on constantly many input bits, so misses classes such as the OR of all inputs."
     },
     {"name":"AC^i⊆NC^{i+1}",
@@ -754,6 +888,12 @@
              "content":"TC^1⊆NC^2",
              "impliedby":"TC^i⊆NC^{i+1}"
             },
+            {"name":"AC=NC=TC",
+             "content":"AC=NC&&NC=TC",
+             "ref":"Given that {thm:TC^i⊆NC^{i+1}}, and {thm:NC^i⊆SAC^i⊆AC^i⊆ACC^i&&AC^i⊆TC^i}, and NC/AC/TC are each unions of their hierarchies, these hierarchies must be equal.",
+             "impliedby":"TC^i⊆NC^{i+1}"
+            },
+     
     {"name":"RNC^0=NC^0",
      "content":"RNC^0=NC^0",
      "ref":"An RNC^0 circuit has constant depth and bounded-fanin, therefore constant size. Therefore it has a constant number of random bits it could use, and we can just make exponentially many copies of the circuit from each random bit and take the AND of all of them. This makes it deterministic and keeps it constant size."
@@ -779,27 +919,41 @@
              "impliedby":"ACC^i⊆TC^i"
             },
     
-//Immediate consequences of the above
-    {"name":"AC=NC=TC",
-     "content":"AC=NC&&NC=TC",
-     "impliedby":"Given that {thm:TC^i⊆NC^{i+1}}, and {thm:NC^i⊆AC^i⊆TC^i}, and NC/AC/TC are each unions of their hierarchies, these hierarchies must be equal."
-    },
-    
 //Lists of inclusions manifestly clear from the definitions of the two classes. "Clear" is of course subjective,
 //but the idea is: can an intelligent person who reasonably understands how both classes are defined, quickly see why
 //one is a relaxation of the other, without needing to find gadgets or constructions?
     
-    //Natural 'hierarchy' theorems. Currently here: NC^i, AC^i, ACC^i, TC^i, RNC^i, QNC^i, and the PH. 
-    {"name":"AC^i⊆ACC^i",
-     "content":"{i}AC^i⊆ACC^i",
-     "desc":"ACC is just AC together with mod gates.",
-     "impliedby":"ObviousConstruction"
+    
+    {"name":"ProtocolSimulation",
+     "content":"",
+     "ref":"Placeholder theorem for the general argument that a public-coin interactive protocol can be simulated by a single 'player' with sufficient time and space. To be precise, if a protocol involves r rounds of classical (resp. quantum) messages of size m between an omniscient prover and M-machine verifier, then this protocol can be simulated with `r*m` classical (resp. quantum) space, plus however much memory is needed to simulate the M-machine. This implies that all of NP, coNP, MA, AM are in PSPACE, and QCMA and QMA are in BQPSPACE (which equals PSPACE); and analogous statements, that for instance coNEXP is in EXPSPACE. It does not apply to private-coin protocols like IP, MIP, or QIP, although these often turn out to be equivalent to their private-coin variants anyway."
     },
-            {"name":"AC^0⊆ACC^0",
-             "content":"AC^0⊆ACC^0",
-             "impliedby":"AC^i⊆ACC^i"
+            {"name":"NP⊆PSPACE",
+             "content":"NP⊆PSPACE",
+             "impliedby":"ProtocolSimulation"
+            },
+            {"name":"coNP⊆PSPACE",
+             "content":"coNP⊆PSPACE",
+             "impliedby":"ProtocolSimulation"
+            },
+            {"name":"MA⊆PSPACE",
+             "content":"MA⊆PSPACE",
+             "impliedby":"ProtocolSimulation"
+            },
+            {"name":"AM⊆PSPACE",
+             "content":"AM⊆PSPACE",
+             "impliedby":"ProtocolSimulation"
+            },
+            {"name":"QCMA⊆PSPACE",
+             "content":"QCMA⊆PSPACE",
+             "impliedby":"ProtocolSimulation"
+            },
+            {"name":"QMA⊆PSPACE",
+             "content":"QMA⊆PSPACE",
+             "impliedby":"ProtocolSimulation"
             },
     
+    //Natural 'hierarchy' theorems. Currently here: NC^i, AC^i, ACC^i, TC^i, RNC^i, QNC^i, and the PH. 
     {"name":"NC^i⊆NC^{i+1}⊆NC",
      "content":"{i}NC^i⊆NC^(i+1)⊆NC",
      "impliedby":"ObviousConstruction"
@@ -823,7 +977,7 @@
      "impliedby":"ObviousConstruction"
     },
             //We don't actually have ACC^i or ACC in the database for any i>0. ACC=AC so isn't talked about, and ACC^1
-            //isn't major.
+            //isn't majorly important.
             //{"name":"ACC^0⊆ACC",
             // "content":"ACC^0⊆ACC",
             // "impliedby":"ACC^i⊆ACC^{i+1}⊆ACC"
@@ -893,22 +1047,26 @@
             },
       
     //Circuit hierarchies have a natural ordering by adding more gates
-    {"name":"NC^i⊆AC^i⊆TC^i",
+    {"name":"NC^i⊆SAC^i⊆AC^i⊆ACC^i&&AC^i⊆TC^i",
      "content":"{i}NC^i⊆AC^i&&{i}AC^i⊆TC^i",
-     "desc":"AC is just NC together with unbounded fan-in, and TC is just AC together with threshold gates.",
+     "desc":"SAC is just NC together with unbounded fan-in OR, AC is just SAC with unbounded fan-in AND, ACC is just AC with mod gates, and TC is just AC together with threshold gates. TC includes ACC but this is less obvious, see {ref:ACC^i⊆TC^i}.",
      "impliedby":"ObviousConstruction"
     },
-            {"name":"NC^0⊆AC^0⊆TC^0",
-             "content":"NC^0⊆AC^0&&AC^0⊆TC^0",
-             "impliedby":"NC^i⊆AC^i⊆TC^i"
+            {"name":"NC^0⊆SAC^0⊆AC^0⊆TC^0",
+             "content":"NC^0⊆SAC^0&&SAC^0⊆AC^0&&AC^0⊆TC^0",
+             "impliedby":"NC^i⊆SAC^i⊆AC^i⊆ACC^i&&AC^i⊆TC^i"
             },
-            {"name":"NC^1⊆AC^1⊆TC^1",
-             "content":"NC^1⊆AC^1&&AC^1⊆TC^1",
-             "impliedby":"NC^i⊆AC^i⊆TC^i"
+            {"name":"NC^1⊆SAC^1⊆AC^1⊆TC^1",
+             "content":"NC^1⊆SAC^1&&SAC^1⊆AC^1&&AC^1⊆TC^1",
+             "impliedby":"NC^i⊆SAC^i⊆AC^i⊆ACC^i&&AC^i⊆TC^i"
             },
             {"name":"NC⊆AC⊆TC",
              "content":"NC⊆AC&&AC⊆TC",
-             "impliedby":"NC^i⊆AC^i⊆TC^i"
+             "impliedby":"NC^i⊆SAC^i⊆AC^i⊆ACC^i&&AC^i⊆TC^i"
+            },
+            {"name":"AC^0⊆ACC^0",
+             "content":"AC^0⊆ACC^0",
+             "impliedby":"NC^i⊆SAC^i⊆AC^i⊆ACC^i&&AC^i⊆TC^i"
             },
     
     {"name":"NC^i⊆RNC^i⊆QNC^i",
@@ -939,12 +1097,16 @@
      "desc":"PARITY is decided by the regex (11)*. It can't recognize any other regex, so there is a strict inclusion.",
      "impliedby":"ObviousConstruction"
     }, 
-    {"name":"Starfree⊆REG",
-     "content":"Starfree⊆REG",
+    {"name":"SF⊆REG",
+     "content":"SF⊆REG",
      "impliedby":"ObviousConstruction"
     },
     {"name":"REG⊆CFL",
      "content":"REG⊆CFL",
+     "impliedby":"ObviousConstruction"
+    },
+    {"name":"CFL⊆LOGCFL",
+     "content":"CFL⊆LOGCFL",
      "impliedby":"ObviousConstruction"
     },
       
@@ -991,6 +1153,11 @@
      "content":"QNC⊆BQP",
      "impliedby":"ObviousConstruction"
     },
+    {"name":"NP⊆NQP",
+     "content":"NP⊆NQP",
+     "ref":"NQP can simulate any NP machine by only using classical circuits, and Hadamard gates to prepare random coins.",
+     "impliedby":"ObviousConstruction"
+    },
       
     {"name":"P⊆GAK",
      "content":"P⊆GAK",
@@ -1020,6 +1187,11 @@
     {"name":"SZK⊆AM",
      "content":"SZK⊆AM",
      "ref":"AM is just SZK where you relax the condition on not leaking knowledge",
+     "impliedby":"ObviousConstruction"
+    },
+    {"name":"SBP⊆A_0PP",
+     "content":"SBP⊆A_0PP",
+     "ref":"SBP is defined in terms of #P, and A_0PP is defined in terms of GapP. Since GapP obviously includes all of #P, A_0PP obviously includes all of SBP. Alternately, see {thm:SBP⊆SBQP} as another obvious reason, and we know {thm:SBQP=A_0PP} -- TODO.",
      "impliedby":"ObviousConstruction"
     },
     {"name":"NP⊆MA",
@@ -1085,12 +1257,16 @@
     },
     {"name":"PP⊆CH",
      "content":"PP⊆CH",
-     "desc":"The CH hierarchy is built by taking P and repeatedly giving PP oracles, so PP is the first level.",
+     "ref":"The CH hierarchy is built by taking P and repeatedly giving PP oracles, so PP is the first level.",
      "impliedby":"ObviousConstruction"
     },
     {"name":"CH⊆PSPACE",
      "content":"CH⊆PSPACE",
      "impliedby":"ObviousConstruction"
+    },
+    {"name":"IP⊆QIP",
+     "content":"IP⊆QIP",
+      "impliedby":"ObviousConstruction"
     },
     {"name":"P⊆E",
      "content":"P⊆E",
@@ -1104,8 +1280,16 @@
      "content":"PSPACE⊆EXP",
      "impliedby":"ObviousConstruction"
     },
+    {"name":"EXP⊆NEXP",
+     "content":"EXP⊆NEXP",
+     "impliedby":"ObviousConstruction"
+    },
     {"name":"EXP⊆ELEMENTARY",
      "content":"EXP⊆ELEMENTARY",
+     "impliedby":"ObviousConstruction"
+    },
+    {"name":"NEXP⊆ELEMENTARY",
+     "content":"NEXP⊆ELEMENTARY",
      "impliedby":"ObviousConstruction"
     },
     {"name":"ELEMENTARY⊆TOWER",
@@ -1142,7 +1326,7 @@
     },
     {"name":"ObviousConstruction",
      "content":"",
-     "desc":"Placeholder theorem for 'obvious' statements, like DTIME(f)⊆NDTIME(f), as a source for other statements. Ideally uses of this would be minimized and replaced by more precise statements that could be verified."
+     "ref":"Placeholder theorem for 'obvious' statements, like DTIME(f)⊆NDTIME(f), as a source for other statements. Ideally uses of this would be minimized and replaced by more precise statements that could be verified."
     },
       
     //Parameterized world
@@ -1161,7 +1345,7 @@
     },
     {"name":"FPT⊆W[1]",
      "content":"FPT⊆W[1]",
-     "desc":"The W hierarchy is defined under FPT reductions, so the class FPT is equivalent to the trivial language in the W hierarchy -- placing it at the lowest level",
+     "ref":"The W hierarchy is defined under FPT reductions, so the class FPT is equivalent to the trivial language in the W hierarchy -- placing it at the lowest level",
      "impliedby":"ObviousConstruction"
     },
     {"name":"W[1]⊆W[2]",
@@ -1174,12 +1358,12 @@
     },
     {"name":"W[P]⊆para-NP",
      "content":"W[P]⊆para-NP",
-     "desc":"The W hierarchy is in terms of circuits with poly(n) inputs satisfiable by setting f(k) inputs to 1. The set of bits to set is the witness of the para-NP checker.",
+     "ref":"The W hierarchy is in terms of circuits with poly(n) inputs satisfiable by setting f(k) inputs to 1. The set of bits to set is the witness of the para-NP checker.",
      "impliedby":"ObviousConstruction"
     },
     {"name":"W[P]⊆XP",
      "content":"W[P]⊆XP",
-     "desc":"The W hierarchy is in terms of circuits with poly(n) inputs satisfiable by setting f(k) inputs to 1. Trying all n-choose-k inputs gives an O(n^k) algorithm to solve them, therefore all W[i] are in XP.",
+     "ref":"The W hierarchy is in terms of circuits with poly(n) inputs satisfiable by setting f(k) inputs to 1. Trying all n-choose-k inputs gives an O(n^k) algorithm to solve them, therefore all W[i] are in XP.",
      "impliedby":"ObviousConstruction"
     },
     {"name":"XL⊆XNL",
@@ -1214,10 +1398,24 @@
     
   "references":[
     {"name":"Aar05",
-     "desc":"Quantum computing and hidden variables, Physical Review A 71:032325, March 2005. arXiv:quant-ph/0408035."
+     "desc":"Quantum computing and hidden variables, Physical Review A 71:032325, March 2005.",
+     "url":["https://doi.org/10.1103/PhysRevA.71.032325","https://arxiv.org/abs/quant-ph/0408035"]
     },
     {"name":"AG95",
-     "desc":"Allender, Eric; Gore, Vivec (1994), A uniform circuit lower bound for the permanent (PDF), SIAM Journal on Computing, 23 (5): 1026–1049, doi:10.1137/S0097539792233907"
+     "desc":"Allender, Eric; Gore, Vivec (1994), A uniform circuit lower bound for the permanent (PDF), SIAM Journal on Computing, 23 (5): 1026–1049, doi:10.1137/S0097539792233907",
+     "url":["https://doi.org/10.1137/S0097539792233907"]
+    },
+    {"name":"BFL91",
+     "desc":"L. Babai, L. Fortnow, and C. Lund. Nondeterministic exponential time has two-prover interactive protocols, Computational Complexity 1:3-40, 1991. doi:10.1109/FSCS.1990.89520",
+     "url":["https://doi.org/10.1109/FSCS.1990.89520","http://people.cs.uchicago.edu/~fortnow/papers/mip2.ps"]
+    },
+    {"name":"BGM02",
+     "desc":"E. Böhler, C. Glaßer, and D. Meister. Error-bounded probabilistic computations between MA and AM, Mathematical foundations of computer science 2003, 249--258.",
+     "url":["http://haegar.informatik.uni-wuerzburg.de/users/glasser/publications/sbp-ma-am-tr.pdf"]
+    },
+    {"name":"BM88",
+     "desc":"L. Babai and S. Moran. Arthur-Merlin games: a randomized proof system, and a hierarchy of complexity classes, Journal of Computer and Systems Sciences 36:254-276, 1988.",
+     "url":["https://doi.org/10.1016/0022-0000(88)90028-1"]
     },
     {"name":"Bor77",
      "desc":"A. Borodin. On relating time and space to size and depth, SIAM Journal on Computing 6:733-744, 1977."
@@ -1225,17 +1423,59 @@
     {"name":"CKS81",
      "desc":"A. K. Chandra, D. C. Kozen, and L. J. Stockmeyer. Alternation, Journal of the ACM 28:114-133, 1981."
     },
+    {"name":"Joh90",
+     "desc":"D. S. Johnson. A catalog of complexity classes, chapter 2 in Handbook of Theoretical Computer Science, Volume A (J. van Leeuwen, editor), Elsevier, 1990."
+    },
+    {"name":"JNVWY20",
+     "desc":"Z. Ji, A. Natarajan, T. Vidick, J. Wright, H. Yuen. MIP* = RE, arXiv:2001.04383, 2020.",
+     "url":["https://arxiv.org/abs/2001.04383"]
+    },
+    {"name":"JJUW09",
+     "desc":"R. Jain, Z. Ji, S. Upadhyay, and J. Watrous. QIP = PSPACE, J. ACM 58(6):1-27, 2011. doi:10.1145/2049697.2049704 arXiv:0907.4737.",
+     "url":["https://dl.acm.org/doi/10.1145/1806689.1806768","https://dl.acm.org/doi/10.1145/2049697.2049704","http://arxiv.org/abs/0907.4737"]
+    },
     {"name":"KL98",
-     "desc":"Knill, Emanuel; Laflamme, Raymond (1998). Power of One Bit of Quantum Information. Physical Review Letters. 81 (25): 5672–5675. arXiv:quant-ph/9802037. Bibcode:1998PhRvL..81.5672K. doi:10.1103/PhysRevLett.81.5672. S2CID 118931256."
+     "desc":"Knill, Emanuel; Laflamme, Raymond (1998). Power of One Bit of Quantum Information. Physical Review Letters. 81 (25): 5672–5675. arXiv:quant-ph/9802037. Bibcode:1998PhRvL..81.5672K. doi:10.1103/PhysRevLett.81.5672. S2CID 118931256.",
+     "url":["https://doi.org/10.1103/PhysRevLett.81.5672"]
+    },
+    {"name":"Lin23",
+     "desc":"Junqiao Lin. Almost synchronous correlations in the commuting operator model, arXiv:2304.01940. 2023",
+     "url":["https://arxiv.org/abs/2304.01940"]
+    },
+    {"name":"FR98",
+     "desc":"L. Fortnow and J. D. Rogers. Complexity limitations on quantum computation, Proceedings of IEEE Complexity'98, pp. 202-209, 1998. arXiv:cs.CC/9811023.",
+     "url":["https://arxiv.org/abs/cs/9811023"]
+    },
+    {"name":"GS86",
+     "desc":"S. Goldwasser and M. Sipser. Private coins versus public coins in interactive proof systems, Proceedings of ACM STOC'86, pp. 58-68, 1986. doi:10.1145/12130.12137",
+     "url":["https://doi.org/10.1145/12130.12137"]
     },
     {"name":"MW18",
-     "desc":"Murray, Cody D.; Williams, Ryan (2018), Circuit Lower Bounds for Nondeterministic Quasi-Polytime: An Easy Witness Lemma for NP and NQP, Proc. 50th ACM Symposium on Theory of Computing, pp. 890–901, doi:10.1145/3188745.3188910, hdl:1721.1/130542, S2CID 3685013"
+     "desc":"Murray, Cody D.; Williams, Ryan (2018), Circuit Lower Bounds for Nondeterministic Quasi-Polytime: An Easy Witness Lemma for NP and NQP, Proc. 50th ACM Symposium on Theory of Computing, pp. 890–901, doi:10.1145/3188745.3188910, hdl:1721.1/130542, S2CID 3685013",
+     "url":["https://doi.org/10.1145/3188745.3188910","https://people.csail.mit.edu/rrw/easy-witness-nqp.pdf"]
+    },
+    {"name":"NPA08",
+     "desc":"Miguel Navascués, Stefano Pironio, and Antonio Acín. A convergent hierarchy of semidefinite programs characterizing the set of quantum correlations. New Journal of Physics, 10(7):073013, 2008.",
+     "url":["https://doi.org/10.1088/1367-2630/10/7/073013","https://arxiv.org/abs/0803.4290"]
     },
     {"name":"Raz87",
      "desc":"Razborov, A. A. (1987), Lower bounds for the size of circuits of bounded depth with basis {⊕,∨}, Math. Notes of the Academy of Science of the USSR, 41 (4): 333–338."
     },
+    {"name":"Sha90",
+     "desc":"A. Shamir. IP=PSPACE, Proceedings of IEEE FOCS'90, pp. 11-15, 1990.",
+     "url":["https://doi.org/10.1109/FSCS.1990.89519"]
+    },
     {"name":"Smo87",
-     "desc":"Smolensky, R. (1987), Algebraic methods in the theory of lower bounds for Boolean circuit complexity, Proc. 19th ACM Symposium on Theory of Computing, pp. 77–82, doi:10.1145/28395.28404."
+     "desc":"Smolensky, R. (1987), Algebraic methods in the theory of lower bounds for Boolean circuit complexity, Proc. 19th ACM Symposium on Theory of Computing, pp. 77–82, doi:10.1145/28395.28404.",
+     "url":["https://doi.org/10.1145/28395.28404"]
+    },
+    {"name":"Ven91",
+     "desc":"H. Venkateswaran. Properties that characterize LOGCFL, Journal of Computer and System Sciences 43(2):380-404, 1991. doi:10.1016/0022-0000(91)90020-6 Originally appeared in STOC 1987",
+     "url":["https://doi.org/10.1016/0022-0000(91)90020-6"]
+    },
+    {"name":"Vya03",
+     "desc":"M. Vyalyi. QMA=PP implies that PP contains PH, ECCC TR03-021, 2003.",
+     "url":["https://eccc.weizmann.ac.il/report/2003/021/"]
     },
     {"name":"Wil11",
      "desc":"Williams, Ryan (2011). Non-uniform ACC Circuit Lower Bounds. 2011 IEEE 26th Annual Conference on Computational Complexity (PDF). pp. 115–125. doi:10.1109/CCC.2011.36. ISBN 978-1-4577-0179-5."
