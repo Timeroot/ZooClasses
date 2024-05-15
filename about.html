@@ -1,0 +1,20 @@
+<!DOCTYPE html><html><body>
+
+This website is primarily, in effect, a front end to Scott Aaronson's <a href="https://complexityzoo.net/Complexity_Zoo">Complexity Zoo</a>. That is a great wiki, and credit is due first to everyone working on that.
+<br />
+The overal goal of this page/site are to organize that information in a formal way -- something that precise enough that it could, in principle, be fed into an automated reasoning system and formally verified. But that is not the purpose. The actual objectives are a few:
+<ul>
+<li>A structured data format (JSON) that could be more easily adapted to other uses/displays. This includes, for instance, automatic "chaining" of theorems to give succinct explanations, or making the hierarchy diagram.</li>
+<li>Slightly more precise/formal distinctions between classes, in particular drawing distinctions between:
+<ul><li>languages</li><li><i>promise</i> problems</li><li><i>function</i> problems</li><li><i>sampling</i> problems</li> <li>and all of their <i>parameterized</i> variants.</li></ul>
+Often these are disregarded Issues arise when e.g. people talk about "QMA-complete" problems, which are very natural to talk about, while at same time people regularly mention the conjecture that there are no BPP-complete problems. The <i>are</i> natural PromiseBPP-complete problems, and natural PromiseQMA-complete problems. The issue is just that when people say "QMA" they always imply the "promise".</li>
+<li>Slightly more precise handling of uniform/nonuniform classes. Quantum classes are almost all technically "circuit" classes, but uniformity is understood (typically L-uniformity). Cryptographers talk about circuit classes and typically assume no uniformity. But important containments like "NC<sup>1</sup> is in L" only make sense if there is uniformity. To make things formal, this must be rectified.</li>
+</ul>
+There is one more objective here, which is to help me learn more about complexity theory myself. :)
+<br />
+<br />
+--<a href="http://ohaithe.re/">Alex Meiburg</a>
+<br /><br /><br />
+<small><i>If you want to contact me, <a href="javascript:;" id="email_button" onclick="document.getElementById('email_button').outerHTML=atob('Y29tcGxleGl0eXpvb0BvaGFpdGhlLnJl');">click to show</a>, or post an issue at the <a href="https://github.com/Timeroot/ZooClasses/" style="color:#48F">GitHub repo</a></i></small>
+
+</body></html>

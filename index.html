@@ -70,20 +70,34 @@
             float: right;
             width: 25%;
         }
+        #controls {
+            float: right;
+            width: 25%;
+        }
         #treeSvg {
+            width: 100%;
+        }
+        #searchBar {
             width: 100%;
         }
     </style>
 </head>
 <body>
     <div id="treeDiv">Click and drag to move. Zoom with pinch/scroll wheel/two-fingered scroll on a touchpad. Click a class to see details.<div id="svgDiv"><svg id="treeSvg"></svg></div></div>
-    <input type="text" id="searchBar" oninput="searchFunction()" placeholder="Search for classes..">
-    <button id="plusButton" onclick="changePriority(1)">+</button>
-    <button id="minusButton" onclick="changePriority(-1)">-</button>
-    <input type="checkbox" id="showEq" name="showEq" oninput="drawGraph()">
-    <label for="showEq">Show equal classes?</label>
+    <div id="controls">
+<!--        <input type="text" id="searchBar" oninput="searchFunction()" placeholder="Search for classes by name" ><br />-->
+        <!--<button id="plusButton" onclick="changePriority(1)">+</button>
+        <button id="minusButton" onclick="changePriority(-1)">-</button>-->
+        
+        <input type="checkbox" id="showEq" name="showEq" oninput="drawGraph()">
+        <label for="showEq">Show equal classes</label>
+        <br />
+        <input type="checkbox" id="showNU" name="showNU" oninput="drawGraph()">
+        <label for="showNU">Show nonuniform classes</label>
+    </div>
     <div id="detailsDiv"></div>
-    <div style="position:absolute; right:-8px; bottom:-8px; background: #DDD; padding:12px; border-radius: 15px"><a href="https://github.com/Timeroot/ZooClasses/" style="color:#48F">GitHub repo</a></div>
+    <div style="position:absolute; right:-8px; bottom:30px; background: #CDF; padding:12px; border-radius: 15px"><a href="about.html" style="color:#48F">About</a></div>
+    <div style="position:absolute; right:-8px; bottom:-8px; background: #DCF; padding:12px; border-radius: 15px"><a href="https://github.com/Timeroot/ZooClasses/" style="color:#48F">GitHub repo</a></div>
     <script src="./main.js"></script>
 </body>
 </html>

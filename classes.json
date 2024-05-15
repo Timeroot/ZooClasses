@@ -1,6 +1,7 @@
 {
 //Basic comments are supported, but they must start with // at the start of the line.
-//useful characters: ≤ ≥ ⊂ ⊆ ⊃ ⊇ ⊈ ⊉ = ∩ ⟹ Ω Σ Π Δ
+//useful characters: ≤ ≥ ⊂ ⊆ ⊃ ⊇ ⊈ ⊉ = ⟹ Ω Σ Π Δ
+//avoid ≠, prefer ⊈ instead. Avoid union ∪ and intersection ∩, prefer writing two logical statements instead.
   "problem types":[
     {"name":"Language",
      "desc":"A language is an acceptable set of YES strings. Everything else is a NO string.",
@@ -39,6 +40,26 @@
       "isalso":[["Function Problem","By switching from a weak simulation problem to a strong simulation problem, where inputs are pairs (x,s) and the outputs are μ(s) for (x,μ) in the original sampling problem."]]
     }
   ],
+ 
+//Certain properties we can flag classes as having or not, mostly for better display.
+//Currently most classes are not tagged at all.
+  "properties":[
+    {"name":"circuit",
+     "desc":"Indicates that the class is described by a circuit. Depending on the class, there may or may not be a uniformity condition."
+    },
+    {"name":"turing",
+     "desc":"Indicates that the class is described by a Turing machine. It may be deterministic (e.g. {lang:L}), nondeterministic (e.g. {lang:NP}), or something else (e.g. {lang:SL})"
+    },
+    {"name":"protocol",
+     "desc":"Indicates that this class is defined using some sort of interactive protocol with 2 or more players. Examples would be {lang:SZK}, {lang:AM}, or {lang:MIP*}. The classic {lang:NP} is not tagged this way because we define it using a nondeterministic Turing machine, even though it can also be described with a protocol."
+    },
+    {"name":"nonuniform",
+     "desc":"Indicates that this class lacks a uniformity condition. If a circuit class, it means that the circuit can be any circuit, not necessarily one made by a (e.g.) LOGSPACE machine. If TM based, like {lang:P/poly}, then it means that the machine gets some kind of advice."
+    },
+    {"name":"quantum",
+     "desc":"Indicates that this class is defined using quantum mechanics."
+    }
+   ],
   
   "classes":[
 //first are all the languages, in alphabetical order.
@@ -65,7 +86,7 @@
     },
     {"name":"ACC^0",
      "type":"Language",
-     "desc":"AC0 With Arbitrary MOD Gates.",
+     "desc":"AC0 With Arbitrary MOD Gates. Polynomial size, constant depth.",
      "related":["AC^0","TC^0"]
     },
     {"name":"ACKERMANN",
@@ -110,45 +131,50 @@
     {"name":"CFL",
      "type":"Language",
      "desc":"Context-Free languages",
-     "related":["REG"]
+     "related":["REG","CSL"]
     },
     {"name":"CH",
      "type":"Language",
      "desc":"Counting Hierarchy. Union of PP, PP^PP, PP^(PP^PP), and so on. With the counting operator C[M] = PP^M, we can say that CH = C^O(1)[P], analogous to how PH = Σ^O(1)[P] = Π^O(1)[P]",
      "related":["PP"]
     },
+    {"name":"CSL",
+     "type":"Language",
+     "desc":"Context-Sensitive languages. Precisely the languages that can be described by a https://en.wikipedia.org/wiki/Context-sensitive_grammar. Equal to {lang:NLINSPACE}, see {thm:CSL=NLINSPACE}.",
+     "related":["REG","CFL"]
+    },
     {"name":"coAM",
      "type":"Language",
-     "desc":"Complement of Arthur-Merlin games",
+     "desc":"Complement of Arthur-Merlin games, {lang:AM}.",
      "related":["AM","coMA"],
      "notes":"todo def"
     },
     {"name":"coNL",
      "type":"Language",
-     "desc":"Complement of Nondeterministic Logarithmic space. Problems decided in logarithmic space by a deterministic Turing machine.",
-     "solver":"coNSPACE(log(n))"
+     "desc":"Complement of Nondeterministic Logarithmic space, {lang:NL}. Problems decided in logarithmic space by a deterministic Turing machine. Actually equal to {lang:NL}, a consequence of {thm:Immerman–Szelepcsényi theorem}.",
+     "formal":"coNSPACE(log(n))"
     },
     {"name":"coMA",
      "type":"Language",
-     "desc":"Complement of Merlin-Arthur games",
+     "desc":"Complement of Merlin-Arthur games, {lang:MA}.",
      "related":["MA","coAM"],
      "notes":"todo def. todo coMA=coMA1"
     },
     {"name":"coNP",
      "type":"Language",
-     "desc":"Complement of Nondeterministic Polynomial time. Problems whose complement decided in polynomial time by a nondeterministic Turing machine.",
-     "solver":"coNTIME(n^O(1))",
+     "desc":"Complement of Nondeterministic Polynomial time, {lang:coNP}. Problems whose complement decided in polynomial time by a nondeterministic Turing machine; or equivalently, problems that can be disproved by a polynomial-time checkable witness.",
+     "formal":"coNTIME(n^O(1))",
      "notes":"todo: verifier definition"
     },
     {"name":"coRE",
      "type":"Language",
-     "desc":"Complement of Recursively enumerable languages. Languages whose rejection can be recognized by a Turing machine.",
+     "desc":"Complement of Recursively enumerable languages, {lang:RE}. Languages whose rejection can be recognized by a Turing machine.",
      "related":["RE"],
      "notes":"todo: definition as a Turing machine"
     },
     {"name":"coRP",
      "type":"Language",
-     "desc":"Complement of Randomized Polynomial time. Problems with a probabilistic polynomial-time Turing machine with zero error on YES instances",
+     "desc":"Complement of Randomized Polynomial time, {lang:RP}. Problems with a probabilistic polynomial-time Turing machine with zero error on YES instances",
      "related":["RP"],
      "notes":"todo: complement of RP"
     },
@@ -172,7 +198,7 @@
     {"name":"E",
      "type":"Language",
      "desc":"(Linear) Exponential time. Problems decided in exponential time with linear exponent, by a deterministic Turing machine.",
-     "solver":"DTIME(2^O(n))"
+     "formal":"DTIME(2^O(n))"
     },
     {"name":"ELEMENTARY",
      "type":"Language",
@@ -187,7 +213,7 @@
     {"name":"EXP",
      "type":"Language",
      "desc":"Exponential time. Problems decided in singly exponential time by a deterministic Turing machine.",
-     "solver":"DTIME(2^(n^O(1)))"
+     "formal":"DTIME(2^(n^O(1)))"
     },
     
     {"name":"GA",
@@ -220,8 +246,14 @@
     {"name":"L",
      "type":"Language",
      "desc":"Logarithmic space. Problems decided in logarithmic space by a deterministic Turing machine.",
-     "solver":"DSPACE(log(n))",
+     "formal":"DSPACE(log(n))",
      "notes":"todo SL"
+    },
+    {"name":"LINSPACE",
+     "type":"Language",
+     "desc":"Deterministic Linear space. Problems decided in linear space by a deterministic Turing machine.",
+     "related":["NLINSPACE","PSPACE"],
+     "formal":"DSPACE(n)"
     },
     {"name":"LOGCFL",
      "type":"Language",
@@ -242,12 +274,12 @@
     },
     {"name":"MIP*",
      "type":"Language",
-     "desc":"Multiple-player Interactive Proofs, with entanglement. Traditionally defined with polynomially many players and rounds, but it turns out that MIP*[poly,poly]=MIP*[2,1], so one can just think of as two players and one round. \n When the provers are allowed to have (unbounded) entanglement, this allows them to cheat at some games, so it is not obvious that MIP* is as big as MIP; it is only clear that one can ignore all but one player and get the class IP as a lower bound. But, having entanglement also means we can ask more from the players -- much more, and it turns out that MIP*=RE, and includes undecidable problems.",
+     "desc":"Multiple-player Interactive Proofs, with entanglement. Traditionally defined with polynomially many players and rounds, but it turns out that MIP*[poly,poly]=MIP*[2,1], so one can just think of as two players and one round. \n When the provers are allowed to have (unbounded) entanglement, this allows them to cheat at some games, so it is not obvious that MIP* is as big as {lang:MIP}; it is only clear that one can ignore all but one player and get the class IP as a lower bound. But, having entanglement also means we can ask more from the players -- much more, and it turns out that {thm:MIP*=RE}, and includes undecidable problems.",
      "related":["MIP","MIPco","RE"]
     },
     {"name":"MIPco",
      "type":"Language",
-     "desc":"Multiple-player Interactive Proofs, with entanglement, in the _commuting_ operator framework. This was expected to be equal to MIP*, but this isn't the case: MIP*=RE, while MIPco is contained in coRE. (It is expected that MIPco=coRE.) Nothing contained in coRE can equal RE!",
+     "desc":"Multiple-player Interactive Proofs, with entanglement, in the _commuting_ operator framework. This was expected to be equal to {lang:MIP*}, but this isn't the case: {thm:MIP*=RE}, while MIPco is contained in {lang:coRE}. (It is expected that MIPco=coRE.) Nothing contained in coRE can equal RE!",
      "related":["coRE","MIPco","MIP*"]
     },
 
@@ -258,7 +290,7 @@
     },
     {"name":"NC^0",
      "type":"Language",
-     "desc":"Constant-Depth Nick's Class: uniform constant depth circuits with bounded-fanin gates. By definition, a decision problem in NC0 can depend on only a constant number of bits of the input. Thus, NC^0 often refers to functions computable by constant-depth, bounded-fanin circuits, as it crops up in NC^0 reduction. Here we call that class of functions FNC^0 instead.",
+     "desc":"Constant-Depth Nick's Class: uniform constant depth circuits with bounded-fanin gates. By definition, a decision problem in NC0 can depend on only a constant number of bits of the input. For that reason, \"NC^0\" is often used to refer to _functions_ computable by constant-depth, bounded-fanin circuits, instead of _decision_ problem. This comes up in NC^0 reduction. We opt to call that class of functions {lang:FNC^0} instead.",
      "related":["AC^0","TC^0","NC^1","NC","FNC^0"]
     },
     {"name":"NC^1",
@@ -284,14 +316,26 @@
     },
     {"name":"NL",
      "type":"Language",
-     "desc":"Nondeterministic Logarithmic space. Problems decided in logarithmic space by a deterministic Turing machine.",
-     "solver":"NSPACE(log(n))"
+     "desc":"Nondeterministic Logarithmic space. Problems decided in logarithmic space by a nondeterministic Turing machine.",
+     "formal":"NSPACE(log(n))"
+    },
+    {"name":"NLINSPACE",
+     "type":"Language",
+     "desc":"Nondeterministic Linear space. Problems decided in linear space by a nondeterministic Turing machine. Equal to {lang:CSL}, the context-sensitive languages.",
+     "related":["LINSPACE","NPSPACE","CSL"],
+     "formal":"NSPACE(n)"
     },
     {"name":"NP",
      "type":"Language",
      "desc":"Nondeterministic Polynomial time. Problems decided in polynomial time by a nondeterministic Turing machine.",
-     "solver":"NTIME(n^O(1))",
+     "formal":"NTIME(n^O(1))",
      "notes":"todo: verifier definition"
+    },
+    {"name":"NPSPACE",
+     "type":"Language",
+     "desc":"Nondeterministic polynomial space. Problems decided in polynomial space by a nondeterministic Turing machine. Actually equal to {lang:PSPACE}, as proved by {thm:Savitch's theorem}.",
+     "formal":"NSPACE(n^O(1))",
+     "related":["PSPACE","NLINSPACE"]
     },
     {"name":"NQP",
      "type":"Language",
@@ -302,7 +346,7 @@
     {"name":"P",
      "type":"Language",
      "desc":"Polynomial time. Problems decided in polynomial time by a deterministic Turing machine.",
-     "solver":"DTIME(n^O(1))"
+     "formal":"DTIME(n^O(1))"
     },
     {"name":"PARITY",
      "type":"Language",
@@ -329,19 +373,18 @@
     {"name":"PSPACE",
      "type":"Language",
      "desc":"Polynomial space. Problems decided in polynomial space by a deterministic Turing machine.",
-     "solver":"DSPACE(n^O(1))",
-     "notes":"todo NSPACE equivalence",
+     "formal":"DSPACE(n^O(1))",
      "related":["AP","PH"]
     },
     
     {"name":"QCMA",
      "type":"Language",
-     "desc":"Quantum-Classical Merlin-Arthur. Like QMA, but Merlin's proof is a classical string; like NP, but the verifier has a quantum computer (BQP machine).",
+     "desc":"Quantum-Classical Merlin-Arthur. Like {lang:QMA}, but Merlin's proof is a classical string; like NP, but the verifier has a quantum computer (a {lang:BQP} machine).",
      "related":["QMA"]
     },
     {"name":"QIP",
      "type":"Language",
-     "desc":"Quantum Interactive Proofs. Like IP, but now messages can be quanutum. Only a single prover. For a different kind of 'quantum' interactive proof, there's the much harder MIP* and MIPco.",
+     "desc":"Quantum Interactive Proofs. Like {lang:IP}, but now messages can be quanutum. Only a single prover. For a different kind of 'quantum' interactive proof, there's the much harder {lang:MIP*} and {lang:MIPco}.",
      "related":["IP","MIP*","MIPco"]
     },
     {"name":"QMA",
@@ -367,7 +410,7 @@
     
     {"name":"R",
      "type":"Language",
-     "desc":"Recursive languages. RE∩coRE. Languages solvable by a Turing machine.",
+     "desc":"Recursive languages. {lang:RE}∩{lang:coRE}. Languages solvable by a Turing machine.",
      "related":["RE"],
      "notes":"todo: definition as a Turing machine, definition as intersection"
     },
@@ -470,20 +513,28 @@
     {"name":"Δ2",
      "type":"Language",
      "desc":"P^NP. The weakest class at the second level in the polynomial hierarchy.",
-     "solver":"P^NP",
+     "formal":"P^NP",
      "related":["Π2","Σ2","PH"]
     },
     {"name":"Π2",
      "type":"Language",
      "desc":"Universal polynomial time, 2 alternations. coNP^NP, at the second level in the polynomial hierarchy.",
-     "solver":"coNP^NP",
+     "formal":"coNP^NP",
      "related":["Δ2","Σ2","PH"]
     },
     {"name":"Σ2",
      "type":"Language",
      "desc":"Existential polynomial time, 2 alternations. NP^coNP, at the second level in the polynomial hierarchy.",
-     "solver":"NP^coNP",
+     "formal":"NP^coNP",
      "related":["Π2","Δ2","PH"]
+    },
+
+//nonuniform circuit classes
+    {"name":"nuACC^0",
+     "type":"Language",
+     "desc":"{lang:ACC^0} but with no uniformity condition.",
+     "related":["ACC^0"],
+     "properties":["nonuniform"]
     },
 
 //promise problems
@@ -650,11 +701,31 @@
              "content":"L⊂PSPACE",
              "impliedby":"Deterministic space hierarchy theorem"
             },
+            {"name":"L⊂LINSPACE",
+             "content":"L⊂LINSPACE",
+             "impliedby":"Deterministic space hierarchy theorem"
+            },
+            {"name":"LINSPACE⊂PSPACE",
+             "content":"LINSPACE⊂PSPACE",
+             "impliedby":"Deterministic space hierarchy theorem"
+            },
     {"name":"Nondeterministic space hierarchy theorem",
      "ref":"https://en.wikipedia.org/wiki/Space_hierarchy_theorem",
      "content":"{f}SpaceConstructible(f)⟹(NSPACE(f)⊃NSPACE(o(f)))",
      "related":["Deterministic space hierarchy theorem"]
     },
+            {"name":"NL⊂NPSPACE",
+             "content":"NL⊂NPSPACE",
+             "impliedby":"Deterministic space hierarchy theorem"
+            },
+            {"name":"NL⊂NLINSPACE",
+             "content":"NL⊂NLINSPACE",
+             "impliedby":"Deterministic space hierarchy theorem"
+            },
+            {"name":"NLINSPACE⊂NPSPACE",
+             "content":"NLINSPACE⊂NPSPACE",
+             "impliedby":"Deterministic space hierarchy theorem"
+            },
     {"name":"Deterministic time hierarchy theorem",
      "ref":"https://en.wikipedia.org/wiki/Time_hierarchy_theorem",
      "content":"{f}TimeConstructible(f)⟹(DTIME(o(f/log(f)))⊃DTIME(f))",
@@ -687,7 +758,8 @@
 //Classic named theorems
     {"name":"Immerman–Szelepcsényi theorem",
      "ref":"https://en.wikipedia.org/wiki/Immerman%E2%80%93Szelepcs%C3%A9nyi_theorem",
-     "content":"{f}(f≥log)⟹(NSPACE(f)=coNSPACE(f))"
+     "content":"{f}(f≥log)⟹(NSPACE(f)=coNSPACE(f))",
+     "priority":2
     },
             {"name":"NL=coNL",
              "content":"NL=coNL",
@@ -695,18 +767,24 @@
             },
     {"name":"Savitch's theorem",
      "ref":"https://en.wikipedia.org/wiki/Savitch%27s_theorem",
-     "content":"{f}(f≥log)⟹(NSPACE(f)⊆DSPACE(f^2)"
+     "content":"{f}(f≥log)⟹(NSPACE(f)⊆DSPACE(f^2)",
+     "priority":2
     },
+            {"name":"PSPACE=NPSPACE",
+             "content":"PSPACE=NPSPACE",
+             "impliedby":"Savitch's theorem"
+            },
     {"name":"Sipser–Lautemann theorem",
      "ref":"https://en.wikipedia.org/wiki/Sipser%E2%80%93Lautemann_theorem",
-     "content":"BPP⊆Σ2&&BPP⊆Π2"
+     "content":"BPP⊆Σ2&&BPP⊆Π2",
+     "priority":2
     },
     
 //Nontrivial results - the real meat!
     {"name":"QMA⊆PP",
      "content":"QMA⊆PP",
      "ref":"C. Marriott and J. Watrous. Quantum Arthur-Merlin Games, Computational Complexity, 14(2):122-152, 2005. doi:10.1007/s00037-005-0194-x.\n [MW05] at https://complexityzoo.net/Complexity_Zoo_References#mw05",
-     "notes":"todo"
+     "priority":3
     },
     {"name":"AM⊆Π2",
      "content":"AM⊆Π2",
@@ -731,105 +809,131 @@
     },
     {"name":"NC^1⊆L",
      "content":"NC^1⊆L",
-     "ref":"Proved in {ref:Bor77}"
+     "ref":"Proved in {ref:Bor77}",
+     "priority":3
     },
     {"name":"DET⊆NC^2",
      "content":"DET⊆NC^2",
-     "ref":"TODO"
+     "ref":"TODO",
+     "priority":3
     },
     {"name":"NL⊆DET",
      "content":"NL⊆DET",
-     "ref":"TODO"
+     "ref":"TODO",
+     "priority":3
     },
     {"name":"NL⊆AC^1",
      "content":"NL⊆AC^1",
-     "ref":"TODO"
+     "ref":"TODO",
+     "priority":3
     },
     {"name":"AP=PSPACE",
      "content":"AP=PSPACE",
-     "ref":"{ref:CKS81}"
+     "ref":"{ref:CKS81}",
+     "priority":3
     },
     {"name":"SZK⊆DQP",
      "content":"SZK⊆DQP",
-     "ref":"{ref:Aar05}"
+     "ref":"{ref:Aar05}",
+     "priority":3
     },
     {"name":"DQP⊆EXP",
      "content":"DQP⊆EXP",
-     "ref":"{ref:Aar05}"
+     "ref":"{ref:Aar05}",
+     "priority":3
     },
     {"name":"L⊆DQC1",
      "content":"L⊆DQC1",
-     "ref":"https://arxiv.org/abs/quant-ph/0608132 shows that the one clean qubit can be magnified to log(n) clean qubits without changing the class, so any computation in quantum logspace (without measurements) is in DQC1. This includes all reversible logspace, which is equal to deterministic logspace, see Lange, McKenzie and Tapp [LMT00]."
+     "ref":"https://arxiv.org/abs/quant-ph/0608132 shows that the one clean qubit can be magnified to log(n) clean qubits without changing the class, so any computation in quantum logspace (without measurements) is in DQC1. This includes all reversible logspace, which is equal to deterministic logspace, see Lange, McKenzie and Tapp [LMT00].",
+     "priority":3
     },
     {"name":"SF⊆AC^0",
      "content":"SF⊆AC^0" ,
      "ref":"Stated without reference on Wikipedia: https://en.wikipedia.org/wiki/Star-free_language"
     },
-    {"name":"CFL⊆NP",
-     "content":"CFL⊆NP" ,
-     "ref":"This is the characterization that CFLs are recognized by (nondeterministic) pushdown automata. Can be tightened to NLIN, TODO add that class. TODO add that DCL is in P, specifically in LIN."
+    //TODO add that DCL is in P, specifically in LIN.
+    {"name":"CSL=NLINSPACE",
+     "content":"CSL=NLINSPACE",
+     "ref":"{ref:Kur64}",
+     "priority":2
     },
     {"name":"PARITY⊈AC^0",
      "content":"PARITY⊈AC^0",
-     "ref":"PARITY, the one-language class of recognizing the parity of a string, cannot be computed by an AC^0 circuit. The same is true for any mod-m parity problem. See {ref:Raz87}{ref:Smo87}."
+     "ref":"PARITY, the one-language class of recognizing the parity of a string, cannot be computed by an AC^0 circuit. The same is true for any mod-m parity problem. See {ref:Raz87}{ref:Smo87}.",
+     "priority":3
     },
     {"name":"ACC^0⊂PP",
      "content":"ACC^0⊂PP" ,
-     "ref":"{ref:AG95}"
+     "ref":"{ref:AG95}",
+     "priority":3
     },
-    {"name":"ACC^0⊂E",
-     "content":"ACC^0⊂E" ,
-     "ref":"{ref:Wil11}"
+    {"name":"E⊈nuACC^0",
+     "content":"E⊈nuACC^0",
+     "desc":"{lang:ACC^0} circuits, i.e. the non-uniform class {lang:nuACC^0}, does not contain all of NTIME[2^n], what we call {lang:E}.",
+     "ref":"{ref:Wil11}",
+     "priority":3
     },
     {"name":"ACC^0⊂NQP",
      "content":"ACC^0⊂NQP",
-     "ref":"{ref:MW18}"
+     "ref":"{ref:MW18}",
+     "priority":3
     },
     {"name":"LOGCFL=SAC^1",
      "content":"LOGCFL=SAC^1",
      "ref":"Mentioned in {ref:Joh90}{ref:Ven91}, don't know where it was actually proved.",
-     "notes":"Technically LOGCFL = uniform-SAC^1, and LOGCFL/poly = SAC^1. Got to make this more precise."
+     "notes":"Technically LOGCFL = uniform-SAC^1, and LOGCFL/poly = SAC^1. Got to make this more precise.",
+     "priority":3
     },
     {"name":"IP=PSPACE",
      "content":"PSPACE⊆IP",
-     "ref":"Proved in {ref:Sha90}. The other direction, that IP⊆PSPACE and so IP=PSPACE, from a simulation argument -- see {thm:IP⊆PSPACE}."
+     "ref":"Proved in {ref:Sha90}. The other direction, that IP⊆PSPACE and so IP=PSPACE, from a simulation argument -- see {thm:IP⊆PSPACE}.",
+     "priority":3
     },
     {"name":"MIP=NEXP",
      "content":"MIP=NEXP",
-     "ref":"{ref:BFL91}"
+     "ref":"{ref:BFL91}",
+     "priority":3
     },
     {"name":"MIP*=RE",
      "content":"MIP*=RE",
-     "ref":"{ref:JNVWY20}"
+     "ref":"{ref:JNVWY20}",
+     "priority":3
     },
     {"name":"NEXP⊆MIPco",
      "content":"NEXP⊆MIPco",
-     "ref":"{ref:Lin23}"
+     "ref":"{ref:Lin23}",
+     "priority":3
     },
     {"name":"MIPco⊆coRE",
      "content":"MIPco⊆coRE",
-     "ref":"A consequence of {ref:NPA08}, as they give a hierarchy that converges to the MIPco value of a game from one above. This is contrast to MIP*, where trying gradually larger Hilbert spaces converges from below, so it is contained in RE."
+     "ref":"A consequence of {ref:NPA08}, as they give a hierarchy that converges to the MIPco value of a game from one above. This is contrast to MIP*, where trying gradually larger Hilbert spaces converges from below, so it is contained in RE.",
+     "priority":3
     },
     {"name":"IP⊆PSPACE",
      "content":"IP⊆PSPACE",
-     "ref":"This is often stated as a simple protocol simulation question, but this misses the fact that IP has private coins, and the protocol simulation approach requires public coins. See the discussion [here](https://cs.stackexchange.com/q/162804/11900). Taking the protocol simulation as the 'easy' step, this was really proved in {ref:GS86} where they showed the equivalence between private and public coins.\nTODO: Technically they show that IP[f]⊆AM[f+2] for all f(n). Then since AM[f]⊆IP[f], and AM[poly]⊆PSPACE by simulation, IP=IP[poly]⊆AM[poly]⊆PSPACE."
+     "ref":"This is often stated as a simple protocol simulation question, but this misses the fact that IP has private coins, and the protocol simulation approach requires public coins. See the discussion [here](https://cs.stackexchange.com/q/162804/11900). Taking the protocol simulation as the 'easy' step, this was really proved in {ref:GS86} where they showed the equivalence between private and public coins.\nTODO: Technically they show that IP[f]⊆AM[f+2] for all f(n). Then since AM[f]⊆IP[f], and AM[poly]⊆PSPACE by simulation, IP=IP[poly]⊆AM[poly]⊆PSPACE.",
+     "priority":3
     },
     {"name":"QIP⊆PSPACE",
      "content":"QIP⊆PSPACE",
-     "ref":"{ref:JJUW09}"
+     "ref":"{ref:JJUW09}",
+     "priority":3
     },
     {"name":"NQP⊆PSPACE",
      "content":"NQP⊆PSPACE",
      "ref":"Strong simulation of quantum circuits in PSPACE.",
-     "notes":"TODO find a reference for the strong simulation."
+     "notes":"TODO find a reference for the strong simulation.",
+     "priority":3
     },
     {"name":"NQP⊆A_0PP",
      "content":"NQP⊆A_0PP",
-     "ref":"{ref:Vya03}"
+     "ref":"{ref:Vya03}",
+     "priority":3
     },
     {"name":"QMA⊆A_0PP",
      "content":"QMA⊆A_0PP",
-     "ref":"{ref:Vya03}."
+     "ref":"{ref:Vya03}.",
+     "priority":3
     },
     {"name":"AWPP⊆A_0PP",
      "content":"AWPP⊆A_0PP",
@@ -843,16 +947,19 @@
       
     {"name":"BQP⊆AWPP",
      "content":"BQP⊆AWPP",
-     "ref":"{ref:FR98}."
+     "ref":"{ref:FR98}.",
+     "priority":3
     },
       
     {"name":"MA⊆SBP",
      "content":"MA⊆SBP",
-     "ref":"{ref:BGM02}."
+     "ref":"{ref:BGM02}.",
+     "priority":3
     },
     {"name":"SBP⊆AM",
      "content":"SBP⊆AM",
-     "ref":"{ref:BGM02}."
+     "ref":"{ref:BGM02}.",
+     "priority":3
     },
     //From zoo:
     // SBP contains WAPP, and ∃BPP.
@@ -919,11 +1026,6 @@
              "impliedby":"ACC^i⊆TC^i"
             },
     
-//Lists of inclusions manifestly clear from the definitions of the two classes. "Clear" is of course subjective,
-//but the idea is: can an intelligent person who reasonably understands how both classes are defined, quickly see why
-//one is a relaxation of the other, without needing to find gadgets or constructions?
-    
-    
     {"name":"ProtocolSimulation",
      "content":"",
      "ref":"Placeholder theorem for the general argument that a public-coin interactive protocol can be simulated by a single 'player' with sufficient time and space. To be precise, if a protocol involves r rounds of classical (resp. quantum) messages of size m between an omniscient prover and M-machine verifier, then this protocol can be simulated with `r*m` classical (resp. quantum) space, plus however much memory is needed to simulate the M-machine. This implies that all of NP, coNP, MA, AM are in PSPACE, and QCMA and QMA are in BQPSPACE (which equals PSPACE); and analogous statements, that for instance coNEXP is in EXPSPACE. It does not apply to private-coin protocols like IP, MIP, or QIP, although these often turn out to be equivalent to their private-coin variants anyway."
@@ -953,13 +1055,33 @@
              "impliedby":"ProtocolSimulation"
             },
     
+//Lists of inclusions manifestly clear from the definitions of the two classes. "Clear" is of course subjective,
+//but the idea is: can an intelligent person who reasonably understands how both classes are defined, quickly see why
+//one is a relaxation of the other, without needing to find gadgets or constructions?
+    
     //Natural 'hierarchy' theorems. Currently here: NC^i, AC^i, ACC^i, TC^i, RNC^i, QNC^i, and the PH. 
     {"name":"NC^i⊆NC^{i+1}⊆NC",
      "content":"{i}NC^i⊆NC^(i+1)⊆NC",
      "impliedby":"ObviousConstruction"
     },
-            {"name":"NC^0⊆NC^1&&NC^1⊆NC^2&&NC^2⊆NC",
-             "content":"NC^0⊆NC^1&&NC^1⊆NC^2&&NC^2⊆NC",
+            {"name":"NC^0⊆NC^1",
+             "content":"NC^0⊆NC^1",
+             "impliedby":"NC^i⊆NC^{i+1}⊆NC"
+            },
+            {"name":"NC^1⊆NC^2",
+             "content":"NC^1⊆NC^2",
+             "impliedby":"NC^i⊆NC^{i+1}⊆NC"
+            },
+            {"name":"NC^0⊆NC",
+             "content":"NC^0⊆NC",
+             "impliedby":"NC^i⊆NC^{i+1}⊆NC"
+            },
+            {"name":"NC^1⊆NC",
+             "content":"NC^1⊆NC",
+             "impliedby":"NC^i⊆NC^{i+1}⊆NC"
+            },
+            {"name":"NC^2⊆NC",
+             "content":"NC^2⊆NC",
              "impliedby":"NC^i⊆NC^{i+1}⊆NC"
             },
       
@@ -967,8 +1089,16 @@
      "content":"{i}AC^i⊆AC^(i+1)⊆AC",
      "impliedby":"ObviousConstruction"
     },
-            {"name":"AC^0⊆AC^1&&AC^1⊆AC",
-             "content":"AC^0⊆AC^1&&AC^1⊆AC",
+            {"name":"AC^0⊆AC^1",
+             "content":"AC^0⊆AC^1",
+             "impliedby":"AC^i⊆AC^{i+1}⊆AC"
+            },
+            {"name":"AC^0⊆AC",
+             "content":"AC^0⊆AC",
+             "impliedby":"AC^i⊆AC^{i+1}⊆AC"
+            },
+            {"name":"AC^1⊆AC",
+             "content":"AC^1⊆AC",
              "impliedby":"AC^i⊆AC^{i+1}⊆AC"
             },
       
@@ -987,8 +1117,16 @@
      "content":"{i}TC^i⊆TC^(i+1)⊆TC",
      "impliedby":"ObviousConstruction"
     },
-            {"name":"TC^0⊆TC^1&&TC^1⊆TC",
-             "content":"TC^0⊆TC^1&&TC^1⊆TC",
+            {"name":"TC^0⊆TC^1",
+             "content":"TC^0⊆TC^1",
+             "impliedby":"TC^i⊆TC^{i+1}⊆TC"
+            },
+            {"name":"TC^0⊆TC",
+             "content":"TC^0⊆TC",
+             "impliedby":"TC^i⊆TC^{i+1}⊆TC"
+            },
+            {"name":"TC^1⊆TC",
+             "content":"TC^1⊆TC",
              "impliedby":"TC^i⊆TC^{i+1}⊆TC"
             },
       
@@ -1086,10 +1224,37 @@
              "content":"NC⊆RNC&&RNC⊆QNC",
              "impliedby":"NC^i⊆RNC^i⊆QNC^i"
             },
-     
+
+//basic facts about (non)uniformity
+    {"name":"X⊆nuX",
+     "content":"{lang:X}X⊆nuX",
+     "desc":"The uniform version of a class is always contained in the nonuniform version of it. For instance, that {lang:ACC^0} is contained in {lang:nuACC^0}",
+     "impliedby":"ObviousConstruction"
+    },
+        {"name":"ACC^0⊆nuACC^0",
+         "content":"ACC^0⊆nuACC^0",
+         "impliedby":"X⊆nuX"
+        },
+        
+    {"name":"nuX⊈RE∪coRE",
+     "content":"{lang:X}nuX⊈RE&&nuX⊈coRE",
+     "desc":"Nonuniform classes are computable: they are not in RE or coRE.",
+     "impliedby":"ObviousConstruction"
+    },
+        {"name":"nuACC^0⊈RE∪coRE",
+         "content":"nuACC^0⊈RE&&nuACC^0⊈coRE",
+         "impliedby":"nuX⊈RE∪coRE"
+        },
+      
+//other facts clear from the structure/definition
     {"name":"PARITY⊂ACC^0",
      "content":"PARITY⊂ACC^0",
      "desc":"PARITY is decided by a single mod-2 gate in ACC^0, so it's contained. This is strict because ACC^0 contains the language 'is the first bit zero' and PARITY does not.",
+     "impliedby":"ObviousConstruction"
+    },
+    {"name":"AC^0⊈PARITY",
+     "content":"AC^0⊈PARITY",
+     "desc":"PARITY is a single-language class and so cannot possibly contain all of AC^0. This is given as a theorem here just as a complement to {thm:PARITY⊈AC^0}",
      "impliedby":"ObviousConstruction"
     },
     {"name":"PARITY⊂REG",
@@ -1107,6 +1272,10 @@
     },
     {"name":"CFL⊆LOGCFL",
      "content":"CFL⊆LOGCFL",
+     "impliedby":"ObviousConstruction"
+    },
+    {"name":"CFL⊆CSL",
+     "content":"CFL⊆CSL",
      "impliedby":"ObviousConstruction"
     },
       
@@ -1326,7 +1495,8 @@
     },
     {"name":"ObviousConstruction",
      "content":"",
-     "ref":"Placeholder theorem for 'obvious' statements, like DTIME(f)⊆NDTIME(f), as a source for other statements. Ideally uses of this would be minimized and replaced by more precise statements that could be verified."
+     "ref":"Placeholder theorem for 'obvious' statements, like DTIME(f)⊆NDTIME(f), as a source for other statements. Ideally uses of this would be minimized and replaced by more precise statements that could be verified.",
+     "priority":0
     },
       
     //Parameterized world
@@ -1418,13 +1588,16 @@
      "url":["https://doi.org/10.1016/0022-0000(88)90028-1"]
     },
     {"name":"Bor77",
-     "desc":"A. Borodin. On relating time and space to size and depth, SIAM Journal on Computing 6:733-744, 1977."
+     "desc":"A. Borodin. On relating time and space to size and depth, SIAM Journal on Computing 6:733-744, 1977.",
+     "url":["https://doi.org/10.1137/0206054"]
     },
     {"name":"CKS81",
-     "desc":"A. K. Chandra, D. C. Kozen, and L. J. Stockmeyer. Alternation, Journal of the ACM 28:114-133, 1981."
+     "desc":"A. K. Chandra, D. C. Kozen, and L. J. Stockmeyer. Alternation, Journal of the ACM 28:114-133, 1981.",
+     "url":["doi.org/10.1145/322234.322243"]
     },
     {"name":"Joh90",
-     "desc":"D. S. Johnson. A catalog of complexity classes, chapter 2 in Handbook of Theoretical Computer Science, Volume A (J. van Leeuwen, editor), Elsevier, 1990."
+     "desc":"D. S. Johnson. A catalog of complexity classes, chapter 2 in Handbook of Theoretical Computer Science, Volume A (J. van Leeuwen, editor), Elsevier, 1990.",
+     "url":["https://archive.org/details/handbookoftheore0000unse_j2e5","https://www.dbai.tuwien.ac.at/staff/pichler/complexity/johnson1990.pdf"]
     },
     {"name":"JNVWY20",
      "desc":"Z. Ji, A. Natarajan, T. Vidick, J. Wright, H. Yuen. MIP* = RE, arXiv:2001.04383, 2020.",
@@ -1437,6 +1610,10 @@
     {"name":"KL98",
      "desc":"Knill, Emanuel; Laflamme, Raymond (1998). Power of One Bit of Quantum Information. Physical Review Letters. 81 (25): 5672–5675. arXiv:quant-ph/9802037. Bibcode:1998PhRvL..81.5672K. doi:10.1103/PhysRevLett.81.5672. S2CID 118931256.",
      "url":["https://doi.org/10.1103/PhysRevLett.81.5672"]
+    },
+    {"name":"Kur64",
+     "desc":"S. Y. Kuroda. Classes of languages and linear-bounded automata, Information and Control 7:207-233, 1964.",
+     "url":["https://dx.doi.org/10.2307/2271266"]
     },
     {"name":"Lin23",
      "desc":"Junqiao Lin. Almost synchronous correlations in the commuting operator model, arXiv:2304.01940. 2023",
@@ -1459,7 +1636,8 @@
      "url":["https://doi.org/10.1088/1367-2630/10/7/073013","https://arxiv.org/abs/0803.4290"]
     },
     {"name":"Raz87",
-     "desc":"Razborov, A. A. (1987), Lower bounds for the size of circuits of bounded depth with basis {⊕,∨}, Math. Notes of the Academy of Science of the USSR, 41 (4): 333–338."
+     "desc":"Razborov, A. A. (1987), Lower bounds for the size of circuits of bounded depth with basis {⊕,∨}, Math. Notes of the Academy of Science of the USSR, 41 (4): 333–338.",
+     "url":[]
     },
     {"name":"Sha90",
      "desc":"A. Shamir. IP=PSPACE, Proceedings of IEEE FOCS'90, pp. 11-15, 1990.",
@@ -1478,7 +1656,8 @@
      "url":["https://eccc.weizmann.ac.il/report/2003/021/"]
     },
     {"name":"Wil11",
-     "desc":"Williams, Ryan (2011). Non-uniform ACC Circuit Lower Bounds. 2011 IEEE 26th Annual Conference on Computational Complexity (PDF). pp. 115–125. doi:10.1109/CCC.2011.36. ISBN 978-1-4577-0179-5."
+     "desc":"Williams, Ryan (2011). Non-uniform ACC Circuit Lower Bounds. 2011 IEEE 26th Annual Conference on Computational Complexity (PDF). pp. 115–125. doi:10.1109/CCC.2011.36. ISBN 978-1-4577-0179-5.",
+     "url":["https://doi.org/10.1109/CCC.2011.36"]
     }
    ]
 }

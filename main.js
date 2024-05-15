@@ -9,6 +9,27 @@ document.addEventListener('DOMContentLoaded', function() {
     });
 });
 
+function getEqualCanonId(name){
+    var origId = nodeNames.indexOf(name)
+    if(origId == -1){
+        return -1;
+    }
+    if(data[origId].equals === false){
+        for(var other of data){
+            var otherEq = other.equals;
+            if(otherEq === false) //not canonical
+                continue;
+            if(otherEq.indexOf(name) === -1) //not equal
+                continue;
+            //equal!
+            return nodeNames.indexOf(other.name);
+        }//didn't find anything equalling it...
+        return -1;
+    } else {
+        return origId;
+    }
+}
+
 //Draw the graph, given preferences about what to show
 function drawGraph(){
         // Create the input graph
@@ -21,12 +42,19 @@ function drawGraph(){
         
         //Do we show equal classes?
         var showEquals = document.getElementById("showEq").checked;
+        
+        //Do we show nonuniform classes?
+        var showNU = document.getElementById("showNU").checked;
 
         // Here we're setting nodeclass, which is used by our custom drawNodes function
         // below.
         for(var classInfo of data){
             var name = classInfo["name"];
+            var properties = classInfo["properties"];
             
+            if(!showNU && properties.includes("nonuniform"))
+                continue
+                
             var classType = "type-normal";
             var equals = classInfo["equals"];
             if(equals === false){ //equal to some other canonical class
@@ -47,6 +75,11 @@ function drawGraph(){
         if(showEquals) {
             for(var classInfo of data){
                 var name = classInfo["name"];
+                var properties = classInfo["properties"];
+                
+                if(!showNU && properties.includes("nonuniform"))
+                    continue;
+                
                 var equals = classInfo["equals"];
                 if(equals === false || equals.length == 0) {
                     continue;
@@ -72,6 +105,11 @@ function drawGraph(){
         // Set up edges, no special attributes.
         for(var classInfo of data){
             var name = classInfo["name"];
+            var properties = classInfo["properties"];
+            
+            if(!showNU && properties.includes("nonuniform"))
+                continue
+            
             for(var i in classInfo["children"]){
                 var childName = classInfo["children"][i];
                 var childId = nodeNames.indexOf(childName);
@@ -79,6 +117,12 @@ function drawGraph(){
                     console.log("Couldn't find child ",childName," in classes");
                     continue;
                 }
+                var childInfo = data[childId];
+                var childProperties = childInfo["properties"];
+            
+                if(!showNU && childProperties.includes("nonuniform"))
+                    continue
+                
                 g.setEdge(name, childName, {curve: d3.curveBasis});
             }
         }
@@ -134,28 +178,66 @@ d3.select('#minusButton').on('click', function() {
   // code to hide some nodes based on their priority
 });
 
+//Given a piece of text (description, whatever), format it nicely with our pseudo-markdown
+//for inter-topic links.
+function processText(str){
+    //make http://...XXX/ strings clickable.
+    const httpRegex = /https?:[^ ]+[^.,)( ]/gi;
+    const httpReplacement = "<a href='$&' target='_blank'>$&</a>";
+    str = str.replaceAll(httpRegex, httpReplacement);
+    //make {lang:XXX} hyperlinks
+    const langRegex = /{lang:([^}]+)}/gi;
+    const langReplacement = "<a href='#' onclick='setSelectedNode(\"$1\");'>$1</a>";
+    str = str.replaceAll(langRegex, langReplacement);
+    //fix whitespace
+    str = "<p>"+str.replaceAll(/\n/gi,"</p><p>")+"</p>";
+    return str
+}
+
 selectedNode = null;
 function setSelectedNode(name){
-    var newSelection = document.getElementById("class-"+name);
-    if(newSelection == null){
+    var origId = nodeNames.indexOf(name);
+    if(origId == -1){
         //do nothing, just keep the old selection
         return;
     }
+
+    var showEquals = document.getElementById("showEq").checked;
+    var highlightId = showEquals ? origId : getEqualCanonId(name);
+    var highlightName = nodeNames[highlightId];
     
-    if(selectedNode != null){
-        selectedNode.classList.remove("selectedNode");
+    var newSelection = document.getElementById("class-"+highlightName);
+    if(newSelection == null){
+        //do nothing, just keep the old highlight
+    } else {
+        if(selectedNode != null){
+            selectedNode.classList.remove("selectedNode");
+        }
+        
+        //Change color by giving it a class
+        selectedNode = newSelection;
+        selectedNode.classList.add("selectedNode");
     }
     
-    //Change color by giving it a class
-    selectedNode = newSelection;
-    selectedNode.classList.add("selectedNode");
-    
     //Show text
-    var classId = nodeNames.indexOf(name);
-    var classInfo = data[classId];
+    var classInfo = data[origId];
     
-    d3.select('#detailsDiv')
-      .text(classInfo["desc"]);
+    var plainDesc = classInfo["desc"];
+    var htmlDesc = "<h1>"+name+"</h1>";
+    
+    htmlDesc += "<div><h3>Description</h3>"+processText(plainDesc)+"</div>";
+    
+    //Add "related" links
+    var related = classInfo.related;
+    if(related.length > 0) {
+        htmlDesc += "<div><h3>Related classes</h3><ul>";
+        for(var rel of related) {
+            htmlDesc += "<li><a href='#' onclick='setSelectedNode(\""+rel+"\");'>"+rel+"</a></li>";
+        }
+        htmlDesc += "</ul></div>";
+    }
+    
+    d3.select('#detailsDiv').html(htmlDesc);
 }
 
 function searchFunction() {
