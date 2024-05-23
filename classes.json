@@ -48,7 +48,7 @@
      "desc":"Indicates that the class is described by a circuit. Depending on the class, there may or may not be a uniformity condition."
     },
     {"name":"turing",
-     "desc":"Indicates that the class is described by a Turing machine. It may be deterministic (e.g. {lang:L}), nondeterministic (e.g. {lang:NP}), or something else (e.g. {lang:SL})"
+     "desc":"Indicates that the class is described by a Turing machine. It may be deterministic (e.g. {lang:L}), nondeterministic (e.g. {lang:NP}), or something else (e.g. {lang:ZPP}, {lang:SL})"
     },
     {"name":"protocol",
      "desc":"Indicates that this class is defined using some sort of interactive protocol with 2 or more players. Examples would be {lang:SZK}, {lang:AM}, or {lang:MIP*}. The classic {lang:NP} is not tagged this way because we define it using a nondeterministic Turing machine, even though it can also be described with a protocol."
@@ -58,6 +58,9 @@
     },
     {"name":"quantum",
      "desc":"Indicates that this class is defined using quantum mechanics."
+    },
+    {"name":"complement",
+     "desc":"Indicates that this class is the complement of some other, likely better known class. This property is mostly defined for purposes of hiding complement classes from the inclusion diagram."
     }
    ],
   
@@ -117,6 +120,11 @@
      "related":["A_0PP","SBP"]
     },
 
+    {"name":"BPL",
+     "type":"Language",
+     "desc":"Bounded error Probabilistic Logspace. Problems with a probabilistic logarithmic space Turing machine with at least a 2/3 chance of a correct answer and a termination probability of 1",
+     "related":["PromiseBPP","ZPL","RL","L","NL"]
+    },
     {"name":"BPP",
      "type":"Language",
      "desc":"Bounded error Probabilistic Polynomial time. Problems with a probabilistic polynomial-time Turing machine with at least a 2/3 chance of a correct answer.",
@@ -128,6 +136,16 @@
      "related":["BPP","EQP","QMA","IQP","NISQ"]
     },
 
+    {"name":"C_{eq}L",
+     "type":"Language",
+     "desc":"Exact-Counting Logspace. Usually written C_=L, but we don't use that because of the difficulties having an = in the name causes. The class of decision problems solvable by an NL machine such that the number of accepting paths exactly equals the number of rejecting paths, if and only if the answer is 'yes.'. Logspace analog of {lang:C_{eq}P}.\nTODO: C_{eq}L^{C_{eq}L} = L^{C_{eq}L}, by {ref:ABO99}.",
+     "related":["L","NL","C_{eq}P"]
+    },
+    {"name":"C_{eq}P",
+     "type":"Language",
+     "desc":"Exact-Counting Polynomial-Time. Usually written C_{eq}P, but we don't use that because of the difficulties having an = in the name causes. The class of decision problems solvable by an NP machine such that the number of accepting paths exactly equals the number of rejecting paths, if and only if the answer is 'yes.'.\n{thm:C_{eq}P=coNQP}, by {ref:FGH+98}. ",
+     "related":["coNQP","NQP","C_{eq}L"]
+    },
     {"name":"CFL",
      "type":"Language",
      "desc":"Context-Free languages",
@@ -147,41 +165,72 @@
      "type":"Language",
      "desc":"Complement of Arthur-Merlin games, {lang:AM}.",
      "related":["AM","coMA"],
-     "notes":"todo def"
+     "notes":"todo def",
+     "properties":["complement"]
     },
     {"name":"coNL",
      "type":"Language",
      "desc":"Complement of Nondeterministic Logarithmic space, {lang:NL}. Problems decided in logarithmic space by a deterministic Turing machine. Actually equal to {lang:NL}, a consequence of {thm:Immerman–Szelepcsényi theorem}.",
-     "formal":"coNSPACE(log(n))"
+     "formal":"coNSPACE(log(n))",
+     "properties":["complement"]
     },
     {"name":"coMA",
      "type":"Language",
      "desc":"Complement of Merlin-Arthur games, {lang:MA}.",
      "related":["MA","coAM"],
-     "notes":"todo def. todo coMA=coMA1"
+     "notes":"todo def. todo coMA=coMA1",
+     "properties":["complement"]
     },
     {"name":"coNP",
      "type":"Language",
      "desc":"Complement of Nondeterministic Polynomial time, {lang:coNP}. Problems whose complement decided in polynomial time by a nondeterministic Turing machine; or equivalently, problems that can be disproved by a polynomial-time checkable witness.",
      "formal":"coNTIME(n^O(1))",
-     "notes":"todo: verifier definition"
+     "notes":"todo: verifier definition",
+     "properties":["complement"]
+    },
+    {"name":"coNQP",
+     "type":"Language",
+     "desc":"Complement of Nondeterministic Quantum Polynomial time. Complement of {lang:NQP}.",
+     "related":["NQP"],
+     "properties":["complement"]
     },
     {"name":"coRE",
      "type":"Language",
      "desc":"Complement of Recursively enumerable languages, {lang:RE}. Languages whose rejection can be recognized by a Turing machine.",
      "related":["RE"],
-     "notes":"todo: definition as a Turing machine"
+     "notes":"todo: definition as a Turing machine",
+     "properties":["complement"]
+    },
+    {"name":"coRBQP",
+     "type":"Language",
+     "desc":"Complement of {lang:RBQP}.",
+     "related":["RBQP"],
+     "properties":["complement"]
+    },
+    {"name":"coRL",
+     "type":"Language",
+     "desc":"Complement of Randomized Logspace, {lang:RL}.",
+     "related":["RL"],
+     "notes":"todo: complement of RL",
+     "properties":["complement"]
     },
     {"name":"coRP",
      "type":"Language",
      "desc":"Complement of Randomized Polynomial time, {lang:RP}. Problems with a probabilistic polynomial-time Turing machine with zero error on YES instances",
      "related":["RP"],
-     "notes":"todo: complement of RP"
+     "notes":"todo: complement of RP",
+     "properties":["complement"]
+    },
+    {"name":"coRQP",
+     "type":"Language",
+     "desc":"Complement of {lang:RQP}.",
+     "related":["RQP"],
+     "properties":["complement"]
     },
       
     {"name":"DET",
      "type":"Language",
-     "desc":"Problems L-reducible to computing the determinant of an n-by-n matrix of n-bit integers. ComplexityZoo says the corresponding function class is GapL (TODO ref).",
+     "desc":"Problems F{lang:L}-reducible to computing the determinant of an n-by-n matrix of n-bit integers. ComplexityZoo says the corresponding function class is GapL (TODO ref). Sometimes denoted by L^{DET}.",
      "related":["NL","NC^2"]
     },
     {"name":"DQC1",
@@ -208,12 +257,28 @@
     {"name":"EQP",
      "type":"Language",
      "desc":"TODO",
-     "related":["BQP"]
+     "related":["BQP","ZQP","RQP"]
     },
     {"name":"EXP",
      "type":"Language",
      "desc":"Exponential time. Problems decided in singly exponential time by a deterministic Turing machine.",
      "formal":"DTIME(2^(n^O(1)))"
+    },
+
+    {"name":"FH",
+     "type":"Language",
+     "desc":"FH^k is the class of problems solvable by a uniform family of polynomial-size quantum circuits, with k levels of Hadamard gates and all other gates preserving the computational basis. (Conditional phase flip gates are fine, for example.) FH is the union of FH^k across all k, in other words, problems solvable by a uniform family with O(1) Hadamard layers. FH^0 is definitionally equal to {lang:P}, and {lang:FH^1}={lang:BPP} -- see {thm:FH^1=BPP}. The first \"quantum\" class is {lang:FH^2}, which includes factoring.\nIt is an open problem to show that the Fourier hierarchy is infinite relative to an oracle (that is, FHk is strictly contained in FHk+1).\nDefined in {ref:Shi03}.",
+     "related":["FH^1","FH^2","BQP"]
+    },
+    {"name":"FH^1",
+     "type":"Language",
+     "desc":"See {lang:FH} for definition. It is equal to {lang:BPP} by {thm:FH^1=BPP}.",
+     "related":["FH","FH^2","BPP"]
+    },
+    {"name":"FH^2",
+     "type":"Language",
+     "desc":"See {lang:FH} for definition. It contains factoring.",
+     "related":["FH^1","BQP"]
     },
     
     {"name":"GA",
@@ -247,7 +312,14 @@
      "type":"Language",
      "desc":"Logarithmic space. Problems decided in logarithmic space by a deterministic Turing machine.",
      "formal":"DSPACE(log(n))",
+     "related":["L^2","NL"],
      "notes":"todo SL"
+    },
+    {"name":"L^2",
+     "type":"Language",
+     "desc":"Logarithmic-squared space. Problems decided in O(log(n)^2) -- _not_ to be confused with O(log^2(n)) -- space by a deterministic Turing machine.",
+     "formal":"DSPACE(log(n)^2)",
+     "related":["L","NL"]
     },
     {"name":"LINSPACE",
      "type":"Language",
@@ -414,6 +486,12 @@
      "related":["RE"],
      "notes":"todo: definition as a Turing machine, definition as intersection"
     },
+    {"name":"RBQP",
+     "type":"Language",
+     "desc":"Strict Quantum {lang:RP}\n(TODO: What does the B really stand for here?) The class of problems in {lang:NP} whose witnesses are in {lang:FBQP}. For example, the set of square-free numbers is in {lang:coRBQP} using only the fact that factoring is in {lang:FBQP}. (Even without a proof that the factors are prime, the factorization proves that there is a square divisor.).\nComplement is {lang:coRBQP}.",
+     "related":["coRBQP","ZQP","RQP"],
+     "notes":"todo: complement of coRBQP"
+    },
     {"name":"RE",
      "type":"Language",
      "desc":"Recursively enumerable languages. Languages whose acceptance can be recognized by a Turing machine.",
@@ -427,7 +505,7 @@
     },
     {"name":"RL",
      "type":"Language",
-     "desc":"Randomized Logspace. Problems with a probabilistic logarithmic-space Turing machine with zero error on NO instances (and, technically, a termination probability of 1 on all inputs).",
+     "desc":"Randomized Logspace. Problems with a probabilistic logarithmic-space Turing machine with zero error on NO instances. Also, as a technicality, one requires a termination probability of 1 on all inputs.",
      "related":["NL","L","RP"],
      "notes":"todo: complement of coRL"
     },
@@ -436,6 +514,12 @@
      "desc":"Randomized Polynomial time. Problems with a probabilistic polynomial-time Turing machine with zero error on NO instances",
      "related":["coRP","ZPP","BPP"],
      "notes":"todo: complement of coRP"
+    },
+    {"name":"RQP",
+     "type":"Language",
+     "desc":"One-sided Randomized Quantum Polynomial time.\nThe class of questions that can be answered by a QTM that accepts with probability 0 when the true answer is no, and accepts with probability at least 1/2 when the true answer is yes. (TODO: What are the precise requirements on runtime or termination?) Since one of the probabilities has to vanish, RQP has the same technical caveats as {lang:EQP}. Complement is {lang:coRQP}.",
+     "related":["coRQP","EQP","ZQP","RBQP"],
+     "notes":"todo: complement of coRQP"
     },
     {"name":"RNC",
      "type":"Language",
@@ -503,11 +587,27 @@
      "related":["ELEMENTARY","PR"]
     },
     
+    {"name":"ZBQP",
+     "type":"Language",
+     "desc":"Strict Quantum {lang:ZPP}.\nDefined as {lang:RBQP} ∩ {lang:coRBQP}. Equivalently, the class of problems in {lang:NP} ∩ {lang:coNP} such that both positive and negative witnesses are in {lang:FBQP}.\nFor example, the language of square-free numbers is in {lang:ZBQP}, because factoring is in {lang:FBQP} and a factorization can be certified in ZPP (indeed in P, by {ref:AKS02}).\nUnlike {lang:EQP} or {lang:ZQP}, {lang:ZBQP} would generalize {lang:ZPP} in practice if quantum computers existed, in the sense that it provides proven answers. {thm:ZBQP^ZBQP = ZBQP}.",
+     "related":["EQP","RQP","BQP","ZQP"]
+    },
     {"name":"ZPP",
      "type":"Language",
      "desc":"Zero error Probabilistic Polynomial time. Problems with a probabilistic Turing machine with zero error and polynomial expected running time",
      "related":["BPP","RP"],
      "notes":"todo the polytime yes/no/unknown definition. todo the two-machine definition"
+    },
+    {"name":"ZPL",
+     "type":"Language",
+     "desc":"Zero error Probabilistic Logspace. Problems with a probabilistic Turing machine with zero error, logarithmic space, and a termination probability of 1",
+     "related":["L","RL","coRL"],
+     "notes":"todo the yes/no/unknown definition. todo the two-machine definition"
+    },
+    {"name":"ZQP",
+     "type":"Language",
+     "desc":"Zero-Error Extension Of {lang:EQP}.\nThe class of questions that can be answered by a QTM that answers yes, no, or maybe. If the correct answer is yes, then P[no] = 0, and vice-versa; and the probability of maybe is at most 1/2. Since some of the probabilities have to vanish, ZQP has the same technical caveats as {lang:EQP}.\nDefined independently in {ref:BW03} and in {ref:Nis02}. Equals {lang:RQP} ∩ {lang:coRQP}. There is an oracle such that ZQP^{ZQP} is larger than ZQP {ref:BW03}.",
+     "related":["EQP","RQP","BQP","ZBQP"]
     },
     
     {"name":"Δ2",
@@ -570,21 +670,40 @@
     },
 
 //function problems
+    {"name":"#P",
+     "type":"Function Problem",
+     "desc":" Sharp-P or Number-P. The class of function problems of the form \"compute f(x),\" where f is the number of accepting paths of an NP machine. The canonical #P-complete problem is #SAT.",
+     "related":["NP","FNP"]
+    },
     {"name":"TFNP",
      "type":"Function Problem",
-     "desc":"Total Function Nondeterministic Polynomial time. Relations that can be checked by deterministic polynomial time machine.",
+     "desc":"Total Function Nondeterministic Polynomial time. Relations that can be checked by deterministic polynomial time machine. In other words, the class of function problems of the following form: Given an input x and a polynomial-time predicate F(x,y), output any y satisfying F(x,y) -- where such a y is promised to exist for any x. Morally, this is often viewed as the equivalent of {lang:NP}∩{lang:coNP}.",
      "related":["NP","FNP"]
     },
     {"name":"FNP",
      "type":"Function Problem",
-     "desc":"Function Nondeterministic Polynomial time.",
+     "desc":"Function Nondeterministic Polynomial time. The class of function problems of the following form: Given an input x and a polynomial-time predicate F(x,y), if there exists a y satisfying F(x,y) then output any such y, otherwise output 'no.' Contrast with {lang:TFNP}, where a y always exists. Morally, this is often viewed as the equivalent of {lang:NP}. FP = FNP if and only if P = NP.",
      "related":["TFNP","NP"],
-     "notes":"todo def"
     },
     {"name":"FNC^0",
      "type":"Function Problem",
      "desc":"Function Constant-Depth circuits with bounded-fanin. Each output bit depends on only a constant number of input bits. Function equivalently of NC^0, and used in reductions.",
      "related":["NC^0"]
+    },
+    {"name":"FP",
+     "type":"Function Problem",
+     "desc":"Function Polynomial",
+     "related":["P"]
+    },
+    {"name":"FIXP",
+     "type":"Function Problem",
+     "desc":"Fixed Point.",
+     "related":["P"]
+    },
+    {"name":"PPAD",
+     "type":"Function Problem",
+     "desc":"Function Polynomial",
+     "related":["P"]
     },
 
 //parameterized complexity
@@ -701,8 +820,12 @@
              "content":"L⊂PSPACE",
              "impliedby":"Deterministic space hierarchy theorem"
             },
-            {"name":"L⊂LINSPACE",
-             "content":"L⊂LINSPACE",
+            {"name":"L⊂L^2",
+             "content":"L⊂L^2",
+             "impliedby":"Deterministic space hierarchy theorem"
+            },
+            {"name":"L^2⊂LINSPACE",
+             "content":"L^2⊂LINSPACE",
              "impliedby":"Deterministic space hierarchy theorem"
             },
             {"name":"LINSPACE⊂PSPACE",
@@ -770,6 +893,10 @@
      "content":"{f}(f≥log)⟹(NSPACE(f)⊆DSPACE(f^2)",
      "priority":2
     },
+            {"name":"NL⊆L^2",
+             "content":"NL⊆L^2",
+             "impliedby":"Savitch's theorem"
+            },
             {"name":"PSPACE=NPSPACE",
              "content":"PSPACE=NPSPACE",
              "impliedby":"Savitch's theorem"
@@ -805,11 +932,22 @@
     },
     {"name":"SZK⊆coAM",
      "content":"SZK⊆coAM",
-     "ref":"SZK⊆AM, combined with SZK is closed under complement."
+     "impliedby":"SZK⊆AM",
+     "ref":"Taking complements of {thm:SZK⊆AM}, combined with that {lang:SZK} is closed under complement."
+    },
+    {"name":"FH^1=BPP",
+     "content":"FH^1=BPP",
+     "ref":"Originally stated without proof in {ref:Coo85}. The forward direction (that FH^1⊆BPP) is given by the perspective on BPP as a reversible polynomial-size circuit with input bits, zeroed bits, and uniformly random input bits. The reverse direction is given by simulating the one layer of Hadamard gates probabilistically - which is safe because no interference or cancellation can later occur.",
+     "priority":2
     },
     {"name":"NC^1⊆L",
      "content":"NC^1⊆L",
      "ref":"Proved in {ref:Bor77}",
+     "priority":3
+    },
+    {"name":"BPL⊆DET",
+     "content":"BPL⊆DET",
+     "ref":"Proved in {ref:Coo85}",
      "priority":3
     },
     {"name":"DET⊆NC^2",
@@ -825,6 +963,11 @@
     {"name":"NL⊆AC^1",
      "content":"NL⊆AC^1",
      "ref":"TODO",
+     "priority":3
+    },
+    {"name":"C_{eq}P=coNQP",
+     "content":"C_{eq}P=coNQP",
+     "ref":"{ref:FGH+98}",
      "priority":3
     },
     {"name":"AP=PSPACE",
@@ -878,6 +1021,11 @@
      "ref":"{ref:MW18}",
      "priority":3
     },
+    {"name":"ACC^0⊂coNQP",
+     "content":"ACC^0⊂coNQP",
+     "impliedby":"ACC^0⊂NQP",
+     "ref":"Corollary of {thm:ACC^0⊂NQP} by taking complements, and that ACC^0 is closed under complement."
+    },
     {"name":"LOGCFL=SAC^1",
      "content":"LOGCFL=SAC^1",
      "ref":"Mentioned in {ref:Joh90}{ref:Ven91}, don't know where it was actually proved.",
@@ -904,6 +1052,7 @@
      "ref":"{ref:Lin23}",
      "priority":3
     },
+      
     {"name":"MIPco⊆coRE",
      "content":"MIPco⊆coRE",
      "ref":"A consequence of {ref:NPA08}, as they give a hierarchy that converges to the MIPco value of a game from one above. This is contrast to MIP*, where trying gradually larger Hilbert spaces converges from below, so it is contained in RE.",
@@ -924,6 +1073,11 @@
      "ref":"Strong simulation of quantum circuits in PSPACE.",
      "notes":"TODO find a reference for the strong simulation.",
      "priority":3
+    },
+    {"name":"coNQP⊆PSPACE",
+     "content":"coNQP⊆PSPACE",
+     "ref":"Taking complements of {thm:NQP⊆PSPACE}",
+     "impliedby":"NQP⊆PSPACE"
     },
     {"name":"NQP⊆A_0PP",
      "content":"NQP⊆A_0PP",
@@ -1059,7 +1213,7 @@
 //but the idea is: can an intelligent person who reasonably understands how both classes are defined, quickly see why
 //one is a relaxation of the other, without needing to find gadgets or constructions?
     
-    //Natural 'hierarchy' theorems. Currently here: NC^i, AC^i, ACC^i, TC^i, RNC^i, QNC^i, and the PH. 
+    //Natural 'hierarchy' theorems. Currently here: NC^i, AC^i, ACC^i, TC^i, RNC^i, QNC^i, FH^i, and the PH. 
     {"name":"NC^i⊆NC^{i+1}⊆NC",
      "content":"{i}NC^i⊆NC^(i+1)⊆NC",
      "impliedby":"ObviousConstruction"
@@ -1134,8 +1288,16 @@
      "content":"{i}RNC^i⊆RNC^(i+1)⊆RNC",
      "impliedby":"ObviousConstruction"
     },
-            {"name":"RNC^0⊆RNC^1&&RNC^1⊆RNC",
-             "content":"RNC^0⊆RNC^1&&RNC^1⊆RNC",
+            {"name":"RNC^0⊆RNC^1",
+             "content":"RNC^0⊆RNC^1",
+             "impliedby":"RNC^i⊆RNC^{i+1}⊆RNC"
+            },
+            {"name":"RNC^0⊆RNC",
+             "content":"RNC^0⊆RNC",
+             "impliedby":"RNC^i⊆RNC^{i+1}⊆RNC"
+            },
+            {"name":"RNC^1⊆RNC",
+             "content":"RNC^1⊆RNC",
              "impliedby":"RNC^i⊆RNC^{i+1}⊆RNC"
             },
       
@@ -1143,9 +1305,42 @@
      "content":"{i}QNC^i⊆QNC^(i+1)⊆QNC",
      "impliedby":"ObviousConstruction"
     },
-            {"name":"QNC^0⊆QNC^1&&QNC^1⊆QNC",
-             "content":"QNC^0⊆QNC^1&&QNC^1⊆QNC",
+            {"name":"QNC^0⊆QNC^1",
+             "content":"QNC^0⊆QNC^1",
              "impliedby":"QNC^i⊆QNC^{i+1}⊆QNC"
+            },
+            {"name":"QNC^0⊆QNC",
+             "content":"QNC^0⊆QNC",
+             "impliedby":"QNC^i⊆QNC^{i+1}⊆QNC"
+            },
+            {"name":"QNC^1⊆QNC",
+             "content":"QNC^1⊆QNC",
+             "impliedby":"QNC^i⊆QNC^{i+1}⊆QNC"
+            },
+      
+    {"name":"FH^i⊆FH^{i+1}⊆FH",
+     "content":"{i}FH^i⊆FH^{i+1}⊆FH",
+     "impliedby":"ObviousConstruction"
+    },
+            {"name":"FH^0⊆FH^1",
+             "content":"P⊆FH^1",
+             "impliedby":"FH^i⊆FH^{i+1}⊆FH"
+            },
+            {"name":"FH^1⊆FH^2",
+             "content":"FH^1⊆FH^2",
+             "impliedby":"FH^i⊆FH^{i+1}⊆FH"
+            },
+            {"name":"P⊆FH",
+             "content":"P⊆FH",
+             "impliedby":"FH^i⊆FH^{i+1}⊆FH"
+            },
+            {"name":"FH^1⊆FH",
+             "content":"FH^1⊆FH",
+             "impliedby":"FH^i⊆FH^{i+1}⊆FH"
+            },
+            {"name":"FH^2⊆FH",
+             "content":"FH^2⊆FH",
+             "impliedby":"FH^i⊆FH^{i+1}⊆FH"
             },
      
     {"name":"P=Δ0⊆Δi⊆Πi∩Σi⊆Σi∪Πi⊆Δ{i+1}⊆PH",
@@ -1173,6 +1368,22 @@
             },
             {"name":"Δ2⊆Π2",
              "content":"Δ2⊆Π2",
+             "impliedby":"P=Δ0⊆Δi⊆Πi∩Σi⊆Σi∪Πi⊆Δ{i+1}⊆PH"
+            },
+            {"name":"P⊆PH",
+             "content":"P⊆PH",
+             "impliedby":"P=Δ0⊆Δi⊆Πi∩Σi⊆Σi∪Πi⊆Δ{i+1}⊆PH"
+            },
+            {"name":"NP⊆PH",
+             "content":"NP⊆PH",
+             "impliedby":"P=Δ0⊆Δi⊆Πi∩Σi⊆Σi∪Πi⊆Δ{i+1}⊆PH"
+            },
+            {"name":"coNP⊆PH",
+             "content":"coNP⊆PH",
+             "impliedby":"P=Δ0⊆Δi⊆Πi∩Σi⊆Σi∪Πi⊆Δ{i+1}⊆PH"
+            },
+            {"name":"Δ2⊆PH",
+             "content":"Δ2⊆PH",
              "impliedby":"P=Δ0⊆Δi⊆Πi∩Σi⊆Σi∪Πi⊆Δ{i+1}⊆PH"
             },
             {"name":"Π2⊆PH",
@@ -1279,14 +1490,33 @@
      "impliedby":"ObviousConstruction"
     },
       
-    {"name":"L⊆RL",
-     "content":"L⊆RL",
+    {"name":"L⊆ZPL",
+     "content":"L⊆ZPL",
      "impliedby":"ObviousConstruction"
+    },
+    {"name":"ZPL=RL∩coRL",
+     "content":"ZPL⊆RL&&ZPL⊆coRL",
+     "impliedby":"ObviousConstruction",
+     "notes":"the 'content' only has one way implication right now. TODO describing cocap more cleanly"
     },
     {"name":"RL⊆NL",
      "content":"RL⊆NL",
      "impliedby":"ObviousConstruction"
     },
+    {"name":"coRL⊆coNL",
+     "content":"coRL⊆coNL",
+     "impliedby":"ObviousConstruction"
+    },
+    {"name":"RL⊆BPL",
+     "content":"RL⊆BPL",
+     "impliedby":"ObviousConstruction"
+    },
+    {"name":"coRL⊆BPL",
+     "content":"coRL⊆BPL",
+     "impliedby":"ObviousConstruction"
+    },
+
+      
     {"name":"P⊆ZPP",
      "content":"P⊆ZPP",
      "impliedby":"ObviousConstruction"
@@ -1327,7 +1557,79 @@
      "ref":"NQP can simulate any NP machine by only using classical circuits, and Hadamard gates to prepare random coins.",
      "impliedby":"ObviousConstruction"
     },
+    {"name":"coNP⊆coNQP",
+     "content":"coNP⊆coNQP",
+     "ref":"coNQP can simulate any coNP machine by only using classical circuits, and Hadamard gates to prepare random coins.",
+     "impliedby":"ObviousConstruction"
+    },
+    {"name":"FH⊆BQP",
+     "content":"FH⊆BQP",
+     "ref":"FH is a restricted set of quantum circuits, those with O(1) many Hadamard layers. BQP is all quantum circuits.",
+     "impliedby":"ObviousConstruction"
+    },
       
+    {"name":"ZPP⊆ZBQP",
+     "content":"ZPP⊆ZBQP",
+     "ref":"Any ZPP algorithm can be run on a quantum computer, saving the random bits, and those bits are the NP-verifiable witness.",
+     "impliedby":"ObviousConstruction"
+    },
+    {"name":"RP⊆RBQP",
+     "content":"RP⊆RBQP",
+     "ref":"Any RP algorithm can be run on a quantum computer, saving the random bits, and those bits are the NP-verifiable witness.",
+     "impliedby":"ObviousConstruction"
+    },
+    {"name":"coRP⊆coRBQP",
+     "content":"coRP⊆coRBQP",
+     "ref":"Any coRP algorithm can be run on a quantum computer, saving the random bits, and those bits are the coNP-verifiable witness.",
+     "impliedby":"ObviousConstruction"
+    },
+    {"name":"ZBQP=RBQP∩coRBQP",
+     "content":"ZBQP⊆RBQP&&ZBQP⊆coRBQP",
+     "ref":"Definition of ZBQP.",
+     "impliedby":"ObviousConstruction"
+    },
+    {"name":"RBQP⊆NP",
+     "content":"RBQP⊆NP",
+     "ref":"RBQP problems are NP problems with a (quantum) efficiently calculable witness.",
+     "impliedby":"ObviousConstruction"
+    },
+    {"name":"coRBQP⊆coNP",
+     "content":"coRBQP⊆coNP",
+     "ref":"coRBQP problems are coNP problems with a (quantum) efficiently calculable witness.",
+     "impliedby":"ObviousConstruction"
+    },
+    {"name":"RBQP⊆RQP",
+     "content":"RBQP⊆RQP",
+     "impliedby":"ObviousConstruction"
+    },
+    {"name":"coRBQP⊆coRQP",
+     "content":"coRBQP⊆coRQP",
+     "impliedby":"ObviousConstruction"
+    },
+    {"name":"EQP⊆ZQP",
+     "content":"EQP⊆ZQP",
+     "ref":"Quantum version of {thm:P⊆ZPP}.",
+     "impliedby":"ObviousConstruction"
+    },
+    {"name":"ZPP⊆ZQP",
+     "content":"ZPP⊆ZQP",
+     "ref":"ZPP is just the restriction of ZQP to non-quantum circuits.",
+     "impliedby":"ObviousConstruction"
+    },
+    {"name":"ZQP=RQP∩coRQP",
+     "content":"ZQP⊆RQP&&ZQP⊆coRQP",
+     "ref":"Definition of ZQP.",
+     "impliedby":"ObviousConstruction"
+    },
+    {"name":"RQP⊆BQP",
+     "content":"RQP⊆BQP",
+     "impliedby":"ObviousConstruction"
+    },
+    {"name":"coRQP⊆BQP",
+     "content":"coRQP⊆BQP",
+     "impliedby":"ObviousConstruction"
+    },
+    
     {"name":"P⊆GAK",
      "content":"P⊆GAK",
      "impliedby":"ObviousConstruction"
@@ -1379,6 +1681,27 @@
      "content":"coMA⊆coAM",
      "impliedby":"ObviousConstruction"
     },
+    {"name":"coMA⊆coAM",
+     "content":"coMA⊆coAM",
+     "impliedby":"ObviousConstruction"
+    },
+    {"name":"P⊆C_{eq}P",
+     "content":"P⊆C_{eq}P",
+     "ref":"Simple enough to be usually stated without proof, but here's the proof. Take any deterministic machine M for the language in {lang:P}. Add an initial state that nondeterministically transitions to (option A) the initial state of the original machine, or (option B) a new state that immediately rejects. This machine has one accepting path and one rejecting path if M accepts, and two rejecting paths if M rejects, so this is a valid C_{eq}P machine.",
+     "impliedby":"ObviousConstruction"
+    },
+    {"name":"L⊆C_{eq}L",
+     "content":"L⊆C_{eq}L",
+     "ref":"Follows by the same construction as in {thm:P⊆C_{eq}P}.",
+     "impliedby":"ObviousConstruction"
+    },
+    {"name":"C_{eq}L⊆C_{eq}P",
+     "content":"C_{eq}L⊆C_{eq}P",
+     "ref":"Every C_{eq}L machine is also a C_{eq}P machine.",
+     "impliedby":"ObviousConstruction"
+    },
+
+      
     {"name":"PH⊆AP",
      "content":"PH⊆AP",
      "ref":"PH is polynomial time with some bounded integer k alternations, while AP is unbounded alternations.",
@@ -1493,6 +1816,13 @@
      "content":"RE⊆ALL",
      "impliedby":"ObviousConstruction"
     },
+      
+//Making sure to put nonuniform classes in ALL   
+    {"name":"nuACC^0⊆ALL",
+     "content":"nuACC^0⊆ALL",
+     "impliedby":"X⊆nuX"
+    },
+      
     {"name":"ObviousConstruction",
      "content":"",
      "ref":"Placeholder theorem for 'obvious' statements, like DTIME(f)⊆NDTIME(f), as a source for other statements. Ideally uses of this would be minimized and replaced by more precise statements that could be verified.",
@@ -1593,7 +1923,11 @@
     },
     {"name":"CKS81",
      "desc":"A. K. Chandra, D. C. Kozen, and L. J. Stockmeyer. Alternation, Journal of the ACM 28:114-133, 1981.",
-     "url":["doi.org/10.1145/322234.322243"]
+     "url":["https://doi.org/10.1145/322234.322243"]
+    },
+    {"name":"Coo85",
+     "desc":"S. A. Cook. A taxonomy of problems with fast parallel algorithms, Information and Control 64:2-22, 1985.",
+     "url":["https://doi.org/10.1016/S0019-9958(85)80041-3"]
     },
     {"name":"Joh90",
      "desc":"D. S. Johnson. A catalog of complexity classes, chapter 2 in Handbook of Theoretical Computer Science, Volume A (J. van Leeuwen, editor), Elsevier, 1990.",
