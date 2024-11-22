@@ -675,10 +675,15 @@
      "desc":" Sharp-P or Number-P. The class of function problems of the form \"compute f(x),\" where f is the number of accepting paths of an NP machine. The canonical #P-complete problem is #SAT.",
      "related":["NP","FNP"]
     },
-    {"name":"TFNP",
+    {"name":"CLS",
      "type":"Function Problem",
-     "desc":"Total Function Nondeterministic Polynomial time. Relations that can be checked by deterministic polynomial time machine. In other words, the class of function problems of the following form: Given an input x and a polynomial-time predicate F(x,y), output any y satisfying F(x,y) -- where such a y is promised to exist for any x. Morally, this is often viewed as the equivalent of {lang:NP}∩{lang:coNP}.",
-     "related":["NP","FNP"]
+     "desc":"Continuous Local Search. Equal to PPAD ∩ PLS. Equal to EOPL.",
+     "related":["PPAD","PLS","EOPL"]
+    },
+    {"name":"EOPL",
+     "type":"Function Problem",
+     "desc":"End of Potential Line. Equal to CLS.",
+     "related":["P"]
     },
     {"name":"FNP",
      "type":"Function Problem",
@@ -698,11 +703,56 @@
     {"name":"FIXP",
      "type":"Function Problem",
      "desc":"Fixed Point.",
-     "related":["P"]
+     "related":[]
+    },
+    {"name":"PLS",
+     "type":"Function Problem",
+     "desc":"Polynomial Local Search.",
+     "related":["CLS","TFNP"]
+    },
+    {"name":"PPA",
+     "type":"Function Problem",
+     "desc":"Polynomial Parity Arguments",
+     "related":["PPAD"]
     },
     {"name":"PPAD",
      "type":"Function Problem",
-     "desc":"Function Polynomial",
+     "desc":"Polynomial Parity Arguments, Directed",
+     "related":["PPA","PPADS"]
+    },
+    {"name":"PPADS",
+     "type":"Function Problem",
+     "desc":"Polynomial Parity Arguments, Directed with Sink",
+     "related":["PPAD","PPAD"]
+    },
+    {"name":"PPP",
+     "type":"Function Problem",
+     "desc":"Polynomial Pigeonhole Principle. Includes PPAD, and a weaker PWPP for the 'weak' pigeonhole principle.",
+     "related":["TFNP","PPAD"]
+    },
+    {"name":"PTFNP",
+     "type":"Function Problem",
+     "desc":"Proof TFNP. Defined in https://doi.org/10.1016/j.jcss.2017.12.003 as a 'refinement' of TFNP to be naturally complete. Includes all the 'standard' classes: PLS, PPP, PPA.",
+     "related":["PLS","PPP","PPA"]
+    },
+    {"name":"PWPP",
+     "type":"Function Problem",
+     "desc":"Polynomial Weak Pigeonhole Principle. Instead of one more input value than output, there's *twice* as many input values as output. Integer factorization is hard for PWPP (under randomized reductions; or deterministic reductions, assuming GRH.)",
+     "related":["PPP"]
+    },
+    {"name":"SOPL",
+     "type":"Function Problem",
+     "desc":"Sink of Potential Line. See https://arxiv.org/pdf/2205.02168. Equal to PPADS ∩ PLS, and so contains CLS.",
+     "related":["PPADS","PLS","CLS"]
+    },
+    {"name":"TFNP",
+     "type":"Function Problem",
+     "desc":"Total Function Nondeterministic Polynomial time. Relations that can be checked by deterministic polynomial time machine. In other words, the class of function problems of the following form: Given an input x and a polynomial-time predicate F(x,y), output any y satisfying F(x,y) -- where such a y is promised to exist for any x. Morally, this is often viewed as the equivalent of {lang:NP}∩{lang:coNP}.",
+     "related":["NP","FNP"]
+    },
+    {"name":"UEOPL",
+     "type":"Function Problem",
+     "desc":"Unique End of Potential Line",
      "related":["P"]
     },
 
