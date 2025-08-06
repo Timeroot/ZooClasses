@@ -1,5 +1,5 @@
 document.addEventListener('DOMContentLoaded', function() {
-    fetch('./langdata.json')
+    fetch('./generated/langdata.json')
     .then(res => res.json())
     .then(_data => {
         data = _data;
