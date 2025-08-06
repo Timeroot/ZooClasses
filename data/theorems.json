@@ -1211,19 +1211,24 @@
         "impliedby": "ObviousConstruction"
     },
     {
+        "name": "ALL contains all classes",
+        "content": "{X}X⊆ALL",
+        "impliedby": "ObviousConstruction"
+    },
+    {
         "name": "coRE⊆ALL",
         "content": "coRE⊆ALL",
-        "impliedby": "ObviousConstruction"
+        "impliedby": "ALL contains all classes"
     },
     {
         "name": "RE⊆ALL",
         "content": "RE⊆ALL",
-        "impliedby": "ObviousConstruction"
+        "impliedby": "ALL contains all classes"
     },
     {
         "name": "nuACC^0⊆ALL",
         "content": "nuACC^0⊆ALL",
-        "impliedby": "X⊆ALL",
+        "impliedby": "ALL contains all classes",
         "notes": "nuACC^0 is a nonuniform class, so it is contained in ALL. Any maximal nonuniform classes need to be manually marked to be in ALL, since they won't otherwise be in the uniform hierarchies."
     },
     {

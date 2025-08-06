@@ -344,6 +344,7 @@
     },
     {
         "name": "DSP",
+        "type": "Language",
         "desc": "Distinguishing Statistical Problems. (Placeholder: see Complexity Zoo for precise definition.)",
         "related": [],
         "notes": "todo def"
@@ -617,6 +618,7 @@
     },
     {
         "name": "NISZK",
+        "type": "Language",
         "desc": "Non-Interactive Statistical Zero Knowledge. A promise problem is in NISZK if there exists a polynomial-time probabilistic verifier V and a polynomial-time probabilistic simulator S such that: (1) For YES instances, there exists a polynomial-size message (the 'proof') that, when given to V, causes V to accept with high probability; (2) For NO instances, for any purported proof, V accepts with low probability; (3) For YES instances, the output distribution of V on the real proof is statistically indistinguishable from the output of S on the input alone (i.e., the verifier learns nothing beyond the validity of the statement). The protocol is non-interactive: the verifier receives a single message from the prover and then decides to accept or reject.",
         "related": [
             "SZK"
@@ -718,6 +720,7 @@
     },
     {
         "name": "PZK",
+        "type": "Language",
         "desc": "Perfect Zero Knowledge. A promise problem is in PZK if there exists an interactive proof system (a polynomial-time probabilistic verifier interacting with a polynomial-time prover) such that: (1) For YES instances, there exists a polynomial-time prover that causes the verifier to accept with high probability; (2) For NO instances, for any prover, the verifier accepts with low probability; (3) For YES instances, there exists a polynomial-time simulator that, given only the input, can generate a transcript whose distribution is identically (not just statistically) distributed as the verifier's view in the real protocol. That is, the verifier learns nothing beyond the validity of the statement, and the simulation is perfect (the distributions are exactly equal, not just close).",
         "related": [
             "SZK"
@@ -825,6 +828,7 @@
     },
     {
         "name": "QSZK",
+        "type": "Language",
         "desc": "Quantum Statistical Zero Knowledge. A promise problem is in QSZK if there exists a quantum interactive proof system (a polynomial-time quantum verifier interacting with a polynomial-time quantum prover) such that: (1) For YES instances, there exists a polynomial-time quantum prover that causes the verifier to accept with high probability; (2) For NO instances, for any prover, the verifier accepts with low probability; (3) For YES instances, there exists a polynomial-time quantum simulator that, given only the input, can generate a quantum state (or transcript) whose distribution is statistically indistinguishable from the verifier's view in the real protocol. That is, the verifier learns nothing beyond the validity of the statement, even against quantum adversaries.",
         "related": [
             "SZK"
