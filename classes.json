@@ -45,7 +45,7 @@
 //Currently most classes are not tagged at all.
   "properties":[
     {"name":"circuit",
-     "desc":"Indicates that the class is described by a circuit. Depending on the class, there may or may not be a uniformity condition."
+     "desc":"Indicates that the class is described by a classical circuit. Depending on the class, there may or may not be a uniformity condition."
     },
     {"name":"turing",
      "desc":"Indicates that the class is described by a Turing machine. It may be deterministic (e.g. {lang:L}), nondeterministic (e.g. {lang:NP}), or something else (e.g. {lang:ZPP}, {lang:SL})"
@@ -75,22 +75,27 @@
     {"name":"AC",
      "type":"Language",
      "desc":"Unbounded Fanin Polylogarithmic-Depth Circuits. The class of decision problems solvable by a nonuniform family of Boolean circuits, with polynomial size, depth O(log^k(n)), and unbounded fanin, for some k. The gates allowed are AND, OR, and NOT. For a given k, we get AC^k, such as AC^1. The class AC^0 is when k=0 i.e. constant depth. Equal to NC and TC.",
-     "related":["AC^0","AC^1","NC","TC"]
+     "related":["AC^0","AC^1","NC","TC"],
+     "properties":["circuit"]
     },
     {"name":"AC^0",
      "type":"Language",
      "desc":"Unbounded Fanin Constant-Depth Circuits. An especially important subclass of AC, corresponding to constant-depth, unbounded-fanin, polynomial-size circuits with AND, OR, and NOT gates.",
-     "related":["AC^1","AC^0","NC^0","NC"]
+     "related":["AC^1","AC^0","NC^0","NC"],
+     "properties":["circuit"]
     },
     {"name":"AC^1",
      "type":"Language",
      "desc":"Unboudned Fanin Log-depth Circuits.",
-     "related":["AC^0","AC","TC^1","NC^1"]
+     "related":["AC^0","AC","TC^1","NC^1"],
+     "properties":["circuit"]
     },
     {"name":"ACC^0",
      "type":"Language",
      "desc":"AC0 With Arbitrary MOD Gates. Polynomial size, constant depth.",
      "related":["AC^0","TC^0"]
+    ,
+     "properties":["circuit"]
     },
     {"name":"ACKERMANN",
      "type":"Language",
@@ -134,6 +139,8 @@
      "type":"Language",
      "desc":"TODO",
      "related":["BPP","EQP","QMA","IQP","NISQ"]
+    ,
+     "properties":["quantum"]
     },
 
     {"name":"C_{eq}L",
@@ -227,6 +234,11 @@
      "related":["RQP"],
      "properties":["complement"]
     },
+    {"name": "CZK",
+     "type": "Language",
+     "desc": "Computational Zero Knowledge. The class of problems possessing computational zero-knowledge proof systems.",
+     "related": ["SZK"],
+     "notes": ""},
       
     {"name":"DET",
      "type":"Language",
@@ -243,7 +255,12 @@
     "desc":"Dynamical Quantum Polynomial-Time.The class of decision problems solvable by a BQP machine with oracle access to a dynamical simulator. When given a polynomial-size quantum circuit, the simulator returns a sample from the distribution over \"classical histories\" induced by the circuit. The simulator can adversarially choose any history distribution that satisfies the axioms of \"symmetry\" and \"locality\" -- so that the DQP algorithm has to work for any distribution satisfying these axioms. Defined in {ref:Aar05}.",
     "related":["BQP"]
     },
-    
+    {"name": "DSP",
+     "desc": "Distinguishing Statistical Problems. (Placeholder: see Complexity Zoo for precise definition.)",
+     "related": [],
+     "notes": "todo def"
+    },
+
     {"name":"E",
      "type":"Language",
      "desc":"(Linear) Exponential time. Problems decided in exponential time with linear exponent, by a deterministic Turing machine.",
@@ -331,6 +348,8 @@
      "type":"Language",
      "desc":"The class of decision problems reducible in L to the problem of deciding membership in a context-free language. In order words, the closure under L-reductions of {lang:CFL}. Equivalently, LOGCFL is the class of decision problems solvable by a _uniform_ family of AC1 circuits, in which no AND gate has fan-in exceeding 2, see {ref:Joh90}{ref:Ven91}. When the circuits aren't uniform, we get the LOGCFL/poly = SAC^1, see {lang:SAC^1}.",
      "related":["CFL","SAC^1"]
+    ,
+     "properties":["circuit"]
     },
 
     {"name":"MA",
@@ -359,21 +378,29 @@
      "type":"Language",
      "desc":"Nick's Class",
      "related":["AC","TC","NC^0"]
+    ,
+     "properties":["circuit"]
     },
     {"name":"NC^0",
      "type":"Language",
      "desc":"Constant-Depth Nick's Class: uniform constant depth circuits with bounded-fanin gates. By definition, a decision problem in NC0 can depend on only a constant number of bits of the input. For that reason, \"NC^0\" is often used to refer to _functions_ computable by constant-depth, bounded-fanin circuits, instead of _decision_ problem. This comes up in NC^0 reduction. We opt to call that class of functions {lang:FNC^0} instead.",
      "related":["AC^0","TC^0","NC^1","NC","FNC^0"]
+    ,
+     "properties":["circuit"]
     },
     {"name":"NC^1",
      "type":"Language",
      "desc":"Log-Depth Nick's Class",
      "related":["AC^1","TC^1","NC^0","NC"]
+    ,
+     "properties":["circuit"]
     },
     {"name":"NC^2",
      "type":"Language",
      "desc":"Log^2-Depth Nick's Class",
      "related":["AC^1","DET","NC"]
+    ,
+     "properties":["circuit"]
     },
     {"name":"NEXP",
      "type":"Language",
@@ -386,6 +413,11 @@
      "related":["BQP","IQP"],
      "ref":"https://arxiv.org/pdf/2210.07234.pdf"
     },
+    {"name": "NISZK",
+     "desc": "Non-Interactive Statistical Zero Knowledge. A promise problem is in NISZK if there exists a polynomial-time probabilistic verifier V and a polynomial-time probabilistic simulator S such that: (1) For YES instances, there exists a polynomial-size message (the 'proof') that, when given to V, causes V to accept with high probability; (2) For NO instances, for any purported proof, V accepts with low probability; (3) For YES instances, the output distribution of V on the real proof is statistically indistinguishable from the output of S on the input alone (i.e., the verifier learns nothing beyond the validity of the statement). The protocol is non-interactive: the verifier receives a single message from the prover and then decides to accept or reject.",
+     "related": ["SZK"],
+     "notes": ""
+  },
     {"name":"NL",
      "type":"Language",
      "desc":"Nondeterministic Logarithmic space. Problems decided in logarithmic space by a nondeterministic Turing machine.",
@@ -434,7 +466,7 @@
      "type":"Language",
      "desc":"Probabilistic Polynomial time.",
      "related":["BPP"],
-     "notes":"todo"
+     "notes":"todo def"
     },
     {"name":"PR",
      "type":"Language",
@@ -448,37 +480,72 @@
      "formal":"DSPACE(n^O(1))",
      "related":["AP","PH"]
     },
-    
+    {"name": "PZK",
+     "desc": "Perfect Zero Knowledge. A promise problem is in PZK if there exists an interactive proof system (a polynomial-time probabilistic verifier interacting with a polynomial-time prover) such that: (1) For YES instances, there exists a polynomial-time prover that causes the verifier to accept with high probability; (2) For NO instances, for any prover, the verifier accepts with low probability; (3) For YES instances, there exists a polynomial-time simulator that, given only the input, can generate a transcript whose distribution is identically (not just statistically) distributed as the verifier's view in the real protocol. That is, the verifier learns nothing beyond the validity of the statement, and the simulation is perfect (the distributions are exactly equal, not just close).",
+     "related": ["SZK"],
+     "notes": "todo def"
+},
+        {"name":"QAC^0",
+"type":"Language",
+        "desc":"Quantum AC^0. The class of decision problems solvable by constant-depth, polynomial-size quantum circuits with unbounded fan-in AND, OR, and NOT gates, and a uniformity condition. Quantum generalization of AC^0.",
+        "related":["QAC","QNC^0","AC^0"]
+        ,
+         "properties":["quantum"]
+        },
+        {"name":"QAC",
+        "type":"Language",
+        "desc":"Quantum AC. The class of decision problems solvable by polylogarithmic-depth, polynomial-size quantum circuits with unbounded fan-in AND, OR, and NOT gates, and a uniformity condition. Quantum generalization of AC.",
+        "related":["QAC^0","QNC","AC"]
+        ,
+         "properties":["quantum"]
+        },
     {"name":"QCMA",
      "type":"Language",
      "desc":"Quantum-Classical Merlin-Arthur. Like {lang:QMA}, but Merlin's proof is a classical string; like NP, but the verifier has a quantum computer (a {lang:BQP} machine).",
      "related":["QMA"]
+    ,
+     "properties":["quantum"]
     },
     {"name":"QIP",
      "type":"Language",
      "desc":"Quantum Interactive Proofs. Like {lang:IP}, but now messages can be quanutum. Only a single prover. For a different kind of 'quantum' interactive proof, there's the much harder {lang:MIP*} and {lang:MIPco}.",
      "related":["IP","MIP*","MIPco"]
+    ,
+     "properties":["quantum"]
     },
     {"name":"QMA",
      "type":"Language",
      "desc":"Quantum Merlin-Arthur. Problems for which an omniscient 'Merlin' can submit a proof to 'Arthur' that a statement is true, and Arthur believes it with high probability (<1/3 chance of failing) -- but this proof can be a quantum state, and Arthur has a quantum computer.",
      "related":["QCMA","BQP"]
+    ,
+     "properties":["quantum"]
     },
     {"name":"QNC",
       "type":"Language",
       "desc":"The class of decision problems solvable by polylogarithmic-depth quantum circuits with bounded probability of error. The zoo says, \"A uniformity condition may also be imposed.\"; for the purpose of this site we _do_ impose that condition. Some sources like https://dl.acm.org/doi/10.1145/3570637 refer to this as BQNC.",
       "related":["RNC","NC","BQP"]
+    ,
+     "properties":["quantum"]
     },
     {"name":"QNC^0",
       "type":"Language",
       "desc":"Constant-depth quantum circuits",
       "related":["QNC","QNC^0"]
+    ,
+     "properties":["quantum"]
     },
     {"name":"QNC^1",
       "type":"Language",
       "desc":"Log-depth quantum circuits",
       "related":["QNC^0","QNC"]
+    ,
+     "properties":["quantum"]
     },
+    {"name": "QSZK",
+     "desc": "Quantum Statistical Zero Knowledge. A promise problem is in QSZK if there exists a quantum interactive proof system (a polynomial-time quantum verifier interacting with a polynomial-time quantum prover) such that: (1) For YES instances, there exists a polynomial-time quantum prover that causes the verifier to accept with high probability; (2) For NO instances, for any prover, the verifier accepts with low probability; (3) For YES instances, there exists a polynomial-time quantum simulator that, given only the input, can generate a quantum state (or transcript) whose distribution is statistically indistinguishable from the verifier's view in the real protocol. That is, the verifier learns nothing beyond the validity of the statement, even against quantum adversaries.",
+     "related": ["SZK"],
+     "notes": "todo def"
+},
     
     {"name":"R",
      "type":"Language",
@@ -526,27 +593,37 @@
      "desc":"Randomized Nick's Class. The class of decision problems solvable by polylogarithmic-depth random circuits with bounded one-sided probability of error: it must never incorrectly accept, and it must correctly reject at least 1/2 of the time.",
      "related":["NC","RP","QNC"],
      "notes":"todo: complement of coRNC"
+    ,
+     "properties":["circuit"]
     },
     {"name":"RNC^0",
      "type":"Language",
      "desc":"Randomized constant-depth circuits of bounded-fanin. Not very interesting because the randomness cannot be useful, so this is equal to NC^0. But the functional version FRNC^0 is slightly more interesting (in the same way that FNC^0 is more interesting than NC^0) and has been used in reductions, e.g. https://drops.dagstuhl.de/opus/volltexte/2023/17506/pdf/LIPIcs-ITCS-2023-3.pdf",
      "related":["RNC","RNC^1"]
+    ,
+     "properties":["circuit"]
     },
     {"name":"RNC^1",
      "type":"Language",
      "desc":"Randomized log-depth circuits of bounded-fanin.",
      "related":["RNC","RNC^0"]
+    ,
+     "properties":["circuit"]
     },
       
     {"name":"SAC^0",
      "type":"Language",
      "desc":"SAC^k is the class of decision problems solvable by a family of depth-O(logkn) circuits with unbounded-fanin OR & bounded-fanin AND gates. Negations are only allowed at the input level. A uniformity condition may also be imposed. SAC^k sits naturally 'halfway' between NC^k and AC^k.",
      "related":["SAC^1","AC^0"]
+    ,
+     "properties":["circuit"]
     },
     {"name":"SAC^1",
      "type":"Language",
      "desc":"Semi-Unbounded-Fanin AC^1. See {ref:SAC^0} for definition. SAC^1 (with a uniformity condition) = LOGCFL, and without a uniformity condition = LOGCFL/poly, see {ref:Joh90}{ref:Ven91}.",
      "related":["SAC^0","AC^1","LOGCFL"]
+    ,
+     "properties":["circuit"]
     },
     {"name":"SBP",
      "type":"Language",
@@ -561,8 +638,8 @@
     },
     {"name":"SZK",
      "type":"Language",
-     "desc":"Statistical Zero Knowledge.",
-     "related":[],
+     "desc":"Statistical Zero Knowledge. A promise problem is in SZK if there exists an interactive proof system (a polynomial-time probabilistic verifier interacting with a polynomial-time prover) such that: (1) For YES instances, there exists a polynomial-time prover that causes the verifier to accept with high probability; (2) For NO instances, for any prover, the verifier accepts with low probability; (3) For YES instances, there exists a polynomial-time simulator that, given only the input, can generate a transcript whose distribution is statistically indistinguishable from the verifier's view in the real protocol. That is, the verifier learns nothing beyond the validity of the statement. The protocol may be multi-round, and the zero-knowledge property is statistical (i.e., holds against computationally unbounded verifiers). SZK is closed under complement, has complete promise problems (Statistical Difference, Entropy Difference), and is contained in AM ∩ coAM, as well as CZK and QSZK. Contains PZK and NISZK. There exists an oracle relative to which SZK is not in BQP. Contained in DQP. If any hard-on-average language is in SZK, then one-way functions exist.",
+     "related":["AM","coAM","CZK","QSZK","PZK","NISZK","DQP"],
      "notes":"todo def"
     },
       
@@ -570,16 +647,22 @@
      "type":"Language",
      "desc":"Threshold Circuits",
      "related":["AC","NC","TC^0"]
+    ,
+     "properties":["circuit"]
     },
     {"name":"TC^0",
      "type":"Language",
      "desc":"Constant-Depth Threshold Circuits",
      "related":["AC^0","ACC^0","NC^0","TC"]
+    ,
+     "properties":["circuit"]
     },
     {"name":"TC^1",
      "type":"Language",
      "desc":"Log-Depth Threshold Circuits",
      "related":["AC^1","NC^0","TC^0","TC"]
+    ,
+     "properties":["circuit"]
     },
     {"name":"TOWER",
      "type":"Language",
@@ -608,6 +691,14 @@
      "type":"Language",
      "desc":"Zero-Error Extension Of {lang:EQP}.\nThe class of questions that can be answered by a QTM that answers yes, no, or maybe. If the correct answer is yes, then P[no] = 0, and vice-versa; and the probability of maybe is at most 1/2. Since some of the probabilities have to vanish, ZQP has the same technical caveats as {lang:EQP}.\nDefined independently in {ref:BW03} and in {ref:Nis02}. Equals {lang:RQP} ∩ {lang:coRQP}. There is an oracle such that ZQP^{ZQP} is larger than ZQP {ref:BW03}.",
      "related":["EQP","RQP","BQP","ZBQP"]
+    },
+
+    {"name":"StoqMA",
+     "type":"Language",
+     "desc":"Stoquastic Merlin-Arthur. The class of decision problems solvable by a Merlin-Arthur protocol where the verifier is a polynomial-size stoquastic quantum circuit (i.e., all off-diagonal elements of the Hamiltonian are non-positive in the computational basis). Merlin sends a polynomial-size quantum proof, and Arthur (the verifier) accepts with probability at least α for YES instances and at most β for NO instances, with α−β ≥ 1/poly(n). The 2-local stoquastic Hamiltonian problem is complete for StoqMA. The transverse field Ising model is also StoqMA-complete. There is no known strong error reduction for StoqMA; it is conjectured that StoqMA with strong error reduction is equivalent to MA.",
+     "related":["MA","QMA"],
+     "ref":"[BBT07] Sergey Bravyi, David DiVincenzo, Daniel Loss, and Barbara Terhal. The complexity of stoquastic local Hamiltonian problems. Quantum Information & Computation, 8(5):361–385, 2008. arXiv:quant-ph/0606140. [BH16] Sergey Bravyi and Matthew B. Hastings. Complexity of the quantum Ising model. Communications in Mathematical Physics, 349(1):1–45, 2017. arXiv:1410.0703. [AGL21] Dorit Aharonov, Daniel Gottesman, Zeph Landau. Error reduction in stoquastic Merlin-Arthur proofs. Quantum, 5:491, 2021. arXiv:2001.00025.",
+     "notes":"Defined in [BBT07]. 2-local stoquastic Hamiltonian is StoqMA-complete. Transverse field Ising model is StoqMA-complete [BH16]. No strong error reduction known [AGL21]. Conjectured: StoqMA with strong error reduction = MA."
     },
     
     {"name":"Δ2",
@@ -694,6 +785,8 @@
      "type":"Function Problem",
      "desc":"Function Constant-Depth circuits with bounded-fanin. Each output bit depends on only a constant number of input bits. Function equivalently of NC^0, and used in reductions.",
      "related":["NC^0"]
+    ,
+     "properties":["circuit"]
     },
     {"name":"FP",
      "type":"Function Problem",
@@ -958,10 +1051,43 @@
     },
     
 //Nontrivial results - the real meat!
+
+    {"name":"PZK⊆SZK",
+     "content":"PZK⊆SZK",
+     "ref":"By definition: perfect zero-knowledge is a special case of statistical zero-knowledge."
+    },
+    {"name":"NISZK⊆SZK",
+     "content":"NISZK⊆SZK",
+     "ref":"By definition: non-interactive statistical zero-knowledge is a special case of statistical zero-knowledge."
+    },
+    {"name":"SZK⊆QSZK",
+     "content":"SZK⊆QSZK",
+     "ref":"Classical statistical zero-knowledge is a special case of quantum statistical zero-knowledge."
+    },
+    {"name":"SZK⊆CZK",
+     "content":"SZK⊆CZK",
+     "ref":"By definition, all statistical zero-knowledge protocols are also computational zero-knowledge."
+    },
+    {"name":"SZK⊆QSZK",
+     "content":"SZK⊆QSZK",
+     "ref":"Classical zero-knowledge is a special case of quantum zero-knowledge."
+    },
+    {"name":"SZK⊆DQP",
+     "content":"SZK⊆DQP",
+     "ref":"Aar02b: Aaronson, Quantum computing, postselection, and probabilistic polynomial-time, Proc. R. Soc. A 461, 3473–3482 (2005)."
+    },
     {"name":"QMA⊆PP",
      "content":"QMA⊆PP",
      "ref":"C. Marriott and J. Watrous. Quantum Arthur-Merlin Games, Computational Complexity, 14(2):122-152, 2005. doi:10.1007/s00037-005-0194-x.\n [MW05] at https://complexityzoo.net/Complexity_Zoo_References#mw05",
      "priority":3
+    },
+    {"name":"MA⊆StoqMA",
+     "content":"MA⊆StoqMA",
+     "ref":"[BBT07] Sergey Bravyi, David DiVincenzo, Daniel Loss, and Barbara Terhal. The complexity of stoquastic local Hamiltonian problems. Quantum Information & Computation, 8(5):361–385, 2008. arXiv:quant-ph/0606140."
+    },
+    {"name":"StoqMA⊆QMA",
+     "content":"StoqMA⊆QMA",
+     "ref":"[BBT07] Sergey Bravyi, David DiVincenzo, Daniel Loss, and Barbara Terhal. The complexity of stoquastic local Hamiltonian problems. Quantum Information & Computation, 8(5):361–385, 2008. arXiv:quant-ph/0606140."
     },
     {"name":"AM⊆Π2",
      "content":"AM⊆Π2",
