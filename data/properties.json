@@ -1,0 +1,26 @@
+[
+    {
+        "name": "circuit",
+        "desc": "Indicates that the class is described by a classical circuit. Depending on the class, there may or may not be a uniformity condition."
+    },
+    {
+        "name": "turing",
+        "desc": "Indicates that the class is described by a Turing machine. It may be deterministic (e.g. {lang:L}), nondeterministic (e.g. {lang:NP}), or something else (e.g. {lang:ZPP}, {lang:SL})"
+    },
+    {
+        "name": "protocol",
+        "desc": "Indicates that this class is defined using some sort of interactive protocol with 2 or more players. Examples would be {lang:SZK}, {lang:AM}, or {lang:MIP*}. The classic {lang:NP} is not tagged this way because we define it using a nondeterministic Turing machine, even though it can also be described with a protocol."
+    },
+    {
+        "name": "nonuniform",
+        "desc": "Indicates that this class lacks a uniformity condition. If a circuit class, it means that the circuit can be any circuit, not necessarily one made by a (e.g.) LOGSPACE machine. If TM based, like {lang:P/poly}, then it means that the machine gets some kind of advice."
+    },
+    {
+        "name": "quantum",
+        "desc": "Indicates that this class is defined using quantum mechanics."
+    },
+    {
+        "name": "complement",
+        "desc": "Indicates that this class is the complement of some other, likely better known class. This property is mostly defined for purposes of hiding complement classes from the inclusion diagram."
+    }
+]

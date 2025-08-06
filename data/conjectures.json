@@ -1,0 +1,14 @@
+[
+    {"name":"P!=NP",
+     "content":"P⊂NP",
+     "implies":["P!=PSPACE"]
+    },
+    {"name":"P!=PSPACE",
+     "content":"P⊂PSPACE",
+     "implies":[]
+    },
+    {"name":"P=BPP",
+     "content":"P=BPP",
+     "implies":[]
+    }
+]

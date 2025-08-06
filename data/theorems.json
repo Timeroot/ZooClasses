@@ -1,0 +1,1314 @@
+[
+    {
+        "name": "Deterministic space hierarchy theorem",
+        "ref": "https://en.wikipedia.org/wiki/Space_hierarchy_theorem",
+        "content": "{f}SpaceConstructible(f)⟹(DSPACE(f)⊃DSPACE(o(f)))",
+        "related": [
+            "Nondeterministic space hierarchy theorem"
+        ]
+    },
+    {
+        "name": "L⊂PSPACE",
+        "content": "L⊂PSPACE",
+        "impliedby": "Deterministic space hierarchy theorem"
+    },
+    {
+        "name": "L⊂L^2",
+        "content": "L⊂L^2",
+        "impliedby": "Deterministic space hierarchy theorem"
+    },
+    {
+        "name": "L^2⊂LINSPACE",
+        "content": "L^2⊂LINSPACE",
+        "impliedby": "Deterministic space hierarchy theorem"
+    },
+    {
+        "name": "LINSPACE⊂PSPACE",
+        "content": "LINSPACE⊂PSPACE",
+        "impliedby": "Deterministic space hierarchy theorem"
+    },
+    {
+        "name": "Nondeterministic space hierarchy theorem",
+        "ref": "https://en.wikipedia.org/wiki/Space_hierarchy_theorem",
+        "content": "{f}SpaceConstructible(f)⟹(NSPACE(f)⊃NSPACE(o(f)))",
+        "related": [
+            "Deterministic space hierarchy theorem"
+        ]
+    },
+    {
+        "name": "NL⊂NPSPACE",
+        "content": "NL⊂NPSPACE",
+        "impliedby": "Deterministic space hierarchy theorem"
+    },
+    {
+        "name": "NL⊂NLINSPACE",
+        "content": "NL⊂NLINSPACE",
+        "impliedby": "Deterministic space hierarchy theorem"
+    },
+    {
+        "name": "NLINSPACE⊂NPSPACE",
+        "content": "NLINSPACE⊂NPSPACE",
+        "impliedby": "Deterministic space hierarchy theorem"
+    },
+    {
+        "name": "Deterministic time hierarchy theorem",
+        "ref": "https://en.wikipedia.org/wiki/Time_hierarchy_theorem",
+        "content": "{f}TimeConstructible(f)⟹(DTIME(o(f/log(f)))⊃DTIME(f))",
+        "related": [
+            "Nondeterministic time hierarchy theorem"
+        ]
+    },
+    {
+        "name": "P⊂E",
+        "content": "P⊂E",
+        "impliedby": "Deterministic time hierarchy theorem"
+    },
+    {
+        "name": "E⊂EXP",
+        "content": "E⊂EXP",
+        "impliedby": "Deterministic time hierarchy theorem"
+    },
+    {
+        "name": "Noneterministic time hierarchy theorem",
+        "ref": "https://en.wikipedia.org/wiki/Time_hierarchy_theorem",
+        "content": "{f}TimeConstructible(f)⟹(NTIME(f)⊂NTIME(f^2))",
+        "related": [
+            "Deterministic time hierarchy theorem"
+        ],
+        "notes": "todo stronger statement -- currently not as tight as could be"
+    },
+    {
+        "name": "Time-bounded padding argument",
+        "ref": "https://en.wikipedia.org/wiki/Padding_argument",
+        "content": "{f,g,h}TimeConstructible(f)&&TimeConstructible(g)&&h≥n&&(NTIME(f)⊆DTIME(g))⟹(NTIME(h(f))⊆DTIME(h(g)))"
+    },
+    {
+        "name": "Space-bounded padding argument",
+        "ref": "https://en.wikipedia.org/wiki/Padding_argument",
+        "content": "{f,g,h}SpaceConstructible(f)&&SpaceConstructible(g)&&h≥n&&(NSPACE(f)⊆DSPACE(g))⟹(NSPACE(h(f))⊆DSPACE(h(g)))",
+        "notes": "https://en.wikipedia.org/wiki/Immerman%E2%80%93Szelepcs%C3%A9nyi_theorem#cite_note-1"
+    },
+    {
+        "name": "Immerman–Szelepcsényi theorem",
+        "ref": "https://en.wikipedia.org/wiki/Immerman%E2%80%93Szelepcs%C3%A9nyi_theorem",
+        "content": "{f}(f≥log)⟹(NSPACE(f)=coNSPACE(f))",
+        "priority": 2
+    },
+    {
+        "name": "NL=coNL",
+        "content": "NL=coNL",
+        "impliedby": "Immerman–Szelepcsényi theorem"
+    },
+    {
+        "name": "Savitch's theorem",
+        "ref": "https://en.wikipedia.org/wiki/Savitch%27s_theorem",
+        "content": "{f}(f≥log)⟹(NSPACE(f)⊆DSPACE(f^2)",
+        "priority": 2
+    },
+    {
+        "name": "NL⊆L^2",
+        "content": "NL⊆L^2",
+        "impliedby": "Savitch's theorem"
+    },
+    {
+        "name": "PSPACE=NPSPACE",
+        "content": "PSPACE=NPSPACE",
+        "impliedby": "Savitch's theorem"
+    },
+    {
+        "name": "Sipser–Lautemann theorem",
+        "ref": "https://en.wikipedia.org/wiki/Sipser%E2%80%93Lautemann_theorem",
+        "content": "BPP⊆Σ2&&BPP⊆Π2",
+        "priority": 2
+    },
+    {
+        "name": "PZK⊆SZK",
+        "content": "PZK⊆SZK",
+        "ref": "By definition: perfect zero-knowledge is a special case of statistical zero-knowledge."
+    },
+    {
+        "name": "NISZK⊆SZK",
+        "content": "NISZK⊆SZK",
+        "ref": "By definition: non-interactive statistical zero-knowledge is a special case of statistical zero-knowledge."
+    },
+    {
+        "name": "SZK⊆QSZK",
+        "content": "SZK⊆QSZK",
+        "ref": "Classical statistical zero-knowledge is a special case of quantum statistical zero-knowledge."
+    },
+    {
+        "name": "SZK⊆CZK",
+        "content": "SZK⊆CZK",
+        "ref": "By definition, all statistical zero-knowledge protocols are also computational zero-knowledge."
+    },
+    {
+        "name": "SZK⊆QSZK",
+        "content": "SZK⊆QSZK",
+        "ref": "Classical zero-knowledge is a special case of quantum zero-knowledge."
+    },
+    {
+        "name": "SZK⊆DQP",
+        "content": "SZK⊆DQP",
+        "ref": "Aar02b: Aaronson, Quantum computing, postselection, and probabilistic polynomial-time, Proc. R. Soc. A 461, 3473–3482 (2005)."
+    },
+    {
+        "name": "QMA⊆PP",
+        "content": "QMA⊆PP",
+        "ref": "C. Marriott and J. Watrous. Quantum Arthur-Merlin Games, Computational Complexity, 14(2):122-152, 2005. doi:10.1007/s00037-005-0194-x.\n [MW05] at https://complexityzoo.net/Complexity_Zoo_References#mw05",
+        "priority": 3
+    },
+    {
+        "name": "MA⊆StoqMA",
+        "content": "MA⊆StoqMA",
+        "ref": "[BBT07] Sergey Bravyi, David DiVincenzo, Daniel Loss, and Barbara Terhal. The complexity of stoquastic local Hamiltonian problems. Quantum Information & Computation, 8(5):361–385, 2008. arXiv:quant-ph/0606140."
+    },
+    {
+        "name": "StoqMA⊆QMA",
+        "content": "StoqMA⊆QMA",
+        "ref": "[BBT07] Sergey Bravyi, David DiVincenzo, Daniel Loss, and Barbara Terhal. The complexity of stoquastic local Hamiltonian problems. Quantum Information & Computation, 8(5):361–385, 2008. arXiv:quant-ph/0606140."
+    },
+    {
+        "name": "AM⊆Π2",
+        "content": "AM⊆Π2",
+        "notes": "Can't find a reference for this but also not obvious to me. (Maybe it should be obvious?)"
+    },
+    {
+        "name": "coAM⊆Σ2",
+        "content": "coAM⊆Σ2",
+        "impliedby": "AM⊆Π2",
+        "ref": "Implied by {thm:AM⊆Π2} by taking complements"
+    },
+    {
+        "name": "GA⊆GI",
+        "content": "GA⊆GI",
+        "ref": "Proved in https://complexityzoo.net/Complexity_Zoo_References#kst93. Pretty simple proof but not manifest from the definition; compare with GAK vs GIK where the question isn't settled."
+    },
+    {
+        "name": "GIK⊆SZK",
+        "content": "GIK⊆SZK",
+        "ref": "Classic Graph Nonisomorphism protocol for Statistical Zero Knowledge, combined with SZK closed under complement."
+    },
+    {
+        "name": "SZK⊆coAM",
+        "content": "SZK⊆coAM",
+        "impliedby": "SZK⊆AM",
+        "ref": "Taking complements of {thm:SZK⊆AM}, combined with that {lang:SZK} is closed under complement."
+    },
+    {
+        "name": "FH^1=BPP",
+        "content": "FH^1=BPP",
+        "ref": "Originally stated without proof in {ref:Coo85}. The forward direction (that FH^1⊆BPP) is given by the perspective on BPP as a reversible polynomial-size circuit with input bits, zeroed bits, and uniformly random input bits. The reverse direction is given by simulating the one layer of Hadamard gates probabilistically - which is safe because no interference or cancellation can later occur.",
+        "priority": 2
+    },
+    {
+        "name": "NC^1⊆L",
+        "content": "NC^1⊆L",
+        "ref": "Proved in {ref:Bor77}",
+        "priority": 3
+    },
+    {
+        "name": "BPL⊆DET",
+        "content": "BPL⊆DET",
+        "ref": "Proved in {ref:Coo85}",
+        "priority": 3
+    },
+    {
+        "name": "DET⊆NC^2",
+        "content": "DET⊆NC^2",
+        "ref": "TODO",
+        "priority": 3
+    },
+    {
+        "name": "NL⊆DET",
+        "content": "NL⊆DET",
+        "ref": "TODO",
+        "priority": 3
+    },
+    {
+        "name": "NL⊆AC^1",
+        "content": "NL⊆AC^1",
+        "ref": "TODO",
+        "priority": 3
+    },
+    {
+        "name": "C_{eq}P=coNQP",
+        "content": "C_{eq}P=coNQP",
+        "ref": "{ref:FGH+98}",
+        "priority": 3
+    },
+    {
+        "name": "AP=PSPACE",
+        "content": "AP=PSPACE",
+        "ref": "{ref:CKS81}",
+        "priority": 3
+    },
+    {
+        "name": "SZK⊆DQP",
+        "content": "SZK⊆DQP",
+        "ref": "{ref:Aar05}",
+        "priority": 3
+    },
+    {
+        "name": "DQP⊆EXP",
+        "content": "DQP⊆EXP",
+        "ref": "{ref:Aar05}",
+        "priority": 3
+    },
+    {
+        "name": "L⊆DQC1",
+        "content": "L⊆DQC1",
+        "ref": "https://arxiv.org/abs/quant-ph/0608132 shows that the one clean qubit can be magnified to log(n) clean qubits without changing the class, so any computation in quantum logspace (without measurements) is in DQC1. This includes all reversible logspace, which is equal to deterministic logspace, see Lange, McKenzie and Tapp [LMT00].",
+        "priority": 3
+    },
+    {
+        "name": "SF⊆AC^0",
+        "content": "SF⊆AC^0",
+        "ref": "Stated without reference on Wikipedia: https://en.wikipedia.org/wiki/Star-free_language"
+    },
+    {
+        "name": "CSL=NLINSPACE",
+        "content": "CSL=NLINSPACE",
+        "ref": "{ref:Kur64}",
+        "priority": 2
+    },
+    {
+        "name": "PARITY⊈AC^0",
+        "content": "PARITY⊈AC^0",
+        "ref": "PARITY, the one-language class of recognizing the parity of a string, cannot be computed by an AC^0 circuit. The same is true for any mod-m parity problem. See {ref:Raz87}{ref:Smo87}.",
+        "priority": 3
+    },
+    {
+        "name": "ACC^0⊂PP",
+        "content": "ACC^0⊂PP",
+        "ref": "{ref:AG95}",
+        "priority": 3
+    },
+    {
+        "name": "E⊈nuACC^0",
+        "content": "E⊈nuACC^0",
+        "desc": "{lang:ACC^0} circuits, i.e. the non-uniform class {lang:nuACC^0}, does not contain all of NTIME[2^n], what we call {lang:E}.",
+        "ref": "{ref:Wil11}",
+        "priority": 3
+    },
+    {
+        "name": "ACC^0⊂NQP",
+        "content": "ACC^0⊂NQP",
+        "ref": "{ref:MW18}",
+        "priority": 3
+    },
+    {
+        "name": "ACC^0⊂coNQP",
+        "content": "ACC^0⊂coNQP",
+        "impliedby": "ACC^0⊂NQP",
+        "ref": "Corollary of {thm:ACC^0⊂NQP} by taking complements, and that ACC^0 is closed under complement."
+    },
+    {
+        "name": "LOGCFL=SAC^1",
+        "content": "LOGCFL=SAC^1",
+        "ref": "Mentioned in {ref:Joh90}{ref:Ven91}, don't know where it was actually proved.",
+        "notes": "Technically LOGCFL = uniform-SAC^1, and LOGCFL/poly = SAC^1. Got to make this more precise.",
+        "priority": 3
+    },
+    {
+        "name": "IP=PSPACE",
+        "content": "PSPACE⊆IP",
+        "ref": "Proved in {ref:Sha90}. The other direction, that IP⊆PSPACE and so IP=PSPACE, from a simulation argument -- see {thm:IP⊆PSPACE}.",
+        "priority": 3
+    },
+    {
+        "name": "MIP=NEXP",
+        "content": "MIP=NEXP",
+        "ref": "{ref:BFL91}",
+        "priority": 3
+    },
+    {
+        "name": "MIP*=RE",
+        "content": "MIP*=RE",
+        "ref": "{ref:JNVWY20}",
+        "priority": 3
+    },
+    {
+        "name": "NEXP⊆MIPco",
+        "content": "NEXP⊆MIPco",
+        "ref": "{ref:Lin23}",
+        "priority": 3
+    },
+    {
+        "name": "MIPco⊆coRE",
+        "content": "MIPco⊆coRE",
+        "ref": "A consequence of {ref:NPA08}, as they give a hierarchy that converges to the MIPco value of a game from one above. This is contrast to MIP*, where trying gradually larger Hilbert spaces converges from below, so it is contained in RE.",
+        "priority": 3
+    },
+    {
+        "name": "IP⊆PSPACE",
+        "content": "IP⊆PSPACE",
+        "ref": "This is often stated as a simple protocol simulation question, but this misses the fact that IP has private coins, and the protocol simulation approach requires public coins. See the discussion [here](https://cs.stackexchange.com/q/162804/11900). Taking the protocol simulation as the 'easy' step, this was really proved in {ref:GS86} where they showed the equivalence between private and public coins.\nTODO: Technically they show that IP[f]⊆AM[f+2] for all f(n). Then since AM[f]⊆IP[f], and AM[poly]⊆PSPACE by simulation, IP=IP[poly]⊆AM[poly]⊆PSPACE.",
+        "priority": 3
+    },
+    {
+        "name": "QIP⊆PSPACE",
+        "content": "QIP⊆PSPACE",
+        "ref": "{ref:JJUW09}",
+        "priority": 3
+    },
+    {
+        "name": "NQP⊆PSPACE",
+        "content": "NQP⊆PSPACE",
+        "ref": "Strong simulation of quantum circuits in PSPACE.",
+        "notes": "TODO find a reference for the strong simulation.",
+        "priority": 3
+    },
+    {
+        "name": "coNQP⊆PSPACE",
+        "content": "coNQP⊆PSPACE",
+        "ref": "Taking complements of {thm:NQP⊆PSPACE}",
+        "impliedby": "NQP⊆PSPACE"
+    },
+    {
+        "name": "NQP⊆A_0PP",
+        "content": "NQP⊆A_0PP",
+        "ref": "{ref:Vya03}",
+        "priority": 3
+    },
+    {
+        "name": "QMA⊆A_0PP",
+        "content": "QMA⊆A_0PP",
+        "ref": "{ref:Vya03}.",
+        "priority": 3
+    },
+    {
+        "name": "AWPP⊆A_0PP",
+        "content": "AWPP⊆A_0PP",
+        "ref": "{ref:Vya03}. Is this obvious? Not sure..."
+    },
+    {
+        "name": "A_0PP⊆PP",
+        "content": "A_0PP⊆PP",
+        "ref": "{ref:Vya03}.",
+        "notes": "It is possible this proof is very simple and should be marked as 'obvious', I haven't looked at it yet."
+    },
+    {
+        "name": "BQP⊆AWPP",
+        "content": "BQP⊆AWPP",
+        "ref": "{ref:FR98}.",
+        "priority": 3
+    },
+    {
+        "name": "MA⊆SBP",
+        "content": "MA⊆SBP",
+        "ref": "{ref:BGM02}.",
+        "priority": 3
+    },
+    {
+        "name": "SBP⊆AM",
+        "content": "SBP⊆AM",
+        "ref": "{ref:BGM02}.",
+        "priority": 3
+    },
+    {
+        "name": "NC^0⊂AC^0",
+        "content": "NC^0⊂AC^0",
+        "ref": "NC^0 circuits can only depend on constantly many input bits, so misses classes such as the OR of all inputs."
+    },
+    {
+        "name": "AC^i⊆NC^{i+1}",
+        "content": "{i}AC(i)⊆NC(i+1)",
+        "ref": "NC^{i+1} allows an additional factor of log(n) on the depth of the circuit. An unbounded fan-in OR gate from an AC^i circuit can be turned into a log(n) depth pattern of 2-fan-in OR gates to turn an AC^i circuit into NC^{i+1} at the expnese of a factor of log(n)"
+    },
+    {
+        "name": "AC^0⊆NC^1",
+        "content": "AC^0⊆NC^1",
+        "impliedby": "AC^i⊆NC^{i+1}"
+    },
+    {
+        "name": "AC^1⊆NC^2",
+        "content": "AC^1⊆NC^2",
+        "impliedby": "AC^i⊆NC^{i+1}"
+    },
+    {
+        "name": "TC^i⊆NC^{i+1}",
+        "content": "{i}TC(i)⊆NC(i+1)",
+        "ref": "NC^{i+1} allows an additional factor of log(n) on the depth of the circuit. An unbounded fan-in OR gate or THRESHOLD gate from a TC^i circuit can be turned into a log(n) depth pattern of 2-fan-in OR gates to turn an TC^i circuit into NC^{i+1} at the expnese of a factor of log(n)."
+    },
+    {
+        "name": "TC^0⊆NC^1",
+        "content": "TC^0⊆NC^1",
+        "impliedby": "AC^i⊆NC^{i+1}"
+    },
+    {
+        "name": "TC^1⊆NC^2",
+        "content": "TC^1⊆NC^2",
+        "impliedby": "TC^i⊆NC^{i+1}"
+    },
+    {
+        "name": "AC=NC=TC",
+        "content": "AC=NC&&NC=TC",
+        "ref": "Given that {thm:TC^i⊆NC^{i+1}}, and {thm:NC^i⊆SAC^i⊆AC^i⊆ACC^i&&AC^i⊆TC^i}, and NC/AC/TC are each unions of their hierarchies, these hierarchies must be equal.",
+        "impliedby": "TC^i⊆NC^{i+1}"
+    },
+    {
+        "name": "RNC^0=NC^0",
+        "content": "RNC^0=NC^0",
+        "ref": "An RNC^0 circuit has constant depth and bounded-fanin, therefore constant size. Therefore it has a constant number of random bits it could use, and we can just make exponentially many copies of the circuit from each random bit and take the AND of all of them. This makes it deterministic and keeps it constant size."
+    },
+    {
+        "name": "NC⊆P",
+        "content": "NC⊆P",
+        "ref": "An NC circuit is defined to only have polynomial size, and the circuit must be generated by a logspace machine, therefore a P machine can write out the circuit and then simulate it."
+    },
+    {
+        "name": "NL⊆P",
+        "content": "NL⊆P",
+        "ref": "There are only polynomially many states for an NL machine, and a P machine can enumerate all of them and check for a path."
+    },
+    {
+        "name": "REG⊆NC^1",
+        "content": "REG⊆NC^1",
+        "ref": "Given a DFA for a regular language, recursively compute the transition function induced by words of size 1, then size 2, size 4, 8, etc. until you've computed the transition function induced by the full input. Accept if that function maps the initial state to the final state. This is elaborated [here](https://cs.stackexchange.com/a/74511/11900)."
+    },
+    {
+        "name": "ACC^i⊆TC^i",
+        "content": "{i}ACC^i⊆TC^i",
+        "ref": "ACC has 'mod m' gates while TC has threshold gates. A 'w' treshold gate and a 'w+1' threshold gate let you build an 'equals w' threshold gate in constant depth. A mod m gate with n inputs can be decomposed into an OR of floor(n/m) many equality gates, so an ACC^i circuit can be mapped to a TC^i circuit with only a constant factor increase in depth and an O(n) increase in size. See for instance [here](https://cs.stackexchange.com/a/85656/11900)"
+    },
+    {
+        "name": "ACC^0⊆TC^0",
+        "content": "ACC^0⊆TC^0",
+        "impliedby": "ACC^i⊆TC^i"
+    },
+    {
+        "name": "ProtocolSimulation",
+        "content": "",
+        "ref": "Placeholder theorem for the general argument that a public-coin interactive protocol can be simulated by a single 'player' with sufficient time and space. To be precise, if a protocol involves r rounds of classical (resp. quantum) messages of size m between an omniscient prover and M-machine verifier, then this protocol can be simulated with `r*m` classical (resp. quantum) space, plus however much memory is needed to simulate the M-machine. This implies that all of NP, coNP, MA, AM are in PSPACE, and QCMA and QMA are in BQPSPACE (which equals PSPACE); and analogous statements, that for instance coNEXP is in EXPSPACE. It does not apply to private-coin protocols like IP, MIP, or QIP, although these often turn out to be equivalent to their public-coin variants anyway."
+    },
+    {
+        "name": "NP⊆PSPACE",
+        "content": "NP⊆PSPACE",
+        "impliedby": "ProtocolSimulation"
+    },
+    {
+        "name": "coNP⊆PSPACE",
+        "content": "coNP⊆PSPACE",
+        "impliedby": "ProtocolSimulation"
+    },
+    {
+        "name": "MA⊆PSPACE",
+        "content": "MA⊆PSPACE",
+        "impliedby": "ProtocolSimulation"
+    },
+    {
+        "name": "AM⊆PSPACE",
+        "content": "AM⊆PSPACE",
+        "impliedby": "ProtocolSimulation"
+    },
+    {
+        "name": "QCMA⊆PSPACE",
+        "content": "QCMA⊆PSPACE",
+        "impliedby": "ProtocolSimulation"
+    },
+    {
+        "name": "QMA⊆PSPACE",
+        "content": "QMA⊆PSPACE",
+        "impliedby": "ProtocolSimulation"
+    },
+    {
+        "name": "NC^i⊆NC^{i+1}⊆NC",
+        "content": "{i}NC^i⊆NC^(i+1)⊆NC",
+        "impliedby": "ObviousConstruction"
+    },
+    {
+        "name": "NC^0⊆NC^1",
+        "content": "NC^0⊆NC^1",
+        "impliedby": "NC^i⊆NC^{i+1}⊆NC"
+    },
+    {
+        "name": "NC^1⊆NC^2",
+        "content": "NC^1⊆NC^2",
+        "impliedby": "NC^i⊆NC^{i+1}⊆NC"
+    },
+    {
+        "name": "NC^0⊆NC",
+        "content": "NC^0⊆NC",
+        "impliedby": "NC^i⊆NC^{i+1}⊆NC"
+    },
+    {
+        "name": "NC^1⊆NC",
+        "content": "NC^1⊆NC",
+        "impliedby": "NC^i⊆NC^{i+1}⊆NC"
+    },
+    {
+        "name": "NC^2⊆NC",
+        "content": "NC^2⊆NC",
+        "impliedby": "NC^i⊆NC^{i+1}⊆NC"
+    },
+    {
+        "name": "AC^i⊆AC^{i+1}⊆AC",
+        "content": "{i}AC^i⊆AC^(i+1)⊆AC",
+        "impliedby": "ObviousConstruction"
+    },
+    {
+        "name": "AC^0⊆AC^1",
+        "content": "AC^0⊆AC^1",
+        "impliedby": "AC^i⊆AC^{i+1}⊆AC"
+    },
+    {
+        "name": "AC^0⊆AC",
+        "content": "AC^0⊆AC",
+        "impliedby": "AC^i⊆AC^{i+1}⊆AC"
+    },
+    {
+        "name": "AC^1⊆AC",
+        "content": "AC^1⊆AC",
+        "impliedby": "AC^i⊆AC^{i+1}⊆AC"
+    },
+    {
+        "name": "ACC^i⊆ACC^{i+1}⊆ACC",
+        "content": "{i}ACC^i⊆ACC^(i+1)⊆ACC",
+        "impliedby": "ObviousConstruction"
+    },
+    {
+        "name": "TC^i⊆TC^{i+1}⊆TC",
+        "content": "{i}TC^i⊆TC^(i+1)⊆TC",
+        "impliedby": "ObviousConstruction"
+    },
+    {
+        "name": "TC^0⊆TC^1",
+        "content": "TC^0⊆TC^1",
+        "impliedby": "TC^i⊆TC^{i+1}⊆TC"
+    },
+    {
+        "name": "TC^0⊆TC",
+        "content": "TC^0⊆TC",
+        "impliedby": "TC^i⊆TC^{i+1}⊆TC"
+    },
+    {
+        "name": "TC^1⊆TC",
+        "content": "TC^1⊆TC",
+        "impliedby": "TC^i⊆TC^{i+1}⊆TC"
+    },
+    {
+        "name": "RNC^i⊆RNC^{i+1}⊆RNC",
+        "content": "{i}RNC^i⊆RNC^(i+1)⊆RNC",
+        "impliedby": "ObviousConstruction"
+    },
+    {
+        "name": "RNC^0⊆RNC^1",
+        "content": "RNC^0⊆RNC^1",
+        "impliedby": "RNC^i⊆RNC^{i+1}⊆RNC"
+    },
+    {
+        "name": "RNC^0⊆RNC",
+        "content": "RNC^0⊆RNC",
+        "impliedby": "RNC^i⊆RNC^{i+1}⊆RNC"
+    },
+    {
+        "name": "RNC^1⊆RNC",
+        "content": "RNC^1⊆RNC",
+        "impliedby": "RNC^i⊆RNC^{i+1}⊆RNC"
+    },
+    {
+        "name": "QNC^i⊆QNC^{i+1}⊆QNC",
+        "content": "{i}QNC^i⊆QNC^(i+1)⊆QNC",
+        "impliedby": "ObviousConstruction"
+    },
+    {
+        "name": "QNC^0⊆QNC^1",
+        "content": "QNC^0⊆QNC^1",
+        "impliedby": "QNC^i⊆QNC^{i+1}⊆QNC"
+    },
+    {
+        "name": "QNC^0⊆QNC",
+        "content": "QNC^0⊆QNC",
+        "impliedby": "QNC^i⊆QNC^{i+1}⊆QNC"
+    },
+    {
+        "name": "QNC^1⊆QNC",
+        "content": "QNC^1⊆QNC",
+        "impliedby": "QNC^i⊆QNC^{i+1}⊆QNC"
+    },
+    {
+        "name": "FH^i⊆FH^{i+1}⊆FH",
+        "content": "{i}FH^i⊆FH^{i+1}⊆FH",
+        "impliedby": "ObviousConstruction"
+    },
+    {
+        "name": "FH^0⊆FH^1",
+        "content": "P⊆FH^1",
+        "impliedby": "FH^i⊆FH^{i+1}⊆FH"
+    },
+    {
+        "name": "FH^1⊆FH^2",
+        "content": "FH^1⊆FH^2",
+        "impliedby": "FH^i⊆FH^{i+1}⊆FH"
+    },
+    {
+        "name": "P⊆FH",
+        "content": "P⊆FH",
+        "impliedby": "FH^i⊆FH^{i+1}⊆FH"
+    },
+    {
+        "name": "FH^1⊆FH",
+        "content": "FH^1⊆FH",
+        "impliedby": "FH^i⊆FH^{i+1}⊆FH"
+    },
+    {
+        "name": "FH^2⊆FH",
+        "content": "FH^2⊆FH",
+        "impliedby": "FH^i⊆FH^{i+1}⊆FH"
+    },
+    {
+        "name": "P=Δ0⊆Δi⊆Πi∩Σi⊆Σi∪Πi⊆Δ{i+1}⊆PH",
+        "content": "{i}Δi⊆Πi∩Σi⊆Σi∪Πi⊆Δ{i+1}⊆PH",
+        "impiedby": "ObviousConstruction"
+    },
+    {
+        "name": "P⊆NP",
+        "content": "P⊆NP",
+        "impliedby": "P=Δ0⊆Δi⊆Πi∩Σi⊆Σi∪Πi⊆Δ{i+1}⊆PH"
+    },
+    {
+        "name": "P⊆coNP",
+        "content": "P⊆coNP",
+        "impliedby": "P=Δ0⊆Δi⊆Πi∩Σi⊆Σi∪Πi⊆Δ{i+1}⊆PH"
+    },
+    {
+        "name": "NP⊆Δ2",
+        "content": "NP⊆Δ2",
+        "impliedby": "P=Δ0⊆Δi⊆Πi∩Σi⊆Σi∪Πi⊆Δ{i+1}⊆PH"
+    },
+    {
+        "name": "coNP⊆Δ2",
+        "content": "coNP⊆Δ2",
+        "impliedby": "P=Δ0⊆Δi⊆Πi∩Σi⊆Σi∪Πi⊆Δ{i+1}⊆PH"
+    },
+    {
+        "name": "Δ2⊆Σ2",
+        "content": "Δ2⊆Σ2",
+        "impliedby": "P=Δ0⊆Δi⊆Πi∩Σi⊆Σi∪Πi⊆Δ{i+1}⊆PH"
+    },
+    {
+        "name": "Δ2⊆Π2",
+        "content": "Δ2⊆Π2",
+        "impliedby": "P=Δ0⊆Δi⊆Πi∩Σi⊆Σi∪Πi⊆Δ{i+1}⊆PH"
+    },
+    {
+        "name": "P⊆PH",
+        "content": "P⊆PH",
+        "impliedby": "P=Δ0⊆Δi⊆Πi∩Σi⊆Σi∪Πi⊆Δ{i+1}⊆PH"
+    },
+    {
+        "name": "NP⊆PH",
+        "content": "NP⊆PH",
+        "impliedby": "P=Δ0⊆Δi⊆Πi∩Σi⊆Σi∪Πi⊆Δ{i+1}⊆PH"
+    },
+    {
+        "name": "coNP⊆PH",
+        "content": "coNP⊆PH",
+        "impliedby": "P=Δ0⊆Δi⊆Πi∩Σi⊆Σi∪Πi⊆Δ{i+1}⊆PH"
+    },
+    {
+        "name": "Δ2⊆PH",
+        "content": "Δ2⊆PH",
+        "impliedby": "P=Δ0⊆Δi⊆Πi∩Σi⊆Σi∪Πi⊆Δ{i+1}⊆PH"
+    },
+    {
+        "name": "Π2⊆PH",
+        "content": "Π2⊆PH",
+        "impliedby": "P=Δ0⊆Δi⊆Πi∩Σi⊆Σi∪Πi⊆Δ{i+1}⊆PH"
+    },
+    {
+        "name": "Σ2⊆PH",
+        "content": "Σ2⊆PH",
+        "impliedby": "P=Δ0⊆Δi⊆Πi∩Σi⊆Σi∪Πi⊆Δ{i+1}⊆PH"
+    },
+    {
+        "name": "NC^i⊆SAC^i⊆AC^i⊆ACC^i&&AC^i⊆TC^i",
+        "content": "{i}NC^i⊆AC^i&&{i}AC^i⊆TC^i",
+        "desc": "SAC is just NC together with unbounded fan-in OR, AC is just SAC with unbounded fan-in AND, ACC is just AC with mod gates, and TC is just AC together with threshold gates. TC includes ACC but this is less obvious, see {ref:ACC^i⊆TC^i}.",
+        "impliedby": "ObviousConstruction"
+    },
+    {
+        "name": "NC^0⊆SAC^0⊆AC^0⊆TC^0",
+        "content": "NC^0⊆SAC^0&&SAC^0⊆AC^0&&AC^0⊆TC^0",
+        "impliedby": "NC^i⊆SAC^i⊆AC^i⊆ACC^i&&AC^i⊆TC^i"
+    },
+    {
+        "name": "NC^1⊆SAC^1⊆AC^1⊆TC^1",
+        "content": "NC^1⊆SAC^1&&SAC^1⊆AC^1&&AC^1⊆TC^1",
+        "impliedby": "NC^i⊆SAC^i⊆AC^i⊆ACC^i&&AC^i⊆TC^i"
+    },
+    {
+        "name": "NC⊆AC⊆TC",
+        "content": "NC⊆AC&&AC⊆TC",
+        "impliedby": "NC^i⊆SAC^i⊆AC^i⊆ACC^i&&AC^i⊆TC^i"
+    },
+    {
+        "name": "AC^0⊆ACC^0",
+        "content": "AC^0⊆ACC^0",
+        "impliedby": "NC^i⊆SAC^i⊆AC^i⊆ACC^i&&AC^i⊆TC^i"
+    },
+    {
+        "name": "NC^i⊆RNC^i⊆QNC^i",
+        "content": "{i}NC^i⊆AC^i&&{i}AC^i⊆TC^i",
+        "desc": "RNC is just NC together with randomness, and QNC is just RNC together coherent quantum states.",
+        "impliedby": "ObviousConstruction"
+    },
+    {
+        "name": "NC^0⊆RNC^0⊆QNC^0",
+        "content": "NC^0⊆RNC^0&&RNC^0⊆QNC^0",
+        "impliedby": "NC^i⊆RNC^i⊆QNC^i"
+    },
+    {
+        "name": "NC^1⊆RNC^1⊆QNC^1",
+        "content": "NC^1⊆RNC^1&&RNC^1⊆QNC^1",
+        "impliedby": "NC^i⊆RNC^i⊆QNC^i"
+    },
+    {
+        "name": "NC⊆RNC⊆QNC",
+        "content": "NC⊆RNC&&RNC⊆QNC",
+        "impliedby": "NC^i⊆RNC^i⊆QNC^i"
+    },
+    {
+        "name": "X⊆nuX",
+        "content": "{lang:X}X⊆nuX",
+        "desc": "The uniform version of a class is always contained in the nonuniform version of it. For instance, that {lang:ACC^0} is contained in {lang:nuACC^0}",
+        "impliedby": "ObviousConstruction"
+    },
+    {
+        "name": "ACC^0⊆nuACC^0",
+        "content": "ACC^0⊆nuACC^0",
+        "impliedby": "X⊆nuX"
+    },
+    {
+        "name": "nuX⊈RE∪coRE",
+        "content": "{lang:X}nuX⊈RE&&nuX⊈coRE",
+        "desc": "Nonuniform classes are computable: they are not in RE or coRE.",
+        "impliedby": "ObviousConstruction"
+    },
+    {
+        "name": "nuACC^0⊈RE∪coRE",
+        "content": "nuACC^0⊈RE&&nuACC^0⊈coRE",
+        "impliedby": "nuX⊈RE∪coRE"
+    },
+    {
+        "name": "PARITY⊂ACC^0",
+        "content": "PARITY⊂ACC^0",
+        "desc": "PARITY is decided by a single mod-2 gate in ACC^0, so it's contained. This is strict because ACC^0 contains the language 'is the first bit zero' and PARITY does not.",
+        "impliedby": "ObviousConstruction"
+    },
+    {
+        "name": "AC^0⊈PARITY",
+        "content": "AC^0⊈PARITY",
+        "desc": "PARITY is a single-language class and so cannot possibly contain all of AC^0. This is given as a theorem here just as a complement to {thm:PARITY⊈AC^0}",
+        "impliedby": "ObviousConstruction"
+    },
+    {
+        "name": "PARITY⊂REG",
+        "content": "PARITY⊂REG",
+        "desc": "PARITY is decided by the regex (11)*. It can't recognize any other regex, so there is a strict inclusion.",
+        "impliedby": "ObviousConstruction"
+    },
+    {
+        "name": "SF⊆REG",
+        "content": "SF⊆REG",
+        "impliedby": "ObviousConstruction"
+    },
+    {
+        "name": "REG⊆CFL",
+        "content": "REG⊆CFL",
+        "impliedby": "ObviousConstruction"
+    },
+    {
+        "name": "CFL⊆LOGCFL",
+        "content": "CFL⊆LOGCFL",
+        "impliedby": "ObviousConstruction"
+    },
+    {
+        "name": "CFL⊆CSL",
+        "content": "CFL⊆CSL",
+        "impliedby": "ObviousConstruction"
+    },
+    {
+        "name": "L⊆ZPL",
+        "content": "L⊆ZPL",
+        "impliedby": "ObviousConstruction"
+    },
+    {
+        "name": "ZPL=RL∩coRL",
+        "content": "ZPL⊆RL&&ZPL⊆coRL",
+        "impliedby": "ObviousConstruction",
+        "notes": "the 'content' only has one way implication right now. TODO describing cocap more cleanly"
+    },
+    {
+        "name": "RL⊆NL",
+        "content": "RL⊆NL",
+        "impliedby": "ObviousConstruction"
+    },
+    {
+        "name": "coRL⊆coNL",
+        "content": "coRL⊆coNL",
+        "impliedby": "ObviousConstruction"
+    },
+    {
+        "name": "RL⊆BPL",
+        "content": "RL⊆BPL",
+        "impliedby": "ObviousConstruction"
+    },
+    {
+        "name": "coRL⊆BPL",
+        "content": "coRL⊆BPL",
+        "impliedby": "ObviousConstruction"
+    },
+    {
+        "name": "P⊆ZPP",
+        "content": "P⊆ZPP",
+        "impliedby": "ObviousConstruction"
+    },
+    {
+        "name": "ZPP=RP∩coRP",
+        "content": "ZPP⊆RP&&ZPP⊆coRP",
+        "impliedby": "ObviousConstruction",
+        "notes": "the 'content' only has one way implication right now. TODO describing cocap more cleanly"
+    },
+    {
+        "name": "RP⊆BPP",
+        "content": "RP⊆BPP",
+        "impliedby": "ObviousConstruction"
+    },
+    {
+        "name": "coRP⊆BPP",
+        "content": "coRP⊆BPP",
+        "impliedby": "ObviousConstruction"
+    },
+    {
+        "name": "RP⊆NP",
+        "content": "RP⊆NP",
+        "impliedby": "ObviousConstruction"
+    },
+    {
+        "name": "coRP⊆coNP",
+        "content": "coRP⊆coNP",
+        "impliedby": "ObviousConstruction"
+    },
+    {
+        "name": "RNC⊆RP",
+        "content": "RNC⊆RP",
+        "impliedby": "ObviousConstruction"
+    },
+    {
+        "name": "QNC⊆BQP",
+        "content": "QNC⊆BQP",
+        "impliedby": "ObviousConstruction"
+    },
+    {
+        "name": "NP⊆NQP",
+        "content": "NP⊆NQP",
+        "ref": "NQP can simulate any NP machine by only using classical circuits, and Hadamard gates to prepare random coins.",
+        "impliedby": "ObviousConstruction"
+    },
+    {
+        "name": "coNP⊆coNQP",
+        "content": "coNP⊆coNQP",
+        "ref": "coNQP can simulate any coNP machine by only using classical circuits, and Hadamard gates to prepare random coins.",
+        "impliedby": "ObviousConstruction"
+    },
+    {
+        "name": "FH⊆BQP",
+        "content": "FH⊆BQP",
+        "ref": "FH is a restricted set of quantum circuits, those with O(1) many Hadamard layers. BQP is all quantum circuits.",
+        "impliedby": "ObviousConstruction"
+    },
+    {
+        "name": "ZPP⊆ZBQP",
+        "content": "ZPP⊆ZBQP",
+        "ref": "Any ZPP algorithm can be run on a quantum computer, saving the random bits, and those bits are the NP-verifiable witness.",
+        "impliedby": "ObviousConstruction"
+    },
+    {
+        "name": "RP⊆RBQP",
+        "content": "RP⊆RBQP",
+        "ref": "Any RP algorithm can be run on a quantum computer, saving the random bits, and those bits are the NP-verifiable witness.",
+        "impliedby": "ObviousConstruction"
+    },
+    {
+        "name": "coRP⊆coRBQP",
+        "content": "coRP⊆coRBQP",
+        "ref": "Any coRP algorithm can be run on a quantum computer, saving the random bits, and those bits are the coNP-verifiable witness.",
+        "impliedby": "ObviousConstruction"
+    },
+    {
+        "name": "ZBQP=RBQP∩coRBQP",
+        "content": "ZBQP⊆RBQP&&ZBQP⊆coRBQP",
+        "ref": "Definition of ZBQP.",
+        "impliedby": "ObviousConstruction"
+    },
+    {
+        "name": "RBQP⊆NP",
+        "content": "RBQP⊆NP",
+        "ref": "RBQP problems are NP problems with a (quantum) efficiently calculable witness.",
+        "impliedby": "ObviousConstruction"
+    },
+    {
+        "name": "coRBQP⊆coNP",
+        "content": "coRBQP⊆coNP",
+        "ref": "coRBQP problems are coNP problems with a (quantum) efficiently calculable witness.",
+        "impliedby": "ObviousConstruction"
+    },
+    {
+        "name": "RBQP⊆RQP",
+        "content": "RBQP⊆RQP",
+        "impliedby": "ObviousConstruction"
+    },
+    {
+        "name": "coRBQP⊆coRQP",
+        "content": "coRBQP⊆coRQP",
+        "impliedby": "ObviousConstruction"
+    },
+    {
+        "name": "EQP⊆ZQP",
+        "content": "EQP⊆ZQP",
+        "ref": "Quantum version of {thm:P⊆ZPP}.",
+        "impliedby": "ObviousConstruction"
+    },
+    {
+        "name": "ZPP⊆ZQP",
+        "content": "ZPP⊆ZQP",
+        "ref": "ZPP is just the restriction of ZQP to non-quantum circuits.",
+        "impliedby": "ObviousConstruction"
+    },
+    {
+        "name": "ZQP=RQP∩coRQP",
+        "content": "ZQP⊆RQP&&ZQP⊆coRQP",
+        "ref": "Definition of ZQP.",
+        "impliedby": "ObviousConstruction"
+    },
+    {
+        "name": "RQP⊆BQP",
+        "content": "RQP⊆BQP",
+        "impliedby": "ObviousConstruction"
+    },
+    {
+        "name": "coRQP⊆BQP",
+        "content": "coRQP⊆BQP",
+        "impliedby": "ObviousConstruction"
+    },
+    {
+        "name": "P⊆GAK",
+        "content": "P⊆GAK",
+        "impliedby": "ObviousConstruction"
+    },
+    {
+        "name": "P⊆GIK",
+        "content": "P⊆GIK",
+        "impliedby": "ObviousConstruction"
+    },
+    {
+        "name": "GAK⊆GA",
+        "content": "GAK⊆GA",
+        "impliedby": "ObviousConstruction"
+    },
+    {
+        "name": "GIK⊆GI",
+        "content": "GIK⊆GI",
+        "impliedby": "ObviousConstruction"
+    },
+    {
+        "name": "GIK⊆NP",
+        "content": "GIK⊆NP",
+        "impliedby": "ObviousConstruction"
+    },
+    {
+        "name": "GI⊆Δ2",
+        "content": "GI⊆Δ2",
+        "ref": "GI is P with a GraphIsomorphism oracle, while Δ2 is P with an NP oracle, which is at least as strong since GraphIsomorphism is in NP.",
+        "impliedby": "ObviousConstruction"
+    },
+    {
+        "name": "SZK⊆AM",
+        "content": "SZK⊆AM",
+        "ref": "AM is just SZK where you relax the condition on not leaking knowledge",
+        "impliedby": "ObviousConstruction"
+    },
+    {
+        "name": "SBP⊆A_0PP",
+        "content": "SBP⊆A_0PP",
+        "ref": "SBP is defined in terms of #P, and A_0PP is defined in terms of GapP. Since GapP obviously includes all of #P, A_0PP obviously includes all of SBP. Alternately, see {thm:SBP⊆SBQP} as another obvious reason, and we know {thm:SBQP=A_0PP} -- TODO.",
+        "impliedby": "ObviousConstruction"
+    },
+    {
+        "name": "NP⊆MA",
+        "content": "NP⊆MA",
+        "impliedby": "ObviousConstruction"
+    },
+    {
+        "name": "coNP⊆coMA",
+        "content": "coNP⊆coMA",
+        "impliedby": "ObviousConstruction"
+    },
+    {
+        "name": "MA⊆AM",
+        "content": "MA⊆AM",
+        "impliedby": "ObviousConstruction"
+    },
+    {
+        "name": "coMA⊆coAM",
+        "content": "coMA⊆coAM",
+        "impliedby": "ObviousConstruction"
+    },
+    {
+        "name": "coMA⊆coAM",
+        "content": "coMA⊆coAM",
+        "impliedby": "ObviousConstruction"
+    },
+    {
+        "name": "P⊆C_{eq}P",
+        "content": "P⊆C_{eq}P",
+        "ref": "Simple enough to be usually stated without proof, but here's the proof. Take any deterministic machine M for the language in {lang:P}. Add an initial state that nondeterministically transitions to (option A) the initial state of the original machine, or (option B) a new state that immediately rejects. This machine has one accepting path and one rejecting path if M accepts, and two rejecting paths if M rejects, so this is a valid C_{eq}P machine.",
+        "impliedby": "ObviousConstruction"
+    },
+    {
+        "name": "L⊆C_{eq}L",
+        "content": "L⊆C_{eq}L",
+        "ref": "Follows by the same construction as in {thm:P⊆C_{eq}P}.",
+        "impliedby": "ObviousConstruction"
+    },
+    {
+        "name": "C_{eq}L⊆C_{eq}P",
+        "content": "C_{eq}L⊆C_{eq}P",
+        "ref": "Every C_{eq}L machine is also a C_{eq}P machine.",
+        "impliedby": "ObviousConstruction"
+    },
+    {
+        "name": "PH⊆AP",
+        "content": "PH⊆AP",
+        "ref": "PH is polynomial time with some bounded integer k alternations, while AP is unbounded alternations.",
+        "impliedby": "ObviousConstruction"
+    },
+    {
+        "name": "P⊆EQP",
+        "content": "P⊆EQP",
+        "impliedby": "ObviousConstruction"
+    },
+    {
+        "name": "EQP⊆BQP",
+        "content": "EQP⊆BQP",
+        "impliedby": "ObviousConstruction"
+    },
+    {
+        "name": "BPP⊆BQP",
+        "content": "BPP⊆BQP",
+        "impliedby": "ObviousConstruction"
+    },
+    {
+        "name": "DQC1⊆BQP",
+        "content": "DQC1⊆BQP",
+        "impliedby": "ObviousConstruction"
+    },
+    {
+        "name": "BQP⊆DQP",
+        "content": "BQP⊆DQP",
+        "impliedby": "ObviousConstruction"
+    },
+    {
+        "name": "BPP⊆NISQ",
+        "content": "BPP⊆NISQ",
+        "impliedby": "ObviousConstruction"
+    },
+    {
+        "name": "NISQ⊆BQP",
+        "content": "NISQ⊆BQP",
+        "impliedby": "ObviousConstruction"
+    },
+    {
+        "name": "BQP⊆QCMA",
+        "content": "BQP⊆QCMA",
+        "impliedby": "ObviousConstruction"
+    },
+    {
+        "name": "MA⊆QCMA",
+        "content": "MA⊆QCMA",
+        "impliedby": "ObviousConstruction"
+    },
+    {
+        "name": "QCMA⊆QMA",
+        "content": "QCMA⊆QMA",
+        "impliedby": "ObviousConstruction"
+    },
+    {
+        "name": "PP⊆CH",
+        "content": "PP⊆CH",
+        "ref": "The CH hierarchy is built by taking P and repeatedly giving PP oracles, so PP is the first level.",
+        "impliedby": "ObviousConstruction"
+    },
+    {
+        "name": "CH⊆PSPACE",
+        "content": "CH⊆PSPACE",
+        "impliedby": "ObviousConstruction"
+    },
+    {
+        "name": "IP⊆QIP",
+        "content": "IP⊆QIP",
+        "impliedby": "ObviousConstruction"
+    },
+    {
+        "name": "P⊆E",
+        "content": "P⊆E",
+        "impliedby": "ObviousConstruction"
+    },
+    {
+        "name": "E⊆EXP",
+        "content": "E⊆EXP",
+        "impliedby": "ObviousConstruction"
+    },
+    {
+        "name": "PSPACE⊆EXP",
+        "content": "PSPACE⊆EXP",
+        "impliedby": "ObviousConstruction"
+    },
+    {
+        "name": "EXP⊆NEXP",
+        "content": "EXP⊆NEXP",
+        "impliedby": "ObviousConstruction"
+    },
+    {
+        "name": "EXP⊆ELEMENTARY",
+        "content": "EXP⊆ELEMENTARY",
+        "impliedby": "ObviousConstruction"
+    },
+    {
+        "name": "NEXP⊆ELEMENTARY",
+        "content": "NEXP⊆ELEMENTARY",
+        "impliedby": "ObviousConstruction"
+    },
+    {
+        "name": "ELEMENTARY⊆TOWER",
+        "content": "ELEMENTARY⊆TOWER",
+        "impliedby": "ObviousConstruction"
+    },
+    {
+        "name": "TOWER⊆PR",
+        "content": "TOWER⊆PR",
+        "impliedby": "ObviousConstruction"
+    },
+    {
+        "name": "PR⊆ACKERMANN",
+        "content": "PR⊆ACKERMANN",
+        "impliedby": "ObviousConstruction"
+    },
+    {
+        "name": "ACKERMANN⊆R",
+        "content": "ACKERMANN⊆R",
+        "impliedby": "ObviousConstruction"
+    },
+    {
+        "name": "R⊆RE",
+        "content": "R⊆RE",
+        "impliedby": "ObviousConstruction"
+    },
+    {
+        "name": "R⊆coRE",
+        "content": "R⊆coRE",
+        "impliedby": "ObviousConstruction"
+    },
+    {
+        "name": "coRE⊆ALL",
+        "content": "coRE⊆ALL",
+        "impliedby": "ObviousConstruction"
+    },
+    {
+        "name": "RE⊆ALL",
+        "content": "RE⊆ALL",
+        "impliedby": "ObviousConstruction"
+    },
+    {
+        "name": "nuACC^0⊆ALL",
+        "content": "nuACC^0⊆ALL",
+        "impliedby": "X⊆ALL",
+        "notes": "nuACC^0 is a nonuniform class, so it is contained in ALL. Any maximal nonuniform classes need to be manually marked to be in ALL, since they won't otherwise be in the uniform hierarchies."
+    },
+    {
+        "name": "ObviousConstruction",
+        "content": "",
+        "ref": "Placeholder theorem for 'obvious' statements, like DTIME(f)⊆NDTIME(f), as a source for other statements. Ideally uses of this would be minimized and replaced by more precise statements that could be verified.",
+        "priority": 0
+    },
+    {
+        "name": "Kernel⊆FPT",
+        "content": "Kernel⊆FPT",
+        "desc": "Kernelization is a common way to give an FPT algorithm",
+        "impliedby": "ObviousConstruction"
+    },
+    {
+        "name": "para-L⊆para-NL",
+        "content": "para-L⊆para-NL",
+        "impliedby": "ObviousConstruction"
+    },
+    {
+        "name": "para-NL⊆FPT",
+        "content": "para-NL⊆FPT",
+        "impliedby": "ObviousConstruction"
+    },
+    {
+        "name": "FPT⊆W[1]",
+        "content": "FPT⊆W[1]",
+        "ref": "The W hierarchy is defined under FPT reductions, so the class FPT is equivalent to the trivial language in the W hierarchy -- placing it at the lowest level",
+        "impliedby": "ObviousConstruction"
+    },
+    {
+        "name": "W[1]⊆W[2]",
+        "content": "W[1]⊆W[2]",
+        "impliedby": "ObviousConstruction"
+    },
+    {
+        "name": "W[2]⊆W[P]",
+        "content": "W[2]⊆W[P]",
+        "impliedby": "ObviousConstruction"
+    },
+    {
+        "name": "W[P]⊆para-NP",
+        "content": "W[P]⊆para-NP",
+        "ref": "The W hierarchy is in terms of circuits with poly(n) inputs satisfiable by setting f(k) inputs to 1. The set of bits to set is the witness of the para-NP checker.",
+        "impliedby": "ObviousConstruction"
+    },
+    {
+        "name": "W[P]⊆XP",
+        "content": "W[P]⊆XP",
+        "ref": "The W hierarchy is in terms of circuits with poly(n) inputs satisfiable by setting f(k) inputs to 1. Trying all n-choose-k inputs gives an O(n^k) algorithm to solve them, therefore all W[i] are in XP.",
+        "impliedby": "ObviousConstruction"
+    },
+    {
+        "name": "XL⊆XNL",
+        "content": "XL⊆XNL",
+        "impliedby": "ObviousConstruction"
+    },
+    {
+        "name": "XNL⊆XP",
+        "content": "XNL⊆XP",
+        "impliedby": "ObviousConstruction"
+    },
+    {
+        "name": "XP⊆XNP",
+        "content": "XP⊆XNP",
+        "impliedby": "ObviousConstruction"
+    },
+    {
+        "name": "para-L⊆XL",
+        "content": "para-L⊆XL",
+        "impliedby": "ObviousConstruction"
+    },
+    {
+        "name": "para-NL⊆XNL",
+        "content": "para-NL⊆XNL",
+        "impliedby": "ObviousConstruction"
+    },
+    {
+        "name": "FPT⊆XP",
+        "content": "FPT⊆XP",
+        "impliedby": "ObviousConstruction"
+    },
+    {
+        "name": "para-NP⊆XNP",
+        "content": "para-NP⊆XNP",
+        "impliedby": "ObviousConstruction"
+    }
+]

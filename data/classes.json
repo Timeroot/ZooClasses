@@ -1,0 +1,1485 @@
+[
+    {
+        "name": "A_0PP",
+        "type": "Language",
+        "desc": "TODO. Defined in {ref:Vya03}.",
+        "related": [
+            "PP",
+            "AWPP",
+            "SBP"
+        ]
+    },
+    {
+        "name": "AC",
+        "type": "Language",
+        "desc": "Unbounded Fanin Polylogarithmic-Depth Circuits. The class of decision problems solvable by a nonuniform family of Boolean circuits, with polynomial size, depth O(log^k(n)), and unbounded fanin, for some k. The gates allowed are AND, OR, and NOT. For a given k, we get AC^k, such as AC^1. The class AC^0 is when k=0 i.e. constant depth. Equal to NC and TC.",
+        "related": [
+            "AC^0",
+            "AC^1",
+            "NC",
+            "TC"
+        ],
+        "properties": [
+            "circuit"
+        ]
+    },
+    {
+        "name": "AC^0",
+        "type": "Language",
+        "desc": "Unbounded Fanin Constant-Depth Circuits. An especially important subclass of AC, corresponding to constant-depth, unbounded-fanin, polynomial-size circuits with AND, OR, and NOT gates.",
+        "related": [
+            "AC^1",
+            "AC^0",
+            "NC^0",
+            "NC"
+        ],
+        "properties": [
+            "circuit"
+        ]
+    },
+    {
+        "name": "AC^1",
+        "type": "Language",
+        "desc": "Unboudned Fanin Log-depth Circuits.",
+        "related": [
+            "AC^0",
+            "AC",
+            "TC^1",
+            "NC^1"
+        ],
+        "properties": [
+            "circuit"
+        ]
+    },
+    {
+        "name": "ACC^0",
+        "type": "Language",
+        "desc": "AC0 With Arbitrary MOD Gates. Polynomial size, constant depth.",
+        "related": [
+            "AC^0",
+            "TC^0"
+        ],
+        "properties": [
+            "circuit"
+        ]
+    },
+    {
+        "name": "ACKERMANN",
+        "type": "Language",
+        "desc": "Ackermann function time. Problems solvable by a Turing machine in time A(O(n),O(n)), where A is the Ackermann function. Reachability in vector addition systems is complete for this class, placing it strictly above PR.",
+        "related": [
+            "PR"
+        ]
+    },
+    {
+        "name": "ALL",
+        "type": "Language",
+        "desc": "All languages. Everything is contained in this class. Not considered feasible.",
+        "related": [
+            "R",
+            "RE"
+        ]
+    },
+    {
+        "name": "AM",
+        "type": "Language",
+        "desc": "Arthur-Merlin games. In general, AM[k] is k-round interactive protocols between am omniscient Merlin and a polytime Arthur. Arthur has randomness, but Merlin can see all of Arthur's randomness, and they exchange polynomial size messages, and Arthur becomes convinced with 2/3 soundness and completeness. It turns out that AM[k]=AM[2] for any constant k, TODO reference, and then the class AM is defined as AM[2]. This doesn't translate to polynomial k, as the message sizes grows by at least a constant factor with each removed round, leading to exponential slowdown if you tried to run AM[poly] as a AM[2] protocol. As other cases, there are AM[0]=BPP, AM[1]=MA, and AM[poly(n)]=IP. There is also the odd one AM[polylog(n)].\n Compare with IP[k], which has private coins: Merlin can't see Arthur's random choices.",
+        "related": [
+            "NP",
+            "MA",
+            "IP"
+        ],
+        "notes": "todo def"
+    },
+    {
+        "name": "AP",
+        "type": "Language",
+        "desc": "Alternating polynomial time. Polynomial time with unlimited switches between an \"NP\"-like \"OR\" mode, and a coNP \"AND\" mode.",
+        "related": [
+            "PSPACE",
+            "PH"
+        ],
+        "notes": "todo def"
+    },
+    {
+        "name": "AWPP",
+        "type": "Language",
+        "desc": "TODO",
+        "related": [
+            "A_0PP",
+            "SBP"
+        ]
+    },
+    {
+        "name": "BPL",
+        "type": "Language",
+        "desc": "Bounded error Probabilistic Logspace. Problems with a probabilistic logarithmic space Turing machine with at least a 2/3 chance of a correct answer and a termination probability of 1",
+        "related": [
+            "PromiseBPP",
+            "ZPL",
+            "RL",
+            "L",
+            "NL"
+        ]
+    },
+    {
+        "name": "BPP",
+        "type": "Language",
+        "desc": "Bounded error Probabilistic Polynomial time. Problems with a probabilistic polynomial-time Turing machine with at least a 2/3 chance of a correct answer.",
+        "related": [
+            "PromiseBPP",
+            "ZPP",
+            "RP"
+        ]
+    },
+    {
+        "name": "BQP",
+        "type": "Language",
+        "desc": "TODO",
+        "related": [
+            "BPP",
+            "EQP",
+            "QMA",
+            "IQP",
+            "NISQ"
+        ],
+        "properties": [
+            "quantum"
+        ]
+    },
+    {
+        "name": "C_{eq}L",
+        "type": "Language",
+        "desc": "Exact-Counting Logspace. Usually written C_=L, but we don't use that because of the difficulties having an = in the name causes. The class of decision problems solvable by an NL machine such that the number of accepting paths exactly equals the number of rejecting paths, if and only if the answer is 'yes.'. Logspace analog of {lang:C_{eq}P}.\nTODO: C_{eq}L^{C_{eq}L} = L^{C_{eq}L}, by {ref:ABO99}.",
+        "related": [
+            "L",
+            "NL",
+            "C_{eq}P"
+        ]
+    },
+    {
+        "name": "C_{eq}P",
+        "type": "Language",
+        "desc": "Exact-Counting Polynomial-Time. Usually written C_{eq}P, but we don't use that because of the difficulties having an = in the name causes. The class of decision problems solvable by an NP machine such that the number of accepting paths exactly equals the number of rejecting paths, if and only if the answer is 'yes.'.\n{thm:C_{eq}P=coNQP}, by {ref:FGH+98}. ",
+        "related": [
+            "coNQP",
+            "NQP",
+            "C_{eq}L"
+        ]
+    },
+    {
+        "name": "CFL",
+        "type": "Language",
+        "desc": "Context-Free languages",
+        "related": [
+            "REG",
+            "CSL"
+        ]
+    },
+    {
+        "name": "CH",
+        "type": "Language",
+        "desc": "Counting Hierarchy. Union of PP, PP^PP, PP^(PP^PP), and so on. With the counting operator C[M] = PP^M, we can say that CH = C^O(1)[P], analogous to how PH = Σ^O(1)[P] = Π^O(1)[P]",
+        "related": [
+            "PP"
+        ]
+    },
+    {
+        "name": "CSL",
+        "type": "Language",
+        "desc": "Context-Sensitive languages. Precisely the languages that can be described by a https://en.wikipedia.org/wiki/Context-sensitive_grammar. Equal to {lang:NLINSPACE}, see {thm:CSL=NLINSPACE}.",
+        "related": [
+            "REG",
+            "CFL"
+        ]
+    },
+    {
+        "name": "coAM",
+        "type": "Language",
+        "desc": "Complement of Arthur-Merlin games, {lang:AM}.",
+        "related": [
+            "AM",
+            "coMA"
+        ],
+        "notes": "todo def",
+        "properties": [
+            "complement"
+        ]
+    },
+    {
+        "name": "coNL",
+        "type": "Language",
+        "desc": "Complement of Nondeterministic Logarithmic space, {lang:NL}. Problems decided in logarithmic space by a deterministic Turing machine. Actually equal to {lang:NL}, a consequence of {thm:Immerman–Szelepcsényi theorem}.",
+        "formal": "coNSPACE(log(n))",
+        "properties": [
+            "complement"
+        ]
+    },
+    {
+        "name": "coMA",
+        "type": "Language",
+        "desc": "Complement of Merlin-Arthur games, {lang:MA}.",
+        "related": [
+            "MA",
+            "coAM"
+        ],
+        "notes": "todo def. todo coMA=coMA1",
+        "properties": [
+            "complement"
+        ]
+    },
+    {
+        "name": "coNP",
+        "type": "Language",
+        "desc": "Complement of Nondeterministic Polynomial time, {lang:coNP}. Problems whose complement decided in polynomial time by a nondeterministic Turing machine; or equivalently, problems that can be disproved by a polynomial-time checkable witness.",
+        "formal": "coNTIME(n^O(1))",
+        "notes": "todo: verifier definition",
+        "properties": [
+            "complement"
+        ]
+    },
+    {
+        "name": "coNQP",
+        "type": "Language",
+        "desc": "Complement of Nondeterministic Quantum Polynomial time. Complement of {lang:NQP}.",
+        "related": [
+            "NQP"
+        ],
+        "properties": [
+            "complement"
+        ]
+    },
+    {
+        "name": "coRE",
+        "type": "Language",
+        "desc": "Complement of Recursively enumerable languages, {lang:RE}. Languages whose rejection can be recognized by a Turing machine.",
+        "related": [
+            "RE"
+        ],
+        "notes": "todo: definition as a Turing machine",
+        "properties": [
+            "complement"
+        ]
+    },
+    {
+        "name": "coRBQP",
+        "type": "Language",
+        "desc": "Complement of {lang:RBQP}.",
+        "related": [
+            "RBQP"
+        ],
+        "properties": [
+            "complement"
+        ]
+    },
+    {
+        "name": "coRL",
+        "type": "Language",
+        "desc": "Complement of Randomized Logspace, {lang:RL}.",
+        "related": [
+            "RL"
+        ],
+        "notes": "todo: complement of RL",
+        "properties": [
+            "complement"
+        ]
+    },
+    {
+        "name": "coRP",
+        "type": "Language",
+        "desc": "Complement of Randomized Polynomial time, {lang:RP}. Problems with a probabilistic polynomial-time Turing machine with zero error on YES instances",
+        "related": [
+            "RP"
+        ],
+        "notes": "todo: complement of RP",
+        "properties": [
+            "complement"
+        ]
+    },
+    {
+        "name": "coRQP",
+        "type": "Language",
+        "desc": "Complement of {lang:RQP}.",
+        "related": [
+            "RQP"
+        ],
+        "properties": [
+            "complement"
+        ]
+    },
+    {
+        "name": "CZK",
+        "type": "Language",
+        "desc": "Computational Zero Knowledge. The class of problems possessing computational zero-knowledge proof systems.",
+        "related": [
+            "SZK"
+        ],
+        "notes": ""
+    },
+    {
+        "name": "DET",
+        "type": "Language",
+        "desc": "Problems F{lang:L}-reducible to computing the determinant of an n-by-n matrix of n-bit integers. ComplexityZoo says the corresponding function class is GapL (TODO ref). Sometimes denoted by L^{DET}.",
+        "related": [
+            "NL",
+            "NC^2"
+        ]
+    },
+    {
+        "name": "DQC1",
+        "type": "Language",
+        "desc": "Deterministic Quantum Computing with 1 Clean Bit. The class of problems solvable by a BQP machine in which a single qubit is initialized to the '0' state, and the remaining qubits are initialized to the maximally mixed state. Defined in {ref:KL98}. This has been called BQ1P, sometimes, to distinguish it from the _sampling_ problem of DQC1 circuits. Since \"DQC1\" seems to have stuck, we call the sampling problem DQC1S.",
+        "related": [
+            "BQP",
+            "DQC1S"
+        ]
+    },
+    {
+        "name": "DQP",
+        "type": "Language",
+        "desc": "Dynamical Quantum Polynomial-Time.The class of decision problems solvable by a BQP machine with oracle access to a dynamical simulator. When given a polynomial-size quantum circuit, the simulator returns a sample from the distribution over \"classical histories\" induced by the circuit. The simulator can adversarially choose any history distribution that satisfies the axioms of \"symmetry\" and \"locality\" -- so that the DQP algorithm has to work for any distribution satisfying these axioms. Defined in {ref:Aar05}.",
+        "related": [
+            "BQP"
+        ]
+    },
+    {
+        "name": "DSP",
+        "desc": "Distinguishing Statistical Problems. (Placeholder: see Complexity Zoo for precise definition.)",
+        "related": [],
+        "notes": "todo def"
+    },
+    {
+        "name": "E",
+        "type": "Language",
+        "desc": "(Linear) Exponential time. Problems decided in exponential time with linear exponent, by a deterministic Turing machine.",
+        "formal": "DTIME(2^O(n))"
+    },
+    {
+        "name": "ELEMENTARY",
+        "type": "Language",
+        "desc": "Elementary languages. The union of EXP, EEXP, EEXP, etc.: solvable by a Turing machine with runtime 2^n, 2^(2^n), 2^(2^(2^n)) for some height. Equivalently, DTIME(^{O(1)}n), where ^{a}b indicates the tetration of b to the height a.",
+        "related": [
+            "EXP"
+        ]
+    },
+    {
+        "name": "EQP",
+        "type": "Language",
+        "desc": "TODO",
+        "related": [
+            "BQP",
+            "ZQP",
+            "RQP"
+        ]
+    },
+    {
+        "name": "EXP",
+        "type": "Language",
+        "desc": "Exponential time. Problems decided in singly exponential time by a deterministic Turing machine.",
+        "formal": "DTIME(2^(n^O(1)))"
+    },
+    {
+        "name": "FH",
+        "type": "Language",
+        "desc": "FH^k is the class of problems solvable by a uniform family of polynomial-size quantum circuits, with k levels of Hadamard gates and all other gates preserving the computational basis. (Conditional phase flip gates are fine, for example.) FH is the union of FH^k across all k, in other words, problems solvable by a uniform family with O(1) Hadamard layers. FH^0 is definitionally equal to {lang:P}, and {lang:FH^1}={lang:BPP} -- see {thm:FH^1=BPP}. The first \"quantum\" class is {lang:FH^2}, which includes factoring.\nIt is an open problem to show that the Fourier hierarchy is infinite relative to an oracle (that is, FHk is strictly contained in FHk+1).\nDefined in {ref:Shi03}.",
+        "related": [
+            "FH^1",
+            "FH^2",
+            "BQP"
+        ]
+    },
+    {
+        "name": "FH^1",
+        "type": "Language",
+        "desc": "See {lang:FH} for definition. It is equal to {lang:BPP} by {thm:FH^1=BPP}.",
+        "related": [
+            "FH",
+            "FH^2",
+            "BPP"
+        ]
+    },
+    {
+        "name": "FH^2",
+        "type": "Language",
+        "desc": "See {lang:FH} for definition. It contains factoring.",
+        "related": [
+            "FH^1",
+            "BQP"
+        ]
+    },
+    {
+        "name": "GA",
+        "type": "Language",
+        "desc": "Graph Automorphism. Languages that can be polynomial-time Turing reduced to Graph Automorphism. Compare with GI for isomorphism, and GAK for Karp reductions.",
+        "related": [
+            "GAK",
+            "GI"
+        ]
+    },
+    {
+        "name": "GAK",
+        "type": "Language",
+        "desc": "Graph Automorphism with Karp reductions. Languages that can be polynomial-time Karp reduced to Graph Automorphism.",
+        "related": [
+            "GA",
+            "GIK"
+        ]
+    },
+    {
+        "name": "GI",
+        "type": "Language",
+        "desc": "Graph Isomorphism. Languages that can be polynomial-time Turing reduced to Graph Isomorphism. This is, in some sense, a powerful reduction; compare with GIK for Karp reductions. Compare with GA which only allows automorphism checking.",
+        "related": [
+            "GIK",
+            "GA"
+        ]
+    },
+    {
+        "name": "GIK",
+        "type": "Language",
+        "desc": "Graph Isomorphism with Karp reductions. Languages that can be polynomial-time Karp reduced to Graph Automorphism.",
+        "related": [
+            "GI",
+            "GAK"
+        ]
+    },
+    {
+        "name": "IP",
+        "type": "Language",
+        "desc": "Interactive Proofs. In general, IP[r] means a proof where a player exchanges r rounds with a polynomial time verifier; the verifier has private random coins. The class IP is defined as IP[poly(n)], and it turns out that IP=PSPACE, see {ref:Sha90}. For IP[r] with a constant r, it turns to be equal to AM; see AM for more. {ref:BM88} also proved that IP[f(n)]=IP[c*f(n)].",
+        "related": [
+            "QIP",
+            "MIP",
+            "AM",
+            "PSPACE"
+        ]
+    },
+    {
+        "name": "L",
+        "type": "Language",
+        "desc": "Logarithmic space. Problems decided in logarithmic space by a deterministic Turing machine.",
+        "formal": "DSPACE(log(n))",
+        "related": [
+            "L^2",
+            "NL"
+        ],
+        "notes": "todo SL"
+    },
+    {
+        "name": "L^2",
+        "type": "Language",
+        "desc": "Logarithmic-squared space. Problems decided in O(log(n)^2) -- _not_ to be confused with O(log^2(n)) -- space by a deterministic Turing machine.",
+        "formal": "DSPACE(log(n)^2)",
+        "related": [
+            "L",
+            "NL"
+        ]
+    },
+    {
+        "name": "LINSPACE",
+        "type": "Language",
+        "desc": "Deterministic Linear space. Problems decided in linear space by a deterministic Turing machine.",
+        "related": [
+            "NLINSPACE",
+            "PSPACE"
+        ],
+        "formal": "DSPACE(n)"
+    },
+    {
+        "name": "LOGCFL",
+        "type": "Language",
+        "desc": "The class of decision problems reducible in L to the problem of deciding membership in a context-free language. In order words, the closure under L-reductions of {lang:CFL}. Equivalently, LOGCFL is the class of decision problems solvable by a _uniform_ family of AC1 circuits, in which no AND gate has fan-in exceeding 2, see {ref:Joh90}{ref:Ven91}. When the circuits aren't uniform, we get the LOGCFL/poly = SAC^1, see {lang:SAC^1}.",
+        "related": [
+            "CFL",
+            "SAC^1"
+        ],
+        "properties": [
+            "circuit"
+        ]
+    },
+    {
+        "name": "MA",
+        "type": "Language",
+        "desc": "Merlin-Arthur games",
+        "related": [
+            "NP",
+            "AM",
+            "QMA"
+        ],
+        "notes": "todo def. todo MA=MA1"
+    },
+    {
+        "name": "MIP",
+        "type": "Language",
+        "desc": "Multiple-player Interactive Proofs. In general, MIP[p,r] means a proof with p player who cannot communicate, and r rounds of interaction with a referee. (The final round is always a message to the referee, as a final message to a player cannot be useful.) As it turns out, MIP[p,r]=MIP[2,1] for any p>=2 and r>=1, so the distinction is largely unnecessary. MIP[1,r] is better known as AM[r], see AM for more. \n And of course MIP[p,0] is just P. :)\n\nMIP[p,r]=MIP[2,poly] is proved in {ref:BFL91}. I can't find a source for the statement that MIP[2,poly]=MIP[2,1].",
+        "related": [
+            "AM",
+            "IP",
+            "QIP",
+            "MIP*",
+            "MIPco",
+            "NEXP"
+        ]
+    },
+    {
+        "name": "MIP*",
+        "type": "Language",
+        "desc": "Multiple-player Interactive Proofs, with entanglement. Traditionally defined with polynomially many players and rounds, but it turns out that MIP*[poly,poly]=MIP*[2,1], so one can just think of as two players and one round. \n When the provers are allowed to have (unbounded) entanglement, this allows them to cheat at some games, so it is not obvious that MIP* is as big as {lang:MIP}; it is only clear that one can ignore all but one player and get the class IP as a lower bound. But, having entanglement also means we can ask more from the players -- much more, and it turns out that {thm:MIP*=RE}, and includes undecidable problems.",
+        "related": [
+            "MIP",
+            "MIPco",
+            "RE"
+        ]
+    },
+    {
+        "name": "MIPco",
+        "type": "Language",
+        "desc": "Multiple-player Interactive Proofs, with entanglement, in the _commuting_ operator framework. This was expected to be equal to {lang:MIP*}, but this isn't the case: {thm:MIP*=RE}, while MIPco is contained in {lang:coRE}. (It is expected that MIPco=coRE.) Nothing contained in coRE can equal RE!",
+        "related": [
+            "coRE",
+            "MIPco",
+            "MIP*"
+        ]
+    },
+    {
+        "name": "NC",
+        "type": "Language",
+        "desc": "Nick's Class",
+        "related": [
+            "AC",
+            "TC",
+            "NC^0"
+        ],
+        "properties": [
+            "circuit"
+        ]
+    },
+    {
+        "name": "NC^0",
+        "type": "Language",
+        "desc": "Constant-Depth Nick's Class: uniform constant depth circuits with bounded-fanin gates. By definition, a decision problem in NC0 can depend on only a constant number of bits of the input. For that reason, \"NC^0\" is often used to refer to _functions_ computable by constant-depth, bounded-fanin circuits, instead of _decision_ problem. This comes up in NC^0 reduction. We opt to call that class of functions {lang:FNC^0} instead.",
+        "related": [
+            "AC^0",
+            "TC^0",
+            "NC^1",
+            "NC",
+            "FNC^0"
+        ],
+        "properties": [
+            "circuit"
+        ]
+    },
+    {
+        "name": "NC^1",
+        "type": "Language",
+        "desc": "Log-Depth Nick's Class",
+        "related": [
+            "AC^1",
+            "TC^1",
+            "NC^0",
+            "NC"
+        ],
+        "properties": [
+            "circuit"
+        ]
+    },
+    {
+        "name": "NC^2",
+        "type": "Language",
+        "desc": "Log^2-Depth Nick's Class",
+        "related": [
+            "AC^1",
+            "DET",
+            "NC"
+        ],
+        "properties": [
+            "circuit"
+        ]
+    },
+    {
+        "name": "NEXP",
+        "type": "Language",
+        "desc": "Nondeterministic Exponential Time; also called NEXPTIME. Equivalently, problems with an EXP-size witness that can be verified by a polytime verifier (whose runtime is polynomial in the size of the input *and* the witness).",
+        "related": [
+            "NP",
+            "EXP"
+        ]
+    },
+    {
+        "name": "NISQ",
+        "type": "Language",
+        "desc": "Problems solvable by a classical computer in poly(n) time with poly(n) queries to an λ-NQC oracle, which outputs samples from a λ-noisy quantum circuit: after each gate single gate, a λ-noise depolarizing channel is applied simultaneously to every qubit.",
+        "related": [
+            "BQP",
+            "IQP"
+        ],
+        "ref": "https://arxiv.org/pdf/2210.07234.pdf"
+    },
+    {
+        "name": "NISZK",
+        "desc": "Non-Interactive Statistical Zero Knowledge. A promise problem is in NISZK if there exists a polynomial-time probabilistic verifier V and a polynomial-time probabilistic simulator S such that: (1) For YES instances, there exists a polynomial-size message (the 'proof') that, when given to V, causes V to accept with high probability; (2) For NO instances, for any purported proof, V accepts with low probability; (3) For YES instances, the output distribution of V on the real proof is statistically indistinguishable from the output of S on the input alone (i.e., the verifier learns nothing beyond the validity of the statement). The protocol is non-interactive: the verifier receives a single message from the prover and then decides to accept or reject.",
+        "related": [
+            "SZK"
+        ],
+        "notes": ""
+    },
+    {
+        "name": "NL",
+        "type": "Language",
+        "desc": "Nondeterministic Logarithmic space. Problems decided in logarithmic space by a nondeterministic Turing machine.",
+        "formal": "NSPACE(log(n))"
+    },
+    {
+        "name": "NLINSPACE",
+        "type": "Language",
+        "desc": "Nondeterministic Linear space. Problems decided in linear space by a nondeterministic Turing machine. Equal to {lang:CSL}, the context-sensitive languages.",
+        "related": [
+            "LINSPACE",
+            "NPSPACE",
+            "CSL"
+        ],
+        "formal": "NSPACE(n)"
+    },
+    {
+        "name": "NP",
+        "type": "Language",
+        "desc": "Nondeterministic Polynomial time. Problems decided in polynomial time by a nondeterministic Turing machine.",
+        "formal": "NTIME(n^O(1))",
+        "notes": "todo: verifier definition"
+    },
+    {
+        "name": "NPSPACE",
+        "type": "Language",
+        "desc": "Nondeterministic polynomial space. Problems decided in polynomial space by a nondeterministic Turing machine. Actually equal to {lang:PSPACE}, as proved by {thm:Savitch's theorem}.",
+        "formal": "NSPACE(n^O(1))",
+        "related": [
+            "PSPACE",
+            "NLINSPACE"
+        ]
+    },
+    {
+        "name": "NQP",
+        "type": "Language",
+        "desc": "Nondeterministic Quantum Polynomial time. The class of decision problems solvable by a QTM in polynomial time such that a particular \"|Accept>\" state has nonzero amplitude at the end of the computation, if and only if the answer is \"yes.\"",
+        "related": [
+            "QMA",
+            "BQP"
+        ]
+    },
+    {
+        "name": "P",
+        "type": "Language",
+        "desc": "Polynomial time. Problems decided in polynomial time by a deterministic Turing machine.",
+        "formal": "DTIME(n^O(1))"
+    },
+    {
+        "name": "PARITY",
+        "type": "Language",
+        "desc": "The single language asking, 'Is the number of 1s in the input an even number'?"
+    },
+    {
+        "name": "PH",
+        "type": "Language",
+        "desc": "Polynomial hierarchy",
+        "related": [
+            "Δ2",
+            "PP"
+        ],
+        "notes": "todo"
+    },
+    {
+        "name": "PP",
+        "type": "Language",
+        "desc": "Probabilistic Polynomial time.",
+        "related": [
+            "BPP"
+        ],
+        "notes": "todo def"
+    },
+    {
+        "name": "PR",
+        "type": "Language",
+        "desc": "Primitive Recursive. Languages decidable in time bounded by a primitive recursive function of natural numbers.",
+        "notes": "todo define PR *functions*",
+        "related": [
+            "ELEMENTARY",
+            "ACKERMANN"
+        ]
+    },
+    {
+        "name": "PSPACE",
+        "type": "Language",
+        "desc": "Polynomial space. Problems decided in polynomial space by a deterministic Turing machine.",
+        "formal": "DSPACE(n^O(1))",
+        "related": [
+            "AP",
+            "PH"
+        ]
+    },
+    {
+        "name": "PZK",
+        "desc": "Perfect Zero Knowledge. A promise problem is in PZK if there exists an interactive proof system (a polynomial-time probabilistic verifier interacting with a polynomial-time prover) such that: (1) For YES instances, there exists a polynomial-time prover that causes the verifier to accept with high probability; (2) For NO instances, for any prover, the verifier accepts with low probability; (3) For YES instances, there exists a polynomial-time simulator that, given only the input, can generate a transcript whose distribution is identically (not just statistically) distributed as the verifier's view in the real protocol. That is, the verifier learns nothing beyond the validity of the statement, and the simulation is perfect (the distributions are exactly equal, not just close).",
+        "related": [
+            "SZK"
+        ],
+        "notes": "todo def"
+    },
+    {
+        "name": "QAC^0",
+        "type": "Language",
+        "desc": "Quantum AC^0. The class of decision problems solvable by constant-depth, polynomial-size quantum circuits with unbounded fan-in AND, OR, and NOT gates, and a uniformity condition. Quantum generalization of AC^0.",
+        "related": [
+            "QAC",
+            "QNC^0",
+            "AC^0"
+        ],
+        "properties": [
+            "quantum"
+        ]
+    },
+    {
+        "name": "QAC",
+        "type": "Language",
+        "desc": "Quantum AC. The class of decision problems solvable by polylogarithmic-depth, polynomial-size quantum circuits with unbounded fan-in AND, OR, and NOT gates, and a uniformity condition. Quantum generalization of AC.",
+        "related": [
+            "QAC^0",
+            "QNC",
+            "AC"
+        ],
+        "properties": [
+            "quantum"
+        ]
+    },
+    {
+        "name": "QCMA",
+        "type": "Language",
+        "desc": "Quantum-Classical Merlin-Arthur. Like {lang:QMA}, but Merlin's proof is a classical string; like NP, but the verifier has a quantum computer (a {lang:BQP} machine).",
+        "related": [
+            "QMA"
+        ],
+        "properties": [
+            "quantum"
+        ]
+    },
+    {
+        "name": "QIP",
+        "type": "Language",
+        "desc": "Quantum Interactive Proofs. Like {lang:IP}, but now messages can be quanutum. Only a single prover. For a different kind of 'quantum' interactive proof, there's the much harder {lang:MIP*} and {lang:MIPco}.",
+        "related": [
+            "IP",
+            "MIP*",
+            "MIPco"
+        ],
+        "properties": [
+            "quantum"
+        ]
+    },
+    {
+        "name": "QMA",
+        "type": "Language",
+        "desc": "Quantum Merlin-Arthur. Problems for which an omniscient 'Merlin' can submit a proof to 'Arthur' that a statement is true, and Arthur believes it with high probability (<1/3 chance of failing) -- but this proof can be a quantum state, and Arthur has a quantum computer.",
+        "related": [
+            "QCMA",
+            "BQP"
+        ],
+        "properties": [
+            "quantum"
+        ]
+    },
+    {
+        "name": "QNC",
+        "type": "Language",
+        "desc": "The class of decision problems solvable by polylogarithmic-depth quantum circuits with bounded probability of error. The zoo says, \"A uniformity condition may also be imposed.\"; for the purpose of this site we _do_ impose that condition. Some sources like https://dl.acm.org/doi/10.1145/3570637 refer to this as BQNC.",
+        "related": [
+            "RNC",
+            "NC",
+            "BQP"
+        ],
+        "properties": [
+            "quantum"
+        ]
+    },
+    {
+        "name": "QNC^0",
+        "type": "Language",
+        "desc": "Constant-depth quantum circuits",
+        "related": [
+            "QNC",
+            "QNC^0"
+        ],
+        "properties": [
+            "quantum"
+        ]
+    },
+    {
+        "name": "QNC^1",
+        "type": "Language",
+        "desc": "Log-depth quantum circuits",
+        "related": [
+            "QNC^0",
+            "QNC"
+        ],
+        "properties": [
+            "quantum"
+        ]
+    },
+    {
+        "name": "QSZK",
+        "desc": "Quantum Statistical Zero Knowledge. A promise problem is in QSZK if there exists a quantum interactive proof system (a polynomial-time quantum verifier interacting with a polynomial-time quantum prover) such that: (1) For YES instances, there exists a polynomial-time quantum prover that causes the verifier to accept with high probability; (2) For NO instances, for any prover, the verifier accepts with low probability; (3) For YES instances, there exists a polynomial-time quantum simulator that, given only the input, can generate a quantum state (or transcript) whose distribution is statistically indistinguishable from the verifier's view in the real protocol. That is, the verifier learns nothing beyond the validity of the statement, even against quantum adversaries.",
+        "related": [
+            "SZK"
+        ],
+        "notes": "todo def"
+    },
+    {
+        "name": "R",
+        "type": "Language",
+        "desc": "Recursive languages. {lang:RE}∩{lang:coRE}. Languages solvable by a Turing machine.",
+        "related": [
+            "RE"
+        ],
+        "notes": "todo: definition as a Turing machine, definition as intersection"
+    },
+    {
+        "name": "RBQP",
+        "type": "Language",
+        "desc": "Strict Quantum {lang:RP}\n(TODO: What does the B really stand for here?) The class of problems in {lang:NP} whose witnesses are in {lang:FBQP}. For example, the set of square-free numbers is in {lang:coRBQP} using only the fact that factoring is in {lang:FBQP}. (Even without a proof that the factors are prime, the factorization proves that there is a square divisor.).\nComplement is {lang:coRBQP}.",
+        "related": [
+            "coRBQP",
+            "ZQP",
+            "RQP"
+        ],
+        "notes": "todo: complement of coRBQP"
+    },
+    {
+        "name": "RE",
+        "type": "Language",
+        "desc": "Recursively enumerable languages. Languages whose acceptance can be recognized by a Turing machine.",
+        "related": [
+            "R"
+        ],
+        "notes": "todo: definition as a Turing machine"
+    },
+    {
+        "name": "REG",
+        "type": "Language",
+        "desc": "Regular languages",
+        "related": [
+            "CFL"
+        ]
+    },
+    {
+        "name": "RL",
+        "type": "Language",
+        "desc": "Randomized Logspace. Problems with a probabilistic logarithmic-space Turing machine with zero error on NO instances. Also, as a technicality, one requires a termination probability of 1 on all inputs.",
+        "related": [
+            "NL",
+            "L",
+            "RP"
+        ],
+        "notes": "todo: complement of coRL"
+    },
+    {
+        "name": "RP",
+        "type": "Language",
+        "desc": "Randomized Polynomial time. Problems with a probabilistic polynomial-time Turing machine with zero error on NO instances",
+        "related": [
+            "coRP",
+            "ZPP",
+            "BPP"
+        ],
+        "notes": "todo: complement of coRP"
+    },
+    {
+        "name": "RQP",
+        "type": "Language",
+        "desc": "One-sided Randomized Quantum Polynomial time.\nThe class of questions that can be answered by a QTM that accepts with probability 0 when the true answer is no, and accepts with probability at least 1/2 when the true answer is yes. (TODO: What are the precise requirements on runtime or termination?) Since one of the probabilities has to vanish, RQP has the same technical caveats as {lang:EQP}. Complement is {lang:coRQP}.",
+        "related": [
+            "coRQP",
+            "EQP",
+            "ZQP",
+            "RBQP"
+        ],
+        "notes": "todo: complement of coRQP"
+    },
+    {
+        "name": "RNC",
+        "type": "Language",
+        "desc": "Randomized Nick's Class. The class of decision problems solvable by polylogarithmic-depth random circuits with bounded one-sided probability of error: it must never incorrectly accept, and it must correctly reject at least 1/2 of the time.",
+        "related": [
+            "NC",
+            "RP",
+            "QNC"
+        ],
+        "notes": "todo: complement of coRNC",
+        "properties": [
+            "circuit"
+        ]
+    },
+    {
+        "name": "RNC^0",
+        "type": "Language",
+        "desc": "Randomized constant-depth circuits of bounded-fanin. Not very interesting because the randomness cannot be useful, so this is equal to NC^0. But the functional version FRNC^0 is slightly more interesting (in the same way that FNC^0 is more interesting than NC^0) and has been used in reductions, e.g. https://drops.dagstuhl.de/opus/volltexte/2023/17506/pdf/LIPIcs-ITCS-2023-3.pdf",
+        "related": [
+            "RNC",
+            "RNC^1"
+        ],
+        "properties": [
+            "circuit"
+        ]
+    },
+    {
+        "name": "RNC^1",
+        "type": "Language",
+        "desc": "Randomized log-depth circuits of bounded-fanin.",
+        "related": [
+            "RNC",
+            "RNC^0"
+        ],
+        "properties": [
+            "circuit"
+        ]
+    },
+    {
+        "name": "SAC^0",
+        "type": "Language",
+        "desc": "SAC^k is the class of decision problems solvable by a family of depth-O(logkn) circuits with unbounded-fanin OR & bounded-fanin AND gates. Negations are only allowed at the input level. A uniformity condition may also be imposed. SAC^k sits naturally 'halfway' between NC^k and AC^k.",
+        "related": [
+            "SAC^1",
+            "AC^0"
+        ],
+        "properties": [
+            "circuit"
+        ]
+    },
+    {
+        "name": "SAC^1",
+        "type": "Language",
+        "desc": "Semi-Unbounded-Fanin AC^1. See {ref:SAC^0} for definition. SAC^1 (with a uniformity condition) = LOGCFL, and without a uniformity condition = LOGCFL/poly, see {ref:Joh90}{ref:Ven91}.",
+        "related": [
+            "SAC^0",
+            "AC^1",
+            "LOGCFL"
+        ],
+        "properties": [
+            "circuit"
+        ]
+    },
+    {
+        "name": "SBP",
+        "type": "Language",
+        "desc": "Small Bounded-Error Probability. The class of decision problems for which the following holds. There exists a #P function f and an FP function g such that, for all inputs x,\n If the answer is \"yes\" then f(x) > g(x).\n If the answer is \"no\" then f(x) < g(x)/2.\n Defined in {ref:BGM02}.",
+        "related": [
+            "AM",
+            "MA",
+            "AWPP",
+            "A_0PP"
+        ],
+        "notes": "TODO closed under union, ref BGM02."
+    },
+    {
+        "name": "SF",
+        "type": "Language",
+        "desc": "Star-free languages, see https://en.wikipedia.org/wiki/Star-free_language. A subset of regular languages, where constant terms are allowed, and then we take the closure under complementation, union, and concatenation. Intersection comes for free. For example, the regex (ab)* is in this class, but (aa)* is not.",
+        "related": [
+            "REG"
+        ]
+    },
+    {
+        "name": "SZK",
+        "type": "Language",
+        "desc": "Statistical Zero Knowledge. A promise problem is in SZK if there exists an interactive proof system (a polynomial-time probabilistic verifier interacting with a polynomial-time prover) such that: (1) For YES instances, there exists a polynomial-time prover that causes the verifier to accept with high probability; (2) For NO instances, for any prover, the verifier accepts with low probability; (3) For YES instances, there exists a polynomial-time simulator that, given only the input, can generate a transcript whose distribution is statistically indistinguishable from the verifier's view in the real protocol. That is, the verifier learns nothing beyond the validity of the statement. The protocol may be multi-round, and the zero-knowledge property is statistical (i.e., holds against computationally unbounded verifiers). SZK is closed under complement, has complete promise problems (Statistical Difference, Entropy Difference), and is contained in AM ∩ coAM, as well as CZK and QSZK. Contains PZK and NISZK. There exists an oracle relative to which SZK is not in BQP. Contained in DQP. If any hard-on-average language is in SZK, then one-way functions exist.",
+        "related": [
+            "AM",
+            "coAM",
+            "CZK",
+            "QSZK",
+            "PZK",
+            "NISZK",
+            "DQP"
+        ],
+        "notes": "todo def"
+    },
+    {
+        "name": "TC",
+        "type": "Language",
+        "desc": "Threshold Circuits",
+        "related": [
+            "AC",
+            "NC",
+            "TC^0"
+        ],
+        "properties": [
+            "circuit"
+        ]
+    },
+    {
+        "name": "TC^0",
+        "type": "Language",
+        "desc": "Constant-Depth Threshold Circuits",
+        "related": [
+            "AC^0",
+            "ACC^0",
+            "NC^0",
+            "TC"
+        ],
+        "properties": [
+            "circuit"
+        ]
+    },
+    {
+        "name": "TC^1",
+        "type": "Language",
+        "desc": "Log-Depth Threshold Circuits",
+        "related": [
+            "AC^1",
+            "NC^0",
+            "TC^0",
+            "TC"
+        ],
+        "properties": [
+            "circuit"
+        ]
+    },
+    {
+        "name": "TOWER",
+        "type": "Language",
+        "desc": "Power-tower time. Solvable in time f(x), where f can be expressed using tetration (and +, *, ^, 0, 1).",
+        "related": [
+            "ELEMENTARY",
+            "PR"
+        ]
+    },
+    {
+        "name": "ZBQP",
+        "type": "Language",
+        "desc": "Strict Quantum {lang:ZPP}.\nDefined as {lang:RBQP} ∩ {lang:coRBQP}. Equivalently, the class of problems in {lang:NP} ∩ {lang:coNP} such that both positive and negative witnesses are in {lang:FBQP}.\nFor example, the language of square-free numbers is in {lang:ZBQP}, because factoring is in {lang:FBQP} and a factorization can be certified in ZPP (indeed in P, by {ref:AKS02}).\nUnlike {lang:EQP} or {lang:ZQP}, {lang:ZBQP} would generalize {lang:ZPP} in practice if quantum computers existed, in the sense that it provides proven answers. {thm:ZBQP^ZBQP = ZBQP}.",
+        "related": [
+            "EQP",
+            "RQP",
+            "BQP",
+            "ZQP"
+        ]
+    },
+    {
+        "name": "ZPP",
+        "type": "Language",
+        "desc": "Zero error Probabilistic Polynomial time. Problems with a probabilistic Turing machine with zero error and polynomial expected running time",
+        "related": [
+            "BPP",
+            "RP"
+        ],
+        "notes": "todo the polytime yes/no/unknown definition. todo the two-machine definition"
+    },
+    {
+        "name": "ZPL",
+        "type": "Language",
+        "desc": "Zero error Probabilistic Logspace. Problems with a probabilistic Turing machine with zero error, logarithmic space, and a termination probability of 1",
+        "related": [
+            "L",
+            "RL",
+            "coRL"
+        ],
+        "notes": "todo the yes/no/unknown definition. todo the two-machine definition"
+    },
+    {
+        "name": "ZQP",
+        "type": "Language",
+        "desc": "Zero-Error Extension Of {lang:EQP}.\nThe class of questions that can be answered by a QTM that answers yes, no, or maybe. If the correct answer is yes, then P[no] = 0, and vice-versa; and the probability of maybe is at most 1/2. Since some of the probabilities have to vanish, ZQP has the same technical caveats as {lang:EQP}.\nDefined independently in {ref:BW03} and in {ref:Nis02}. Equals {lang:RQP} ∩ {lang:coRQP}. There is an oracle such that ZQP^{ZQP} is larger than ZQP {ref:BW03}.",
+        "related": [
+            "EQP",
+            "RQP",
+            "BQP",
+            "ZBQP"
+        ]
+    },
+    {
+        "name": "StoqMA",
+        "type": "Language",
+        "desc": "Stoquastic Merlin-Arthur. The class of decision problems solvable by a Merlin-Arthur protocol where the verifier is a polynomial-size stoquastic quantum circuit (i.e., all off-diagonal elements of the Hamiltonian are non-positive in the computational basis). Merlin sends a polynomial-size quantum proof, and Arthur (the verifier) accepts with probability at least α for YES instances and at most β for NO instances, with α−β ≥ 1/poly(n). The 2-local stoquastic Hamiltonian problem is complete for StoqMA. The transverse field Ising model is also StoqMA-complete. There is no known strong error reduction for StoqMA; it is conjectured that StoqMA with strong error reduction is equivalent to MA.",
+        "related": [
+            "MA",
+            "QMA"
+        ],
+        "ref": "[BBT07] Sergey Bravyi, David DiVincenzo, Daniel Loss, and Barbara Terhal. The complexity of stoquastic local Hamiltonian problems. Quantum Information & Computation, 8(5):361–385, 2008. arXiv:quant-ph/0606140. [BH16] Sergey Bravyi and Matthew B. Hastings. Complexity of the quantum Ising model. Communications in Mathematical Physics, 349(1):1–45, 2017. arXiv:1410.0703. [AGL21] Dorit Aharonov, Daniel Gottesman, Zeph Landau. Error reduction in stoquastic Merlin-Arthur proofs. Quantum, 5:491, 2021. arXiv:2001.00025.",
+        "notes": "Defined in [BBT07]. 2-local stoquastic Hamiltonian is StoqMA-complete. Transverse field Ising model is StoqMA-complete [BH16]. No strong error reduction known [AGL21]. Conjectured: StoqMA with strong error reduction = MA."
+    },
+    {
+        "name": "Δ2",
+        "type": "Language",
+        "desc": "P^NP. The weakest class at the second level in the polynomial hierarchy.",
+        "formal": "P^NP",
+        "related": [
+            "Π2",
+            "Σ2",
+            "PH"
+        ]
+    },
+    {
+        "name": "Π2",
+        "type": "Language",
+        "desc": "Universal polynomial time, 2 alternations. coNP^NP, at the second level in the polynomial hierarchy.",
+        "formal": "coNP^NP",
+        "related": [
+            "Δ2",
+            "Σ2",
+            "PH"
+        ]
+    },
+    {
+        "name": "Σ2",
+        "type": "Language",
+        "desc": "Existential polynomial time, 2 alternations. NP^coNP, at the second level in the polynomial hierarchy.",
+        "formal": "NP^coNP",
+        "related": [
+            "Π2",
+            "Δ2",
+            "PH"
+        ]
+    },
+    {
+        "name": "nuACC^0",
+        "type": "Language",
+        "desc": "{lang:ACC^0} but with no uniformity condition.",
+        "related": [
+            "ACC^0"
+        ],
+        "properties": [
+            "nonuniform"
+        ]
+    },
+    {
+        "name": "PromiseRP",
+        "type": "Promise Problem",
+        "desc": "Promise Randomized Polynomial time. Problems with a probabilistic polynomial-time Turing machine promised to have at least a 1/2 chance rejecting correctly (and that always accept).",
+        "related": [
+            "RP"
+        ]
+    },
+    {
+        "name": "PromiseBPP",
+        "type": "Promise Problem",
+        "desc": "Promise Bounded error Probabilistic Polynomial time. Problems with a probabilistic polynomial-time Turing machine promised to have at least a 2/3 chance of a correct answer.",
+        "related": [
+            "BPP"
+        ]
+    },
+    {
+        "name": "PromiseMA",
+        "type": "Promise Problem",
+        "desc": "Promise Merlin Arthur. Like MA, but with a promise on the acceptance probabilities.",
+        "related": [
+            "MA"
+        ]
+    },
+    {
+        "name": "PromiseBQP",
+        "type": "Promise Problem",
+        "desc": "Promise Bounded error Quantum Polynomial time. Like BQP, but with a promise on the acceptance probabilities",
+        "related": [
+            "MA"
+        ]
+    },
+    {
+        "name": "PromiseQCMA",
+        "type": "Promise Problem",
+        "desc": "Promise Quantum-Classical Merlin Arthur. Like QCMA, but with a promise on the acceptance probabilities",
+        "related": [
+            "QCMA"
+        ]
+    },
+    {
+        "name": "PromiseQMA",
+        "type": "Promise Problem",
+        "desc": "Promise Quantum Merlin Arthur. Like QMA, but with a promise on the acceptance probabilities",
+        "related": [
+            "QMA"
+        ]
+    },
+    {
+        "name": "#P",
+        "type": "Function Problem",
+        "desc": " Sharp-P or Number-P. The class of function problems of the form \"compute f(x),\" where f is the number of accepting paths of an NP machine. The canonical #P-complete problem is #SAT.",
+        "related": [
+            "NP",
+            "FNP"
+        ]
+    },
+    {
+        "name": "CLS",
+        "type": "Function Problem",
+        "desc": "Continuous Local Search. Equal to PPAD ∩ PLS. Equal to EOPL.",
+        "related": [
+            "PPAD",
+            "PLS",
+            "EOPL"
+        ]
+    },
+    {
+        "name": "EOPL",
+        "type": "Function Problem",
+        "desc": "End of Potential Line. Equal to CLS.",
+        "related": [
+            "P"
+        ]
+    },
+    {
+        "name": "FNP",
+        "type": "Function Problem",
+        "desc": "Function Nondeterministic Polynomial time. The class of function problems of the following form: Given an input x and a polynomial-time predicate F(x,y), if there exists a y satisfying F(x,y) then output any such y, otherwise output 'no.' Contrast with {lang:TFNP}, where a y always exists. Morally, this is often viewed as the equivalent of {lang:NP}. FP = FNP if and only if P = NP.",
+        "related": [
+            "TFNP",
+            "NP"
+        ]
+    },
+    {
+        "name": "FNC^0",
+        "type": "Function Problem",
+        "desc": "Function Constant-Depth circuits with bounded-fanin. Each output bit depends on only a constant number of input bits. Function equivalently of NC^0, and used in reductions.",
+        "related": [
+            "NC^0"
+        ],
+        "properties": [
+            "circuit"
+        ]
+    },
+    {
+        "name": "FP",
+        "type": "Function Problem",
+        "desc": "Function Polynomial",
+        "related": [
+            "P"
+        ]
+    },
+    {
+        "name": "FIXP",
+        "type": "Function Problem",
+        "desc": "Fixed Point.",
+        "related": []
+    },
+    {
+        "name": "PLS",
+        "type": "Function Problem",
+        "desc": "Polynomial Local Search.",
+        "related": [
+            "CLS",
+            "TFNP"
+        ]
+    },
+    {
+        "name": "PPA",
+        "type": "Function Problem",
+        "desc": "Polynomial Parity Arguments",
+        "related": [
+            "PPAD"
+        ]
+    },
+    {
+        "name": "PPAD",
+        "type": "Function Problem",
+        "desc": "Polynomial Parity Arguments, Directed",
+        "related": [
+            "PPA",
+            "PPADS"
+        ]
+    },
+    {
+        "name": "PPADS",
+        "type": "Function Problem",
+        "desc": "Polynomial Parity Arguments, Directed with Sink",
+        "related": [
+            "PPAD",
+            "PPAD"
+        ]
+    },
+    {
+        "name": "PPP",
+        "type": "Function Problem",
+        "desc": "Polynomial Pigeonhole Principle. Includes PPAD, and a weaker PWPP for the 'weak' pigeonhole principle.",
+        "related": [
+            "TFNP",
+            "PPAD"
+        ]
+    },
+    {
+        "name": "PTFNP",
+        "type": "Function Problem",
+        "desc": "Proof TFNP. Defined in https://doi.org/10.1016/j.jcss.2017.12.003 as a 'refinement' of TFNP to be naturally complete. Includes all the 'standard' classes: PLS, PPP, PPA.",
+        "related": [
+            "PLS",
+            "PPP",
+            "PPA"
+        ]
+    },
+    {
+        "name": "PWPP",
+        "type": "Function Problem",
+        "desc": "Polynomial Weak Pigeonhole Principle. Instead of one more input value than output, there's *twice* as many input values as output. Integer factorization is hard for PWPP (under randomized reductions; or deterministic reductions, assuming GRH.)",
+        "related": [
+            "PPP"
+        ]
+    },
+    {
+        "name": "SOPL",
+        "type": "Function Problem",
+        "desc": "Sink of Potential Line. See https://arxiv.org/pdf/2205.02168. Equal to PPADS ∩ PLS, and so contains CLS.",
+        "related": [
+            "PPADS",
+            "PLS",
+            "CLS"
+        ]
+    },
+    {
+        "name": "TFNP",
+        "type": "Function Problem",
+        "desc": "Total Function Nondeterministic Polynomial time. Relations that can be checked by deterministic polynomial time machine. In other words, the class of function problems of the following form: Given an input x and a polynomial-time predicate F(x,y), output any y satisfying F(x,y) -- where such a y is promised to exist for any x. Morally, this is often viewed as the equivalent of {lang:NP}∩{lang:coNP}.",
+        "related": [
+            "NP",
+            "FNP"
+        ]
+    },
+    {
+        "name": "UEOPL",
+        "type": "Function Problem",
+        "desc": "Unique End of Potential Line",
+        "related": [
+            "P"
+        ]
+    },
+    {
+        "name": "para-L",
+        "type": "Parameterized Language",
+        "desc": "Parameterized Logspace. Languages (x,k) with a deterministic algorithm running in space f(k)+O(log(n)).",
+        "related": [
+            "para-NL",
+            "XL"
+        ],
+        "notes": "There's a wide variety more classes and discussions of these classes at: https://www.mimuw.edu.pl/~malcin/book/parameterized-algorithms.pdf ; http://satsmt2013.ics.aalto.fi/slides/Szeider.pdf ; https://www.sciencedirect.com/science/article/pii/S0022000017300089 ; https://www.mdpi.com/1999-4893/12/9/188 ; http://www.tcs.uni-luebeck.de/downloads/mitarbeiter/tantau/2013-hannover.pdf ; https://www.zhb.uni-luebeck.de/epubs/ediss1780.pdf ; https://arxiv.org/pdf/1509.06984.pdf"
+    },
+    {
+        "name": "para-NL",
+        "type": "Parameterized Language",
+        "desc": "Parameterized Nondeterministic Logspace. Languages (x,k) with a nondeterministic algorithm running in space f(k)+O(log(n)).",
+        "related": [
+            "para-L",
+            "XNL"
+        ]
+    },
+    {
+        "name": "FPT",
+        "type": "Parameterized Language",
+        "desc": "Fixed Parameter Tractable. Languages (x,k) with a deterministic algorithm running in time n^{O(1)}*f(k).",
+        "related": [
+            "XP",
+            "W[1]"
+        ],
+        "alias": "para-P"
+    },
+    {
+        "name": "W[1]",
+        "type": "Parameterized Language",
+        "desc": "Weft-1 circuits.",
+        "related": [
+            "XP",
+            "FPT",
+            "W[2]",
+            "W[P]"
+        ],
+        "notes": "todo def"
+    },
+    {
+        "name": "W[2]",
+        "type": "Parameterized Language",
+        "desc": "Weft-2 circuits.",
+        "related": [
+            "XP",
+            "FPT",
+            "W[1]",
+            "W[P]"
+        ],
+        "notes": "todo def"
+    },
+    {
+        "name": "W[P]",
+        "type": "Parameterized Language",
+        "desc": "Polynomial Weft circuits. Equivalently, problems with a witness that can be verified by a polynomial-time machine (an unparameterized polynomial time, n^{O(1)}, in the size of the input and witness), with a witness of size f(k)*O(log(n)). Compare with para-NP, XP, which are also a version of parameterized nondeterminism.",
+        "related": [
+            "W[1]",
+            "XP",
+            "FPT",
+            "para-NP"
+        ],
+        "notes": "todo def"
+    },
+    {
+        "name": "para-NP",
+        "type": "Parameterized Language",
+        "desc": "Parameterized NP. Languages (x,k) with a nondeterministic algorithm running in time f(k)*n^{O(1)}. Equivalently, problems with a deterministic polynomial-time verifier that take a problem and witness, and the witness is of size f(k)*n^{O(1)}. A classic example is k-coloring: it's in NP for any k, and fixing k at a low value (such as 3) leaves it difficult. Since k-coloring is atually para-NP-hard too, it's para-NP-complete. Compare with XNP, where the exponent of the machine is allowed to depend on k.",
+        "related": [
+            "XP",
+            "NP",
+            "XNP"
+        ]
+    },
+    {
+        "name": "XL",
+        "type": "Parameterized Language",
+        "desc": "Slicewise Logspace. Languages (x,k) with a deterministic algorithm running in space f(k)*log(n).",
+        "related": [
+            "W[1]",
+            "FPT"
+        ]
+    },
+    {
+        "name": "XNL",
+        "type": "Parameterized Language",
+        "desc": "Slicewise Nondeterministic Logspace. Languages (x,k) with a nondeterministic algorithm running in space f(k)*log(n).",
+        "related": [
+            "XL",
+            "XP"
+        ]
+    },
+    {
+        "name": "XP",
+        "type": "Parameterized Language",
+        "desc": "Slicewise Polynomial time. Languages (x,k) with a deterministic algorithm running in time n^f(k).",
+        "related": [
+            "W[1]",
+            "FPT"
+        ]
+    },
+    {
+        "name": "XNP",
+        "type": "Parameterized Language",
+        "desc": "Slicewise NP. Languages (x,k) with a nondeterministic algorithm running in time n^f(k). Equivalently, problems with witnesses of size n^{f(k)} with a polynomial-time verifier.",
+        "related": [
+            "para-NP",
+            "XP"
+        ]
+    },
+    {
+        "name": "Kernel",
+        "type": "Parameterized Language",
+        "desc": "Problems that admit kernelization: languages (x,k) for which there is a _kernelization algorithm_ that processes the original instance in time poly(n,k) = (n+k)^{O(1)}, and produces an output string K of size f(k) for a computable function f, so that the original instance can be decided by running some (computable) algorithm on K. See [Wikipedia](https://en.wikipedia.org/wiki/Kernelization#Downey%E2%80%93Fellows_notation) for more details. This is a stronger requirement than being FPT, by essentially saying that the \"slow\" part of the algorithm that depends on k shouldn't need the whole input.",
+        "related": [
+            "FPT"
+        ]
+    },
+    {
+        "name": "IQP",
+        "type": "Sampling Problem",
+        "desc": "TODO",
+        "related": [
+            "BQP",
+            "NISQ"
+        ]
+    },
+    {
+        "name": "DQC1S",
+        "type": "Sampling Problem",
+        "desc": "Sampling Deterministic Quantum Computing with 1 Clean Bit. Samples produced from a quantum computer initialized with one qubit in the zero state and everything else in the maximally mixed state. Sampling version of DQC1, see there for more.",
+        "related": [
+            "DQC1"
+        ]
+    }
+]

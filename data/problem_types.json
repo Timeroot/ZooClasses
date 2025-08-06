@@ -1,0 +1,93 @@
+[
+  {
+    "name": "Language",
+    "desc": "A language is an acceptable set of YES strings. Everything else is a NO string.",
+    "isalso": [
+      [
+        "Promise Problem",
+        "By taking a trivial promise"
+      ],
+      [
+        "Parameterized Language",
+        "By taking a trivial parameter"
+      ],
+      [
+        "Sampling Problem",
+        "By taking a zero-entropy distribution over just the two strings {'YES','NO'}."
+      ]
+    ]
+  },
+  {
+    "name": "Promise Problem",
+    "desc": "A promise problem has a set of YES strings and a separate set of NO strings. A valid 'solution' to this problem is allowed accept or reject a string that's in neither YES nor NO.",
+    "isalso": [
+      [
+        "Function Problem",
+        "By viewing 'yes' and 'no' as the only acceptable outputs of a function"
+      ]
+    ]
+  },
+  {
+    "name": "Function Problem",
+    "desc": "A function problem is a relation on pairs of strings; in other words, for each input string, a set of valid output strings.",
+    "isalso": [
+      [
+        "Optimization problem",
+        "By giving a trivial constant objective function f(x,y)=0 and only permitting only valid y for each x"
+      ]
+    ]
+  },
+  {
+    "name": "Integer Problem",
+    "desc": "An integer problem is a function problem on which each output has exactly one valid output, which is a nonnegative integer. One natural instance is as counting problems, which count strings or paths that satisfy some simpler predicate. This doesn't actually impose a different structure on definition of the problem, but more naturally lets us talk about approximation.",
+    "isalso": [
+      [
+        "Function Problem",
+        "By viewing the outputs as strings instead of integers"
+      ],
+      [
+        "Approximation Problem",
+        "By trying to approximate the counting as accurately as possible"
+      ]
+    ]
+  },
+  {
+    "name": "Optimization Problem",
+    "desc": "An optimization problem is a problem with a relation R(x,y) of valid solutions, and a real-valued objective function f(x,y). A solver should output a value of y that satisfies the relation and minimizes (or maximizes) f(x,y). Rather than strictly 'correct' or 'incorrect', solutions here are graded based on minimizing (or maximizing) f. Typically R and f are easy to evaluate. You could say that an optimization problem is also a function problem (e.g. give me the single true optimum; alternately, give me any valid point), but this throws way essential structure of the problem in an unrecoverable way, so we don't list it here. There's also an interpretation of optimization problems as parameterized languages, where a problem x becomes a language {(x,k)|k =? opt(x)}, and =? is any relational operator. (Ref: https://www.sciencedirect.com/science/article/pii/S0022000097914902)",
+    "isalso": []
+  },
+  {
+    "name": "Approximation Problem",
+    "desc": "An approximation problem to a real-valued function f(x) asks to find the closest approximation to f(x) given x. It can be graded by additive error |y - f(x)| or multiplicative error |y/f(x) - 1|; the latter requires foreknowledge that f(x) is nonzero.",
+    "isalso": [
+      [
+        "Optimization Problem",
+        "By trying to optimize for the 'best approximation' possible, albeit this has a very difficult to evaluate objective function"
+      ],
+      [
+        "Parameterized Language",
+        "By asking for the value up to an accuracy of epsilon. Epsilon, or perhaps ceil(1/epsilon), would be the parameter; to properly be an accept/reject language (as opposed to a function problem), we take strings (x,y) and a parameter epsilon, and accept iff |y - f(x)| < epsilon."
+      ]
+    ]
+  },
+  {
+    "name": "Parameterized Language",
+    "desc": "A parameterized language is a set of YES tuples (x,k) and NO tuples (x,k), where x is a string to accept or reject respectively, and k is an integer measuring something about the hardness of the instance. Ultimately this is solved as a language, by classes can have definitions depending on k.",
+    "isalso": [
+      [
+        "Language",
+        "By ignoring the parameter k in the input and studying worst-case behavior using only |x|."
+      ]
+    ]
+  },
+  {
+    "name": "Sampling Problem",
+    "desc": "A sampling problem is a set of tuples (x,μ), where x is a string describing the instance, and μ is a probability distribution over output strings. The goal is to, given x, output samples from the distribution μ. A common relaxation is to allow the output distribution μ0 to differ slightly from μ, with the restriction that μ0 and μ must have distance at most ϵ (in total variation distance, KL divergence, or some other metric). In that case, the problem may be stated as described as tuples (x,ϵ,μ), and the performance of the algorithm may depend on ϵ as well as |x|. This task of outputting samples is known as _weak simulation_, while _strong simulation_ is the related function problem of outputting the output probabilities themselves.",
+    "isalso": [
+      [
+        "Function Problem",
+        "By switching from a weak simulation problem to a strong simulation problem, where inputs are pairs (x,s) and the outputs are μ(s) for (x,μ) in the original sampling problem."
+      ]
+    ]
+  }
+]
