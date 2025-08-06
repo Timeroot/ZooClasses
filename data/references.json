@@ -166,6 +166,14 @@
         ]
     },
     {
+        "name": "Wat02",
+        "desc": "J. Watrous. Limits on the power of quantum statistical zero-knowledge, to appear in Proceedings of IEEE FOCS'2002. doi:10.1109/SFCS.2002.1181970",
+        "url": [
+            "https://arxiv.org/abs/quant-ph/0202111",
+            "https://doi.org/10.1109/SFCS.2002.1181970"
+        ]
+    },
+    {
         "name": "Wil11",
         "desc": "Williams, Ryan (2011). Non-uniform ACC Circuit Lower Bounds. 2011 IEEE 26th Annual Conference on Computational Complexity (PDF). pp. 115–125. doi:10.1109/CCC.2011.36. ISBN 978-1-4577-0179-5.",
         "url": [

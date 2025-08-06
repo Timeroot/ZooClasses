@@ -343,13 +343,6 @@
         ]
     },
     {
-        "name": "DSP",
-        "type": "Language",
-        "desc": "Distinguishing Statistical Problems. (Placeholder: see Complexity Zoo for precise definition.)",
-        "related": [],
-        "notes": "todo def"
-    },
-    {
         "name": "E",
         "type": "Language",
         "desc": "(Linear) Exponential time. Problems decided in exponential time with linear exponent, by a deterministic Turing machine.",
@@ -730,7 +723,7 @@
     {
         "name": "QAC^0",
         "type": "Language",
-        "desc": "Quantum AC^0. The class of decision problems solvable by constant-depth, polynomial-size quantum circuits with unbounded fan-in AND, OR, and NOT gates, and a uniformity condition. Quantum generalization of AC^0.",
+        "desc": "Quantum AC^0. The class of decision problems solvable by constant-depth, polynomial-size uniform quantum circuit. Here each layer of the circuit is a tensor product of one-qubit gates and Toffoli gates, or is a tensor product of controlled-NOT gates. Quantum generalization of AC^0. It's unknown whether it contains AC^0.",
         "related": [
             "QAC",
             "QNC^0",
@@ -743,7 +736,7 @@
     {
         "name": "QAC",
         "type": "Language",
-        "desc": "Quantum AC. The class of decision problems solvable by polylogarithmic-depth, polynomial-size quantum circuits with unbounded fan-in AND, OR, and NOT gates, and a uniformity condition. Quantum generalization of AC.",
+        "desc": "Quantum AC. The class of decision problems solvable by polylogarithmic-depth, polynomial-size uniform quantum circuit. Here each layer of the circuit is a tensor product of one-qubit gates and Toffoli gates, or is a tensor product of controlled-NOT gates. Quantum generalization of AC^0. Quantum generalization of AC.",
         "related": [
             "QAC^0",
             "QNC",

@@ -127,9 +127,19 @@
         "ref": "By definition: perfect zero-knowledge is a special case of statistical zero-knowledge."
     },
     {
+        "name": "P⊆PZK",
+        "content": "P⊆PZK",
+        "ref": "Any interactive protocol with a polynomial verifier also contains P, by skipping the protocol entirely."
+    },
+    {
         "name": "NISZK⊆SZK",
         "content": "NISZK⊆SZK",
         "ref": "By definition: non-interactive statistical zero-knowledge is a special case of statistical zero-knowledge."
+    },
+    {
+        "name": "P⊆NISZK",
+        "content": "P⊆NISZK",
+        "ref": "Any interactive protocol with a polynomial verifier also contains P, by skipping the protocol entirely."
     },
     {
         "name": "SZK⊆QSZK",
@@ -142,9 +152,14 @@
         "ref": "By definition, all statistical zero-knowledge protocols are also computational zero-knowledge."
     },
     {
-        "name": "SZK⊆QSZK",
-        "content": "SZK⊆QSZK",
-        "ref": "Classical zero-knowledge is a special case of quantum zero-knowledge."
+        "name": "BQP⊆QSZK",
+        "content": "BQP⊆QSZK",
+        "ref": "Any interactive protocol with a polynomial quantum verifier also contains BQP, by skipping the protocol entirely."
+    },
+    {
+        "name": "QSZK⊆PSPACE",
+        "content": "QSZK⊆PSPACE",
+        "ref": "{ref:Wat02}"
     },
     {
         "name": "SZK⊆DQP",
@@ -627,6 +642,40 @@
         "impliedby": "QNC^i⊆QNC^{i+1}⊆QNC"
     },
     {
+        "name": "QNC^0⊆QAC^0",
+        "content": "QNC^0⊆QAC^0",
+        "desc": "A bounded fan-in QNC^0 circuit is a special case of an unbounded fan-in QAC^0 circuit.",
+        "impliedby": "ObviousConstruction"
+    },
+    {
+        "name": "AC⊆QAC",
+        "content": "AC⊆QAC",
+        "desc": "A classical AC circuit can be transformed into a quantum AC circuit, with at most a logarithmic depth increase to make the classical gates fanout.",
+        "priority": 1
+    },
+    {
+        "name": "QNC⊆QAC",
+        "content": "QNC⊆QAC",
+        "desc": "A bounded fan-in QNC circuit is a special case of an unbounded fan-in QAC circuit.",
+        "impliedby": "ObviousConstruction"
+    },
+    {
+        "name": "QAC⊆QNC",
+        "content": "QAC⊆QNC",
+        "desc": "A QAC circuit can be expressed as a QNC circuit by replacing each unbounded fan-in gate with a series of bounded fan-in gates, which can be done in logarithmic depth.",
+        "priority": 1
+    },
+    {
+        "name": "QAC^i⊆QAC^{i+1}⊆QAC",
+        "content": "{i}QAC^i⊆QAC^{i+1}⊆QAC",
+        "impliedby": "ObviousConstruction"
+    },
+    {
+        "name": "QAC^0⊆QAC",
+        "content": "QAC^0⊆QAC",
+        "impliedby": "QAC^i⊆QAC^{i+1}⊆QAC"
+    },
+    {
         "name": "FH^i⊆FH^{i+1}⊆FH",
         "content": "{i}FH^i⊆FH^{i+1}⊆FH",
         "impliedby": "ObviousConstruction"
@@ -1015,7 +1064,8 @@
     {
         "name": "GIK⊆NP",
         "content": "GIK⊆NP",
-        "impliedby": "ObviousConstruction"
+        "impliedby": "ObviousConstruction",
+        "priority": 1
     },
     {
         "name": "GI⊆Δ2",
