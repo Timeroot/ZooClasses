@@ -152,6 +152,11 @@
         "ref": "By definition, all statistical zero-knowledge protocols are also computational zero-knowledge."
     },
     {
+        "name": "CZK⊆PSPACE",
+        "content": "CZK⊆PSPACE",
+        "impliedby": "ProtocolSimulation"
+    },
+    {
         "name": "BQP⊆QSZK",
         "content": "BQP⊆QSZK",
         "ref": "Any interactive protocol with a polynomial quantum verifier also contains BQP, by skipping the protocol entirely."
@@ -160,6 +165,11 @@
         "name": "QSZK⊆PSPACE",
         "content": "QSZK⊆PSPACE",
         "ref": "{ref:Wat02}"
+    },
+    {
+        "name": "QSZK⊆QIP[2]",
+        "content": "QSZK⊆QIP[2]",
+        "ref": "Any protocol for QSZK can be compressed to only two messages, as proved in {ref:Wat02}. Then "
     },
     {
         "name": "SZK⊆DQP",
@@ -359,6 +369,24 @@
         "content": "IP⊆PSPACE",
         "ref": "This is often stated as a simple protocol simulation question, but this misses the fact that IP has private coins, and the protocol simulation approach requires public coins. See the discussion [here](https://cs.stackexchange.com/q/162804/11900). Taking the protocol simulation as the 'easy' step, this was really proved in {ref:GS86} where they showed the equivalence between private and public coins.\nTODO: Technically they show that IP[f]⊆AM[f+2] for all f(n). Then since AM[f]⊆IP[f], and AM[poly]⊆PSPACE by simulation, IP=IP[poly]⊆AM[poly]⊆PSPACE.",
         "priority": 3
+    },
+    {
+        "name": "QMA⊆QAM",
+        "content": "QMA⊆QAM",
+        "ref": "Every QMA protocol is also a QAM protocol, that happens to ignore the initial random challenge.",
+        "impliedby": "ObviousConstruction"
+    },
+    {
+        "name": "QAM⊆QIP[2]",
+        "content": "QAM⊆QIP[2]",
+        "ref": "QAM is a two-message protocol with a classical random challenge, while QIP[2] is a two-message protocol with a quantum challenge. The latter therefore contains the former.",
+        "impliedby": "ObviousConstruction"
+    },
+    {
+        "name": "QIP[2]⊆QIP",
+        "content": "QIP[2]⊆QIP",
+        "ref": "QIP is polynomial many-rounds, so it contains the special case of 2 rounds.",
+        "impliedby": "ObviousConstruction"
     },
     {
         "name": "QIP⊆PSPACE",

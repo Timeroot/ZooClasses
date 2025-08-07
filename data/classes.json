@@ -89,6 +89,9 @@
             "MA",
             "IP"
         ],
+        "properties": [
+            "protocol"
+        ],
         "notes": "todo def"
     },
     {
@@ -108,7 +111,8 @@
         "related": [
             "A_0PP",
             "SBP"
-        ]
+        ],
+        "notes": "todo def"
     },
     {
         "name": "BPL",
@@ -203,7 +207,8 @@
         ],
         "notes": "todo def",
         "properties": [
-            "complement"
+            "complement",
+            "protocol"
         ]
     },
     {
@@ -225,7 +230,8 @@
         ],
         "notes": "todo def. todo coMA=coMA1",
         "properties": [
-            "complement"
+            "complement",
+            "protocol"
         ]
     },
     {
@@ -291,10 +297,10 @@
         "related": [
             "RP"
         ],
-        "notes": "todo: complement of RP",
         "properties": [
             "complement"
-        ]
+        ],
+        "notes": "todo: complement of RP"
     },
     {
         "name": "coRQP",
@@ -313,6 +319,9 @@
         "desc": "Computational Zero Knowledge. The class of problems possessing computational zero-knowledge proof systems.",
         "related": [
             "SZK"
+        ],
+        "properties": [
+            "protocol"
         ],
         "notes": ""
     },
@@ -446,6 +455,9 @@
             "MIP",
             "AM",
             "PSPACE"
+        ],
+        "properties": [
+            "protocol"
         ]
     },
     {
@@ -500,6 +512,9 @@
             "AM",
             "QMA"
         ],
+        "properties": [
+            "protocol"
+        ],
         "notes": "todo def. todo MA=MA1"
     },
     {
@@ -513,6 +528,9 @@
             "MIP*",
             "MIPco",
             "NEXP"
+        ],
+        "properties": [
+            "protocol"
         ]
     },
     {
@@ -523,6 +541,9 @@
             "MIP",
             "MIPco",
             "RE"
+        ],
+        "properties": [
+            "protocol"
         ]
     },
     {
@@ -533,6 +554,9 @@
             "coRE",
             "MIPco",
             "MIP*"
+        ],
+        "properties": [
+            "protocol"
         ]
     },
     {
@@ -615,6 +639,9 @@
         "desc": "Non-Interactive Statistical Zero Knowledge. A promise problem is in NISZK if there exists a polynomial-time probabilistic verifier V and a polynomial-time probabilistic simulator S such that: (1) For YES instances, there exists a polynomial-size message (the 'proof') that, when given to V, causes V to accept with high probability; (2) For NO instances, for any purported proof, V accepts with low probability; (3) For YES instances, the output distribution of V on the real proof is statistically indistinguishable from the output of S on the input alone (i.e., the verifier learns nothing beyond the validity of the statement). The protocol is non-interactive: the verifier receives a single message from the prover and then decides to accept or reject.",
         "related": [
             "SZK"
+        ],
+        "properties": [
+            "protocol"
         ],
         "notes": ""
     },
@@ -718,7 +745,9 @@
         "related": [
             "SZK"
         ],
-        "notes": "todo def"
+        "properties": [
+            "protocol"
+        ]
     },
     {
         "name": "QAC^0",
@@ -730,7 +759,8 @@
             "AC^0"
         ],
         "properties": [
-            "quantum"
+            "quantum",
+            "circuit"
         ]
     },
     {
@@ -743,7 +773,22 @@
             "AC"
         ],
         "properties": [
-            "quantum"
+            "quantum",
+            "circuit"
+        ]
+    },
+    {
+        "name": "QAM",
+        "type": "Language",
+        "desc": "Quantum Arthur-Merlin. Like {lang:AM}, but Merlin's proof is a quantum state and the verifier is a BQP machine; like {lang:QMA}, but there can be a classical random challenge string first.",
+        "related": [
+            "QMA",
+            "AM",
+            "QIP[2]"
+        ],
+        "properties": [
+            "quantum",
+            "protocol"
         ]
     },
     {
@@ -754,7 +799,8 @@
             "QMA"
         ],
         "properties": [
-            "quantum"
+            "quantum",
+            "protocol"
         ]
     },
     {
@@ -767,7 +813,21 @@
             "MIPco"
         ],
         "properties": [
-            "quantum"
+            "quantum",
+            "protocol"
+        ]
+    },
+    {
+        "name": "QIP[2]",
+        "type": "Language",
+        "desc": "Quantum Interactive Proofs with 2 rounds, a restricted form {lang:QIP}. Compare with the note on {lang:AM} about restricted rounds. It turns out that QIP[k>=3]=QIP[3]=QIP, and QIP[1] is by definition QMA, so the only other interesting case is QIP[2].",
+        "related": [
+            "QMA",
+            "QIP"
+        ],
+        "properties": [
+            "quantum",
+            "protocol"
         ]
     },
     {
@@ -779,7 +839,8 @@
             "BQP"
         ],
         "properties": [
-            "quantum"
+            "quantum",
+            "protocol"
         ]
     },
     {
@@ -792,7 +853,8 @@
             "BQP"
         ],
         "properties": [
-            "quantum"
+            "quantum",
+            "circuit"
         ]
     },
     {
@@ -804,7 +866,8 @@
             "QNC^0"
         ],
         "properties": [
-            "quantum"
+            "quantum",
+            "circuit"
         ]
     },
     {
@@ -816,7 +879,8 @@
             "QNC"
         ],
         "properties": [
-            "quantum"
+            "quantum",
+            "circuit"
         ]
     },
     {
@@ -825,6 +889,10 @@
         "desc": "Quantum Statistical Zero Knowledge. A promise problem is in QSZK if there exists a quantum interactive proof system (a polynomial-time quantum verifier interacting with a polynomial-time quantum prover) such that: (1) For YES instances, there exists a polynomial-time quantum prover that causes the verifier to accept with high probability; (2) For NO instances, for any prover, the verifier accepts with low probability; (3) For YES instances, there exists a polynomial-time quantum simulator that, given only the input, can generate a quantum state (or transcript) whose distribution is statistically indistinguishable from the verifier's view in the real protocol. That is, the verifier learns nothing beyond the validity of the statement, even against quantum adversaries.",
         "related": [
             "SZK"
+        ],
+        "properties": [
+            "quantum",
+            "protocol"
         ],
         "notes": "todo def"
     },
@@ -845,6 +913,9 @@
             "coRBQP",
             "ZQP",
             "RQP"
+        ],
+        "properties": [
+            "quantum"
         ],
         "notes": "todo: complement of coRBQP"
     },
@@ -896,6 +967,9 @@
             "EQP",
             "ZQP",
             "RBQP"
+        ],
+        "properties": [
+            "quantum"
         ],
         "notes": "todo: complement of coRQP"
     },
@@ -994,6 +1068,9 @@
             "PZK",
             "NISZK",
             "DQP"
+        ],
+        "properties": [
+            "protocol"
         ],
         "notes": "todo def"
     },
@@ -1099,7 +1176,10 @@
             "QMA"
         ],
         "ref": "[BBT07] Sergey Bravyi, David DiVincenzo, Daniel Loss, and Barbara Terhal. The complexity of stoquastic local Hamiltonian problems. Quantum Information & Computation, 8(5):361–385, 2008. arXiv:quant-ph/0606140. [BH16] Sergey Bravyi and Matthew B. Hastings. Complexity of the quantum Ising model. Communications in Mathematical Physics, 349(1):1–45, 2017. arXiv:1410.0703. [AGL21] Dorit Aharonov, Daniel Gottesman, Zeph Landau. Error reduction in stoquastic Merlin-Arthur proofs. Quantum, 5:491, 2021. arXiv:2001.00025.",
-        "notes": "Defined in [BBT07]. 2-local stoquastic Hamiltonian is StoqMA-complete. Transverse field Ising model is StoqMA-complete [BH16]. No strong error reduction known [AGL21]. Conjectured: StoqMA with strong error reduction = MA."
+        "properties": [
+            "quantum",
+            "protocol"
+        ]
     },
     {
         "name": "Δ2",
