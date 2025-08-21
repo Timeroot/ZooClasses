@@ -205,11 +205,11 @@
             "AM",
             "coMA"
         ],
-        "notes": "todo def",
         "properties": [
             "complement",
             "protocol"
-        ]
+        ],
+        "notes": "todo def"
     },
     {
         "name": "coNL",
@@ -228,32 +228,33 @@
             "MA",
             "coAM"
         ],
-        "notes": "todo def. todo coMA=coMA1",
         "properties": [
             "complement",
             "protocol"
-        ]
+        ],
+        "notes": "todo def. todo coMA=coMA1"
     },
     {
         "name": "coNP",
         "type": "Language",
         "desc": "Complement of Nondeterministic Polynomial time, {lang:coNP}. Problems whose complement decided in polynomial time by a nondeterministic Turing machine; or equivalently, problems that can be disproved by a polynomial-time checkable witness.",
         "formal": "coNTIME(n^O(1))",
-        "notes": "todo: verifier definition",
         "properties": [
             "complement"
-        ]
+        ],
+        "notes": "todo: verifier definition"
     },
     {
         "name": "coNQP",
         "type": "Language",
-        "desc": "Complement of Nondeterministic Quantum Polynomial time. Complement of {lang:NQP}.",
+        "desc": "Complement of Nondeterministic Quantum Polynomial time, {lang:NQP}.",
         "related": [
             "NQP"
         ],
         "properties": [
             "complement"
-        ]
+        ],
+        "notes": ""
     },
     {
         "name": "coRE",
@@ -262,10 +263,10 @@
         "related": [
             "RE"
         ],
-        "notes": "todo: definition as a Turing machine",
         "properties": [
             "complement"
-        ]
+        ],
+        "notes": ""
     },
     {
         "name": "coRBQP",
@@ -275,7 +276,8 @@
             "RBQP"
         ],
         "properties": [
-            "complement"
+            "complement",
+            "quantum"
         ]
     },
     {
@@ -310,7 +312,8 @@
             "RQP"
         ],
         "properties": [
-            "complement"
+            "complement",
+            "quantum"
         ]
     },
     {
@@ -341,15 +344,22 @@
         "related": [
             "BQP",
             "DQC1S"
+        ],
+        "properties": [
+            "quantum"
         ]
     },
     {
         "name": "DQP",
         "type": "Language",
-        "desc": "Dynamical Quantum Polynomial-Time.The class of decision problems solvable by a BQP machine with oracle access to a dynamical simulator. When given a polynomial-size quantum circuit, the simulator returns a sample from the distribution over \"classical histories\" induced by the circuit. The simulator can adversarially choose any history distribution that satisfies the axioms of \"symmetry\" and \"locality\" -- so that the DQP algorithm has to work for any distribution satisfying these axioms. Defined in {ref:Aar05}.",
+        "desc": "Dynamical Quantum Polynomial-Time. The class of decision problems solvable by a BQP machine with oracle access to a dynamical simulator. When given a polynomial-size quantum circuit, the simulator returns a sample from the distribution over \"classical histories\" induced by the circuit. The simulator can adversarially choose any history distribution that satisfies the axioms of \"symmetry\" and \"locality\" -- so that the DQP algorithm has to work for any distribution satisfying these axioms. Defined in {ref:Aar05}.",
         "related": [
             "BQP"
-        ]
+        ],
+        "properties": [
+            "quantum"
+        ],
+        "notes": ""
     },
     {
         "name": "E",
@@ -500,7 +510,6 @@
             "SAC^1"
         ],
         "properties": [
-            "circuit"
         ]
     },
     {
@@ -686,6 +695,9 @@
         "related": [
             "QMA",
             "BQP"
+        ],
+        "properties": [
+            "quantum"
         ]
     },
     {
@@ -894,12 +906,12 @@
             "quantum",
             "protocol"
         ],
-        "notes": "todo def"
+        "notes": ""
     },
     {
         "name": "R",
         "type": "Language",
-        "desc": "Recursive languages. {lang:RE}∩{lang:coRE}. Languages solvable by a Turing machine.",
+        "desc": "Recursive languages. Languages solvable by a Turing machine. Equivalently, definable as {lang:RE}∩{lang:coRE}.",
         "related": [
             "RE"
         ],
@@ -922,7 +934,7 @@
     {
         "name": "RE",
         "type": "Language",
-        "desc": "Recursively enumerable languages. Languages whose acceptance can be recognized by a Turing machine.",
+        "desc": "Recursively enumerable languages. Languages whose acceptance can be recognized by a Turing machine. Complement of {lang:coRE}.",
         "related": [
             "R"
         ],
@@ -1133,6 +1145,9 @@
             "RQP",
             "BQP",
             "ZQP"
+        ],
+        "properties": [
+            "quantum"
         ]
     },
     {
@@ -1165,6 +1180,9 @@
             "RQP",
             "BQP",
             "ZBQP"
+        ],
+        "properties": [
+            "quantum"
         ]
     },
     {
@@ -1271,6 +1289,9 @@
         "desc": "Promise Quantum Merlin Arthur. Like QMA, but with a promise on the acceptance probabilities",
         "related": [
             "QMA"
+        ],
+        "properties": [
+            "quantum"
         ]
     },
     {
@@ -1549,6 +1570,9 @@
         "related": [
             "BQP",
             "NISQ"
+        ],
+        "properties": [
+            "quantum"
         ]
     },
     {
@@ -1557,6 +1581,9 @@
         "desc": "Sampling Deterministic Quantum Computing with 1 Clean Bit. Samples produced from a quantum computer initialized with one qubit in the zero state and everything else in the maximally mixed state. Sampling version of DQC1, see there for more.",
         "related": [
             "DQC1"
+        ],
+        "properties": [
+            "quantum"
         ]
     }
 ]

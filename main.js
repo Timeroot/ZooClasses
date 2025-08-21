@@ -1,3 +1,5 @@
+let equivalenceClasses = new Map();
+
 function getEqualCanonId(name){
     if (!data) return -1; // Handle case where data might not be loaded yet
 
@@ -21,161 +23,136 @@ function getEqualCanonId(name){
     }
 }
 
-//Draw the graph, given preferences about what to show
-function drawGraph(){
-        // Get current property filters
-        const propertyFilters = {}; // { propertyName: 'yes' | 'no' | 'neutral' }
-        document.querySelectorAll('#propertyCheckboxes input[type="checkbox"]').forEach(checkbox => {
-            propertyFilters[checkbox.dataset.property] = checkbox.dataset.state;
-        });
+function buildEquivalenceClasses() {
+    equivalenceClasses.clear();
+    for (const classInfo of data) {
+        const canonId = getEqualCanonId(classInfo.name);
+        if (canonId === -1) continue;
 
-        // Filter data based on property checkboxes
-        const filteredData = data.filter(classInfo => {
+        if (!equivalenceClasses.has(canonId)) {
+            equivalenceClasses.set(canonId, []);
+        }
+        equivalenceClasses.get(canonId).push(classInfo);
+    }
+}
+
+function getFilteredData(showEquals, propertyFilters) {
+    const initialFilteredNames = new Set(
+        data.filter(classInfo => {
             const properties = classInfo.properties || [];
             for (const prop in propertyFilters) {
                 const state = propertyFilters[prop];
-                if (state === 'yes' && !properties.includes(prop)) {
-                    return false; // Must have this property, but doesn't
-                }
-                if (state === 'no' && properties.includes(prop)) {
-                    return false; // Must NOT have this property, but does
-                }
+                if (state === 'yes' && !properties.includes(prop)) return false;
+                if (state === 'no' && properties.includes(prop)) return false;
             }
             return true;
-        });
-        const filteredNames = new Set(filteredData.map(d => d.name));
-        // Create the input graph
-        g = new dagreD3.graphlib.Graph({ compound: true })
-          .setGraph({})
-          .setDefaultEdgeLabel(function() { return {}; });
-        
-        //Orient from bottom up
-        g.graph().rankdir = "BT";
-        
-        //Do we show equal classes?
-        var showEquals = document.getElementById("showEq").checked;
-        
-        //Do we show nonuniform classes?
-        var showNU = document.getElementById("showNU").checked;
+        }).map(d => d.name)
+    );
 
-        // Here we're setting nodeclass, which is used by our custom drawNodes function
-        // below.
-        for(const classInfo of filteredData){
+    const finalData = [];
+    for (const [canonId, members] of equivalenceClasses.entries()) {
+        const matchingMembers = members.filter(member => initialFilteredNames.has(member.name));
 
-            var name = classInfo["name"];
-            var properties = classInfo["properties"];
-            
-            var classType = "type-normal";
-            var equals = classInfo["equals"];
-            if(equals === false){ //equal to some other canonical class
-                if(!showEquals){
-                    continue; //skip this one
-                }
+        if (matchingMembers.length > 0) {
+            if (showEquals) {
+                finalData.push(...matchingMembers);
+            } else {
+                finalData.push(matchingMembers[0]);
+            }
+        }
+    }
+    return finalData;
+}
+
+//Draw the graph, given preferences about what to show
+function drawGraph() {
+    const propertyFilters = {};
+    document.querySelectorAll('#propertyCheckboxes input[type="checkbox"]').forEach(checkbox => {
+        propertyFilters[checkbox.dataset.property] = checkbox.dataset.state;
+    });
+
+    const showEquals = document.getElementById("showEq").checked;
+    const filteredData = getFilteredData(showEquals, propertyFilters);
+    const filteredNames = new Set(filteredData.map(d => d.name));
+
+    g = new dagreD3.graphlib.Graph({ compound: true })
+        .setGraph({})
+        .setDefaultEdgeLabel(() => ({}));
+    g.graph().rankdir = "BT";
+
+    const showNU = document.getElementById("showNU").checked;
+
+    for (const classInfo of filteredData) {
+        const name = classInfo.name;
+        let classType = "type-normal";
+        if (showEquals) {
+            if (classInfo.equals === false) {
                 classType = "type-equal-notcanon";
-            } else if(equals.length > 0){ //equal to something else, is canonical
-                if(showEquals)
-                    classType = "type-equal-canon";
-                //otherwise keep the same class
-            }
-            
-            g.setNode(name, { label: name, class: classType, id: "class-"+name });
-        }
-        
-        //Now create all the equals groupings
-        if(showEquals) {
-            for(const classInfo of filteredData){
-
-                var name = classInfo["name"];
-                
-                var equals = classInfo["equals"];
-                if(equals === false || equals.length == 0) {
-                    continue;
-                }
-                
-                var groupName = name+"-equals";
-                g.setNode(groupName, { labelType:"html", label: "<b style='color:#a33'>Equal to "+name+"</b>", clusterLabelPos: 'top', class: "type-equal-group", id: "class-"+groupName });
-                
-                g.setParent(name, groupName);
-                for(var eq of equals) {
-                    // Only parent the node if it hasn't been filtered out
-                    if (filteredNames.has(eq)) {
-                        g.setParent(eq, groupName);
-                    }
-                }
+            } else if (classInfo.equals && classInfo.equals.length > 0) {
+                classType = "type-equal-canon";
             }
         }
+        g.setNode(name, { label: name, class: classType, id: "class-" + name });
+    }
 
-        //Set rounded corners for all class nodes
-        g.nodes().forEach(function(v) {
-            var node = g.node(v);
-            // Round the corners of the nodes
+    if (showEquals) {
+        for (const [canonId, members] of equivalenceClasses.entries()) {
+            const membersInFilter = members.filter(m => filteredNames.has(m.name));
+            if (membersInFilter.length > 1) {
+                const canonClassName = data[canonId].name;
+                const groupName = canonClassName + "-equals";
+                g.setNode(groupName, { labelType: "html", label: `<b style='color:#a33'>Equal to ${canonClassName}</b>`, clusterLabelPos: 'top', class: "type-equal-group", id: "class-" + groupName });
+                membersInFilter.forEach(member => g.setParent(member.name, groupName));
+            }
+        }
+    }
+
+    g.nodes().forEach(v => {
+        const node = g.node(v);
+        if (node) {
             node.rx = node.ry = 5;
-        });
-        
-        // Set up edges, no special attributes.
-        for(const classInfo of filteredData){
-
-            var name = classInfo["name"];
-            
-            for(var i in classInfo["children"]){
-                var childName = classInfo["children"][i];
-                var childId = nodeNames.indexOf(childName);
-                if(childId == -1){
-                    console.log("Couldn't find child ",childName," in classes");
-                }
-                if (!filteredNames.has(childName)) continue; // Skip if child is filtered out
-                var childInfo = data[childId];
-                var childProperties = childInfo["properties"];
-            
-                if(!showNU && childProperties.includes("nonuniform"))
-                    continue
-                
-                g.setEdge(name, childName, {curve: d3.curveBasis});
-            }
         }
-        
-        // Create the renderer
-        var render = new dagreD3.render();
+    });
 
-        // Set up an SVG group so that we can translate the final graph.
-        var svg = d3.select("#treeSvg");
-        
-        //Remove any existing SVG we've drawn
-        d3.select("#treeSvg g").remove();
-        
-        var svgGroup = svg.append("g");
+    for (const classInfo of filteredData) {
+        const name = classInfo.name;
+        for (const childName of classInfo.children || []) {
+            if (!filteredNames.has(childName)) continue;
+            const childInfo = data[nodeNames.indexOf(childName)];
+            if (childInfo && (!showNU && (childInfo.properties || []).includes("nonuniform"))) {
+                continue;
+            }
+            g.setEdge(name, childName, { curve: d3.curveBasis });
+        }
+    }
 
-        // Run the renderer. This is what draws the final graph.
-        render(d3.select("svg g"), g);
-        
-        //Set rounded corners for all group clusters        
-        d3.selectAll('g.cluster rect').attr("rx",12); 
+    const render = new dagreD3.render();
+    const svg = d3.select("#treeSvg");
+    d3.select("#treeSvg g").remove();
+    const svgGroup = svg.append("g");
+    render(d3.select("svg g"), g);
 
-        // Center the graph
-        var svgWidth = document.getElementById('treeDiv').offsetWidth;
-        var svgHeight = document.getElementById('treeDiv').offsetHeight;
-        sclZoom = Math.min(1, 0.95 * svgWidth / g.graph().width, 0.95 * svgHeight / g.graph().height);
-        //var xCenterOffset = (svgWidth - g.graph().width) / 2 * sclZoom;
-        svgGroup.attr("transform", "scale("+sclZoom+")");
-        
-        origHeight = (g.graph().height + 40) * sclZoom; //Save for later, not 'var'
-        svg.attr("height", origHeight);
-            
-        var zoom = d3.zoom().on("zoom", function() {
-            d3.event.transform.k *= sclZoom;
-            svgGroup.attr("transform", d3.event.transform);
-            d3.event.transform.k /= sclZoom;
-            var zoomlevel = d3.event.transform.k;
-            var newHeight = zoomlevel * origHeight;
-            var minHeight = document.getElementById("svgDiv").offsetHeight;
-            newHeight = Math.max(newHeight, minHeight);
-            svg.attr("height", newHeight);
-        });
-        svg.call(zoom);
-        
-        d3.selectAll('g.nodes g.node').on('click', function(name) {
-            setSelectedNode(name);
-        });
+    d3.selectAll('g.cluster rect').attr("rx", 12);
+
+    const svgWidth = document.getElementById('treeDiv').offsetWidth;
+    const svgHeight = document.getElementById('treeDiv').offsetHeight;
+    const sclZoom = Math.min(1, 0.95 * svgWidth / g.graph().width, 0.95 * svgHeight / g.graph().height);
+    svgGroup.attr("transform", `scale(${sclZoom})
+    `);
+    const origHeight = (g.graph().height + 40) * sclZoom;
+    svg.attr("height", origHeight);
+
+    const zoom = d3.zoom().on("zoom", function () {
+        const transform = d3.event.transform;
+        transform.k *= sclZoom;
+        svgGroup.attr("transform", transform);
+        transform.k /= sclZoom;
+        const newHeight = Math.max(transform.k * origHeight, document.getElementById("svgDiv").offsetHeight);
+        svg.attr("height", newHeight);
+    });
+    svg.call(zoom);
+
+    d3.selectAll('g.nodes g.node').on('click', setSelectedNode);
 }
 
 d3.select('#plusButton').on('click', function() {
@@ -272,6 +249,7 @@ document.addEventListener('DOMContentLoaded', function() {
                 data.flatMap(obj => obj.properties || [])
             )
         );
+        buildEquivalenceClasses();
         createPropertyCheckboxes();
         drawGraph();
     });
