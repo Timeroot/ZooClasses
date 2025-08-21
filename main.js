@@ -1,15 +1,6 @@
-document.addEventListener('DOMContentLoaded', function() {
-    fetch('./generated/langdata.json')
-    .then(res => res.json())
-    .then(_data => {
-        data = _data;
-        nodeNames = data.map(obj => obj["name"]);
-        
-        drawGraph();
-    });
-});
-
 function getEqualCanonId(name){
+    if (!data) return -1; // Handle case where data might not be loaded yet
+
     var origId = nodeNames.indexOf(name)
     if(origId == -1){
         return -1;
@@ -32,6 +23,27 @@ function getEqualCanonId(name){
 
 //Draw the graph, given preferences about what to show
 function drawGraph(){
+        // Get current property filters
+        const propertyFilters = {}; // { propertyName: 'yes' | 'no' | 'neutral' }
+        document.querySelectorAll('#propertyCheckboxes input[type="checkbox"]').forEach(checkbox => {
+            propertyFilters[checkbox.dataset.property] = checkbox.dataset.state;
+        });
+
+        // Filter data based on property checkboxes
+        const filteredData = data.filter(classInfo => {
+            const properties = classInfo.properties || [];
+            for (const prop in propertyFilters) {
+                const state = propertyFilters[prop];
+                if (state === 'yes' && !properties.includes(prop)) {
+                    return false; // Must have this property, but doesn't
+                }
+                if (state === 'no' && properties.includes(prop)) {
+                    return false; // Must NOT have this property, but does
+                }
+            }
+            return true;
+        });
+        const filteredNames = new Set(filteredData.map(d => d.name));
         // Create the input graph
         g = new dagreD3.graphlib.Graph({ compound: true })
           .setGraph({})
@@ -48,13 +60,11 @@ function drawGraph(){
 
         // Here we're setting nodeclass, which is used by our custom drawNodes function
         // below.
-        for(var classInfo of data){
+        for(const classInfo of filteredData){
+
             var name = classInfo["name"];
             var properties = classInfo["properties"];
             
-            if(!showNU && properties.includes("nonuniform"))
-                continue
-                
             var classType = "type-normal";
             var equals = classInfo["equals"];
             if(equals === false){ //equal to some other canonical class
@@ -73,12 +83,9 @@ function drawGraph(){
         
         //Now create all the equals groupings
         if(showEquals) {
-            for(var classInfo of data){
+            for(const classInfo of filteredData){
+
                 var name = classInfo["name"];
-                var properties = classInfo["properties"];
-                
-                if(!showNU && properties.includes("nonuniform"))
-                    continue;
                 
                 var equals = classInfo["equals"];
                 if(equals === false || equals.length == 0) {
@@ -90,7 +97,10 @@ function drawGraph(){
                 
                 g.setParent(name, groupName);
                 for(var eq of equals) {
-                    g.setParent(eq, groupName);
+                    // Only parent the node if it hasn't been filtered out
+                    if (filteredNames.has(eq)) {
+                        g.setParent(eq, groupName);
+                    }
                 }
             }
         }
@@ -103,20 +113,17 @@ function drawGraph(){
         });
         
         // Set up edges, no special attributes.
-        for(var classInfo of data){
+        for(const classInfo of filteredData){
+
             var name = classInfo["name"];
-            var properties = classInfo["properties"];
-            
-            if(!showNU && properties.includes("nonuniform"))
-                continue
             
             for(var i in classInfo["children"]){
                 var childName = classInfo["children"][i];
                 var childId = nodeNames.indexOf(childName);
                 if(childId == -1){
                     console.log("Couldn't find child ",childName," in classes");
-                    continue;
                 }
+                if (!filteredNames.has(childName)) continue; // Skip if child is filtered out
                 var childInfo = data[childId];
                 var childProperties = childInfo["properties"];
             
@@ -249,4 +256,70 @@ function searchFunction() {
     if (d.label === searchValue) return 'blue';
     else return 'black';
   });*/
+}
+
+// Collect all unique properties after loading data
+var allProperties = [];
+
+document.addEventListener('DOMContentLoaded', function() {
+    fetch('./generated/langdata.json')
+    .then(res => res.json())
+    .then(_data => {
+        data = _data;
+        nodeNames = data.map(obj => obj["name"]);
+        allProperties = Array.from(
+            new Set(
+                data.flatMap(obj => obj.properties || [])
+            )
+        );
+        createPropertyCheckboxes();
+        drawGraph();
+    });
+});
+/**
+ * Create three-state checkboxes for each property and add them to the page.
+ * Each checkbox cycles through: neutral (default), yes (checked), no (indeterminate).
+ */
+function createPropertyCheckboxes() {
+    const container = document.getElementById('propertyCheckboxes');
+    if (!container) return;
+    container.innerHTML = ''; // Clear any existing
+
+    allProperties.forEach(prop => {
+        // Create label and checkbox
+        const label = document.createElement('label');
+        label.style.marginRight = '1em';
+        label.style.userSelect = 'none';
+
+        const checkbox = document.createElement('input');
+        checkbox.type = 'checkbox';
+        checkbox.checked = false;
+        checkbox.indeterminate = true; // Neutral state
+        checkbox.dataset.state = 'neutral'; // Track state: 'neutral', 'yes', 'no'
+        checkbox.dataset.property = prop;
+
+        // Cycle state on click: neutral -> yes -> no -> neutral
+        checkbox.addEventListener('click', function(e) {
+            // Let the browser handle the initial state change, then adjust.
+            let state = this.dataset.state;
+            if (state === 'neutral') {
+                // Default click on 'indeterminate' makes it 'checked'. This is our 'yes' state.
+                this.dataset.state = 'yes';
+            } else if (state === 'yes') {
+                // Default click on 'checked' makes it 'unchecked'. This is our 'no' state.
+                this.dataset.state = 'no';
+            } else { // state === 'no'
+                // Default click on 'unchecked' makes it 'checked'. We want 'neutral'.
+                // So we override the browser's default action here.
+                this.checked = false;
+                this.indeterminate = true;
+                this.dataset.state = 'neutral';
+            }
+            drawGraph(); // Redraw graph with new filters
+        });
+
+        label.appendChild(checkbox);
+        label.appendChild(document.createTextNode(' ' + prop));
+        container.appendChild(label);
+    });
 }
