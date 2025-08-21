@@ -168,20 +168,32 @@ function drawGraph() {
     }
 
     // Edge creation based on transitive reduction of the visible subgraph
-    for (const u of filteredData) {
-        for (const v of filteredData) {
-            if (u === v) continue;
-
-            const u_canonId = getEqualCanonId(u.name);
-            const v_canonId = getEqualCanonId(v.name);
-            if (u_canonId !== -1 && u_canonId === v_canonId) {
-                continue;
+    let edgeData = filteredData;
+    if (showEquals) {
+        const representatives = new Map();
+        for (const classInfo of filteredData) {
+            const canonId = getEqualCanonId(classInfo.name);
+            if (canonId === -1) continue;
+            if (!representatives.has(canonId)) {
+                const canonClass = data[canonId];
+                if (filteredNames.has(canonClass.name)) {
+                    representatives.set(canonId, canonClass);
+                } else {
+                    representatives.set(canonId, classInfo);
+                }
             }
+        }
+        edgeData = Array.from(representatives.values());
+    }
+
+    for (const u of edgeData) {
+        for (const v of edgeData) {
+            if (u === v) continue;
 
             const u_descendants = descendantsMap.get(u.name);
             if (u_descendants && u_descendants.has(v.name)) {
                 let isDirectLink = true;
-                for (const w of filteredData) {
+                for (const w of edgeData) {
                     if (w === u || w === v) continue;
                     const w_descendants = descendantsMap.get(w.name);
                     if (u_descendants.has(w.name) && w_descendants && w_descendants.has(v.name)) {
