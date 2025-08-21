@@ -1,4 +1,5 @@
 let equivalenceClasses = new Map();
+let descendantsMap = new Map();
 
 function getEqualCanonId(name){
     if (!data) return -1; // Handle case where data might not be loaded yet
@@ -36,6 +37,57 @@ function buildEquivalenceClasses() {
     }
 }
 
+function computeTransitiveClosure() {
+    descendantsMap.clear();
+    const classMap = new Map(data.map(c => [c.name, c]));
+
+    for (const classInfo of data) {
+        const name = classInfo.name;
+        const descendants = new Set();
+        const queue = [];
+        const visited = new Set();
+
+        const startCanonId = getEqualCanonId(name);
+        const startEquivClass = equivalenceClasses.get(startCanonId) || [classInfo];
+
+        for (const member of startEquivClass) {
+            for (const childName of member.children || []) {
+                if (!visited.has(childName)) {
+                    queue.push(childName);
+                    visited.add(childName);
+                }
+            }
+        }
+
+        while (queue.length > 0) {
+            const currentName = queue.shift();
+            const currentCanonId = getEqualCanonId(currentName);
+            if (currentCanonId === -1) continue;
+
+            const currentEquivClass = equivalenceClasses.get(currentCanonId) || [classMap.get(currentName)];
+
+            for (const member of currentEquivClass) {
+                if (member.name !== name) { 
+                    descendants.add(member.name);
+                }
+            }
+
+            for (const member of currentEquivClass) {
+                const memberNode = classMap.get(member.name);
+                if (memberNode && memberNode.children) {
+                    for (const grandChild of memberNode.children) {
+                        if (!visited.has(grandChild)) {
+                            visited.add(grandChild);
+                            queue.push(grandChild);
+                        }
+                    }
+                }
+            }
+        }
+        descendantsMap.set(name, descendants);
+    }
+}
+
 function getFilteredData(showEquals, propertyFilters) {
     const initialFilteredNames = new Set(
         data.filter(classInfo => {
@@ -51,7 +103,6 @@ function getFilteredData(showEquals, propertyFilters) {
 
     const finalData = [];
     if (showEquals) {
-        // When showing equals, we iterate through the equivalence classes
         for (const [canonId, members] of equivalenceClasses.entries()) {
             const matchingMembers = members.filter(member => initialFilteredNames.has(member.name));
             if (matchingMembers.length > 0) {
@@ -59,18 +110,14 @@ function getFilteredData(showEquals, propertyFilters) {
             }
         }
     } else {
-        // When not showing equals, we also iterate through equivalence classes
         for (const [canonId, members] of equivalenceClasses.entries()) {
             const matchingMembers = members.filter(member => initialFilteredNames.has(member.name));
             if (matchingMembers.length > 0) {
                 const canonicalClass = data[canonId];
                 const canonicalIsMatching = matchingMembers.some(m => m.name === canonicalClass.name);
-
                 if (canonicalIsMatching) {
-                    // Prefer the canonical representative if it matches the filter
                     finalData.push(canonicalClass);
                 } else {
-                    // Otherwise, pick the first available matching member
                     finalData.push(matchingMembers[0]);
                 }
             }
@@ -120,21 +167,41 @@ function drawGraph() {
         }
     }
 
+    // Edge creation based on transitive reduction of the visible subgraph
+    for (const u of filteredData) {
+        for (const v of filteredData) {
+            if (u === v) continue;
+
+            const u_canonId = getEqualCanonId(u.name);
+            const v_canonId = getEqualCanonId(v.name);
+            if (u_canonId !== -1 && u_canonId === v_canonId) {
+                continue;
+            }
+
+            const u_descendants = descendantsMap.get(u.name);
+            if (u_descendants && u_descendants.has(v.name)) {
+                let isDirectLink = true;
+                for (const w of filteredData) {
+                    if (w === u || w === v) continue;
+                    const w_descendants = descendantsMap.get(w.name);
+                    if (u_descendants.has(w.name) && w_descendants && w_descendants.has(v.name)) {
+                        isDirectLink = false;
+                        break;
+                    }
+                }
+                if (isDirectLink) {
+                    g.setEdge(u.name, v.name, { curve: d3.curveBasis });
+                }
+            }
+        }
+    }
+
     g.nodes().forEach(v => {
         const node = g.node(v);
         if (node) {
             node.rx = node.ry = 5;
         }
     });
-
-    for (const classInfo of filteredData) {
-        const name = classInfo.name;
-        for (const childName of classInfo.children || []) {
-            if (!filteredNames.has(childName)) continue;
-            const childInfo = data[nodeNames.indexOf(childName)];
-            g.setEdge(name, childName, { curve: d3.curveBasis });
-        }
-    }
 
     const render = new dagreD3.render();
     const svg = d3.select("#treeSvg");
@@ -260,6 +327,7 @@ document.addEventListener('DOMContentLoaded', function() {
             )
         );
         buildEquivalenceClasses();
+        computeTransitiveClosure();
         createPropertyCheckboxes();
         drawGraph();
     });
@@ -282,7 +350,6 @@ function createPropertyCheckboxes() {
         const checkbox = document.createElement('input');
         checkbox.type = 'checkbox';
         checkbox.dataset.property = prop;
-        
         checkbox.checked = false;
         checkbox.indeterminate = true; // Neutral state
         checkbox.dataset.state = 'neutral'; // Track state: 'neutral', 'yes', 'no'
