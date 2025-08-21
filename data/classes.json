@@ -552,7 +552,8 @@
             "RE"
         ],
         "properties": [
-            "protocol"
+            "protocol",
+            "quantum"
         ]
     },
     {
@@ -565,7 +566,8 @@
             "MIP*"
         ],
         "properties": [
-            "protocol"
+            "protocol",
+            "quantum"
         ]
     },
     {
