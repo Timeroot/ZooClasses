@@ -38,6 +38,16 @@
           stroke: #333;
           stroke-width: 1.5px;
         }
+
+        .myTooltip {
+            display: none;
+            position: absolute;
+            border: 1px solid black;
+            background-color: white;
+            padding: 5px;
+            z-index: 10;
+            border-radius: 5px;
+        }
     </style>
 
     <style>
@@ -85,18 +95,59 @@
 <body>
     <div id="treeDiv">Click and drag to move. Zoom with pinch/scroll wheel/two-fingered scroll on a touchpad. Click a class to see details.<div id="svgDiv"><svg id="treeSvg"></svg></div></div>
     <div id="controls">
-<!--        <input type="text" id="searchBar" oninput="searchFunction()" placeholder="Search for classes by name" ><br />-->
+        Search: <input type="text" id="searchBar" oninput="searchFunction()" placeholder="Search for classes by name" ><br />
         <!--<button id="plusButton" onclick="changePriority(1)">+</button>
         <button id="minusButton" onclick="changePriority(-1)">-</button>-->
-        
-        <input type="checkbox" id="showEq" name="showEq" oninput="drawGraph()">
-        <label for="showEq">Show equal classes</label>
         <br />
+        <input type="checkbox" id="showEq" name="showEq" oninput="drawGraph()">
+        <label for="showEq"><span style="font-size: larger;">Show all equal classes</span></label>
+        <br />
+        <h4>Property Filters<sup id="property-filters-help" style="cursor: pointer;">?</sup></h4>
+        <div id="property-filters-tooltip" class="myTooltip">
+            You can filter classes by their properties using the checkboxes.
+            An empty checkbox <input type="checkbox" onclick="return false;"> means that classes without that property will be shown.
+            An checked checkbox <input type="checkbox" checked="true"  onclick="return false;"> means that <i>only</i> classes with
+            that property will be shown. A dashed checkbox <input type="checkbox" name="indeterminateExample"  onclick="return false;">
+            means that both classes with and without that property will be shown.
+            <br />
+            For example, checking the "quantum" box will only show classes that are somehow about quantum mechanics. Unchecking
+            the "protocol" box will hide all classes that are, somehow, about prover-verifier interactive protocols.
+        </div>
         <div id="propertyCheckboxes"></div>
     </div>
     <div id="detailsDiv"></div>
     <div style="position:absolute; right:-8px; bottom:30px; background: #CDF; padding:12px; border-radius: 15px"><a href="about.html" style="color:#48F">About</a></div>
     <div style="position:absolute; right:-8px; bottom:-8px; background: #DCF; padding:12px; border-radius: 15px"><a href="https://github.com/Timeroot/ZooClasses/" style="color:#48F">GitHub repo</a></div>
     <script src="./main.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const helpIcon = document.getElementById('property-filters-help');
+            const tooltip = document.getElementById('property-filters-tooltip');
+            let timeout;
+
+            helpIcon.addEventListener('mouseover', function(e) {
+                clearTimeout(timeout);
+                tooltip.style.display = 'block';
+            });
+
+            helpIcon.addEventListener('mousemove', function(e) {
+                tooltip.style.left = (e.pageX + 10) + 'px';
+                tooltip.style.top = (e.pageY - 10) + 'px';
+            });
+
+            function hideTooltip() {
+                timeout = setTimeout(() => {
+                    tooltip.style.display = 'none';
+                }, 200);
+            }
+
+            helpIcon.addEventListener('mouseout', hideTooltip);
+            tooltip.addEventListener('mouseover', () => clearTimeout(timeout));
+            tooltip.addEventListener('mouseout', hideTooltip);
+
+            const indeterminateExample = document.getElementsByName("indeterminateExample")[0];
+            indeterminateExample.indeterminate = true;
+        });
+    </script>
 </body>
 </html>

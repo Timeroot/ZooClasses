@@ -316,12 +316,6 @@ function setSelectedNode(name){
 function searchFunction() {
   var searchValue = document.getElementById('searchBar').value;
   setSelectedNode(searchValue);
-  /*var node = d3.selectAll('.node');
-  node.style('stroke', function(d) {
-    console.log(d);
-    if (d.label === searchValue) return 'blue';
-    else return 'black';
-  });*/
 }
 
 // Collect all unique properties after loading data
