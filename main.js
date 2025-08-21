@@ -50,14 +50,29 @@ function getFilteredData(showEquals, propertyFilters) {
     );
 
     const finalData = [];
-    for (const [canonId, members] of equivalenceClasses.entries()) {
-        const matchingMembers = members.filter(member => initialFilteredNames.has(member.name));
-
-        if (matchingMembers.length > 0) {
-            if (showEquals) {
+    if (showEquals) {
+        // When showing equals, we iterate through the equivalence classes
+        for (const [canonId, members] of equivalenceClasses.entries()) {
+            const matchingMembers = members.filter(member => initialFilteredNames.has(member.name));
+            if (matchingMembers.length > 0) {
                 finalData.push(...matchingMembers);
-            } else {
-                finalData.push(matchingMembers[0]);
+            }
+        }
+    } else {
+        // When not showing equals, we also iterate through equivalence classes
+        for (const [canonId, members] of equivalenceClasses.entries()) {
+            const matchingMembers = members.filter(member => initialFilteredNames.has(member.name));
+            if (matchingMembers.length > 0) {
+                const canonicalClass = data[canonId];
+                const canonicalIsMatching = matchingMembers.some(m => m.name === canonicalClass.name);
+
+                if (canonicalIsMatching) {
+                    // Prefer the canonical representative if it matches the filter
+                    finalData.push(canonicalClass);
+                } else {
+                    // Otherwise, pick the first available matching member
+                    finalData.push(matchingMembers[0]);
+                }
             }
         }
     }
