@@ -95,8 +95,6 @@ function drawGraph() {
         .setDefaultEdgeLabel(() => ({}));
     g.graph().rankdir = "BT";
 
-    const showNU = document.getElementById("showNU").checked;
-
     for (const classInfo of filteredData) {
         const name = classInfo.name;
         let classType = "type-normal";
@@ -134,9 +132,6 @@ function drawGraph() {
         for (const childName of classInfo.children || []) {
             if (!filteredNames.has(childName)) continue;
             const childInfo = data[nodeNames.indexOf(childName)];
-            if (childInfo && (!showNU && (childInfo.properties || []).includes("nonuniform"))) {
-                continue;
-            }
             g.setEdge(name, childName, { curve: d3.curveBasis });
         }
     }
@@ -286,10 +281,18 @@ function createPropertyCheckboxes() {
 
         const checkbox = document.createElement('input');
         checkbox.type = 'checkbox';
+        checkbox.dataset.property = prop;
+        
         checkbox.checked = false;
         checkbox.indeterminate = true; // Neutral state
         checkbox.dataset.state = 'neutral'; // Track state: 'neutral', 'yes', 'no'
-        checkbox.dataset.property = prop;
+
+        //initialize `nonuniform` to `false`
+        if (prop == 'nonuniform') {
+            checkbox.checked = false;
+            checkbox.indeterminate = false;
+            checkbox.dataset.state = 'no';
+        }
 
         // Cycle state on click: neutral -> yes -> no -> neutral
         checkbox.addEventListener('click', function(e) {
