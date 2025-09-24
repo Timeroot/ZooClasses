@@ -90,6 +90,15 @@
                 <dt class="col-sm-3">Description</dt>
                 <dd class="col-sm-9" id="class-desc"></dd>
 
+                <dt class="col-sm-3">Minimal superset</dt>
+                <dd class="col-sm-9" id="class-superset"></dd>
+
+                <dt class="col-sm-3">Maximal subset</dt>
+                <dd class="col-sm-9" id="class-subset"></dd>
+
+                <dt class="col-sm-3">Equals</dt>
+                <dd class="col-sm-9" id="class-equals"></dd>
+
                 <dt class="col-sm-3">Related Classes</dt>
                 <dd class="col-sm-9" id="class-related"></dd>
 
@@ -109,15 +118,62 @@
         const className = urlParams.get('name');
 
         if (className) {
-            fetch('data/classes.json')
-                .then(response => response.json())
-                .then(data => {
-                    const cls = data.find(c => c.name === className);
+            Promise.all([
+                fetch('data/classes.json').then(res => res.json()),
+                fetch('generated/langdata.json').then(res => res.json())
+            ]).then(([classes, langdata]) => {
+                    const cls = classes.find(c => c.name === className);
                     if (cls) {
                         document.getElementById('class-name').textContent = cls.name;
                         document.getElementById('class-type').textContent = cls.type;
                         const desc = processString(cls.desc);
                         document.getElementById('class-desc').innerHTML = desc;
+
+                        const supersetList = document.getElementById('class-superset');
+                        const lang = langdata.find(c => c.name === className);
+                        if (lang && lang.children && lang.children.length > 0) {
+                            supersetList.innerHTML = ''; // Clear existing content
+                            lang.children.forEach(superset => {
+                                const link = document.createElement('a');
+                                link.href = `class.html?name=${encodeURIComponent(superset)}`;
+                                link.textContent = superset;
+                                supersetList.appendChild(link);
+                                supersetList.appendChild(document.createTextNode(' '));
+                            });
+                        } else {
+                            supersetList.textContent = 'None';
+                        }
+
+                        const subsetList = document.getElementById('class-subset');
+                        const subsets = langdata.filter(c => c.children && c.children.includes(className))
+                            .map(c => c.name);
+
+                        if (subsets && subsets.length > 0) {
+                            subsetList.innerHTML = ''; // Clear existing content
+                            subsets.forEach(subset => {
+                                const link = document.createElement('a');
+                                link.href = `class.html?name=${encodeURIComponent(subset)}`;
+                                link.textContent = subset;
+                                subsetList.appendChild(link);
+                                subsetList.appendChild(document.createTextNode(' '));
+                            });
+                        } else {
+                            subsetList.textContent = 'None';
+                        }
+
+                        const equalsList = document.getElementById('class-equals');
+                        if (lang && lang.equals && lang.equals.length > 0) {
+                            equalsList.innerHTML = ''; // Clear existing content
+                            lang.equals.forEach(equal => {
+                                const link = document.createElement('a');
+                                link.href = `class.html?name=${encodeURIComponent(equal)}`;
+                                link.textContent = equal;
+                                equalsList.appendChild(link);
+                                equalsList.appendChild(document.createTextNode(' '));
+                            });
+                        } else {
+                            equalsList.textContent = 'None';
+                        }
 
                         const relatedList = document.getElementById('class-related');
                         if (cls.related && cls.related.length > 0) {
@@ -153,7 +209,7 @@
                     }
                 })
                 .catch(error => {
-                    console.error('Error fetching classes.json:', error);
+                    console.error('Error fetching data:', error);
                     document.getElementById('class-name').textContent = 'Error loading data';
                 });
         }
