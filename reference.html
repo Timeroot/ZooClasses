@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Theorems and Facts</title>
+    <title>Reference Details</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@700&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Lato&display=swap" rel="stylesheet">
@@ -56,12 +56,8 @@
             padding: 20px;
         }
         .content-container {
-            /* max-width: 800px; */ /* Adjust as needed */
-            margin: 0 50px; /* Center the container */
-        }
-        .table {
-            table-layout: fixed;
-            word-wrap: break-word;
+            max-width: 800px; /* Adjust as needed */
+            margin: 0 auto; /* Center the container */
         }
     </style>
 </head>
@@ -83,64 +79,59 @@
         </ul>
         <div class="copyright">&copy; 2025</div>
     </div>
-    
     <div class="main-content">
         <div class="content-container">
-            <h1>Theorems and Facts</h1>
-            <table class="table table-bordered table-striped mt-3">
-            <thead>
-                <tr>
-                    <th>Name</th>
-                    <th>Formal Content</th>
-                    <th>Source</th>
-                </tr>
-            </thead>
-            <tbody id="theorems-table-body">
-                <!-- Rows will be inserted here by JavaScript -->
-            </tbody>
-        </table>
+            <h1 id="reference-desc"></h1>
+            <h4 id="reference-name" class="text-muted"></h4>
+            <hr>
+            <dl class="row">
+                <dt class="col-sm-3">URLs</dt>
+                <dd class="col-sm-9" id="reference-urls"></dd>
+            </dl>
+            <a href="index.html" class="btn btn-primary">Back to Home</a>
         </div>
     </div>
 
     <script src="process.js"></script>
     <script>
-        fetch('data/theorems.json')
-            .then(response => response.json())
-            .then(data => {
-                const tableBody = document.getElementById('theorems-table-body');
-                data.forEach(thm => {
-                    const row = document.createElement('tr');
-                    const name = processString(thm.name);
-                    const content = processString(thm.content);
+        const urlParams = new URLSearchParams(window.location.search);
+        const refName = urlParams.get('name');
 
-                    let source = '';
-                    if (thm.impliedby && thm.impliedby !== 'ObviousConstruction') {
-                        source = `<a href="theorem.html?name=${encodeURIComponent(thm.impliedby)}">${thm.impliedby}</a>`;
-                    } else if (thm.ref) {
-                        let refContent = processString(thm.ref);
-                        
-                        if (refContent.startsWith('http')) {
-                            source = `<a href="${refContent}">${refContent}</a>`;
+        if (refName) {
+            fetch('data/references.json')
+                .then(response => response.json())
+                .then(references => {
+                    const reference = references.find(r => r.name === refName);
+                    if (reference) {
+                        document.getElementById('reference-name').textContent = reference.name;
+                        document.getElementById('reference-desc').textContent = reference.desc;
+
+                        const urlsElement = document.getElementById('reference-urls');
+                        if (reference.url && reference.url.length > 0) {
+                            const urlList = document.createElement('ul');
+                            urlList.className = 'list-unstyled';
+                            reference.url.forEach(url => {
+                                const listItem = document.createElement('li');
+                                const link = document.createElement('a');
+                                link.href = url;
+                                link.textContent = url;
+                                link.target = '_blank'; // Open in new tab
+                                listItem.appendChild(link);
+                                urlList.appendChild(listItem);
+                            });
+                            urlsElement.appendChild(urlList);
                         } else {
-                            source = refContent;
+                            urlsElement.textContent = 'None';
                         }
+                    } else {
+                        document.getElementById('reference-desc').textContent = 'Reference not found';
                     }
-
-                    row.innerHTML = `
-                        <td><a href="theorem.html?name=${encodeURIComponent(thm.name)}">${name}</a></td>
-                        <td>${content}</td>
-                        <td>${source}</td>
-                    `;
-                    tableBody.appendChild(row);
+                })
+                .catch(error => {
+                    console.error('Error fetching data:', error);
+                    document.getElementById('reference-desc').textContent = 'Error loading data';
                 });
-            })
-            .catch(error => {
-                console.error('Error fetching theorems.json:', error);
-                const tableBody = document.getElementById('theorems-table-body');
-                const row = document.createElement('tr');
-                row.innerHTML = `<td colspan="3" class="text-center text-danger">Error loading data.</td>`;
-                tableBody.appendChild(row);
-            });
+        }
     </script>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>

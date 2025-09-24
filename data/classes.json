@@ -1046,7 +1046,7 @@
     {
         "name": "SAC^1",
         "type": "Language",
-        "desc": "Semi-Unbounded-Fanin AC^1. See {ref:SAC^0} for definition. SAC^1 (with a uniformity condition) = LOGCFL, and without a uniformity condition = LOGCFL/poly, see {ref:Joh90}{ref:Ven91}.",
+        "desc": "Semi-Unbounded-Fanin AC^1. See {lang:SAC^0} for definition. SAC^1 (with a uniformity condition) = LOGCFL, and without a uniformity condition = LOGCFL/poly, see {ref:Joh90}{ref:Ven91}.",
         "related": [
             "SAC^0",
             "AC^1",
@@ -1066,7 +1066,7 @@
             "AWPP",
             "A_0PP"
         ],
-        "notes": "TODO closed under union, ref BGM02."
+        "notes": "TODO closed under union, {ref:BGM02}."
     },
     {
         "name": "SF",

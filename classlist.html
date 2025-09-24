@@ -101,6 +101,7 @@
         </div>
     </div>
 
+    <script src="process.js"></script>
     <script>
         Promise.all([
             fetch('data/classes.json').then(res => res.json()),
@@ -117,9 +118,7 @@
 
                 filteredClasses.forEach(cls => {
                     const row = document.createElement('tr');
-                    const desc = cls.desc
-                        .replace(/{lang:([^}]+)}/g, (match, p1) => `<a href="class.html?name=${encodeURIComponent(p1)}">${p1}</a>`)
-                        .replace(/{thm:([^}]+)}/g, (match, p1) => `<a href="theorem.html?name=${encodeURIComponent(p1)}">${p1}</a>`);
+                    const desc = processString(cls.desc);
                     row.innerHTML = `
                         <td><a href="class.html?name=${encodeURIComponent(cls.name)}">${cls.name}</a></td>
                         <td>${desc}</td>

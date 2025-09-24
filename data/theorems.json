@@ -169,7 +169,7 @@
     {
         "name": "QSZK⊆QIP[2]",
         "content": "QSZK⊆QIP[2]",
-        "ref": "Any protocol for QSZK can be compressed to only two messages, as proved in {ref:Wat02}. Then "
+        "ref": "Any protocol for QSZK can be compressed to only two messages, as proved in {ref:Wat02}."
     },
     {
         "name": "SZK⊆DQP",

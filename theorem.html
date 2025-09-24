@@ -103,6 +103,7 @@
         </div>
     </div>
 
+    <script src="process.js"></script>
     <script>
         const urlParams = new URLSearchParams(window.location.search);
         const theoremName = urlParams.get('name');
@@ -115,18 +116,14 @@
                 const theorem = theorems.find(t => t.name === theoremName);
                 if (theorem) {
                     document.getElementById('theorem-name').textContent = theorem.name;
-                    const content = theorem.content
-                        .replace(/{lang:([^}]+)}/g, (match, p1) => `<a href="class.html?name=${encodeURIComponent(p1)}">${p1}</a>`)
-                        .replace(/{thm:([^}]+)}/g, (match, p1) => `<a href="theorem.html?name=${encodeURIComponent(p1)}">${p1}</a>`);
+                    const content = processString(theorem.content);
                     document.getElementById('theorem-content').innerHTML = content;
 
                     const refElement = document.getElementById('theorem-ref');
                     if (theorem.ref) {
                         const ref = references.find(r => r.name === theorem.ref);
                         if (ref) {
-                            const desc = ref.desc
-                                .replace(/{lang:([^}]+)}/g, (match, p1) => `<a href="class.html?name=${encodeURIComponent(p1)}">${p1}</a>`)
-                                .replace(/{thm:([^}]+)}/g, (match, p1) => `<a href="theorem.html?name=${encodeURIComponent(p1)}">${p1}</a>`);
+                            const desc = processString(ref.desc);
                             refElement.innerHTML = `${desc}`;
                             if(ref.url && ref.url.length > 0) {
                                 refElement.innerHTML += '<ul>';
@@ -136,9 +133,7 @@
                                 refElement.innerHTML += '</ul>';
                             }
                         } else {
-                            let refContent = theorem.ref
-                                .replace(/{lang:([^}]+)}/g, (match, p1) => `<a href="class.html?name=${encodeURIComponent(p1)}">${p1}</a>`)
-                                .replace(/{thm:([^}]+)}/g, (match, p1) => `<a href="theorem.html?name=${encodeURIComponent(p1)}">${p1}</a>`);
+                            let refContent = processString(theorem.ref);
                         
                             if (refContent.startsWith('http')) {
                                 refElement.innerHTML = `<a href="${refContent}">${refContent}</a>`;
@@ -174,9 +169,7 @@
 
                     const notesElement = document.getElementById('theorem-notes');
                     if(theorem.notes) {
-                        const notes = theorem.notes
-                            .replace(/{lang:([^}]+)}/g, (match, p1) => `<a href="class.html?name=${encodeURIComponent(p1)}">${p1}</a>`)
-                            .replace(/{thm:([^}]+)}/g, (match, p1) => `<a href="theorem.html?name=${encodeURIComponent(p1)}">${p1}</a>`);
+                        const notes = processString(theorem.notes);
                         notesElement.innerHTML = notes;
                     } else {
                         notesElement.textContent = 'None';

@@ -103,6 +103,7 @@
         </div>
     </div>
 
+    <script src="process.js"></script>
     <script>
         const urlParams = new URLSearchParams(window.location.search);
         const className = urlParams.get('name');
@@ -115,9 +116,7 @@
                     if (cls) {
                         document.getElementById('class-name').textContent = cls.name;
                         document.getElementById('class-type').textContent = cls.type;
-                        const desc = cls.desc
-                            .replace(/{lang:([^}]+)}/g, (match, p1) => `<a href="class.html?name=${encodeURIComponent(p1)}">${p1}</a>`)
-                            .replace(/{thm:([^}]+)}/g, (match, p1) => `<a href="theorem.html?name=${encodeURIComponent(p1)}">${p1}</a>`);
+                        const desc = processString(cls.desc);
                         document.getElementById('class-desc').innerHTML = desc;
 
                         const relatedList = document.getElementById('class-related');
@@ -143,9 +142,7 @@
                         
                         const notesElement = document.getElementById('class-notes');
                         if(cls.notes) {
-                            const notes = cls.notes
-                                .replace(/{lang:([^}]+)}/g, (match, p1) => `<a href="class.html?name=${encodeURIComponent(p1)}">${p1}</a>`)
-                                .replace(/{thm:([^}]+)}/g, (match, p1) => `<a href="theorem.html?name=${encodeURIComponent(p1)}">${p1}</a>`);
+                            const notes = processString(cls.notes);
                             notesElement.innerHTML = notes;
                         } else {
                             notesElement.textContent = 'None';
