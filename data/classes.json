@@ -152,23 +152,23 @@
         ]
     },
     {
-        "name": "C_{eq}L",
+        "name": "C_eqL",
         "type": "Language",
-        "desc": "Exact-Counting Logspace. Usually written C_=L, but we don't use that because of the difficulties having an = in the name causes. The class of decision problems solvable by an NL machine such that the number of accepting paths exactly equals the number of rejecting paths, if and only if the answer is 'yes.'. Logspace analog of {lang:C_{eq}P}.\nTODO: C_{eq}L^{C_{eq}L} = L^{C_{eq}L}, by {ref:ABO99}.",
+        "desc": "Exact-Counting Logspace. Usually written C<sub>=</sub>L, but we don't use that because of the difficulties having an = in the name causes. The class of decision problems solvable by an NL machine such that the number of accepting paths exactly equals the number of rejecting paths, if and only if the answer is 'yes.'. Logspace analog of {lang:C_eqP}.\nTODO: C_eqL^{C_eqL} = L^{C_eqL}, by {ref:ABO99}.",
         "related": [
             "L",
             "NL",
-            "C_{eq}P"
+            "C_eqP"
         ]
     },
     {
-        "name": "C_{eq}P",
+        "name": "C_eqP",
         "type": "Language",
-        "desc": "Exact-Counting Polynomial-Time. Usually written C_{eq}P, but we don't use that because of the difficulties having an = in the name causes. The class of decision problems solvable by an NP machine such that the number of accepting paths exactly equals the number of rejecting paths, if and only if the answer is 'yes.'.\n{thm:C_{eq}P=coNQP}, by {ref:FGH+98}. ",
+        "desc": "Exact-Counting Polynomial-Time. Usually written C<sub>=</sub>P, but we don't use that because of the difficulties having an = in the name causes. The class of decision problems solvable by an NP machine such that the number of accepting paths exactly equals the number of rejecting paths, if and only if the answer is 'yes.'.\n{thm:C_eqP=coNQP}, by {ref:FGH+98}. ",
         "related": [
             "coNQP",
             "NQP",
-            "C_{eq}L"
+            "C_eqL"
         ]
     },
     {
@@ -678,7 +678,13 @@
         "type": "Language",
         "desc": "Nondeterministic Polynomial time. Problems decided in polynomial time by a nondeterministic Turing machine.",
         "formal": "NTIME(n^O(1))",
-        "notes": "todo: verifier definition"
+        "notes": "todo: verifier definition",
+        "related": [
+            "P",
+            "#P",
+            "coNP",
+            "MA"
+        ]
     },
     {
         "name": "NPSPACE",
