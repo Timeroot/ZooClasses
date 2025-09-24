@@ -117,11 +117,12 @@
                     if (thm.impliedby && thm.impliedby !== 'ObviousConstruction') {
                         source = `<a href="theorem.html?name=${encodeURIComponent(thm.impliedby)}">${thm.impliedby}</a>`;
                     } else if (thm.ref) {
-                        let refContent = processString(thm.ref);
+                        let refContent = thm.ref;
                         
                         if (refContent.startsWith('http')) {
                             source = `<a href="${refContent}">${refContent}</a>`;
                         } else {
+                            refContent = processString(refContent);
                             source = refContent;
                         }
                     }
