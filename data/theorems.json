@@ -129,7 +129,7 @@
     {
         "name": "P⊆PZK",
         "content": "P⊆PZK",
-        "ref": "Any interactive protocol with a polynomial verifier also contains P, by skipping the protocol entirely."
+        "ref": "Any interactive protocol with a polynomial verifier also contains {lang:P}, by skipping the protocol entirely."
     },
     {
         "name": "NISZK⊆SZK",
@@ -139,7 +139,7 @@
     {
         "name": "P⊆NISZK",
         "content": "P⊆NISZK",
-        "ref": "Any interactive protocol with a polynomial verifier also contains P, by skipping the protocol entirely."
+        "ref": "Any interactive protocol with a polynomial verifier also contains {lang:P}, by skipping the protocol entirely."
     },
     {
         "name": "SZK⊆QSZK",
@@ -159,7 +159,7 @@
     {
         "name": "BQP⊆QSZK",
         "content": "BQP⊆QSZK",
-        "ref": "Any interactive protocol with a polynomial quantum verifier also contains BQP, by skipping the protocol entirely."
+        "ref": "Any interactive protocol with a polynomial quantum verifier also contains {lang:BQP}, by skipping the protocol entirely."
     },
     {
         "name": "QSZK⊆PSPACE",
@@ -169,7 +169,7 @@
     {
         "name": "QSZK⊆QIP[2]",
         "content": "QSZK⊆QIP[2]",
-        "ref": "Any protocol for QSZK can be compressed to only two messages, as proved in {ref:Wat02}."
+        "ref": "Any protocol for {lang:QSZK} can be compressed to only two messages, as proved in {ref:Wat02}."
     },
     {
         "name": "SZK⊆DQP",
@@ -206,7 +206,7 @@
     {
         "name": "GA⊆GI",
         "content": "GA⊆GI",
-        "ref": "Proved in https://complexityzoo.net/Complexity_Zoo_References#kst93. Pretty simple proof but not manifest from the definition; compare with GAK vs GIK where the question isn't settled."
+        "ref": "Proved in https://complexityzoo.net/Complexity_Zoo_References#kst93. Pretty simple proof but not manifest from the definition; compare with {lang:GAK} vs {lang:GIK} where the question isn't settled."
     },
     {
         "name": "GIK⊆SZK",
@@ -222,19 +222,19 @@
     {
         "name": "FH^1=BPP",
         "content": "FH^1=BPP",
-        "ref": "Originally stated without proof in {ref:Coo85}. The forward direction (that FH^1⊆BPP) is given by the perspective on BPP as a reversible polynomial-size circuit with input bits, zeroed bits, and uniformly random input bits. The reverse direction is given by simulating the one layer of Hadamard gates probabilistically - which is safe because no interference or cancellation can later occur.",
+        "ref": "Originally stated without proof in {ref:Coo85}. The forward direction (that FH^1⊆BPP) is given by the perspective on {lang:BPP} as a reversible polynomial-size circuit with input bits, zeroed bits, and uniformly random input bits. The reverse direction is given by simulating the one layer of Hadamard gates probabilistically - which is safe because no interference or cancellation can later occur.",
         "priority": 2
     },
     {
         "name": "NC^1⊆L",
         "content": "NC^1⊆L",
-        "ref": "Proved in {ref:Bor77}",
+        "ref": "{ref:Bor77}",
         "priority": 3
     },
     {
         "name": "BPL⊆DET",
         "content": "BPL⊆DET",
-        "ref": "Proved in {ref:Coo85}",
+        "ref": "{ref:Coo85}",
         "priority": 3
     },
     {
@@ -282,13 +282,13 @@
     {
         "name": "L⊆DQC1",
         "content": "L⊆DQC1",
-        "ref": "https://arxiv.org/abs/quant-ph/0608132 shows that the one clean qubit can be magnified to log(n) clean qubits without changing the class, so any computation in quantum logspace (without measurements) is in DQC1. This includes all reversible logspace, which is equal to deterministic logspace, see Lange, McKenzie and Tapp [LMT00].",
+        "ref": "In https://arxiv.org/abs/quant-ph/0608132 it's shown that the one clean qubit can be magnified to log(n) clean qubits without changing the class, so any computation in quantum logspace (without measurements) is in {lang:DQC1}. This includes all reversible logspace, which is equal to deterministic logspace, see Lange, McKenzie and Tapp [LMT00].",
         "priority": 3
     },
     {
         "name": "SF⊆AC^0",
         "content": "SF⊆AC^0",
-        "ref": "Stated without reference on Wikipedia: https://en.wikipedia.org/wiki/Star-free_language"
+        "ref": "https://en.wikipedia.org/wiki/Star-free_language"
     },
     {
         "name": "CSL=NLINSPACE",
@@ -299,7 +299,7 @@
     {
         "name": "PARITY⊈AC^0",
         "content": "PARITY⊈AC^0",
-        "ref": "{lang:PARITY} circuits, the one-language class of recognizing the parity of a string, cannot be computed by an AC^0 circuit. The same is true for any mod-m parity problem. See {ref:Raz87}{ref:Smo87}.",
+        "ref": "{lang:PARITY} circuits, the one-language class of recognizing the parity of a string, cannot be computed by an {lang:AC^0} circuit. The same is true for any mod-m parity problem. See {ref:Raz87}{ref:Smo87}.",
         "priority": 3
     },
     {
@@ -325,7 +325,7 @@
         "name": "ACC^0⊂coNQP",
         "content": "ACC^0⊂coNQP",
         "impliedby": "ACC^0⊂NQP",
-        "ref": "Corollary of {thm:ACC^0⊂NQP} by taking complements, and that ACC^0 is closed under complement."
+        "ref": "Corollary of {thm:ACC^0⊂NQP} by taking complements, and that {lang:ACC^0} is closed under complement."
     },
     {
         "name": "LOGCFL=SAC^1",
@@ -361,7 +361,7 @@
     {
         "name": "MIPco⊆coRE",
         "content": "MIPco⊆coRE",
-        "ref": "A consequence of {ref:NPA08}, as they give a hierarchy that converges to the MIPco value of a game from one above. This is contrast to {lang:MIP*}, where trying gradually larger Hilbert spaces converges from below, so it is contained in {lang:RE}.",
+        "ref": "A consequence of {ref:NPA08}, as they give a hierarchy that converges to the {lang:MIPco} value of a game from one above. This is contrast to {lang:MIP*}, where trying gradually larger Hilbert spaces converges from below, so it is contained in {lang:RE}.",
         "priority": 3
     },
     {
@@ -980,13 +980,13 @@
     {
         "name": "NP⊆NQP",
         "content": "NP⊆NQP",
-        "ref": "{lang:NP} can simulate any {lang:NP} machine by only using classical circuits, and Hadamard gates to prepare random coins.",
+        "ref": "{lang:NQP} can simulate any {lang:NP} machine by only using classical circuits, using Hadamard gates to prepare random ('nondeterministic') coins.",
         "impliedby": "ObviousConstruction"
     },
     {
         "name": "coNP⊆coNQP",
         "content": "coNP⊆coNQP",
-        "ref": "{lang:coNQP} can simulate any {lang:coNP} machine by only using classical circuits, and Hadamard gates to prepare random coins.",
+        "ref": "{lang:coNQP} can simulate any {lang:coNP} machine by only using classical circuits, using Hadamard gates to prepare random ('nondeterministic') coins.",
         "impliedby": "ObviousConstruction"
     },
     {
@@ -1161,13 +1161,13 @@
     {
         "name": "C_eqL⊆C_eqP",
         "content": "C_eqL⊆C_eqP",
-        "ref": "Every C_eqL machine is also a C_eqP machine.",
+        "ref": "Every {lang:C_eqL} machine is also a {lang:C_eqP} machine.",
         "impliedby": "ObviousConstruction"
     },
     {
         "name": "PH⊆AP",
         "content": "PH⊆AP",
-        "ref": "PH is polynomial time with some bounded integer k alternations, while AP is unbounded alternations.",
+        "ref": "{lang:PH} is polynomial time with some bounded integer k alternations, while {lang:AP} is unbounded alternations.",
         "impliedby": "ObviousConstruction"
     },
     {
