@@ -102,7 +102,7 @@
                 <dt class="col-sm-3">Related Classes</dt>
                 <dd class="col-sm-9" id="class-related"></dd>
 
-                <dt class="col-sm-3">Properties</dt>
+                <dt class="col-sm-3">Tags</dt>
                 <dd class="col-sm-9" id="class-properties"></dd>
 
                 <dt class="col-sm-3">Notes</dt>
@@ -122,7 +122,7 @@
                 fetch('data/classes.json').then(res => res.json()),
                 fetch('generated/langdata.json').then(res => res.json())
             ]).then(([classes, langdata]) => {
-                    const cls = classes.find(c => c.name === className);
+                    let cls = classes.find(c => c.name === className);
                     if (cls) {
                         document.getElementById('class-name').textContent = cls.name;
                         document.getElementById('class-type').textContent = cls.type;
@@ -130,10 +130,34 @@
                         document.getElementById('class-desc').innerHTML = desc;
 
                         const supersetList = document.getElementById('class-superset');
-                        const lang = langdata.find(c => c.name === className);
-                        if (lang && lang.children && lang.children.length > 0) {
+                        let lang = langdata.find(c => c.name === className);
+                        
+                        let canonicalClass = lang;
+                        if (lang && lang.equals === false) {
+                            canonicalClass = langdata.find(c => c.equals && c.equals.includes(className));
+                        }
+                    
+                        const equalsList = document.getElementById('class-equals');
+                        if (canonicalClass && canonicalClass.equals && canonicalClass.equals.length > 0) {
+                            equalsList.innerHTML = ''; // Clear existing content
+                            const equals = canonicalClass.equals;
+                            if (lang != canonicalClass) { // add itself
+                                equals.push(canonicalClass.name);
+                            }
+                            equals.sort().forEach(equal => {
+                                const link = document.createElement('a');
+                                link.href = `class.html?name=${encodeURIComponent(equal)}`;
+                                link.textContent = equal;
+                                equalsList.appendChild(link);
+                                equalsList.appendChild(document.createTextNode(' '));
+                            });
+                        } else {
+                            equalsList.textContent = 'None';
+                        }
+
+                        if (canonicalClass && canonicalClass.children && canonicalClass.children.length > 0) {
                             supersetList.innerHTML = ''; // Clear existing content
-                            lang.children.forEach(superset => {
+                            canonicalClass.children.sort().forEach(superset => {
                                 const link = document.createElement('a');
                                 link.href = `class.html?name=${encodeURIComponent(superset)}`;
                                 link.textContent = superset;
@@ -145,12 +169,12 @@
                         }
 
                         const subsetList = document.getElementById('class-subset');
-                        const subsets = langdata.filter(c => c.children && c.children.includes(className))
+                        const subsets = langdata.filter(c => c.children && c.children.includes(canonicalClass.name))
                             .map(c => c.name);
 
                         if (subsets && subsets.length > 0) {
                             subsetList.innerHTML = ''; // Clear existing content
-                            subsets.forEach(subset => {
+                            subsets.sort().forEach(subset => {
                                 const link = document.createElement('a');
                                 link.href = `class.html?name=${encodeURIComponent(subset)}`;
                                 link.textContent = subset;
@@ -161,24 +185,10 @@
                             subsetList.textContent = 'None';
                         }
 
-                        const equalsList = document.getElementById('class-equals');
-                        if (lang && lang.equals && lang.equals.length > 0) {
-                            equalsList.innerHTML = ''; // Clear existing content
-                            lang.equals.forEach(equal => {
-                                const link = document.createElement('a');
-                                link.href = `class.html?name=${encodeURIComponent(equal)}`;
-                                link.textContent = equal;
-                                equalsList.appendChild(link);
-                                equalsList.appendChild(document.createTextNode(' '));
-                            });
-                        } else {
-                            equalsList.textContent = 'None';
-                        }
-
                         const relatedList = document.getElementById('class-related');
                         if (cls.related && cls.related.length > 0) {
                             relatedList.innerHTML = ''; // Clear existing content
-                            cls.related.forEach(relatedClass => {
+                            cls.related.forEach(relatedClass => { // don't sort, use order from JSON
                                 const link = document.createElement('a');
                                 link.href = `class.html?name=${encodeURIComponent(relatedClass)}`;
                                 link.textContent = relatedClass;
