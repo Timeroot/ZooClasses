@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Theorems and Facts</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body>
+    <div class="container mt-5">
+        <h1>Theorems and Facts</h1>
+        <table class="table table-bordered table-striped mt-3">
+            <thead>
+                <tr>
+                    <th>Name</th>
+                    <th>Content</th>
+                    <th>Source</th>
+                </tr>
+            </thead>
+            <tbody id="theorems-table-body">
+                <!-- Rows will be inserted here by JavaScript -->
+            </tbody>
+        </table>
+    </div>
+
+    <script>
+        fetch('data/theorems.json')
+            .then(response => response.json())
+            .then(data => {
+                const tableBody = document.getElementById('theorems-table-body');
+                data.forEach(thm => {
+                    const row = document.createElement('tr');
+                    const name = thm.name
+                        .replace(/{lang:([^}]+)}/g, (match, p1) => `<a href="class.html?name=${encodeURIComponent(p1)}">${p1}</a>`)
+                        .replace(/{thm:([^}]+)}/g, (match, p1) => `<a href="theorem.html?name=${encodeURIComponent(p1)}">${p1}</a>`);
+                    const content = thm.content
+                        .replace(/{lang:([^}]+)}/g, (match, p1) => `<a href="class.html?name=${encodeURIComponent(p1)}">${p1}</a>`)
+                        .replace(/{thm:([^}]+)}/g, (match, p1) => `<a href="theorem.html?name=${encodeURIComponent(p1)}">${p1}</a>`);
+
+                    let source = '';
+                    if (thm.impliedby && thm.impliedby !== 'ObviousConstruction') {
+                        source = `<a href="theorem.html?name=${encodeURIComponent(thm.impliedby)}">${thm.impliedby}</a>`;
+                    } else if (thm.ref) {
+                        let refContent = thm.ref
+                            .replace(/{lang:([^}]+)}/g, (match, p1) => `<a href="class.html?name=${encodeURIComponent(p1)}">${p1}</a>`)
+                            .replace(/{thm:([^}]+)}/g, (match, p1) => `<a href="theorem.html?name=${encodeURIComponent(p1)}">${p1}</a>`);
+                        
+                        if (refContent.startsWith('http')) {
+                            source = `<a href="${refContent}">${refContent}</a>`;
+                        } else {
+                            source = refContent;
+                        }
+                    }
+
+                    row.innerHTML = `
+                        <td><a href="theorem.html?name=${encodeURIComponent(thm.name)}">${name}</a></td>
+                        <td>${content}</td>
+                        <td>${source}</td>
+                    `;
+                    tableBody.appendChild(row);
+                });
+            })
+            .catch(error => {
+                console.error('Error fetching theorems.json:', error);
+                const tableBody = document.getElementById('theorems-table-body');
+                const row = document.createElement('tr');
+                row.innerHTML = `<td colspan="3" class="text-center text-danger">Error loading data.</td>`;
+                tableBody.appendChild(row);
+            });
+    </script>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

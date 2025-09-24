@@ -17,6 +17,9 @@
             <dt class="col-sm-3">Reference</dt>
             <dd class="col-sm-9" id="theorem-ref"></dd>
 
+            <dt class="col-sm-3">Implied By</dt>
+            <dd class="col-sm-9" id="theorem-impliedby"></dd>
+
             <dt class="col-sm-3">Related Theorems</dt>
             <dd class="col-sm-9" id="theorem-related"></dd>
 
@@ -43,10 +46,10 @@
                         .replace(/{thm:([^}]+)}/g, (match, p1) => `<a href="theorem.html?name=${encodeURIComponent(p1)}">${p1}</a>`);
                     document.getElementById('theorem-content').innerHTML = content;
 
+                    const refElement = document.getElementById('theorem-ref');
                     if (theorem.ref) {
                         const ref = references.find(r => r.name === theorem.ref);
                         if (ref) {
-                            const refElement = document.getElementById('theorem-ref');
                             const desc = ref.desc
                                 .replace(/{lang:([^}]+)}/g, (match, p1) => `<a href="class.html?name=${encodeURIComponent(p1)}">${p1}</a>`)
                                 .replace(/{thm:([^}]+)}/g, (match, p1) => `<a href="theorem.html?name=${encodeURIComponent(p1)}">${p1}</a>`);
@@ -59,11 +62,26 @@
                                 refElement.innerHTML += '</ul>';
                             }
                         } else {
-                            const refContent = theorem.ref
+                            let refContent = theorem.ref
                                 .replace(/{lang:([^}]+)}/g, (match, p1) => `<a href="class.html?name=${encodeURIComponent(p1)}">${p1}</a>`)
                                 .replace(/{thm:([^}]+)}/g, (match, p1) => `<a href="theorem.html?name=${encodeURIComponent(p1)}">${p1}</a>`);
-                            document.getElementById('theorem-ref').innerHTML = refContent;
+                        
+                            if (refContent.startsWith('http')) {
+                                refElement.innerHTML = `<a href="${refContent}">${refContent}</a>`;
+                            } else {
+                                refElement.innerHTML = refContent;
+                            }
                         }
+                    } else {
+                        refElement.textContent = 'None';
+                    }
+
+                    const impliedByElement = document.getElementById('theorem-impliedby');
+                    if (theorem.impliedby) {
+                        const impliedBy = `<a href="theorem.html?name=${encodeURIComponent(theorem.impliedby)}">${theorem.impliedby}</a>`;
+                        impliedByElement.innerHTML = impliedBy;
+                    } else {
+                        impliedByElement.textContent = 'None';
                     }
 
                     const relatedList = document.getElementById('theorem-related');
