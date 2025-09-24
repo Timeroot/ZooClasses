@@ -129,7 +129,6 @@
                         const desc = processString(cls.desc);
                         document.getElementById('class-desc').innerHTML = desc;
 
-                        const supersetList = document.getElementById('class-superset');
                         let lang = langdata.find(c => c.name === className);
                         
                         let canonicalClass = lang;
@@ -138,66 +137,27 @@
                         }
                     
                         const equalsList = document.getElementById('class-equals');
+                        let equals = [];
                         if (canonicalClass && canonicalClass.equals && canonicalClass.equals.length > 0) {
-                            equalsList.innerHTML = ''; // Clear existing content
-                            const equals = canonicalClass.equals;
+                            equals = canonicalClass.equals;
                             if (lang != canonicalClass) { // add itself
                                 equals.push(canonicalClass.name);
                             }
-                            equals.sort().forEach(equal => {
-                                const link = document.createElement('a');
-                                link.href = `class.html?name=${encodeURIComponent(equal)}`;
-                                link.textContent = equal;
-                                equalsList.appendChild(link);
-                                equalsList.appendChild(document.createTextNode(' '));
-                            });
-                        } else {
-                            equalsList.textContent = 'None';
                         }
+                        createLinkList(equalsList, equals.sort(), (name) => `class.html?name=${encodeURIComponent(name)}`);
 
-                        if (canonicalClass && canonicalClass.children && canonicalClass.children.length > 0) {
-                            supersetList.innerHTML = ''; // Clear existing content
-                            canonicalClass.children.sort().forEach(superset => {
-                                const link = document.createElement('a');
-                                link.href = `class.html?name=${encodeURIComponent(superset)}`;
-                                link.textContent = superset;
-                                supersetList.appendChild(link);
-                                supersetList.appendChild(document.createTextNode(' '));
-                            });
-                        } else {
-                            supersetList.textContent = 'None';
-                        }
+                        const supersetList = document.getElementById('class-superset');
+                        const children = (canonicalClass && canonicalClass.children) ? canonicalClass.children : [];
+                        createLinkList(supersetList, children.sort(), (name) => `class.html?name=${encodeURIComponent(name)}`);
 
                         const subsetList = document.getElementById('class-subset');
                         const subsets = langdata.filter(c => c.children && c.children.includes(canonicalClass.name))
                             .map(c => c.name);
-
-                        if (subsets && subsets.length > 0) {
-                            subsetList.innerHTML = ''; // Clear existing content
-                            subsets.sort().forEach(subset => {
-                                const link = document.createElement('a');
-                                link.href = `class.html?name=${encodeURIComponent(subset)}`;
-                                link.textContent = subset;
-                                subsetList.appendChild(link);
-                                subsetList.appendChild(document.createTextNode(' '));
-                            });
-                        } else {
-                            subsetList.textContent = 'None';
-                        }
+                        createLinkList(subsetList, subsets.sort(), (name) => `class.html?name=${encodeURIComponent(name)}`);
 
                         const relatedList = document.getElementById('class-related');
-                        if (cls.related && cls.related.length > 0) {
-                            relatedList.innerHTML = ''; // Clear existing content
-                            cls.related.forEach(relatedClass => { // don't sort, use order from JSON
-                                const link = document.createElement('a');
-                                link.href = `class.html?name=${encodeURIComponent(relatedClass)}`;
-                                link.textContent = relatedClass;
-                                relatedList.appendChild(link);
-                                relatedList.appendChild(document.createTextNode(' '));
-                            });
-                        } else {
-                            relatedList.textContent = 'None';
-                        }
+                        const related = (cls.related) ? cls.related : [];
+                        createLinkList(relatedList, related, (name) => `class.html?name=${encodeURIComponent(name)}`);
 
                         const propertiesList = document.getElementById('class-properties');
                         if (cls.properties && cls.properties.length > 0) {

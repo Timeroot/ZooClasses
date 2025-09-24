@@ -93,6 +93,9 @@
                 <dt class="col-sm-3">Implied By</dt>
                 <dd class="col-sm-9" id="theorem-impliedby"></dd>
 
+                <dt class="col-sm-3">Used to Prove</dt>
+                <dd class="col-sm-9" id="used-to-prove"></dd>
+
                 <dt class="col-sm-3">Related Theorems</dt>
                 <dd class="col-sm-9" id="theorem-related"></dd>
 
@@ -153,19 +156,13 @@
                         impliedByElement.textContent = 'None';
                     }
 
+                    const usedToProveElement = document.getElementById('used-to-prove');
+                    const usedToProve = theorems.filter(t => t.impliedby === theorem.name).map(t => t.name);
+                    createLinkList(usedToProveElement, usedToProve, (name) => `theorem.html?name=${encodeURIComponent(name)}`);
+
                     const relatedList = document.getElementById('theorem-related');
-                    if (theorem.related && theorem.related.length > 0) {
-                        relatedList.innerHTML = ''; // Clear existing content
-                        theorem.related.forEach(relatedTheorem => {
-                            const link = document.createElement('a');
-                            link.href = `theorem.html?name=${encodeURIComponent(relatedTheorem)}`;
-                            link.textContent = relatedTheorem;
-                            relatedList.appendChild(link);
-                            relatedList.appendChild(document.createTextNode(' '));
-                        });
-                    } else {
-                        relatedList.textContent = 'None';
-                    }
+                    const related = (theorem.related) ? theorem.related : [];
+                    createLinkList(relatedList, related, (name) => `theorem.html?name=${encodeURIComponent(name)}`);
 
                     const notesElement = document.getElementById('theorem-notes');
                     if(theorem.notes) {
