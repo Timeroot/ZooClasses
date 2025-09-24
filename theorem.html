@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Theorem Details</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body>
+    <div class="container mt-5">
+        <h1 id="theorem-name"></h1>
+        <hr>
+        <dl class="row">
+            <dt class="col-sm-3">Content</dt>
+            <dd class="col-sm-9" id="theorem-content"></dd>
+
+            <dt class="col-sm-3">Reference</dt>
+            <dd class="col-sm-9" id="theorem-ref"></dd>
+
+            <dt class="col-sm-3">Related Theorems</dt>
+            <dd class="col-sm-9" id="theorem-related"></dd>
+
+            <dt class="col-sm-3">Notes</dt>
+            <dd class="col-sm-9" id="theorem-notes"></dd>
+        </dl>
+        <a href="index.html" class="btn btn-primary">Back to Classes List</a>
+    </div>
+
+    <script>
+        const urlParams = new URLSearchParams(window.location.search);
+        const theoremName = urlParams.get('name');
+
+        if (theoremName) {
+            Promise.all([
+                fetch('data/theorems.json').then(res => res.json()),
+                fetch('data/references.json').then(res => res.json())
+            ]).then(([theorems, references]) => {
+                const theorem = theorems.find(t => t.name === theoremName);
+                if (theorem) {
+                    document.getElementById('theorem-name').textContent = theorem.name;
+                    const content = theorem.content
+                        .replace(/{lang:([^}]+)}/g, (match, p1) => `<a href="class.html?name=${encodeURIComponent(p1)}">${p1}</a>`)
+                        .replace(/{thm:([^}]+)}/g, (match, p1) => `<a href="theorem.html?name=${encodeURIComponent(p1)}">${p1}</a>`);
+                    document.getElementById('theorem-content').innerHTML = content;
+
+                    if (theorem.ref) {
+                        const ref = references.find(r => r.name === theorem.ref);
+                        if (ref) {
+                            const refElement = document.getElementById('theorem-ref');
+                            const desc = ref.desc
+                                .replace(/{lang:([^}]+)}/g, (match, p1) => `<a href="class.html?name=${encodeURIComponent(p1)}">${p1}</a>`)
+                                .replace(/{thm:([^}]+)}/g, (match, p1) => `<a href="theorem.html?name=${encodeURIComponent(p1)}">${p1}</a>`);
+                            refElement.innerHTML = `${desc}`;
+                            if(ref.url && ref.url.length > 0) {
+                                refElement.innerHTML += '<ul>';
+                                ref.url.forEach(url => {
+                                    refElement.innerHTML += `<li><a href="${url}">${url}</a></li>`;
+                                });
+                                refElement.innerHTML += '</ul>';
+                            }
+                        } else {
+                            const refContent = theorem.ref
+                                .replace(/{lang:([^}]+)}/g, (match, p1) => `<a href="class.html?name=${encodeURIComponent(p1)}">${p1}</a>`)
+                                .replace(/{thm:([^}]+)}/g, (match, p1) => `<a href="theorem.html?name=${encodeURIComponent(p1)}">${p1}</a>`);
+                            document.getElementById('theorem-ref').innerHTML = refContent;
+                        }
+                    }
+
+                    const relatedList = document.getElementById('theorem-related');
+                    if (theorem.related && theorem.related.length > 0) {
+                        relatedList.innerHTML = ''; // Clear existing content
+                        theorem.related.forEach(relatedTheorem => {
+                            const link = document.createElement('a');
+                            link.href = `theorem.html?name=${encodeURIComponent(relatedTheorem)}`;
+                            link.textContent = relatedTheorem;
+                            relatedList.appendChild(link);
+                            relatedList.appendChild(document.createTextNode(' '));
+                        });
+                    } else {
+                        relatedList.textContent = 'None';
+                    }
+
+                    const notesElement = document.getElementById('theorem-notes');
+                    if(theorem.notes) {
+                        const notes = theorem.notes
+                            .replace(/{lang:([^}]+)}/g, (match, p1) => `<a href="class.html?name=${encodeURIComponent(p1)}">${p1}</a>`)
+                            .replace(/{thm:([^}]+)}/g, (match, p1) => `<a href="theorem.html?name=${encodeURIComponent(p1)}">${p1}</a>`);
+                        notesElement.innerHTML = notes;
+                    } else {
+                        notesElement.textContent = 'None';
+                    }
+
+                } else {
+                    document.getElementById('theorem-name').textContent = 'Theorem not found';
+                }
+            }).catch(error => {
+                console.error('Error fetching data:', error);
+                document.getElementById('theorem-name').textContent = 'Error loading data';
+            });
+        }
+    </script>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

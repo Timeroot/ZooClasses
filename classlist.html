@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Complexity Classes</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body>
+    <div class="container mt-5">
+        <div class="d-flex justify-content-between align-items-center">
+            <h1>Complexity Classes</h1>
+            <div id="type-selector" class="btn-group">
+                <!-- Type selector buttons will be inserted here -->
+            </div>
+        </div>
+        <table class="table table-bordered table-striped mt-3">
+            <thead>
+                <tr>
+                    <th>Name</th>
+                    <th>Description</th>
+                </tr>
+            </thead>
+            <tbody id="classes-table-body">
+                <!-- Rows will be inserted here by JavaScript -->
+            </tbody>
+        </table>
+    </div>
+
+    <script>
+        Promise.all([
+            fetch('data/classes.json').then(res => res.json()),
+            fetch('data/problem_types.json').then(res => res.json())
+        ]).then(([classes, problemTypes]) => {
+            const typeSelector = document.getElementById('type-selector');
+            const tableBody = document.getElementById('classes-table-body');
+            let selectedType = 'Language';
+
+            function renderTable(type) {
+                selectedType = type;
+                tableBody.innerHTML = '';
+                const filteredClasses = classes.filter(cls => cls.type === type);
+
+                filteredClasses.forEach(cls => {
+                    const row = document.createElement('tr');
+                    const desc = cls.desc
+                        .replace(/{lang:([^}]+)}/g, (match, p1) => `<a href="class.html?name=${encodeURIComponent(p1)}">${p1}</a>`)
+                        .replace(/{thm:([^}]+)}/g, (match, p1) => `<a href="theorem.html?name=${encodeURIComponent(p1)}">${p1}</a>`);
+                    row.innerHTML = `
+                        <td><a href="class.html?name=${encodeURIComponent(cls.name)}">${cls.name}</a></td>
+                        <td>${desc}</td>
+                    `;
+                    tableBody.appendChild(row);
+                });
+                updateSelectorButtons();
+            }
+
+            function updateSelectorButtons() {
+                typeSelector.innerHTML = '';
+                problemTypes.forEach(type => {
+                    const hasClasses = classes.some(cls => cls.type === type.name);
+                    if (hasClasses) {
+                        const button = document.createElement('button');
+                        button.textContent = type.name;
+                        button.className = `btn ${type.name === selectedType ? 'btn-primary' : 'btn-outline-primary'}`;
+                        button.onclick = () => renderTable(type.name);
+                        typeSelector.appendChild(button);
+                    }
+                });
+            }
+
+            renderTable(selectedType);
+
+        }).catch(error => {
+            console.error('Error fetching data:', error);
+            const tableBody = document.getElementById('classes-table-body');
+            const row = document.createElement('tr');
+            row.innerHTML = `<td colspan="2" class="text-center text-danger">Error loading data.</td>`;
+            tableBody.appendChild(row);
+        });
+    </script>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
