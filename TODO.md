@@ -9,6 +9,8 @@ Information Theory, 25(2):232–233, Mar 1979. -- P^(NP \cap coNP) = NP \cap coN
  * Adelman's theorem: BPP \subset P/poly
  * Yap: if NP \subseteq coNP/poly, the PH collapses to the third level
  * MA/rpoly = NP/poly
+ * "Cai's theorem": S2P in ZPP^NP
+ * DLIN != NLIN
 
 https://link.springer.com/article/10.1007/s002240000102
 https://people.cs.rutgers.edu/~allender/papers/pl3.pdf
@@ -23,3 +25,7 @@ https://arxiv.org/pdf/2405.06485
 https://www.sciencedirect.com/science/article/pii/030439759390252O span-X, opt-X
 https://arxiv.org/abs/quant-ph/0307149 FBQP vs PLS
 https://arxiv.org/abs/2106.03991 FBQP and quadratic non-residue (and GRH?)
+
+Cool references:
+https://arxiv.org/pdf/2310.17762
+https://arxiv.org/pdf/2510.19084
