@@ -122,6 +122,28 @@
         "priority": 2
     },
     {
+        "name": "ZPP⊆S2P",
+        "content": "ZPP⊆S2P",
+        "ref": "The random seeds in a ZPP algorithm give the witnesses for the S2P protocol.",
+        "notes": "This is a very weak lower bound, see {thm:Δ2⊆S2P} and {thm:MA⊆S2P} for a stronger but less obvious bound."
+    },
+    {
+        "name": "Δ2⊆S2P",
+        "content": "Δ2⊆S2P",
+        "ref": "{ref:RS98}"
+    },
+    {
+        "name": "MA⊆S2P",
+        "content": "MA⊆S2P",
+        "ref": "{ref:RS98}"
+    },
+    {
+        "name": "S2P⊆Σ2∩Π2",
+        "content": "S2P⊆Σ2&&S2P⊆Π2",
+        "ref": "The definition of {lang:S2P} includes \"then there exists a z such that for all y, P(x,y,z) is false\", which is a stronger requirement than if the quantifiers were swapped. Swapping the quantifiers gives the definition of {lang:Σ2}, for the first containment. Taking complements then gives the second containment.",
+        "notes": "This is the trivial upper bound, see {ref:Cai01} for a better upper bound (that is a TODO to digitize: S2P⊆ZPP^NP)."
+    },
+    {
         "name": "PZK⊆SZK",
         "content": "PZK⊆SZK",
         "ref": "By definition: perfect zero-knowledge is a special case of statistical zero-knowledge."
@@ -736,7 +758,7 @@
     {
         "name": "P=Δ0⊆Δi⊆Πi∩Σi⊆Σi∪Πi⊆Δ{i+1}⊆PH",
         "content": "{i}Δi⊆Πi∩Σi⊆Σi∪Πi⊆Δ{i+1}⊆PH",
-        "impiedby": "ObviousConstruction"
+        "impliedby": "ObviousConstruction"
     },
     {
         "name": "P⊆NP",

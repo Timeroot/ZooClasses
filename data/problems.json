@@ -1,0 +1,211 @@
+[
+{
+    "name": "3SUM",
+    "description": "Given a list of n integers, are there three that sum to zero? Standard problem in fine-grained complexity.",
+    "variants" : [ 
+        {
+            "id": "3SUMLanguage",
+            "desc": "Given a list of n integers in binary, are there three that sum to zero?",
+            "type": "Language",
+            "notes": "Often written `3SUM` for the language. Known to be in DTIME(n^2 / polylog(n)) in the Word RAM model (with O(log n)-bit words), conjectured to require n^{2-o(1)} time, i.e. there is no O(n^{2-epsilon}) time algorithm for any epsilon>0."
+        },
+        {
+            "id": "3SUMFunction",
+            "desc": "Given a list of n integers, output three that sum to zero, or output 'NO' if none exist.",
+            "type": "Function Problem",
+            "notes": "Can be reduced to {prob:3SUMLanguage} using a search-to-decision in 3 log_2 n oracle queries."
+        },
+        {
+            "id": "#3SUM",
+            "desc": "Given a list of n integers, count how many subsets of three that sum to zero.",
+            "type": "Integer Problem"
+        },
+        {
+            "id": "Approximate#3SUM",
+            "desc": "Given a list of n integers, count how many subsets of three that sum to zero, to within a factor of 1±epsilon.",
+            "type": "Approximation Problem",
+            "notes": "If {prob:3SUMLanguage} requires T(n) time, then this approximation can be computed in T(n)*polylog(n)/epsilon^2 time, see Theorem 4 of https://arxiv.org/pdf/1707.04609 ."
+        }
+    ]
+},
+{
+    "name": "SubsetSum",
+    "description": "Given a set of integers and a target integer T, is there a subset that sums to T?",
+    "variants" : [
+        {
+            "id": "SubsetSumLanguage",
+            "desc": "Given a set of integers and a target integer T, is there a subset that sums to T?",
+            "type": "Language",
+            "notes": "Often written `SUBSETSUM` for the language. NP-Complete."
+        },
+        {
+            "id": "SubsetSumFunction",
+            "desc": "Given a set of integers and a target integer T, output a subset that sums to T, or output 'NO' if none exist.",
+            "type": "Function Problem",
+            "notes": "In {lang:FNP}. Reduces to {prob:SubsetSumLanguage} by standard search-to-decision."
+        },
+        {
+            "id": "SubsetSumClosest",
+            "desc": "Given a set of integers, output a nonempty subset with a nonnegative sum as close as possible to zero.",
+            "type": "Optimization Problem"
+        }
+    ]
+},
+{   "name": "PrimalityTesting",
+    "description": "Given an integer N, determine whether it is prime.",
+    "variants" : [
+        {
+            "id": "PrimalityLanguage",
+            "desc": "Given an integer N in binary, determine whether it is prime.",
+            "type": "Language",
+            "notes": "Often written `PRIMES` for the language. In RP (by Miller-Rabin), in co-RP (by Pratt certificates), and in fact in P (by AKS and other algorithms). Hard for TC^0 under AC^0 reductions (by http://ftp.cs.rutgers.edu/pub/allender/primes.pdf)"
+        }
+    ]
+},
+{
+    "name": "IntegerFactoring",
+    "description": "Determine the prime factors of a given integer.",
+    "variants" : [
+        {
+            "id": "FactoringLanguage",
+            "desc": "Given an integer N in binary, and integers A and B in binary, does N have a prime factor betwween A and B?",
+            "type": "Language",
+            "notes": "Often written `FACTORING` for the language, sometimes this instead asks if N has any factor - not just a prime factor - between A and B. In NP and co-NP, but not known to be in P or NP-complete. In {lang:NP} and {lang:coNP} (because {prob:PrimalityLanguage} is in {lang:P}), and {lang:BQP} by Shor's algorithm."
+        },
+        {
+            "id": "AllFactorsFunction",
+            "desc": "Given an integer N in binary, output its prime factorization.",
+            "type": "Function Problem",
+            "notes": "Reduces to {prob:FactoringLanguage} by standard search-to-decision. In {lang:FNP} and {lang:FcoNP} since {prob:PrimalityLanguage} is in {lang:P}, and in {lang:FBQP} by Shor's algorithm."
+        },
+        {
+            "id": "SmallestFactorFunction",
+            "desc": "Given an integer N in binary, output its smallest prime factor.",
+            "type": "Function Problem",
+            "notes": "Not necessarily in {lang:FNP}, because the smallest prime factor alone is not enough of a witness to prove that there is no smaller prime factor. Still in {lang:FBQP} by Shor's algorithm though. Reduces to {prob:FactoringLanguage} by standard search-to-decision."
+        }
+    ]
+},
+{
+    "name": "GraphColoring",
+    "description": "Given a graph and an integer k, can the graph be colored with k colors such that no two adjacent vertices share the same color?",
+    "variants" : [
+        {
+            "id": "GraphColoringLanguage",
+            "desc": "Given a graph and an integer k, can the graph be colored with k colors such that no two adjacent vertices share the same color?",
+            "type": "Language",
+            "notes": "NP-Complete."
+        },
+        {
+            "id": "ChromaticNumberFunction",
+            "desc": "Given a graph, output its chromatic number (the minimum number of colors needed to color the graph).",
+            "type": "Integer Problem",
+            "notes": "Not necessarily in {lang:FNP}, because the chromatic number alone is not enough of a witness to check the existence of a coloring. Reduces to {prob:GraphColoringLanguage} by standard search-to-decision."
+        },
+        {
+            "id": "GraphColoringFunction",
+            "desc": "Given a graph and an integer k, output a valid k-coloring of the graph, or output 'NO' if none exists.",
+            "type": "Function Problem",
+            "notes": "In {lang:FNP}. Reduces to {prob:GraphColoringLanguage} by standard search-to-decision."
+        },
+        {
+            "id": "GraphColoringOptimization",
+            "desc": "Given a graph, find a valid graph coloring with as few colors as possible.",
+            "type": "Optimization Problem",
+            "notes": "Reduces to {prob:GraphColoringLanguage} by standard search-to-decision."
+        },
+        {
+            "id": "#kCOL",
+            "desc": "Given a graph, count the number of distinct valid k-colorings of the graph.",
+            "type": "Integer Problem",
+            "notes": "#P-Complete. {prob:GraphColoringLanguage} reduces to this problem by checking if the count is greater than zero."
+        }
+    ]
+},
+{
+    "name": "HamiltonianPath",
+    "description": "Given a graph, does there exist a path that visits each vertex exactly once?",
+    "variants" : [
+        {
+            "id": "HamiltonianPathLanguage",
+            "desc": "Given a graph, does there exist a path that visits each vertex exactly once?",
+            "type": "Language",
+            "notes": "NP-Complete"
+        },
+        {
+            "id": "HamiltonianPathFunction",
+            "desc": "Given a graph, output a Hamiltonian path if one exists, or output 'NO' if none exist.",
+            "type": "Function Problem",
+            "notes": "In {lang:FNP}. Reduces to {prob:GraphColoringLanguage} by standard search-to-decision."
+        }
+    ]
+},
+{
+    "name": "MinimumCircuitSize",
+    "description": "Given the truth table of a Boolean function, what is the size of the smallest Boolean circuit that computes it?",
+    "variants" : [
+        {
+            "id": "MCSLanguage",
+            "desc": "Given the truth table of a Boolean function and an integer s, does there exist a Boolean circuit (with any fanin-2 gates) of size at most s that computes the function?",
+            "type": "Language",
+            "notes": "Called `MCSP` for the language. Not known to be in NP, nor known to be NP-hard. Believed to be a very hard problem, as it is closely related to proving circuit lower bounds."
+        },
+        {
+            "id": "MCSFunction",
+            "desc": "Given the truth table of a Boolean function, output the size of the smallest Boolean circuit that computes it.",
+            "type": "Integer Problem"
+        },
+        {
+            "id": "MCSOptimization",
+            "desc": "Given the truth table of a Boolean function, find the smallest Boolean circuit possible that computes it.",
+            "type": "Optimization Problem"
+        }
+    ]
+},
+{
+    "name": "PosSLP",
+    "description": "Given a division-free straight-line program that computes an integer, determine whether the integer is positive.",
+    "variants" : [
+        {
+            "id": "PosSLPLanguage",
+            "desc": "Given a division-free straight-line program that computes an integer, determine whether the integer is positive.",
+            "type": "Language",
+            "notes": "See https://arxiv.org/pdf/2307.08008 for overview of recent results. In the 4th level of the polynomial hierarchy, specifically `P^PP^PP^PP`. Important problem in numerical computation. In Exists-Real (TODO lang)."
+        },
+        {
+            "id": "DegSLP",
+            "desc": "Given a division-free straight-line program, determine the degree of the polynomial that it computes.",
+            "type": "Integer Problem",
+            "notes": "Representing the polynomial itself can be exponentially large, so we only ask for the degree."
+        },
+        {
+            "id": "SuccinctIntegerInequality",
+            "desc": "See https://arxiv.org/abs/1304.5429",
+            "type": "Language",
+            "notes": "Reduces to {prob:PosSLPLanguage}. Conjectured to be in {lang:P}."
+        }
+    ]
+},
+{
+    "name": "SumOfSquareRoots",
+    "description": "Given a list of integers, determine whether the sum of their square roots is at least a given target value.",
+    "variants" : [
+        {
+            "id": "SumOfSquareRootsLanguage",
+            "desc": "Given a list of integers a_1, a_2, ..., a_n in binary and a target integer T, determine whether sqrt(a_1) + sqrt(a_2) + ... + sqrt(a_n) >= T.",
+            "type": "Language",
+            "notes": "In PSPACE, not known to be in NP or co-NP. Conjectured to be in P. Equivalent to the problem where T is a rational number instead of an integer. Reducible to {prob:PosSLPLanguage} by (TODO ref: Eric Allender, Peter B¨urgisser, Johan Kjeldgaard-Pedersen, and Peter Bro Miltersen. On the complexity of numerical analysis.). In Exists-Real (TODO lang)."
+        },
+        {
+            "id": "SumOfSignedSquareRootsLanguage",
+            "desc": "Given a list of integers a_1, a_2, ..., a_n in binary, and a set of signs s_1, s_2, ..., s_n in binary, determine whether sqrt(a_1)*s_1 + sqrt(a_2)*s_2 + ... + sqrt(a_n)*s_n >= 0. In Exists-Real (TODO lang).",
+            "type": "Language"
+        },
+        {
+            "id": "SumOfRootsLanguage",
+            "desc": "Given a list of integers a_1, a_2, ..., a_n in binary, and a set of rational powers p_1, p_2, ..., p_n as pairs of integers, and a target integer T, determine whether a_1^{p_1} + a_2^{p_2} + ... + a_n^{p_n} >= T. In Exists-Real (TODO lang).",
+            "type": "Language"
+        }
+    ]
+}
+]

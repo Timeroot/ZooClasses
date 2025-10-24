@@ -1032,6 +1032,16 @@
         ]
     },
     {
+        "name": "S2P",
+        "type": "Language",
+        "desc": "Second Level of the Symmetric Hierarchy. The class of decision problems for which there is a polynomial-time predicate P such that, on input x: If the answer is 'yes,' then there exists a y such that for all z, P(x,y,z) is true; if the answer is 'no,' then there exists a z such that for all y, P(x,y,z) is false. This somewhat strange definition is symmetric in the existential and universal quantifiers, hence the name. Originally introduced for a refinement of the {thm:Sipser–Lautemann theorem}. See {ref:Cai01} for an overview.",
+        "related": [
+            "Σ2",
+            "ZPP",
+            "Π2"
+        ]
+    },
+    {
         "name": "SAC^0",
         "type": "Language",
         "desc": "SAC^k is the class of decision problems solvable by a family of depth-O(logkn) circuits with unbounded-fanin OR & bounded-fanin AND gates. Negations are only allowed at the input level. A uniformity condition may also be imposed. SAC^k sits naturally 'halfway' between NC^k and AC^k.",

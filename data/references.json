@@ -44,6 +44,14 @@
         ]
     },
     {
+        "name": "Cai01",
+        "desc": "J.-Y. Cai. S_2P is contained in ZPP^NP, Proceedings of IEEE FOCS'2001, pp. 620-629, 2001.",
+        "url": [
+            "https://doi.org/10.1016/j.jcss.2003.07.015",
+            "https://pages.cs.wisc.edu/~jyc/papers/S2-j.pdf"
+        ]
+    },
+    {
         "name": "CKS81",
         "desc": "A. K. Chandra, D. C. Kozen, and L. J. Stockmeyer. Alternation, Journal of the ACM 28:114-133, 1981.",
         "url": [
@@ -136,6 +144,14 @@
         "name": "Raz87",
         "desc": "Razborov, A. A. (1987), Lower bounds for the size of circuits of bounded depth with basis {⊕,∨}, Math. Notes of the Academy of Science of the USSR, 41 (4): 333–338.",
         "url": []
+    },
+    {
+        "name": "RS98",
+        "desc": "A. Russell and R. Sundaram. Symmetric alternation captures BPP, Computational Complexity 7(2):152-162, 1998. ",
+        "url": [
+            "https://doi.org/10.1007/s000370050007",
+            "https://dl.acm.org/doi/10.1007/s000370050007"
+        ]
     },
     {
         "name": "Sha90",

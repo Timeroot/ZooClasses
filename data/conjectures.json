@@ -2,8 +2,11 @@
     {
         "name": "P!=NP",
         "content": "P⊂NP",
+        "desc": "The class of problems solvable in polynomial time is strictly contained within the class of problems solvable in nondeterministic polynomial time. It is logically equivalent to saying that there is an NP-complete problem that cannot be solved in polynomial time, or that *some* NP problem (not necessarily NP-complete.) cannot be solved in polynomial time.",
+        "notes": "One of the Millenium Prize Problems.\nThe fact that this implies {conj:No sparse NP-complete languages} is known as Mahaney's theorem. The fact that this is implied by {conj:No sparse NP-complete language} is relatively trivial, since there are sparse languages in P, and P=NP implies that all nontrivial languages in P are NP-complete.\nLogically equivalent to the statement that P!={lang:PH}: if P=PH, then in particular P=NP since NP sits between P and PH; conversely, if P=NP, then each level of PH is just NP with an oracle to NP, which is just NP again, so PH=NP=P.",
         "implies": [
-            "P!=PSPACE"
+            "P!=PSPACE",
+            "No sparse NP-complete languages"
         ]
     },
     {
@@ -14,11 +17,30 @@
     {
         "name": "P=BPP",
         "content": "P=BPP",
-        "implies": []
+        "notes": "A type of a derandomization conjecture. {thm:Adleman's theorem} says that BPP⊆P/poly, in other words that BPP has polynomial-size circuits; this conjecture is a stronger statement that BPP has polynomial-time algorithms, or polynomial-size uniform circuits.\nIf this conjecture is true, then many other derandomization conjectures follow, such as BPP=RP and BPP=ZPP.\nIf this conjecture is false, then it implies that {conj:P!=NP}: P=NP implies that P=PH (collapse), and the {thm:Sipser–Lautemann theorem} says that BPP⊆PH.",
+        "implies": [],
+        "not_implies": ["P!=NP"]
+    },
+    {
+        "name": "Factoring not in P",
+        "content": "FactoringLanguage ∉ P",
+        "notes": "Critical for the security of RSA and other public-key cryptosystems. Note that this conjecture does not preclude sub-exponential time algorithms for factoring, such as the general number field sieve.",
+        "implies": ["P!=NP"]
     },
     {
         "name": "AC^0⊆QAC^0",
         "content": "AC^0⊆QAC^0",
         "implies": []
+    },
+    {
+        "name": "Berman–Hartmanis conjecture",
+        "content": "",
+        "desc": "All NP-complete sets are polynomial-time isomorphic. That is, for any two NP-complete sets A and B, there exists a bijection f: A → B such that both f and f^{-1} are computable in polynomial time.",
+        "implies": ["No sparse NP-complete languages"]
+    },
+    {
+        "name": "No sparse NP-complete languages",
+        "content": "SPARSE ∩ NP-Complete = ∅",
+        "implies": ["P!=NP"]
     }
 ]
