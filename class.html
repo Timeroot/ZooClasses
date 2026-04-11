@@ -120,63 +120,56 @@
         if (className) {
             Promise.all([
                 fetch('generated/classes.json').then(res => res.json()),
-                fetch('generated/langdata.json').then(res => res.json())
-            ]).then(([classes, langdata]) => {
+                fetch('generated/theorems.json').then(res => res.json())
+            ]).then(([classes, theorems]) => {
                     let cls = classes.find(c => c.name === className);
-                    if (cls) {
-                        document.getElementById('class-name').textContent = cls.name;
-                        document.getElementById('class-type').textContent = cls.type;
-                        const desc = processString(cls.desc);
-                        document.getElementById('class-desc').innerHTML = desc;
-
-                        let lang = langdata.find(c => c.name === className);
-                        
-                        let canonicalClass = lang;
-                        if (lang && lang.equals === false) {
-                            canonicalClass = langdata.find(c => c.equals && c.equals.includes(className));
-                        }
-                    
-                        const equalsList = document.getElementById('class-equals');
-                        let equals = [];
-                        if (canonicalClass && canonicalClass.equals && canonicalClass.equals.length > 0) {
-                            equals = canonicalClass.equals;
-                            if (lang != canonicalClass) { // add itself
-                                equals.push(canonicalClass.name);
-                            }
-                        }
-                        createLinkList(equalsList, equals.sort(), (name) => `class.html?name=${encodeURIComponent(name)}`);
-
-                        const supersetList = document.getElementById('class-superset');
-                        const children = (canonicalClass && canonicalClass.children) ? canonicalClass.children : [];
-                        createLinkList(supersetList, children.sort(), (name) => `class.html?name=${encodeURIComponent(name)}`);
-
-                        const subsetList = document.getElementById('class-subset');
-                        const subsets = langdata.filter(c => c.children && c.children.includes(canonicalClass.name))
-                            .map(c => c.name);
-                        createLinkList(subsetList, subsets.sort(), (name) => `class.html?name=${encodeURIComponent(name)}`);
-
-                        const relatedList = document.getElementById('class-related');
-                        const related = (cls.related) ? cls.related : [];
-                        createLinkList(relatedList, related, (name) => `class.html?name=${encodeURIComponent(name)}`);
-
-                        const propertiesList = document.getElementById('class-properties');
-                        if (cls.properties && cls.properties.length > 0) {
-                            propertiesList.textContent = cls.properties.join(', ');
-                        } else {
-                            propertiesList.textContent = 'None';
-                        }
-                        
-                        const notesElement = document.getElementById('class-notes');
-                        if(cls.notes) {
-                            const notes = processString(cls.notes);
-                            notesElement.innerHTML = notes;
-                        } else {
-                            notesElement.textContent = 'None';
-                        }
-
-                    } else {
+                    if (!cls) {
                         document.getElementById('class-name').textContent = 'Class not found';
+                        return;
                     }
+
+                    const langdata = buildPosetFromTheorems(classes, theorems, cls.type);
+
+                    document.getElementById('class-name').textContent = cls.name;
+                    document.getElementById('class-type').textContent = cls.type;
+                    document.getElementById('class-desc').innerHTML = processString(cls.desc);
+
+                    let lang = langdata.find(c => c.name === className);
+
+                    let canonicalClass = lang;
+                    if (lang && lang.equals === false) {
+                        canonicalClass = langdata.find(c => c.equals && c.equals.includes(className));
+                    }
+
+                    const equalsList = document.getElementById('class-equals');
+                    let equals = [];
+                    if (canonicalClass && canonicalClass.equals && canonicalClass.equals.length > 0) {
+                        equals = [...canonicalClass.equals];
+                        if (lang !== canonicalClass) {
+                            equals.push(canonicalClass.name);
+                        }
+                    }
+                    createLinkList(equalsList, equals.sort(), (name) => `class.html?name=${encodeURIComponent(name)}`);
+
+                    const supersetList = document.getElementById('class-superset');
+                    const children = (canonicalClass && canonicalClass.children) ? canonicalClass.children : [];
+                    createLinkList(supersetList, children.sort(), (name) => `class.html?name=${encodeURIComponent(name)}`);
+
+                    const subsetList = document.getElementById('class-subset');
+                    const subsets = langdata.filter(c => c.children && c.children.includes(
+                        canonicalClass ? canonicalClass.name : className
+                    )).map(c => c.name);
+                    createLinkList(subsetList, subsets.sort(), (name) => `class.html?name=${encodeURIComponent(name)}`);
+
+                    const relatedList = document.getElementById('class-related');
+                    createLinkList(relatedList, cls.related || [], (name) => `class.html?name=${encodeURIComponent(name)}`);
+
+                    const propertiesList = document.getElementById('class-properties');
+                    propertiesList.textContent = (cls.properties && cls.properties.length > 0)
+                        ? cls.properties.join(', ') : 'None';
+
+                    const notesElement = document.getElementById('class-notes');
+                    notesElement.innerHTML = cls.notes ? processString(cls.notes) : 'None';
                 })
                 .catch(error => {
                     console.error('Error fetching data:', error);
