@@ -1,0 +1,6 @@
+---
+name: cofrIP
+properties:
+  - protocol
+---
+----

@@ -1,0 +1,76 @@
+# Excluded Classes
+
+These classes from the Complexity Zoo were intentionally not included.
+Common reasons: parameterized by a function f(n), algebraic model, 
+second-order logic descriptor, or too ill-defined.
+
+- **#RHΠ_1**: Excluded: span ID 'rg' is on the exclude list (parameterized/non-standard)
+- **0-1-NP_C**: Excluded: span ID '01npc' is on the exclude list (parameterized/non-standard)
+- **1NAuxPDA^p**: Excluded: span ID '1nauxpdap' is on the exclude list (parameterized/non-standard)
+- **3SUM-hard**: Excluded: span ID '3sumhard' is on the exclude list (parameterized/non-standard)
+- **AC^0[m]**: Excluded: span ID 'ac0m' is on the exclude list (parameterized/non-standard)
+- **AM^cc**: Excluded: span ID 'amcc' is on the exclude list (parameterized/non-standard)
+- **ASPACE**: Excluded: span ID 'aspace' is on the exclude list (parameterized/non-standard)
+- **ATIME**: Excluded: span ID 'atime' is on the exclude list (parameterized/non-standard)
+- **AvgE**: Excluded: matches parameterized pattern 'Avg'
+- **AvgP**: Excluded: span ID 'avgp' is on the exclude list (parameterized/non-standard)
+- **BC_=P**: Excluded: span ID 'bcequalsp' is on the exclude list (parameterized/non-standard)
+- **BPP^cc**: Excluded: span ID 'bppcc' is on the exclude list (parameterized/non-standard)
+- **BPTIME(f(n))**: Excluded: span ID 'bptime' is on the exclude list (parameterized/non-standard)
+- **BQTIME(f(n))**: Excluded: matches parameterized pattern 'TIME\('
+- **CSIZE(f(n))**: Excluded: matches parameterized pattern 'SIZE\('
+- **DSPACE(f(n))**: Excluded: span ID 'dspace' is on the exclude list (parameterized/non-standard)
+- **DTIME(f(n))**: Excluded: span ID 'dtime' is on the exclude list (parameterized/non-standard)
+- **DTISP(t(n),s(n))**: Excluded: span ID 'dtisp' is on the exclude list (parameterized/non-standard)
+- **DistNP**: Excluded: span ID 'distnp' is on the exclude list (parameterized/non-standard)
+- **EQTIME(f(n))**: Excluded: matches parameterized pattern 'TIME\('
+- **F-TIME(f(n))**: Excluded: matches parameterized pattern 'TIME\('
+- **FO**: Excluded: span ID 'fo' is on the exclude list (parameterized/non-standard)
+- **FO(LFP)**: Excluded: span ID 'folfp' is on the exclude list (parameterized/non-standard)
+- **FO(PFP)**: Excluded: span ID 'fopfp' is on the exclude list (parameterized/non-standard)
+- **FO(TC)**: Excluded: span ID 'fotc' is on the exclude list (parameterized/non-standard)
+- **FO[t(n)]**: Excluded: span ID 'fot' is on the exclude list (parameterized/non-standard)
+- **HeurBPP**: Excluded: span ID 'heurbpp' is on the exclude list (parameterized/non-standard)
+- **HeurBPTIME(f(n))**: Excluded: matches parameterized pattern 'BPTIME\('
+- **HeurDTIME_\delta(f(n))**: Excluded: span ID 'heurdtime' is on the exclude list (parameterized/non-standard)
+- **HeurNTIME_\delta(f(n))**: Excluded: matches parameterized pattern 'Heur'
+- **HeurP**: Excluded: matches parameterized pattern 'Heur'
+- **HeurPP**: Excluded: matches parameterized pattern 'Heur'
+- **IC[log,poly]**: Excluded: span ID 'iclogpoly' is on the exclude list (parameterized/non-standard)
+- **MA^cc**: Excluded: span ID 'macc' is on the exclude list (parameterized/non-standard)
+- **NAuxPDA^p**: Excluded: span ID 'nauxpdap' is on the exclude list (parameterized/non-standard)
+- **NNC(''f(n)'')**: Excluded: span ID 'nnc' is on the exclude list (parameterized/non-standard)
+- **NP^cc**: Excluded: span ID 'npcc' is on the exclude list (parameterized/non-standard)
+- **NP_C**: Excluded: span ID 'npc2' is on the exclude list (parameterized/non-standard)
+- **NP_R**: Excluded: span ID 'npr' is on the exclude list (parameterized/non-standard)
+- **NSPACE(f(n))**: Excluded: span ID 'nspace' is on the exclude list (parameterized/non-standard)
+- **NTIME(f(n))**: Excluded: span ID 'ntime' is on the exclude list (parameterized/non-standard)
+- **PH^cc**: Excluded: span ID 'phcc' is on the exclude list (parameterized/non-standard)
+- **PT/WK(f(n),g(n))**: Excluded: span ID 'ptwk' is on the exclude list (parameterized/non-standard)
+- **P^NPcc**: Excluded: span ID 'pnpcc' is on the exclude list (parameterized/non-standard)
+- **P^cc**: Excluded: span ID 'pcc' is on the exclude list (parameterized/non-standard)
+- **P_C**: Excluded: span ID 'pc' is on the exclude list (parameterized/non-standard)
+- **P_R**: Excluded: span ID 'pr2' is on the exclude list (parameterized/non-standard)
+- **Q**: Excluded: span ID 'q' is on the exclude list (parameterized/non-standard)
+- **QAC^0[m]**: Excluded: span ID 'qac0m' is on the exclude list (parameterized/non-standard)
+- **QCPH**: Excluded: span ID 'qcph' is on the exclude list (parameterized/non-standard)
+- **RG**: Excluded: span ID 'rg' is on the exclude list (parameterized/non-standard)
+- **RP^cc**: Excluded: span ID 'rpcc' is on the exclude list (parameterized/non-standard)
+- **SIZE(f(n))**: Excluded: span ID 'size' is on the exclude list (parameterized/non-standard)
+- **SO**: Excluded: span ID 'so' is on the exclude list (parameterized/non-standard)
+- **SO(Horn)**: Excluded: span ID 'sohorn' is on the exclude list (parameterized/non-standard)
+- **SO(Krom)**: Excluded: span ID 'sokrom' is on the exclude list (parameterized/non-standard)
+- **UCC**: Excluded: span ID 'ucc' is on the exclude list (parameterized/non-standard)
+- **UPP^cc**: Excluded: span ID 'uppcc' is on the exclude list (parameterized/non-standard)
+- **VNC_k**: Excluded: span ID 'vnc' is on the exclude list (parameterized/non-standard)
+- **VNP_k**: Excluded: span ID 'vnp' is on the exclude list (parameterized/non-standard)
+- **VP_k**: Excluded: span ID 'vp' is on the exclude list (parameterized/non-standard)
+- **VQP_k**: Excluded: span ID 'vqp' is on the exclude list (parameterized/non-standard)
+- **ZAM^cc**: Excluded: span ID 'zamcc' is on the exclude list (parameterized/non-standard)
+- **ZPP^cc**: Excluded: span ID 'zppcc' is on the exclude list (parameterized/non-standard)
+- **ZPTIME(f(n))**: Excluded: span ID 'zptime' is on the exclude list (parameterized/non-standard)
+- **k-PBP**: Excluded: span ID 'kpbp' is on the exclude list (parameterized/non-standard)
+- **para-**: Excluded: span ID 'para' is on the exclude list (parameterized/non-standard)
+- **βFOLL**: Excluded: span ID 'betafoll' is on the exclude list (parameterized/non-standard)
+- **βMAC^0**: Excluded: span ID 'betamac0' is on the exclude list (parameterized/non-standard)
+- **βP**: Excluded: span ID 'betap' is on the exclude list (parameterized/non-standard)
