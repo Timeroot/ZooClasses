@@ -119,7 +119,7 @@
 
         if (className) {
             Promise.all([
-                fetch('data/classes.json').then(res => res.json()),
+                fetch('generated/classes.json').then(res => res.json()),
                 fetch('generated/langdata.json').then(res => res.json())
             ]).then(([classes, langdata]) => {
                     let cls = classes.find(c => c.name === className);

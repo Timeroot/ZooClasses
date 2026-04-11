@@ -1,0 +1,4 @@
+---
+name: ProtocolSimulation
+ref: "Placeholder theorem for the general argument that a public-coin interactive protocol can be simulated by a single 'player' with sufficient time and space. To be precise, if a protocol involves r rounds of classical (resp. quantum) messages of size m between an omniscient prover and M-machine verifier, then this protocol can be simulated with `r*m` classical (resp. quantum) space, plus however much memory is needed to simulate the M-machine. This implies that all of NP, coNP, MA, AM are in PSPACE, and QCMA and QMA are in BQPSPACE (which equals PSPACE); and analogous statements, that for instance coNEXP is in EXPSPACE. It does not apply to private-coin protocols like IP, MIP, or QIP, although these often turn out to be equivalent to their public-coin variants anyway."
+---

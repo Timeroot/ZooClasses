@@ -104,7 +104,7 @@
 
     <script src="process.js"></script>
     <script>
-        fetch('data/references.json')
+        fetch('generated/references.json')
             .then(response => response.json())
             .then(data => {
                 const tableBody = document.getElementById('references-table-body');

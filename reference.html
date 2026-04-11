@@ -108,9 +108,9 @@
 
         if (refName) {
             Promise.all([
-                fetch('data/references.json').then(res => res.json()),
-                fetch('data/theorems.json').then(res => res.json()),
-                fetch('data/classes.json').then(res => res.json())
+                fetch('generated/references.json').then(res => res.json()),
+                fetch('generated/theorems.json').then(res => res.json()),
+                fetch('generated/classes.json').then(res => res.json())
             ]).then(([references, theorems, classes]) => {
                 const reference = references.find(r => r.name === refName);
                 if (reference) {

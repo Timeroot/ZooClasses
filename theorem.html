@@ -113,8 +113,8 @@
 
         if (theoremName) {
             Promise.all([
-                fetch('data/theorems.json').then(res => res.json()),
-                fetch('data/references.json').then(res => res.json())
+                fetch('generated/theorems.json').then(res => res.json()),
+                fetch('generated/references.json').then(res => res.json())
             ]).then(([theorems, references]) => {
                 const theorem = theorems.find(t => t.name === theoremName);
                 if (theorem) {

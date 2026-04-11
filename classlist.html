@@ -104,8 +104,8 @@
     <script src="process.js"></script>
     <script>
         Promise.all([
-            fetch('data/classes.json').then(res => res.json()),
-            fetch('data/problem_types.json').then(res => res.json())
+            fetch('generated/classes.json').then(res => res.json()),
+            fetch('generated/problem_types.json').then(res => res.json())
         ]).then(([classes, problemTypes]) => {
             const typeSelector = document.getElementById('type-selector');
             const tableBody = document.getElementById('classes-table-body');
