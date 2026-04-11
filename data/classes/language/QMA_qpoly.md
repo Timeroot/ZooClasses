@@ -1,9 +1,11 @@
 ---
 name: QMA/qpoly
 related:
+  - QMA
   - PSPACE/poly
+  - BQP/qpoly
 properties:
   - quantum
   - protocol
 ---
-Is contained in PSPACE/poly [Aar06b].
+QMA With Polynomial-Size Quantum Advice. Contained in {lang:PSPACE/poly} {ref:aar06b}.

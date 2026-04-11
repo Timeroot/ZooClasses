@@ -1,4 +1,4 @@
----
+﻿---
 name: PDQP
 related:
   - BQP
@@ -7,4 +7,4 @@ related:
 properties:
   - quantum
 ---
-This class is a generalization of BQP where one is allowed to perform measuresments without collapsing the wavefunction.[ABFL14]
+This class is a generalization of BQP where one is allowed to perform measuresments without collapsing the wavefunction.{ref:abfl14}

@@ -1,4 +1,4 @@
----
+﻿---
 name: PP/poly
 related:
   - BQP/mpoly
@@ -6,4 +6,4 @@ related:
 properties:
   - nonuniform
 ---
-Contains BQP/qpoly [Aar04b].
+Contains BQP/qpoly {ref:aar04b}.

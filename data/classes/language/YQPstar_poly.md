@@ -1,8 +1,8 @@
----
+﻿---
 name: YQP*/poly
 related:
   - BQP/qpoly
 properties:
   - nonuniform
 ---
-Equal to BQP/qpoly [AD14].
+Equal to BQP/qpoly {ref:ad14}.

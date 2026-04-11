@@ -1,4 +1,4 @@
----
+﻿---
 name: PLF
 ---
-Defined in [Pap90].
+Defined in {ref:pap90}.

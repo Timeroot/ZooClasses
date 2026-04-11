@@ -1,4 +1,4 @@
----
+﻿---
 name: coNP/poly
 related:
   - NP
@@ -8,4 +8,4 @@ properties:
   - nonuniform
   - complement
 ---
-If NP is contained in coNP/poly then PH collapses to S_2P^NP [CCH+01].
+If NP is contained in coNP/poly then PH collapses to S_2P^NP {ref:cch01}.

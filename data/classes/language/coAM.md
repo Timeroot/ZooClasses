@@ -7,8 +7,4 @@ properties:
   - complement
   - protocol
 ---
-Complement of Arthur-Merlin games, {lang:AM}.
-
-## Notes
-
-todo def
+Complement of {lang:AM}. The class of problems whose "no" instances have Arthur-Merlin proofs.

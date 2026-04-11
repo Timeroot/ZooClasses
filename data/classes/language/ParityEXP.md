@@ -1,6 +1,10 @@
 ---
-name: ⊕EXP
+name: "⊕EXP"
 related:
+  - EXP
+  - ParityP
   - ZPP
 ---
-The exponential-time analogue of ⊕P.
+Parity EXP. The exponential-time analogue of ⊕P.
+
+There exists an oracle relative to which ⊕EXP = ZPP {ref:bbf98}.

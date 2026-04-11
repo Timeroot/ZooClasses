@@ -1,13 +1,17 @@
 ---
 name: "W[P]"
 related:
+  - "W[SAT]"
+  - "W[t]"
   - "W[1]"
   - XP
   - FPT
-  - "para-NP"
+  - para-NP
 ---
-Polynomial Weft circuits. Equivalently, problems with a witness that can be verified by a polynomial-time machine (an unparameterized polynomial time, n^{O(1)}, in the size of the input and witness), with a witness of size f(k)*O(log(n)). Compare with para-NP, XP, which are also a version of parameterized nondeterminism.
+Weighted Circuit Satisfiability. The class of decision problems of the form (x, k) (k a parameter), fixed-parameter reducible to:
 
-## Notes
+**Weighted Circuit-SAT**: Given a Boolean circuit C (with no restriction on depth), does C have a satisfying assignment of Hamming weight k?
 
-todo def
+See {lang:W[1]} for the definition of fixed-parameter reducibility. Defined in {ref:df99}.
+
+Contains {lang:W[SAT]}. Compare with {lang:para-NP} and XP, which are also parameterized versions of nondeterminism.

@@ -8,11 +8,18 @@ related:
   - PZK
   - NISZK
   - DQP
+  - BQP
 properties:
   - protocol
 ---
-Statistical Zero Knowledge. A promise problem is in SZK if there exists an interactive proof system (a polynomial-time probabilistic verifier interacting with a polynomial-time prover) such that: (1) For YES instances, there exists a polynomial-time prover that causes the verifier to accept with high probability; (2) For NO instances, for any prover, the verifier accepts with low probability; (3) For YES instances, there exists a polynomial-time simulator that, given only the input, can generate a transcript whose distribution is statistically indistinguishable from the verifier's view in the real protocol. That is, the verifier learns nothing beyond the validity of the statement. The protocol may be multi-round, and the zero-knowledge property is statistical (i.e., holds against computationally unbounded verifiers). SZK is closed under complement, has complete promise problems (Statistical Difference, Entropy Difference), and is contained in AM ∩ coAM, as well as CZK and QSZK. Contains PZK and NISZK. There exists an oracle relative to which SZK is not in BQP. Contained in DQP. If any hard-on-average language is in SZK, then one-way functions exist.
+Statistical Zero Knowledge. The class of decision problems where a "yes" answer can be verified by a statistical zero-knowledge proof protocol: a probabilistic polynomial-time verifier exchanges messages with an unbounded prover, and becomes convinced of "yes" without learning anything else (statistically).
 
-## Notes
+Formally: for each verifier choice of random coins, its "view" of the interaction must be statistically close (trace distance ≤ 1/10) to a distribution the verifier could generate alone (in polynomial time), without the prover.
 
-todo def
+Graph non-isomorphism is a famous example in SZK. Defined in {ref:gmr89} (for zero-knowledge in general).
+
+SZK is closed under complement {ref:oka96}. Can be assumed constant-round and public-coin {ref:oka96}. Complete promise problem: Statistical Difference (SD) {ref:sv97}. Another complete: Entropy Difference (ED) {ref:gv99}.
+
+Contains {lang:PZK} and {lang:NISZK}. Contained in AM ∩ coAM and {lang:CZK} and {lang:QSZK}.
+
+If any hard-on-average language is in SZK, one-way functions exist {ref:ost91}. There exists an oracle where SZK ⊄ BQP {ref:aar02}. Contained in {lang:DQP} {ref:aar02b}.

@@ -1,8 +1,10 @@
 ---
-name: S^≠
+name: "S^≠"
 related:
   - NQL
 ---
-The class of languages L for which there is a real number p, and probabilistic finite automaton M, such that:
-* If x is in L, then M accepts x with some probability not exactly equal to p
-* If x is not in L, then M accepts x with probability exactly equal to p.
+Exclusive Stochastic Languages. The class of languages L for which there is a real number p and a probabilistic finite automaton M such that:
+- If x ∈ L, then M accepts x with some probability not exactly equal to p.
+- If x ∉ L, then M accepts x with probability exactly equal to p.
+
+Shown that S^≠ = NQL (Nondeterministic Quantum Languages) {ref:yak10}.

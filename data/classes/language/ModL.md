@@ -1,5 +1,12 @@
 ---
 name: ModL
+related:
+  - GapL
+  - FL
+  - Mod_kL
 ---
-A language L\in\mathsf{ModL} if there are functions f\in\mathsf{GapL} and g\in\mathsf{FL} such that for all strings x:
-* There exists a prime p and a natural number \alpha such that g(x)=0^{p^{\alpha}}.
+Mod Logspace. A language L is in ModL if there exist functions f ∈ GapL and g ∈ FL such that for all strings x: there exist a prime p and natural number α such that g(x) = 0^{p^α}, and x ∈ L iff f(x) ≡ 0 (mod |g(x)|).
+
+Thus Mod_{p^α}L ⊆ ModL for any prime p and natural number α. Moreover, FL^{ModL} = FL^{GapL} {ref:av04}.
+
+Defined in {ref:av04}.

@@ -1,8 +1,9 @@
 ---
 name: "IP[polylog]"
 related:
-  - "AM[polylog"
+  - AM
+  - IP
 properties:
   - protocol
 ---
-Alternate name for AM[polylog].
+IP With Polylog Rounds. Alternate name for {lang:AM[polylog]}.

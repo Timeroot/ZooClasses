@@ -4,9 +4,8 @@ related:
   - L
   - RL
   - coRL
+  - ZPP
 ---
-Zero error Probabilistic Logspace. Problems with a probabilistic Turing machine with zero error, logarithmic space, and a termination probability of 1
+Zero-Error Probabilistic Logspace. The logspace analog of ZPP: problems solvable by a probabilistic Turing machine with logarithmic space, zero error (always returns the correct answer), and termination probability 1 on all inputs (with expected polynomial running time).
 
-## Notes
-
-todo the yes/no/unknown definition. todo the two-machine definition
+Equals RL ∩ coRL. Contained in SC.

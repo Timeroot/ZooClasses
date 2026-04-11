@@ -7,8 +7,6 @@ properties:
   - complement
   - protocol
 ---
-Complement of Merlin-Arthur games, {lang:MA}.
+Complement of {lang:MA}. The class of problems whose "no" answers have Merlin-Arthur proofs.
 
-## Notes
-
-todo def. todo coMA=coMA1
+coMA[1] = coMA (one-round coMA collapses to coMA) {ref:fgm89}. coAM ⊆ coMA since AM ⊆ MA is not trivially true but MA ⊆ AM implies coMA ⊇ coAM.

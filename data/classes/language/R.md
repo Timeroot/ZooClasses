@@ -2,9 +2,12 @@
 name: R
 related:
   - RE
+  - coRE
+  - PR
+  - AH
 ---
-Recursive languages. Languages solvable by a Turing machine. Equivalently, definable as {lang:RE}∩{lang:coRE}.
+Recursive Languages. The class of decision problems solvable by a Turing machine. Often identified with the class of effectively computable functions (the Church-Turing thesis).
 
-## Notes
+Defined in {ref:tur36} {ref:chu41} and other seminal early papers.
 
-todo: definition as a Turing machine, definition as intersection
+Equals RE ∩ coRE. Strictly contains {lang:PR} (the primitive recursive functions) {ref:kle71}.

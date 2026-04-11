@@ -4,9 +4,11 @@ related:
   - NL
   - L
   - RP
+  - SC
+  - coRL
 ---
-Randomized Logspace. Problems with a probabilistic logarithmic-space Turing machine with zero error on NO instances. Also, as a technicality, one requires a termination probability of 1 on all inputs.
+Randomized Logspace. Has the same relation to L as RP does to P. The randomized machine must halt with probability 1 on any input and also run in polynomial time (otherwise we'd just get NL).
 
-## Notes
+Contains R_H L. Contained in SC {ref:nis92}.
 
-todo: complement of coRL
+{ref:rtv05} give strong evidence that RL = L.

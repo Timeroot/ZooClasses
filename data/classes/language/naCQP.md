@@ -1,6 +1,6 @@
----
+﻿---
 name: naCQP
 related:
   - PDQP
 ---
-Defined in the conference version of [ABFL14].
+Defined in the conference version of {ref:abfl14}.

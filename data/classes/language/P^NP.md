@@ -1,6 +1,8 @@
 ---
-name: P^NP
+name: "P^NP"
 related:
-  - Δ_2P
+  - Delta_2P
+  - NP
+  - P
 ---
-See Δ_2P.
+P With NP Oracle. See {lang:Delta_2P}.

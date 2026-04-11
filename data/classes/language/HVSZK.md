@@ -2,7 +2,10 @@
 name: HVSZK
 related:
   - SZK
+  - HVPZK
 properties:
   - protocol
 ---
-The class of decision problems that have SZK protocols assuming an honest verifier (i.e.
+Honest-Verifier SZK. The class of decision problems that have {lang:SZK} protocols assuming an honest verifier (one who does not try to learn more about the problem by deviating from the protocol).
+
+Equals {lang:SZK} {ref:gsv98}.

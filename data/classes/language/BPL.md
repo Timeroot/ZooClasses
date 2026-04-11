@@ -1,10 +1,15 @@
 ---
 name: BPL
 related:
-  - PromiseBPP
   - ZPL
   - RL
   - L
   - NL
+  - PL
+  - SC
+  - DET
+  - NC^2
 ---
-Bounded error Probabilistic Logspace. Problems with a probabilistic logarithmic space Turing machine with at least a 2/3 chance of a correct answer and a termination probability of 1
+Bounded-Error Probabilistic Logspace. Has the same relation to L as BPP does to P. The machine uses logarithmic space and must halt on every input and every random tape setting. The random bits are read-once (one-way tape), unlike {lang:BP_dot_L}.
+
+Contained in {lang:SC} {ref:nis92}, {lang:PL}, BP•L, ZP•L {ref:nis93}, {lang:DET} {ref:coo85}, {lang:NC^2}, and P {ref:bcp83}.
