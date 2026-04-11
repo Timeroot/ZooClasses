@@ -1,4 +1,4 @@
-﻿---
+---
 name: PP/poly
 related:
   - BQP/mpoly

@@ -1,4 +1,4 @@
-﻿---
+---
 name: YP*
 related:
   - YP

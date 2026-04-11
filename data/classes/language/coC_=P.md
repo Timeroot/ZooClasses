@@ -1,4 +1,4 @@
-﻿---
+---
 name: coC_=P
 related:
   - NQP

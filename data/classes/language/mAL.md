@@ -1,4 +1,4 @@
-﻿---
+---
 name: mAL
 properties:
   - protocol

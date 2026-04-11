@@ -1,4 +1,4 @@
-﻿---
+---
 name: YQP*
 related:
   - APP

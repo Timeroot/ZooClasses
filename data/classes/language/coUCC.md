@@ -1,4 +1,4 @@
-﻿---
+---
 name: coUCC
 related:
   - L

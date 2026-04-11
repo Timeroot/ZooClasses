@@ -1,4 +1,4 @@
-﻿---
+---
 name: QCFL
 related:
   - CFL

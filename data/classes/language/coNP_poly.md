@@ -1,4 +1,4 @@
-﻿---
+---
 name: coNP/poly
 related:
   - NP

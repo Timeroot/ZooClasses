@@ -1,4 +1,4 @@
-﻿---
+---
 name: naCQP
 related:
   - PDQP

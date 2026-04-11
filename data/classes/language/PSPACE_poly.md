@@ -1,4 +1,4 @@
-﻿---
+---
 name: PSPACE/poly
 related:
   - QMA/qpoly

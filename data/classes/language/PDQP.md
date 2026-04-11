@@ -1,4 +1,4 @@
-﻿---
+---
 name: PDQP
 related:
   - BQP

@@ -1,4 +1,4 @@
-﻿---
+---
 name: CSP
 related:
   - MMSNP

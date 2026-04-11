@@ -1,4 +1,4 @@
-﻿---
+---
 name: YQP*/poly
 related:
   - BQP/qpoly
