@@ -1,5 +1,10 @@
 [
     {
+        "name": "1NAuxPDA_p⊂LOGCFL",
+        "content": "1NAuxPDA_p⊂LOGCFL",
+        "ref": "{ref:bra77}"
+    },
+    {
         "name": "AC=NC=TC",
         "content": "AC=NC&&NC=TC",
         "ref": "Given that {thm:TC^i⊆NC^{i+1}}, and {thm:NC^i⊆SAC^i⊆AC^i⊆ACC^i&&AC^i⊆TC^i}, and NC/AC/TC are each unions of their hierarchies, these hierarchies must be equal.",
@@ -104,6 +109,23 @@
         "impliedby": "ObviousConstruction"
     },
     {
+        "name": "ALOGTIME=NC^1_uniform_",
+        "content": "ALOGTIME=NC^1_uniform_"
+    },
+    {
+        "name": "AL=P",
+        "content": "AL=P",
+        "ref": "{ref:cks81}"
+    },
+    {
+        "name": "AM_EXP⊆EH",
+        "content": "AM_EXP⊆EH"
+    },
+    {
+        "name": "AM⊆NP_poly",
+        "content": "AM⊆NP_poly"
+    },
+    {
         "name": "AM⊆PSPACE",
         "content": "AM⊆PSPACE",
         "impliedby": "ProtocolSimulation"
@@ -120,9 +142,37 @@
         "priority": 3
     },
     {
+        "name": "APP⊆PP",
+        "content": "APP⊆PP",
+        "ref": "{ref:li93}"
+    },
+    {
+        "name": "APSPACE=EXP",
+        "content": "APSPACE=EXP",
+        "ref": "{ref:cks81}"
+    },
+    {
+        "name": "AWPP⊆APP",
+        "content": "AWPP⊆APP",
+        "ref": "{ref:fen02}"
+    },
+    {
         "name": "AWPP⊆A_0PP",
         "content": "AWPP⊆A_0PP",
         "ref": "{ref:Vya03}. Is this obvious? Not sure..."
+    },
+    {
+        "name": "AW[SAT]⊆AW[P]",
+        "content": "AW[SAT]⊆AW[P]"
+    },
+    {
+        "name": "AW[star]⊆AW[SAT]",
+        "content": "AW[star]⊆AW[SAT]"
+    },
+    {
+        "name": "A_0PP=SBQP",
+        "content": "A_0PP=SBQP",
+        "ref": "{ref:kup09}"
     },
     {
         "name": "A_0PP⊆PP",
@@ -131,10 +181,76 @@
         "notes": "It is possible this proof is very simple and should be marked as 'obvious', I haven't looked at it yet."
     },
     {
+        "name": "AmpMP⊆MP",
+        "content": "AmpMP⊆MP",
+        "ref": "{ref:gkr95}"
+    },
+    {
+        "name": "AuxPDA=P",
+        "content": "AuxPDA=P",
+        "ref": "{ref:coo71b}"
+    },
+    {
+        "name": "BC_eqP⊆BPP",
+        "content": "BC_eqP⊆BPP",
+        "ref": "{ref:wat15}"
+    },
+    {
+        "name": "BH⊆Δ2",
+        "content": "BH⊆Δ2"
+    },
+    {
+        "name": "BPL⊆NC^2",
+        "content": "BPL⊆NC^2",
+        "ref": "{ref:bcp83}"
+    },
+    {
+        "name": "BPL⊆PL",
+        "content": "BPL⊆PL",
+        "ref": "{ref:bcp83}"
+    },
+    {
+        "name": "BPL⊆SC",
+        "content": "BPL⊆SC",
+        "ref": "{ref:nis92}"
+    },
+    {
+        "name": "BPL⊆ZP_dot_L",
+        "content": "BPL⊆ZP_dot_L",
+        "ref": "{ref:nis93}"
+    },
+    {
         "name": "BPL⊆DET",
         "content": "BPL⊆DET",
         "ref": "{ref:Coo85}",
         "priority": 3
+    },
+    {
+        "name": "BPP_path⊆PP",
+        "content": "BPP_path⊆PP",
+        "ref": "{ref:hht97}"
+    },
+    {
+        "name": "BPP⊆AM",
+        "content": "BPP⊆AM"
+    },
+    {
+        "name": "BPP⊆MA",
+        "content": "BPP⊆MA"
+    },
+    {
+        "name": "BPP⊆O_2P",
+        "content": "BPP⊆O_2P"
+    },
+    {
+        "name": "BPP⊆P_poly",
+        "content": "BPP⊆P_poly",
+        "ref": "{ref:adl78}"
+    },
+    {
+        "name": "BPP⊆TreeBQP",
+        "content": "BPP⊆TreeBQP",
+        "ref": "{ref:aar03b}"
     },
     {
         "name": "BPP⊆BQP",
@@ -145,6 +261,38 @@
         "name": "BPP⊆NISQ",
         "content": "BPP⊆NISQ",
         "impliedby": "ObviousConstruction"
+    },
+    {
+        "name": "BP_dot_L⊆BPP",
+        "content": "BP_dot_L⊆BPP"
+    },
+    {
+        "name": "BP_dot_NP=AM",
+        "content": "BP_dot_NP=AM"
+    },
+    {
+        "name": "BQL⊆DET",
+        "content": "BQL⊆DET",
+        "ref": "{ref:fr21}"
+    },
+    {
+        "name": "BQPSPACE=PSPACE",
+        "content": "BQPSPACE=PSPACE"
+    },
+    {
+        "name": "BQP_CTC=PSPACE",
+        "content": "BQP_CTC=PSPACE",
+        "ref": "{ref:aar05c}"
+    },
+    {
+        "name": "BQP_qpoly⊆EXP_poly",
+        "content": "BQP_qpoly⊆EXP_poly",
+        "ref": "{ref:aar04b}"
+    },
+    {
+        "name": "BQP⊆PP",
+        "content": "BQP⊆PP",
+        "ref": "{ref:adh97}"
     },
     {
         "name": "BQP⊆AWPP",
@@ -168,6 +316,16 @@
         "ref": "Any interactive protocol with a polynomial quantum verifier also contains {lang:BQP}, by skipping the protocol entirely."
     },
     {
+        "name": "CC⊆P",
+        "content": "CC⊆P",
+        "ref": "{ref:ms89}"
+    },
+    {
+        "name": "CFL⊂1NAuxPDA_p",
+        "content": "CFL⊂1NAuxPDA_p",
+        "ref": "{ref:bra77}"
+    },
+    {
         "name": "CFL⊆CSL",
         "content": "CFL⊆CSL",
         "impliedby": "ObviousConstruction"
@@ -183,6 +341,11 @@
         "impliedby": "ObviousConstruction"
     },
     {
+        "name": "CL⊆ZPP",
+        "content": "CL⊆ZPP",
+        "ref": "{ref:bckls14}"
+    },
+    {
         "name": "CSL=NLINSPACE",
         "content": "CSL=NLINSPACE",
         "ref": "{ref:Kur64}",
@@ -192,6 +355,11 @@
         "name": "CZK⊆PSPACE",
         "content": "CZK⊆PSPACE",
         "impliedby": "ProtocolSimulation"
+    },
+    {
+        "name": "C_eqAC^0=TC^0",
+        "content": "C_eqAC^0=TC^0",
+        "ref": "{ref:abl98}"
     },
     {
         "name": "C_eqL⊆C_eqP",
@@ -206,10 +374,24 @@
         "priority": 3
     },
     {
+        "name": "DCFL⊂CFL",
+        "content": "DCFL⊂CFL",
+        "ref": "{ref:bra77}"
+    },
+    {
+        "name": "DCFL⊂UCFL",
+        "content": "DCFL⊂UCFL",
+        "ref": "{ref:gg66}"
+    },
+    {
         "name": "DET⊆NC^2",
         "content": "DET⊆NC^2",
         "ref": "TODO",
         "priority": 3
+    },
+    {
+        "name": "DP⊆Δ2",
+        "content": "DP⊆Δ2"
     },
     {
         "name": "DQC1⊆BQP",
@@ -239,9 +421,29 @@
         ]
     },
     {
+        "name": "EEXP⊆NEEXP",
+        "content": "EEXP⊆NEEXP"
+    },
+    {
+        "name": "EE⊆EEXP",
+        "content": "EE⊆EEXP"
+    },
+    {
+        "name": "EE⊆NEE",
+        "content": "EE⊆NEE"
+    },
+    {
+        "name": "ELEMENTARY⊆PR",
+        "content": "ELEMENTARY⊆PR"
+    },
+    {
         "name": "ELEMENTARY⊆TOWER",
         "content": "ELEMENTARY⊆TOWER",
         "impliedby": "ObviousConstruction"
+    },
+    {
+        "name": "EPTAS⊆PTAS",
+        "content": "EPTAS⊆PTAS"
     },
     {
         "name": "EQP⊆BQP",
@@ -312,10 +514,43 @@
         "impliedby": "ObviousConstruction"
     },
     {
+        "name": "FH^2⊆BQP",
+        "content": "FH^2⊆BQP",
+        "ref": "{ref:shi03}"
+    },
+    {
         "name": "FH⊆BQP",
         "content": "FH⊆BQP",
         "ref": "{lang:FH} is a restricted set of polynomial-size quantum circuits, those with O(1) many Hadamard layers. {lang:BQP} is all polynomial-size quantum circuits.",
         "impliedby": "ObviousConstruction"
+    },
+    {
+        "name": "FNL_poly⊆SharpL_poly",
+        "content": "FNL_poly⊆SharpL_poly",
+        "ref": "{ref:ra00}"
+    },
+    {
+        "name": "FO_DTC_=L",
+        "content": "FO_DTC_=L",
+        "ref": "{ref:imm98}"
+    },
+    {
+        "name": "FO_LFP_=P",
+        "content": "FO_LFP_=P",
+        "ref": "{ref:imm82}"
+    },
+    {
+        "name": "FO_PFP_=PSPACE",
+        "content": "FO_PFP_=PSPACE",
+        "ref": "{ref:imm98}"
+    },
+    {
+        "name": "FO_TC_=NL",
+        "content": "FO_TC_=NL"
+    },
+    {
+        "name": "FPTAS⊆EPTAS",
+        "content": "FPTAS⊆EPTAS"
     },
     {
         "name": "FPT⊆W[1]",
@@ -329,6 +564,25 @@
         "impliedby": "ObviousConstruction"
     },
     {
+        "name": "FewP⊆APP",
+        "content": "FewP⊆APP",
+        "ref": "{ref:li93}"
+    },
+    {
+        "name": "FewP⊆Few",
+        "content": "FewP⊆Few"
+    },
+    {
+        "name": "FewP⊆⊕P",
+        "content": "FewP⊆⊕P",
+        "ref": "{ref:ch89}"
+    },
+    {
+        "name": "Few⊆SPP",
+        "content": "Few⊆SPP",
+        "ref": "{ref:ffk94}"
+    },
+    {
         "name": "GAK⊆GA",
         "content": "GAK⊆GA",
         "impliedby": "ObviousConstruction"
@@ -337,6 +591,10 @@
         "name": "GA⊆GI",
         "content": "GA⊆GI",
         "ref": "Proved in https://complexityzoo.net/Complexity_Zoo_References#kst93. Pretty simple proof but not manifest from the definition; compare with {lang:GAK} vs {lang:GIK} where the question isn't settled."
+    },
+    {
+        "name": "GCSL⊆LOGCFL",
+        "content": "GCSL⊆LOGCFL"
     },
     {
         "name": "GIK⊆GI",
@@ -355,16 +613,48 @@
         "ref": "Classic Graph Nonisomorphism protocol for Statistical Zero Knowledge, combined with SZK closed under complement."
     },
     {
+        "name": "GI⊆⊕P",
+        "content": "GI⊆⊕P",
+        "ref": "{ref:ak02}"
+    },
+    {
+        "name": "GI⊆TI",
+        "content": "GI⊆TI",
+        "ref": "{ref:gq19}"
+    },
+    {
         "name": "GI⊆Δ2",
         "content": "GI⊆Δ2",
         "ref": "{lang:GI} is {lang:P} with a GraphIsomorphism oracle, while {lang:Δ2} is {lang:P} with an {lang:NP} oracle, which is at least as strong since GraphIsomorphism is in {lang:NP}.",
         "impliedby": "ObviousConstruction"
     },
     {
+        "name": "HVPZK⊆PP",
+        "content": "HVPZK⊆PP",
+        "ref": "{ref:bhctv17}"
+    },
+    {
+        "name": "HVSZK=SZK",
+        "content": "HVSZK=SZK",
+        "ref": "{ref:gsv98}"
+    },
+    {
+        "name": "HalfP⊆EQP",
+        "content": "HalfP⊆EQP"
+    },
+    {
+        "name": "IOP=NEXP",
+        "content": "IOP=NEXP"
+    },
+    {
         "name": "IP=PSPACE",
         "content": "PSPACE⊆IP",
         "ref": "Proved in {ref:Sha90}. The other direction, that {lang:IP}⊆{lang:PSPACE} and so {lang:IP}={lang:PSPACE}, from a simulation argument -- see {thm:IP⊆PSPACE}.",
         "priority": 3
+    },
+    {
+        "name": "IP_polylog_=AM_polylog_",
+        "content": "IP_polylog_=AM_polylog_"
     },
     {
         "name": "IP⊆PSPACE",
@@ -394,6 +684,11 @@
         "impliedby": "Deterministic space hierarchy theorem"
     },
     {
+        "name": "LIN⊂NLIN",
+        "content": "LIN⊂NLIN",
+        "ref": "{ref:pps83}"
+    },
+    {
         "name": "LOGCFL=SAC^1",
         "content": "LOGCFL=SAC^1",
         "ref": "Mentioned in {ref:Joh90}{ref:Ven91}, don't know where it was actually proved.",
@@ -401,9 +696,27 @@
         "notes": "Technically LOGCFL = uniform-SAC^1, and LOGCFL/poly = SAC^1. Got to make this more precise."
     },
     {
+        "name": "LOGLOG⊆L",
+        "content": "LOGLOG⊆L"
+    },
+    {
+        "name": "LWPP⊆WPP",
+        "content": "LWPP⊆WPP",
+        "ref": "{ref:ffk94}"
+    },
+    {
         "name": "L^2⊂LINSPACE",
         "content": "L^2⊂LINSPACE",
         "impliedby": "Deterministic space hierarchy theorem"
+    },
+    {
+        "name": "LogFew⊆Mod_kL",
+        "content": "LogFew⊆Mod_kL",
+        "ref": "{ref:bdh92}"
+    },
+    {
+        "name": "L⊆Mod_kL",
+        "content": "L⊆Mod_kL"
     },
     {
         "name": "L⊂L^2",
@@ -431,6 +744,24 @@
         "name": "L⊆ZPL",
         "content": "L⊆ZPL",
         "impliedby": "ObviousConstruction"
+    },
+    {
+        "name": "MAC^0⊂TC^0",
+        "content": "MAC^0⊂TC^0",
+        "ref": "{ref:abf94}"
+    },
+    {
+        "name": "MA_EXP⊆AM_EXP",
+        "content": "MA_EXP⊆AM_EXP"
+    },
+    {
+        "name": "MA⊆BPP_path",
+        "content": "MA⊆BPP_path",
+        "ref": "{ref:hht97}"
+    },
+    {
+        "name": "MA⊆Σ2&&MA⊆Π2",
+        "content": "MA⊆Σ2&&MA⊆Π2"
     },
     {
         "name": "MA⊆AM",
@@ -470,16 +801,48 @@
         "priority": 3
     },
     {
+        "name": "MIP_EXP=NEEXP",
+        "content": "MIP_EXP=NEEXP"
+    },
+    {
         "name": "MIPco⊆coRE",
         "content": "MIPco⊆coRE",
         "ref": "A consequence of {ref:NPA08}, as they give a hierarchy that converges to the {lang:MIPco} value of a game from one above. This is contrast to {lang:MIP*}, where trying gradually larger Hilbert spaces converges from below, so it is contained in {lang:RE}.",
         "priority": 3
     },
     {
+        "name": "MIPns=PSPACE",
+        "content": "MIPns=PSPACE",
+        "ref": "{ref:ito10}"
+    },
+    {
         "name": "MIP*=RE",
         "content": "MIP*=RE",
         "ref": "{ref:JNVWY20}",
         "priority": 3
+    },
+    {
+        "name": "MP⊆P_SharpP1",
+        "content": "MP⊆P_SharpP1",
+        "ref": "{ref:gkr95}"
+    },
+    {
+        "name": "ModPH⊆AmpMP",
+        "content": "ModPH⊆AmpMP",
+        "ref": "{ref:gkr95}"
+    },
+    {
+        "name": "ModPH⊆MP",
+        "content": "ModPH⊆MP"
+    },
+    {
+        "name": "Mod_kP⊆ModPH",
+        "content": "Mod_kP⊆ModPH"
+    },
+    {
+        "name": "NAuxPDA_p=LOGCFL",
+        "content": "NAuxPDA_p=LOGCFL",
+        "ref": "{ref:sud78}"
     },
     {
         "name": "NC^0⊂AC^0",
@@ -568,6 +931,10 @@
         "impliedby": "NC^i⊆RNC^i⊆QNC^i"
     },
     {
+        "name": "NEE⊆NEEXP",
+        "content": "NEE⊆NEEXP"
+    },
+    {
         "name": "NEXP⊆ELEMENTARY",
         "content": "NEXP⊆ELEMENTARY",
         "impliedby": "ObviousConstruction"
@@ -577,6 +944,10 @@
         "content": "NEXP⊆MIPco",
         "ref": "{ref:Lin23}",
         "priority": 3
+    },
+    {
+        "name": "NE⊆NEXP",
+        "content": "NE⊆NEXP"
     },
     {
         "name": "NISQ⊆BQP",
@@ -597,6 +968,31 @@
         "name": "NLINSPACE⊂NPSPACE",
         "content": "NLINSPACE⊂NPSPACE",
         "impliedby": "Deterministic space hierarchy theorem"
+    },
+    {
+        "name": "NL_poly=UL_poly",
+        "content": "NL_poly=UL_poly",
+        "ref": "{ref:ra00}"
+    },
+    {
+        "name": "NL_poly⊆PL_poly",
+        "content": "NL_poly⊆PL_poly",
+        "ref": "{ref:gw96}"
+    },
+    {
+        "name": "NL_poly⊆SAC^1",
+        "content": "NL_poly⊆SAC^1",
+        "ref": "{ref:ven91}"
+    },
+    {
+        "name": "NL⊆CC",
+        "content": "NL⊆CC",
+        "ref": "{ref:ms89}"
+    },
+    {
+        "name": "NL⊆UL_poly",
+        "content": "NL⊆UL_poly",
+        "ref": "{ref:ra00}"
     },
     {
         "name": "NL⊂NLINSPACE",
@@ -629,6 +1025,29 @@
         "name": "NL⊆P",
         "content": "NL⊆P",
         "ref": "There are only polynomially many states for an {lang:NL} machine, and a {lang:P} machine can enumerate all of them and check for a path."
+    },
+    {
+        "name": "NNC_log_=NC",
+        "content": "NNC_log_=NC",
+        "ref": "{ref:wol94}"
+    },
+    {
+        "name": "NNC_poly_=NP",
+        "content": "NNC_poly_=NP",
+        "ref": "{ref:wol94}"
+    },
+    {
+        "name": "NNLT=NQL",
+        "content": "NNLT=NQL",
+        "ref": "{ref:gs89}"
+    },
+    {
+        "name": "NP⊆DP",
+        "content": "NP⊆DP"
+    },
+    {
+        "name": "NP⊆∃R",
+        "content": "NP⊆∃R"
     },
     {
         "name": "NP⊆MA",
@@ -687,6 +1106,10 @@
         "notes": "todo stronger statement -- currently not as tight as could be"
     },
     {
+        "name": "O_2P⊆S2P",
+        "content": "O_2P⊆S2P"
+    },
+    {
         "name": "ObviousConstruction",
         "content": "",
         "ref": "Placeholder theorem for 'obvious' statements, like DTIME(f)⊆NDTIME(f), as a source for other statements. Ideally uses of this would be minimized and replaced by more precise statements that could be verified.",
@@ -696,6 +1119,11 @@
         "name": "P=Δ0⊆Δi⊆Πi∩Σi⊆Σi∪Πi⊆Δ{i+1}⊆PH",
         "content": "{i}Δi⊆Πi∩Σi⊆Σi∪Πi⊆Δ{i+1}⊆PH",
         "impliedby": "ObviousConstruction"
+    },
+    {
+        "name": "PAC^0=TC^0",
+        "content": "PAC^0=TC^0",
+        "ref": "{ref:abl98}"
     },
     {
         "name": "PARITY⊂ACC^0",
@@ -714,10 +1142,80 @@
         "priority": 3
     },
     {
+        "name": "PH⊆AmpMP",
+        "content": "PH⊆AmpMP",
+        "ref": "{ref:gkr95}"
+    },
+    {
+        "name": "PH⊆ModPH",
+        "content": "PH⊆ModPH"
+    },
+    {
+        "name": "PH⊆P^PP",
+        "content": "PH⊆P^PP",
+        "ref": "{ref:tod89}"
+    },
+    {
+        "name": "PH⊆P_SharpP",
+        "content": "PH⊆P_SharpP",
+        "ref": "{ref:tod89}"
+    },
+    {
+        "name": "PH⊆P_SharpP1",
+        "content": "PH⊆P_SharpP1",
+        "ref": "{ref:tod89}"
+    },
+    {
         "name": "PH⊆AP",
         "content": "PH⊆AP",
         "ref": "{lang:PH} is polynomial time with some bounded integer k alternations, while {lang:AP} is unbounded alternations.",
         "impliedby": "ObviousConstruction"
+    },
+    {
+        "name": "PLS⊆TFNP",
+        "content": "PLS⊆TFNP"
+    },
+    {
+        "name": "PL⊆DET",
+        "content": "PL⊆DET",
+        "ref": "{ref:coo85}"
+    },
+    {
+        "name": "PODN=PPA",
+        "content": "PODN=PPA",
+        "ref": "{ref:pap90}"
+    },
+    {
+        "name": "PPADS⊆PPP",
+        "content": "PPADS⊆PPP",
+        "ref": "{ref:pap94b}"
+    },
+    {
+        "name": "PPAD⊆PPA",
+        "content": "PPAD⊆PPA",
+        "ref": "{ref:pap94b}"
+    },
+    {
+        "name": "PPAD⊆PPADS",
+        "content": "PPAD⊆PPADS"
+    },
+    {
+        "name": "PPA⊆TFNP",
+        "content": "PPA⊆TFNP"
+    },
+    {
+        "name": "PPP⊆TFNP",
+        "content": "PPP⊆TFNP"
+    },
+    {
+        "name": "PPSPACE=PSPACE",
+        "content": "PPSPACE=PSPACE",
+        "ref": "{ref:pap83}"
+    },
+    {
+        "name": "PP^PH⊆P^PP",
+        "content": "PP^PH⊆P^PP",
+        "ref": "{ref:tod89}"
     },
     {
         "name": "PP⊆CH",
@@ -726,9 +1224,19 @@
         "impliedby": "ObviousConstruction"
     },
     {
+        "name": "PQP=PP",
+        "content": "PQP=PP",
+        "ref": "{ref:wat09}"
+    },
+    {
         "name": "PR⊆ACKERMANN",
         "content": "PR⊆ACKERMANN",
         "impliedby": "ObviousConstruction"
+    },
+    {
+        "name": "PSK=PPADS",
+        "content": "PSK=PPADS",
+        "ref": "{ref:pap90}"
     },
     {
         "name": "PSPACE=NPSPACE",
@@ -736,14 +1244,61 @@
         "impliedby": "Savitch's theorem"
     },
     {
+        "name": "PSPACE⊆P^K",
+        "content": "PSPACE⊆P^K",
+        "ref": "{ref:abk02}"
+    },
+    {
         "name": "PSPACE⊆EXP",
         "content": "PSPACE⊆EXP",
         "impliedby": "ObviousConstruction"
     },
     {
+        "name": "PTAS⊆APX",
+        "content": "PTAS⊆APX"
+    },
+    {
         "name": "PZK⊆SZK",
         "content": "PZK⊆SZK",
         "ref": "By definition: perfect zero-knowledge is a special case of statistical zero-knowledge."
+    },
+    {
+        "name": "P_CTC=PSPACE",
+        "content": "P_CTC=PSPACE",
+        "ref": "{ref:aar05c}"
+    },
+    {
+        "name": "P_NP_log_⊆BPP_path",
+        "content": "P_NP_log_⊆BPP_path",
+        "ref": "{ref:hht97}"
+    },
+    {
+        "name": "P_NP_log_⊆PP",
+        "content": "P_NP_log_⊆PP",
+        "ref": "{ref:bhw89}"
+    },
+    {
+        "name": "P^PP=P_SharpP",
+        "content": "P^PP=P_SharpP"
+    },
+    {
+        "name": "P_SharpP⊆PSPACE",
+        "content": "P_SharpP⊆PSPACE"
+    },
+    {
+        "name": "⊕L_poly⊇NL_poly",
+        "content": "⊕L_poly⊇NL_poly",
+        "ref": "{ref:gw96}"
+    },
+    {
+        "name": "⊕SAC^1⊇SAC^1",
+        "content": "⊕SAC^1⊇SAC^1",
+        "ref": "{ref:gw96}"
+    },
+    {
+        "name": "PostBQP=PP",
+        "content": "PostBQP=PP",
+        "ref": "{ref:aar05b}"
     },
     {
         "name": "ProtocolSimulation",
@@ -883,6 +1438,11 @@
         "impliedby": "ObviousConstruction"
     },
     {
+        "name": "QMIP=MIP*",
+        "content": "QMIP=MIP*",
+        "ref": "{ref:ruv12}"
+    },
+    {
         "name": "QNC^0⊆QAC^0",
         "content": "QNC^0⊆QAC^0",
         "impliedby": "ObviousConstruction"
@@ -940,6 +1500,11 @@
         "impliedby": "ObviousConstruction"
     },
     {
+        "name": "REG⊂DCFL",
+        "content": "REG⊂DCFL",
+        "ref": "{ref:gg66}"
+    },
+    {
         "name": "REG⊆CFL",
         "content": "REG⊆CFL",
         "impliedby": "ObviousConstruction"
@@ -953,6 +1518,11 @@
         "name": "RE⊆ALL",
         "content": "RE⊆ALL",
         "impliedby": "ALL contains all classes"
+    },
+    {
+        "name": "RL⊆SC",
+        "content": "RL⊆SC",
+        "ref": "{ref:nis92}"
     },
     {
         "name": "RL⊆BPL",
@@ -1026,10 +1596,25 @@
         "impliedby": "ObviousConstruction"
     },
     {
+        "name": "S2P⊆ZPP^NP",
+        "content": "S2P⊆ZPP^NP",
+        "ref": "{ref:cai01}"
+    },
+    {
         "name": "S2P⊆Σ2∩Π2",
         "content": "S2P⊆Σ2&&S2P⊆Π2",
         "ref": "The definition of {lang:S2P} includes \"then there exists a z such that for all y, P(x,y,z) is false\", which is a stronger requirement than if the quantifiers were swapped. Swapping the quantifiers gives the definition of {lang:Σ2}, for the first containment. Taking complements then gives the second containment.",
         "notes": "This is the trivial upper bound, see {ref:Cai01} for a better upper bound (that is a TODO to digitize: S2P⊆ZPP^NP)."
+    },
+    {
+        "name": "SAPTIME=PSPACE",
+        "content": "SAPTIME=PSPACE",
+        "ref": "{ref:pap83}"
+    },
+    {
+        "name": "SBP⊆BPP_path",
+        "content": "SBP⊆BPP_path",
+        "ref": "{ref:bgm02}"
     },
     {
         "name": "SBP⊆AM",
@@ -1044,6 +1629,11 @@
         "impliedby": "ObviousConstruction"
     },
     {
+        "name": "SEH=P^NE",
+        "content": "SEH=P^NE",
+        "ref": "{ref:hem89}"
+    },
+    {
         "name": "SF⊆AC^0",
         "content": "SF⊆AC^0",
         "ref": "https://en.wikipedia.org/wiki/Star-free_language"
@@ -1052,6 +1642,53 @@
         "name": "SF⊆REG",
         "content": "SF⊆REG",
         "impliedby": "ObviousConstruction"
+    },
+    {
+        "name": "SL⊆⊕L",
+        "content": "SL⊆⊕L",
+        "ref": "{ref:kw93}"
+    },
+    {
+        "name": "SO_Horn_=P",
+        "content": "SO_Horn_=P",
+        "ref": "{ref:gra92}"
+    },
+    {
+        "name": "SO_Krom_=NL",
+        "content": "SO_Krom_=NL",
+        "ref": "{ref:gra92}"
+    },
+    {
+        "name": "SO_LFP_=EXP",
+        "content": "SO_LFP_=EXP",
+        "ref": "{ref:imm98}"
+    },
+    {
+        "name": "SO_TC_=PSPACE",
+        "content": "SO_TC_=PSPACE",
+        "ref": "{ref:imm98}"
+    },
+    {
+        "name": "SO=PH",
+        "content": "SO=PH",
+        "ref": "{ref:imm98}"
+    },
+    {
+        "name": "SPL⊆C_eqL",
+        "content": "SPL⊆C_eqL"
+    },
+    {
+        "name": "SPL⊆Mod_kL",
+        "content": "SPL⊆Mod_kL"
+    },
+    {
+        "name": "SPP⊆LWPP",
+        "content": "SPP⊆LWPP",
+        "ref": "{ref:ffk94}"
+    },
+    {
+        "name": "SPP⊆WPP",
+        "content": "SPP⊆WPP"
     },
     {
         "name": "SZK⊆AM",
@@ -1105,6 +1742,10 @@
         "ref": "[BBT07] Sergey Bravyi, David DiVincenzo, Daniel Loss, and Barbara Terhal. The complexity of stoquastic local Hamiltonian problems. Quantum Information & Computation, 8(5):361–385, 2008. arXiv:quant-ph/0606140."
     },
     {
+        "name": "TALLY⊆SPARSE",
+        "content": "TALLY⊆SPARSE"
+    },
+    {
         "name": "TC^0⊆NC^1",
         "content": "TC^0⊆NC^1",
         "impliedby": "AC^i⊆NC^{i+1}"
@@ -1140,6 +1781,21 @@
         "impliedby": "ObviousConstruction"
     },
     {
+        "name": "TC^0⊂CH",
+        "content": "TC^0⊂CH",
+        "ref": "{ref:cmtv98}"
+    },
+    {
+        "name": "TC^1⊆CL",
+        "content": "TC^1⊆CL",
+        "ref": "{ref:bckls14}"
+    },
+    {
+        "name": "TFNP⊆FNP",
+        "content": "TFNP⊆FNP",
+        "ref": "{ref:mp91}"
+    },
+    {
         "name": "TOWER⊆PR",
         "content": "TOWER⊆PR",
         "impliedby": "ObviousConstruction"
@@ -1148,6 +1804,66 @@
         "name": "Time-bounded padding argument",
         "content": "{f,g,h}TimeConstructible(f)&&TimeConstructible(g)&&h≥n&&(NTIME(f)⊆DTIME(g))⟹(NTIME(h(f))⊆DTIME(h(g)))",
         "ref": "https://en.wikipedia.org/wiki/Padding_argument"
+    },
+    {
+        "name": "TreeBQP⊆BQP",
+        "content": "TreeBQP⊆BQP",
+        "ref": "{ref:aar03b}"
+    },
+    {
+        "name": "TreeBQP⊆Π3&&TreeBQP⊆Σ3",
+        "content": "TreeBQP⊆Π3&&TreeBQP⊆Σ3"
+    },
+    {
+        "name": "UAP⊆SPP",
+        "content": "UAP⊆SPP",
+        "ref": "{ref:nr98}"
+    },
+    {
+        "name": "UCC=L",
+        "content": "UCC=L",
+        "ref": "{ref:rei04}"
+    },
+    {
+        "name": "UCFL⊂CFL",
+        "content": "UCFL⊂CFL"
+    },
+    {
+        "name": "UL⊆SPL",
+        "content": "UL⊆SPL"
+    },
+    {
+        "name": "UP⊆EP",
+        "content": "UP⊆EP"
+    },
+    {
+        "name": "UP⊆UAP",
+        "content": "UP⊆UAP"
+    },
+    {
+        "name": "WAPP⊆AWPP",
+        "content": "WAPP⊆AWPP",
+        "ref": "{ref:bgm02}"
+    },
+    {
+        "name": "WAPP⊆SBP",
+        "content": "WAPP⊆SBP",
+        "ref": "{ref:bgm02}"
+    },
+    {
+        "name": "WPP⊆AWPP",
+        "content": "WPP⊆AWPP",
+        "ref": "{ref:ffk94}"
+    },
+    {
+        "name": "WPP⊆C_eqP",
+        "content": "WPP⊆C_eqP",
+        "ref": "{ref:ffk94}"
+    },
+    {
+        "name": "WPP⊆coC_eqP",
+        "content": "WPP⊆coC_eqP",
+        "ref": "{ref:ffk94}"
     },
     {
         "name": "W[1]⊆W[2]",
@@ -1170,6 +1886,10 @@
         "content": "W[P]⊆para-NP",
         "ref": "The W hierarchy is in terms of circuits with poly(n) inputs satisfiable by setting f(k) inputs to 1. The set of bits to set is the witness of the {lang:para-NP} checker.",
         "impliedby": "ObviousConstruction"
+    },
+    {
+        "name": "W[SAT]⊆W[P]",
+        "content": "W[SAT]⊆W[P]"
     },
     {
         "name": "XL⊆XNL",
@@ -1234,6 +1954,14 @@
         "impliedby": "ObviousConstruction"
     },
     {
+        "name": "ZP_dot_L⊆BP_dot_L",
+        "content": "ZP_dot_L⊆BP_dot_L"
+    },
+    {
+        "name": "ZP_dot_L⊆RNC",
+        "content": "ZP_dot_L⊆RNC"
+    },
+    {
         "name": "ZQP=RQP∩coRQP",
         "content": "ZQP⊆RQP&&ZQP⊆coRQP",
         "ref": "Definition of {lang:ZQP}.",
@@ -1246,9 +1974,30 @@
         "impliedby": "AM⊆Π2"
     },
     {
+        "name": "coC_=P⊆A_0PP",
+        "content": "coC_=P⊆A_0PP",
+        "ref": "{ref:vya03}"
+    },
+    {
         "name": "coMA⊆coAM",
         "content": "coMA⊆coAM",
         "impliedby": "ObviousConstruction"
+    },
+    {
+        "name": "coNEXP⊆NEXP_poly",
+        "content": "coNEXP⊆NEXP_poly"
+    },
+    {
+        "name": "coNE⊆NE_poly",
+        "content": "coNE⊆NE_poly"
+    },
+    {
+        "name": "coNP⊆DP",
+        "content": "coNP⊆DP"
+    },
+    {
+        "name": "coNP⊆US",
+        "content": "coNP⊆US"
     },
     {
         "name": "coNP⊆PH",
@@ -1310,6 +2059,11 @@
         "impliedby": "ObviousConstruction"
     },
     {
+        "name": "coRP⊆BC_eqP",
+        "content": "coRP⊆BC_eqP",
+        "ref": "{ref:wat15}"
+    },
+    {
         "name": "coRP⊆BPP",
         "content": "coRP⊆BPP",
         "impliedby": "ObviousConstruction"
@@ -1329,6 +2083,26 @@
         "name": "coRQP⊆BQP",
         "content": "coRQP⊆BQP",
         "impliedby": "ObviousConstruction"
+    },
+    {
+        "name": "mNC^1⊂mL",
+        "content": "mNC^1⊂mL",
+        "ref": "{ref:gs91}"
+    },
+    {
+        "name": "mNC^1⊂mNL",
+        "content": "mNC^1⊂mNL",
+        "ref": "{ref:kw88}"
+    },
+    {
+        "name": "mP⊂mNP",
+        "content": "mP⊂mNP",
+        "ref": "{ref:raz85}"
+    },
+    {
+        "name": "mTC^0⊂mNC^1",
+        "content": "mTC^0⊂mNC^1",
+        "ref": "{ref:yao89}"
     },
     {
         "name": "nuACC^0⊆ALL",
@@ -1372,6 +2146,11 @@
         "impliedby": "ObviousConstruction"
     },
     {
+        "name": "{t}AW[t]=AW[star]",
+        "content": "{t}AW[t]=AW[star]",
+        "ref": "{ref:dft98}"
+    },
+    {
         "name": "Δ2⊆PH",
         "content": "Δ2⊆PH",
         "impliedby": "P=Δ0⊆Δi⊆Πi∩Σi⊆Σi∪Πi⊆Δ{i+1}⊆PH"
@@ -1400,5 +2179,14 @@
         "name": "Σ2⊆PH",
         "content": "Σ2⊆PH",
         "impliedby": "P=Δ0⊆Δi⊆Πi∩Σi⊆Σi∪Πi⊆Δ{i+1}⊆PH"
+    },
+    {
+        "name": "∃BPP⊆SBP",
+        "content": "∃BPP⊆SBP",
+        "ref": "{ref:bgm02}"
+    },
+    {
+        "name": "∃R⊆PSPACE",
+        "content": "∃R⊆PSPACE"
     }
 ]

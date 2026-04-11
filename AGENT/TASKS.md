@@ -14,6 +14,44 @@ This document tracks improvements an AI agent can work on, organized by area. It
 
 ---
 
+## Zoo Import Cleanup (High Priority)
+
+After bulk-importing classes and theorems from the Complexity Zoo wikitext, a number of issues need manual attention.
+
+### Class Description Quality
+
+Many class `.md` files ended up with truncated or nearly empty descriptions because the parser cut off mid-sentence (likely at an unhandled wiki markup construct), or because the Zoo's own text was very thin. Examples:
+
+- `data/classes/language/P^NP[k].md` — body reads `"Equals P with 2^k-1 parallel queries to NP (i.e."` and cuts off there.
+- `data/classes/language/AxP.md` — body just says it's usually called AP, with no actual definition of what the class *is*.
+
+**Fix:** Go back through the scraped wikitext pages for each affected class, find the full text, and complete or rewrite the description field. Focus on classes that have no usable definition at all first.
+
+### Parameterized-Family Classes
+
+Several class files were created for *families* of classes parameterized by a function (e.g. `PrSPACE(f(n))`, `DSPACE(f(n))`-style entries). These shouldn't appear as concrete nodes in an inclusion diagram, but we still want to track them as documentation.
+
+**Proposed fix:** Add a `concrete: false` flag to the YAML frontmatter of these family entries. The frontend should skip `concrete: false` classes when building the poset diagram, but still show them in the class list/search with a note like "this is a class family, not a single class."
+
+Files to audit and tag `concrete: false` (non-exhaustive list, search for `f(n)` or similar in class names/bodies):
+- `PrSPACE_f_n.md` (and anything else with `_f_n` or `_f_` in the name)
+- Any class whose name contains an explicit function parameter
+- Review `data/EXCLUDED.md` for classes that should have been caught here but were accidentally included
+
+### Theorems Referencing Non-Existent or Renamed Classes
+
+Some theorem files reference class names that were renamed, excluded, or never imported. For example, `AxP` was renamed from AP and isn't in the standard namespace; theorems about it may be mislinked.
+
+**Fix:** After class cleanup is more complete, run a validation pass that checks every class name cited in a theorem's `content:` field against the actual set of class files. Report unresolved names.
+
+### Theorem Content Encoding
+
+A handful of theorem files use ad-hoc encodings (e.g. `&&` for "and" in `MAsub...&&MAsub....md`, `_poly` suffix for advice classes). These are functional but inconsistent with how `process.js` parses them.
+
+**Fix:** Audit and normalize these to whatever convention `process.js` ends up adopting, once the parser is extended.
+
+---
+
 ## Data Expansion
 
 These are the most impactful tasks for the project's mission — a more complete database means a more useful tool.
