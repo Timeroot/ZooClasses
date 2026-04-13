@@ -787,46 +787,6 @@
         ]
     },
     {
-        "name": "AW[P]",
-        "type": "Language",
-        "desc": "Same as AW[SAT] but with 'circuit' instead of 'formula.'",
-        "related": [
-            "W[P",
-            "W[SAT"
-        ]
-    },
-    {
-        "name": "AW[SAT]",
-        "type": "Language",
-        "desc": "Alternating W[SAT]. Has the same relation to {lang:W[SAT]} as PSPACE does to NP.\n\nThe class of problems (x, r, k_1, ..., k_r) (with r, k_1, ..., k_r as parameters) that are fixed-parameter reducible to the following problem for some constant h: given a Boolean formula F over disjoint variable sets S_1, ..., S_r, does there exist an assignment to S_1 of Hamming weight k_1 such that for all assignments to S_2 of Hamming weight k_2, ..., (alternating ∃/∀), F is satisfied?\n\nDefined in {ref:df99}. Contains {lang:AW[*]}, and is contained in {lang:AW[P]}.",
-        "related": [
-            "NP",
-            "PSPACE",
-            "W[1]",
-            "W[SAT]",
-            "AW[*]",
-            "AW[P]"
-        ]
-    },
-    {
-        "name": "AW[*]",
-        "type": "Language",
-        "desc": "The union of AW[t] over all t."
-    },
-    {
-        "name": "AW[t]",
-        "type": "Language",
-        "concrete": false,
-        "desc": "Alternating W[t]. Has the same relation to {lang:W[t]} as PSPACE does to NP.\n\nSame as {lang:AW[SAT]}, except that the formula F has depth at most t. Defined in {ref:df99}.\n\nContained in {lang:AW[*]}. DFT98 {ref:dft98} showed that for all t, AW[t] = AW[*].",
-        "related": [
-            "NP",
-            "PSPACE",
-            "W[t]",
-            "AW[*]",
-            "AW[SAT]"
-        ]
-    },
-    {
         "name": "A_0PP",
         "type": "Language",
         "desc": "One-Sided Analog of {lang:AWPP}. Same as {lang:SBP}, except that f is a nonnegative-valued {lang:GapP} function rather than a #P function.\n\nDefined in {ref:vya03}, where the following was also shown: A_0PP contains {lang:QMA}, {lang:AWPP}, and {lang:coC_=P}; and A_0PP is contained in {lang:PP}.\n\nKuperberg {ref:kup09} showed that A_0PP = {lang:SBQP}.",
@@ -843,7 +803,7 @@
     {
         "name": "Ack",
         "type": "Language",
-        "desc": "Ackermann Time. Defined in {ref:sch16}. Let F_0(x) = x+1 and F_k(x) = F_{k-1}^x(x), where F_{k-1}^x(x) means F_{k-1}(x) applied to itself x times. For example F_1(x) = 2x+1, F_2(x) = 2^(x+1)(x+1)-1, etc. Then define F_ω(x) = F_x(x), which has the same growth rate as A(x,x) where A is the Ackermann function.\n\nAck equals DTIME(F_ω(p(n))) over all primitive-recursive functions p(n). The class remains unchanged if DTIME is replaced by NTIME or DSPACE.\n\nStrictly contains {lang:ELEMENTARY}, {lang:Tower}, and {lang:PR}. Is strictly contained in {lang:R}. The relationship between Ack and PR is analogous to the relationship between Tower and ELEMENTARY: Ack contains problems \"barely\" outside of PR and, unlike PR, has complete problems.\n\nThe reachability problem for Petri nets {ref:ler22} and vector addition systems {ref:co22} are complete for Ack under primitive-recursive reductions.",
+        "desc": "Ackermann Time. Defined in {ref:sch16}. Let F_0(x) = x+1 and F_k(x) = F_{k-1}^x(x), where F_{k-1}^x(x) means F_{k-1}(x) applied to itself x times. For example F_1(x) = 2x+1, F_2(x) = 2^(x+1)(x+1)-1, etc. Then define F_ω(x) = F_x(x), which has the same growth rate as A(x,x) where A is the Ackermann function.\n\nAck equals DTIME(F_ω(p(n))) over all primitive-recursive functions p(n). The class remains unchanged if DTIME is replaced by NTIME or DSPACE.\n\nStrictly contains {lang:ELEMENTARY}, {lang:TOWER}, and {lang:PR}. Is strictly contained in {lang:R}. The relationship between Ack and PR is analogous to the relationship between Tower and ELEMENTARY: Ack contains problems \"barely\" outside of PR and, unlike PR, has complete problems.\n\nThe reachability problem for Petri nets {ref:ler22} and vector addition systems {ref:co22} are complete for Ack under primitive-recursive reductions.",
         "related": [
             "DSPACE",
             "DTIME",
@@ -851,7 +811,7 @@
             "NTIME",
             "PR",
             "R",
-            "Tower"
+            "TOWER"
         ]
     },
     {
@@ -959,7 +919,7 @@
     {
         "name": "BPL",
         "type": "Language",
-        "desc": "Bounded-Error Probabilistic Logspace. Has the same relation to L as BPP does to P. The machine uses logarithmic space and must halt on every input and every random tape setting. The random bits are read-once (one-way tape), unlike {lang:BP_dot_L}.\n\nContained in {lang:SC} {ref:nis92}, {lang:PL}, BP•L, ZP•L {ref:nis93}, {lang:DET} {ref:coo85}, {lang:NC^2}, and P {ref:bcp83}.",
+        "desc": "Bounded-Error Probabilistic Logspace. Has the same relation to L as BPP does to P. The machine uses logarithmic space and must halt on every input and every random tape setting. The random bits are read-once (one-way tape), unlike {lang:BP•L}.\n\nContained in {lang:SC} {ref:nis92}, {lang:PL}, BP•L, ZP•L {ref:nis93}, {lang:DET} {ref:coo85}, {lang:NC^2}, and P {ref:bcp83}.",
         "related": [
             "ZPL",
             "RL",
@@ -1461,14 +1421,14 @@
         ]
     },
     {
-        "name": "DP or D^p",
+        "name": "DP",
         "type": "Language",
-        "desc": "Difference Polynomial-Time. DP = BH_2, the second level of the Boolean hierarchy. The class of languages that are the intersection of an NP language and a coNP language.\n\nContains NP and coNP, is contained in Δ_2P. Complete problems include Exact-Clique and SAT-UNSAT. Defined in {ref:py84}.",
+        "desc": "Difference Polynomial-Time. Also written D^p. DP = BH_2, the second level of the Boolean hierarchy. The class of languages that are the intersection of an NP language and a coNP language.\n\nContains NP and coNP, is contained in Δ_2P. Complete problems include Exact-Clique and SAT-UNSAT. Defined in {ref:py84}.",
         "related": [
             "BH",
             "NP",
             "coNP",
-            "Delta_2P"
+            "Δ_2P"
         ]
     },
     {
@@ -1499,7 +1459,7 @@
     {
         "name": "D#P",
         "type": "Language",
-        "desc": "Alternate name for P^{#P} (P with a #P oracle). See {lang:P^SharpP}.",
+        "desc": "Alternate name for P^{#P} (P with a #P oracle). See {lang:P^#P}.",
         "related": [
             "P^SharpP"
         ]
@@ -1523,6 +1483,7 @@
     {
         "name": "DiffAC^0",
         "type": "Language",
+        "concrete": false,
         "desc": "The class of functions from {0,1}^n to integers expressible as the difference of two #AC^0 functions.",
         "related": [
             "#AC^0",
@@ -1807,34 +1768,6 @@
         ]
     },
     {
-        "name": "FPL",
-        "type": "Language",
-        "desc": "The class of decision problems of the form (x,k), k a parameter, that are solvable in time f(k)|x|, where f is arbitrary."
-    },
-    {
-        "name": "FPR",
-        "type": "Language",
-        "desc": "Has the same relation to FPT as RP does to P.",
-        "related": [
-            "P",
-            "RP",
-            "W[P"
-        ]
-    },
-    {
-        "name": "FPT_nu",
-        "type": "Language",
-        "desc": "Same as FPT except that the algorithm can vary with the parameter k (though its running time must always be O(p(|x|)), for a fixed polynomial p).",
-        "properties": [
-            "nonuniform"
-        ]
-    },
-    {
-        "name": "FPT_su",
-        "type": "Language",
-        "desc": "Same as FPT except that f has to be recursive."
-    },
-    {
         "name": "FP^NP[log]",
         "type": "Language",
         "desc": "Given a graph, the problem of outputting the size of its maximum clique is complete for FP^NP[log]."
@@ -1909,10 +1842,9 @@
     {
         "name": "HO",
         "type": "Language",
-        "desc": "High-Order Logic. An extension of Second-Order ({lang:SO}) and First-Order ({lang:FO}) logic with quantification over higher-order variables.\n\nA relation of order o and arity k is a subset of k-tuples of relations of order o-1 and arity k; at order 1, this recovers first-order variables. HO^o is the set of formulae with quantification up to order o. Σ^i_j (resp. Π^i_j) is the set of HO^{i+1} formulae beginning with an existential (resp. universal) quantifier followed by at most j-1 alternations.\n\nDefined in {ref:ht06}, where it was shown that Σ^i_j = the class of problems solvable in time 2_2^{i-1}(n^O(1)) with a Σ^P_{j-1} oracle (the (j-1)-th level of the polynomial hierarchy).",
+        "desc": "High-Order Logic. An extension of Second-Order ({lang:SO}) logic with quantification over higher-order variables.\n\nA relation of order o and arity k is a subset of k-tuples of relations of order o-1 and arity k; at order 1, this recovers first-order variables. HO^o is the set of formulae with quantification up to order o. Σ^i_j (resp. Π^i_j) is the set of HO^{i+1} formulae beginning with an existential (resp. universal) quantifier followed by at most j-1 alternations.\n\nDefined in {ref:ht06}, where it was shown that Σ^i_j = the class of problems solvable in time 2_2^{i-1}(n^O(1)) with a Σ^P_{j-1} oracle (the (j-1)-th level of the polynomial hierarchy).",
         "related": [
             "SO",
-            "FO",
             "PH"
         ]
     },
@@ -2006,11 +1938,11 @@
     {
         "name": "IOP",
         "type": "Language",
-        "desc": "Interactive Oracle Proof. A proof system combining {lang:PCP} and {lang:IP}. Both prover and verifier can send messages as in interactive proofs, but the verifier receives oracle access to the prover's messages (as in PCP). Instead of one fixed proof, the prover sends multiple rounds of proofs whose contents may depend on verifier messages, and the verifier randomly queries symbols from these.\n\nThe class of problems solvable by IOPs equals {lang:NEXP}, the same as PCP. Thus IOPs are not more powerful than PCPs, but can achieve better parameters (total proof length, alphabet size, query complexity). IOPs can be converted to IPs via Merkle trees using the BCS compiler.",
+        "desc": "Interactive Oracle Proof. A proof system combining PCP and {lang:IP}. Both prover and verifier can send messages as in interactive proofs, but the verifier receives oracle access to the prover's messages (as in PCP). Instead of one fixed proof, the prover sends multiple rounds of proofs whose contents may depend on verifier messages, and the verifier randomly queries symbols from these.\n\nThe class of problems solvable by IOPs equals {lang:NEXP}, the same as PCP. Thus IOPs are not more powerful than PCPs, but can achieve better parameters (total proof length, alphabet size, query complexity). IOPs can be converted to IPs via Merkle trees using the BCS compiler.",
         "related": [
             "IP",
             "NEXP",
-            "PCP"
+            "PCP_r_n_q_n"
         ],
         "properties": [
             "protocol"
@@ -3068,6 +3000,7 @@
     {
         "name": "PF",
         "type": "Language",
+        "concrete": false,
         "desc": "----"
     },
     {
@@ -3105,6 +3038,7 @@
     {
         "name": "PIO",
         "type": "Language",
+        "concrete": false,
         "desc": "The class of function problems, f:{0,1}^n->{0,1}^m, such that f(x) is computable in time polynomial in n and m."
     },
     {
@@ -3128,11 +3062,13 @@
     {
         "name": "PLF",
         "type": "Language",
+        "concrete": false,
         "desc": "Defined in {ref:pap90}."
     },
     {
         "name": "PLL",
         "type": "Language",
+        "concrete": false,
         "desc": "The class of TFNP function problems that are guaranteed to have a solution because of the Lovász Local Lemma.",
         "related": [
             "TFNP"
@@ -3155,6 +3091,7 @@
     {
         "name": "PODN",
         "type": "Language",
+        "concrete": false,
         "desc": "The subclass of TFNP function problems that are guaranteed to have a solution because of the lemma that \"every finite graph has an even number of odd-degree nodes.\"",
         "related": [
             "TFNP"
@@ -3227,6 +3164,7 @@
     {
         "name": "PSK",
         "type": "Language",
+        "concrete": false,
         "desc": "Yeah, I'm told that's what the S and K stand for."
     },
     {
@@ -3252,6 +3190,7 @@
     {
         "name": "PTAPE",
         "type": "Language",
+        "concrete": false,
         "desc": "----"
     },
     {
@@ -3282,9 +3221,9 @@
     {
         "name": "P^NP",
         "type": "Language",
-        "desc": "P With NP Oracle. See {lang:Delta_2P}.",
+        "desc": "P With NP Oracle. See {lang:Δ_2P}.",
         "related": [
-            "Delta_2P",
+            "Δ_2P",
             "NP",
             "P"
         ]
@@ -3473,6 +3412,7 @@
     {
         "name": "⊕P^cc",
         "type": "Language",
+        "concrete": false,
         "desc": "Communication Complexity ⊕P. The communication complexity analog of ⊕P.\n\nNot contained in UPP^cc {ref:for02}. Does not contain ZPP^cc if partial functions are allowed {ref:gpw16b}.\n\nThe complexity measure associated with ⊕P^cc is equivalent to the log of the rank of the communication matrix over GF(2).",
         "related": [
             "ParityP",
@@ -3528,11 +3468,11 @@
     {
         "name": "Φ_2P",
         "type": "Language",
-        "desc": "Second Level of the Symmetric Hierarchy (Alternative Definition). The class of problems for which there exists a polynomial-time predicate P(x,y,z) such that for all x, if the answer on input x is \"yes,\" then:\n1. For all y, there exists a z for which P(x,y,z).\n2. For all z, there exists a y for which P(x,y,z).\n\nContained in {lang:Sigma_2P} and {lang:Pi_2P}.\n\nDefined in {ref:can96}, where it was also observed that Φ_2P = {lang:S_2P}.",
+        "desc": "Second Level of the Symmetric Hierarchy (Alternative Definition). The class of problems for which there exists a polynomial-time predicate P(x,y,z) such that for all x, if the answer on input x is \"yes,\" then:\n1. For all y, there exists a z for which P(x,y,z).\n2. For all z, there exists a y for which P(x,y,z).\n\nContained in {lang:Sigma_2P} and {lang:Π_2P}.\n\nDefined in {ref:can96}, where it was also observed that Φ_2P = {lang:S_2P}.",
         "related": [
             "S_2P",
             "Sigma_2P",
-            "Pi_2P"
+            "Π_2P"
         ]
     },
     {
@@ -3943,10 +3883,10 @@
     {
         "name": "QNC^0/🐱",
         "type": "Language",
-        "desc": "Quantum NC^0 With Polynomial-Size Quantum Cat-State Advice. Constant-depth quantum circuits without fanout gates, with an additional cat state as \"advice\": 🐱 = (|0^n⟩ + |1^n⟩)/√2.\n\nDefined in {ref:wkst19}. Contains {lang:QNC^0}. Contained in {lang:QNC^0_qpoly} and BQP.",
+        "desc": "Quantum NC^0 With Polynomial-Size Quantum Cat-State Advice. Constant-depth quantum circuits without fanout gates, with an additional cat state as \"advice\": 🐱 = (|0^n⟩ + |1^n⟩)/√2.\n\nDefined in {ref:wkst19}. Contains {lang:QNC^0}. Contained in {lang:QNC^0/qpoly} and BQP.",
         "related": [
             "QNC^0",
-            "QNC^0_qpoly",
+            "QNC^0/qpoly",
             "BQP"
         ],
         "properties": [
@@ -4274,15 +4214,6 @@
         ]
     },
     {
-        "name": "RPP",
-        "type": "Language",
-        "desc": "The class of decision problems (x,m) (where x is an input of length |x|=n and m is an integer parameter), that are solvable by a nondeterministic (i.e.",
-        "related": [
-            "FPT",
-            "NP"
-        ]
-    },
-    {
         "name": "RQP",
         "type": "Language",
         "desc": "One-Sided Randomized Quantum Polynomial-Time. The class of problems solvable by a QTM that:\n1. Accepts with probability 0 when the answer is \"no.\"\n2. Accepts with probability at least 1/2 when the answer is \"yes.\"\n\nThe quantum analog of RP. Since one acceptance probability must exactly vanish, RQP has the same technical caveats as {lang:EQP}. Complement is {lang:coRQP}. ZQP = RQP ∩ coRQP.",
@@ -4405,12 +4336,12 @@
     {
         "name": "SBP",
         "type": "Language",
-        "desc": "Small Bounded-Error Probability. The class of decision problems for which the following holds: there exists a #P function f and an FP function g such that, for all inputs x:\n1. If the answer is \"yes,\" f(x) > g(x).\n2. If the answer is \"no,\" f(x) < g(x)/2.\n\nDefined in {ref:bgm02}, where it was also shown that:\n- SBP contains {lang:MA}, WAPP, and {lang:ExistsBPP}.\n- SBP is contained in {lang:AM} and BPP_path.\n- SBP is closed under union.\n- There exists an oracle relative to which SBP ⊄ Σ_2P.\n\nThere exists an oracle relative to which SBP is not closed under intersection {ref:glm15}.\n\nIf SAT can be solved by an NP-machine with a subexponential number of accepting paths, then SBP = AM {ref:vol20}.",
+        "desc": "Small Bounded-Error Probability. The class of decision problems for which the following holds: there exists a #P function f and an FP function g such that, for all inputs x:\n1. If the answer is \"yes,\" f(x) > g(x).\n2. If the answer is \"no,\" f(x) < g(x)/2.\n\nDefined in {ref:bgm02}, where it was also shown that:\n- SBP contains {lang:MA}, WAPP, and {lang:∃BPP}.\n- SBP is contained in {lang:AM} and BPP_path.\n- SBP is closed under union.\n- There exists an oracle relative to which SBP ⊄ Σ_2P.\n\nThere exists an oracle relative to which SBP is not closed under intersection {ref:glm15}.\n\nIf SAT can be solved by an NP-machine with a subexponential number of accepting paths, then SBP = AM {ref:vol20}.",
         "related": [
             "AM",
             "MA",
             "WAPP",
-            "ExistsBPP",
+            "∃BPP",
             "A_0PP",
             "BPPpath"
         ]
@@ -4443,6 +4374,7 @@
     {
         "name": "SE",
         "type": "Language",
+        "concrete": false,
         "desc": "Subexponentially-Solvable Search Problems. The class of FNP search problems solvable in O(2^{εn}) time for every ε > 0.\n\nDefined in {ref:ipz01}, where reductions were given showing that if any of k-SAT, k-colorability, k-set cover, clique, or vertex cover is in SE, then all of them are.",
         "related": [
             "FNP"
@@ -4504,16 +4436,6 @@
         ]
     },
     {
-        "name": "SLICEWISE PSPACE",
-        "type": "Language",
-        "desc": "The parameterized version of PSPACE.",
-        "related": [
-            "FPT",
-            "P",
-            "PSPACE"
-        ]
-    },
-    {
         "name": "SNP",
         "type": "Language",
         "desc": "Strict NP. {ref:fag74} showed that NP is precisely the class of decision problems reducible to a graph-theoretic property expressible in second-order existential logic.\n\nSNP is the class of decision problems reducible to a graph-theoretic predicate with only universal quantifiers over vertices and no existential quantifiers. As an example, k-SAT (CNF satisfiability with at most k literals per clause, for k a constant) is in SNP. General SAT is not in SNP, because we need to say \"there exists a literal in this clause that satisfies the clause.\"\n\nContains {lang:MMSNP}. See also {lang:MaxSNP}.",
@@ -4526,9 +4448,8 @@
     {
         "name": "SO",
         "type": "Language",
-        "desc": "Second-Order Logic. An extension of First-Order Logic ({lang:FO}) with quantification over second-order variables (which represent sets or relations of arbitrary arity).\n\nFormulae can be put into prenex normal form: all second-order quantifiers first, followed by a first-order formula. SO is equal to {lang:PH} (the polynomial hierarchy) {ref:imm98}. More precisely, SO formulae in prenex normal form with k alternating second-order quantifiers correspond to the k-th level of PH. SO with only existential second-order quantification equals Σ_1 = NP {ref:fag74}, and with only universal quantification equals Π_1 = coNP.\n\nSee also: {lang:SO(Horn)}, {lang:SO(Krom)}, {lang:SO[LFP]}, {lang:SO[TC]}, and {lang:HO}.",
+        "desc": "Second-Order Logic. An extension of First-Order Logic with quantification over second-order variables (which represent sets or relations of arbitrary arity).\n\nFormulae can be put into prenex normal form: all second-order quantifiers first, followed by a first-order formula. SO is equal to {lang:PH} (the polynomial hierarchy) {ref:imm98}. More precisely, SO formulae in prenex normal form with k alternating second-order quantifiers correspond to the k-th level of PH. SO with only existential second-order quantification equals Σ_1 = NP {ref:fag74}, and with only universal quantification equals Π_1 = coNP.\n\nVariants include SO(Horn), SO(Krom), SO[LFP], and SO[TC]. See also {lang:HO}.",
         "related": [
-            "FO",
             "PH",
             "NP",
             "coNP",
@@ -4651,6 +4572,7 @@
     {
         "name": "S_2-EXP•P^NP",
         "type": "Language",
+        "concrete": false,
         "desc": "One of the caged classes of the Complexity Zoo.",
         "related": [
             "AM[polylog",
@@ -4952,11 +4874,6 @@
         ]
     },
     {
-        "name": "XNLP",
-        "type": "Language",
-        "desc": "The class of decision problems of the form (x,k) (k a parameter) that are solvable in space O(f(k) log(n)) and time O(f(k) n^c), by a nondeterministic Turing machine, for some function f."
-    },
-    {
         "name": "XOR-MIP*[2,1]",
         "type": "Language",
         "desc": "Same as mipstar|MIP*[2,1], but with the further restriction that both provers send only a single bit to the verifier, and the verifier's output is a function of the exclusive-OR of those bits.",
@@ -4969,13 +4886,9 @@
         ]
     },
     {
-        "name": "XP_uniform",
-        "type": "Language",
-        "desc": "Same as XP except that the algorithm used must be the same for each k (though it can take k as input)."
-    },
-    {
         "name": "YACC",
         "type": "Language",
+        "concrete": false,
         "desc": "A term of derision, used against a complexity class."
     },
     {
@@ -5112,7 +5025,7 @@
     {
         "name": "ZP·L",
         "type": "Language",
-        "desc": "Zero-Error Probabilistic L with Two-Way Access to Randomness. Has the same relationship to {lang:BP·L} as ZPP has to BPP. Logspace polynomial-time Turing machine with a read-only randomness tape such that on input x:\n1. With high probability, the machine correctly outputs whether x is in the language.\n2. When the machine outputs \"I don't know,\" it never outputs a wrong answer.\n\nSee {lang:BP·L} for context.",
+        "desc": "Zero-Error Probabilistic L with Two-Way Access to Randomness. Has the same relationship to {lang:BP•L} as ZPP has to BPP. Logspace polynomial-time Turing machine with a read-only randomness tape such that on input x:\n1. With high probability, the machine correctly outputs whether x is in the language.\n2. When the machine outputs \"I don't know,\" it never outputs a wrong answer.\n\nSee {lang:BP•L} for context.",
         "related": [
             "BPL",
             "BPP",
@@ -5376,6 +5289,7 @@
     {
         "name": "coSPARSE",
         "type": "Language",
+        "concrete": false,
         "desc": "----",
         "properties": [
             "complement"
@@ -5457,7 +5371,7 @@
     {
         "name": "δ-RP",
         "type": "Language",
-        "desc": "δ-Semi-Random RP. Same as {lang:delta-BPP}, but for RP instead of BPP. For any δ > 0, δ-RP = RP {ref:vv85}.",
+        "desc": "δ-Semi-Random RP. Same as {lang:δ-BPP}, but for RP instead of BPP. For any δ > 0, δ-RP = RP {ref:vv85}.",
         "related": [
             "BPP",
             "RP"
@@ -5593,15 +5507,6 @@
         ]
     },
     {
-        "name": "para-P",
-        "type": "Language",
-        "desc": "para-P is a less common name for FPT, but in line with other para- classes naming conventions.",
-        "related": [
-            "FPT",
-            "XP"
-        ]
-    },
-    {
         "name": "polyL",
         "type": "Language",
         "desc": "Equals DSPACE((log n)^c).",
@@ -5634,6 +5539,61 @@
         ]
     },
     {
+        "name": "AW[P]",
+        "type": "Parameterized Language",
+        "desc": "Same as AW[SAT] but with 'circuit' instead of 'formula.'",
+        "related": [
+            "W[P",
+            "W[SAT"
+        ]
+    },
+    {
+        "name": "AW[SAT]",
+        "type": "Parameterized Language",
+        "desc": "Alternating W[SAT]. Has the same relation to {lang:W[SAT]} as PSPACE does to NP.\n\nThe class of problems (x, r, k_1, ..., k_r) (with r, k_1, ..., k_r as parameters) that are fixed-parameter reducible to the following problem for some constant h: given a Boolean formula F over disjoint variable sets S_1, ..., S_r, does there exist an assignment to S_1 of Hamming weight k_1 such that for all assignments to S_2 of Hamming weight k_2, ..., (alternating ∃/∀), F is satisfied?\n\nDefined in {ref:df99}. Contains {lang:AW[*]}, and is contained in {lang:AW[P]}.",
+        "related": [
+            "NP",
+            "PSPACE",
+            "W[1]",
+            "W[SAT]",
+            "AW[*]",
+            "AW[P]"
+        ]
+    },
+    {
+        "name": "AW[*]",
+        "type": "Parameterized Language",
+        "desc": "The union of AW[t] over all t."
+    },
+    {
+        "name": "AW[t]",
+        "type": "Parameterized Language",
+        "concrete": false,
+        "desc": "Alternating W[t]. Has the same relation to {lang:W[t]} as PSPACE does to NP.\n\nSame as {lang:AW[SAT]}, except that the formula F has depth at most t. Defined in {ref:df99}.\n\nContained in {lang:AW[*]}. DFT98 {ref:dft98} showed that for all t, AW[t] = AW[*].",
+        "related": [
+            "NP",
+            "PSPACE",
+            "W[t]",
+            "AW[*]",
+            "AW[SAT]"
+        ]
+    },
+    {
+        "name": "FPL",
+        "type": "Parameterized Language",
+        "desc": "The class of decision problems of the form (x,k), k a parameter, that are solvable in time f(k)|x|, where f is arbitrary."
+    },
+    {
+        "name": "FPR",
+        "type": "Parameterized Language",
+        "desc": "Has the same relation to FPT as RP does to P.",
+        "related": [
+            "P",
+            "RP",
+            "W[P"
+        ]
+    },
+    {
         "name": "FPT",
         "type": "Parameterized Language",
         "desc": "Fixed Parameter Tractable. Languages (x,k) with a deterministic algorithm running in time n^{O(1)}*f(k).",
@@ -5643,11 +5603,43 @@
         ]
     },
     {
+        "name": "FPT_nu",
+        "type": "Parameterized Language",
+        "desc": "Same as FPT except that the algorithm can vary with the parameter k (though its running time must always be O(p(|x|)), for a fixed polynomial p).",
+        "properties": [
+            "nonuniform"
+        ]
+    },
+    {
+        "name": "FPT_su",
+        "type": "Parameterized Language",
+        "desc": "Same as FPT except that f has to be recursive."
+    },
+    {
         "name": "Kernel",
         "type": "Parameterized Language",
         "desc": "Problems that admit kernelization: languages (x,k) for which there is a _kernelization algorithm_ that processes the original instance in time poly(n,k) = (n+k)^{O(1)}, and produces an output string K of size f(k) for a computable function f, so that the original instance can be decided by running some (computable) algorithm on K. See [Wikipedia](https://en.wikipedia.org/wiki/Kernelization#Downey%E2%80%93Fellows_notation) for more details. This is a stronger requirement than being FPT, by essentially saying that the \"slow\" part of the algorithm that depends on k shouldn't need the whole input.",
         "related": [
             "FPT"
+        ]
+    },
+    {
+        "name": "RPP",
+        "type": "Parameterized Language",
+        "desc": "The class of decision problems (x,m) (where x is an input of length |x|=n and m is an integer parameter), that are solvable by a nondeterministic (i.e.",
+        "related": [
+            "FPT",
+            "NP"
+        ]
+    },
+    {
+        "name": "SLICEWISE PSPACE",
+        "type": "Parameterized Language",
+        "desc": "The parameterized version of PSPACE.",
+        "related": [
+            "FPT",
+            "P",
+            "PSPACE"
         ]
     },
     {
@@ -5752,6 +5744,11 @@
         ]
     },
     {
+        "name": "XNLP",
+        "type": "Parameterized Language",
+        "desc": "The class of decision problems of the form (x,k) (k a parameter) that are solvable in space O(f(k) log(n)) and time O(f(k) n^c), by a nondeterministic Turing machine, for some function f."
+    },
+    {
         "name": "XNP",
         "type": "Parameterized Language",
         "desc": "Slicewise NP. Languages (x,k) with a nondeterministic algorithm running in time n^f(k). Equivalently, problems with witnesses of size n^{f(k)} with a polynomial-time verifier.",
@@ -5768,6 +5765,11 @@
             "W[1]",
             "FPT"
         ]
+    },
+    {
+        "name": "XP_uniform",
+        "type": "Parameterized Language",
+        "desc": "Same as XP except that the algorithm used must be the same for each k (though it can take k as input)."
     },
     {
         "name": "para-L",
@@ -5804,6 +5806,15 @@
             "XP",
             "NP",
             "XNP"
+        ]
+    },
+    {
+        "name": "para-P",
+        "type": "Parameterized Language",
+        "desc": "para-P is a less common name for FPT, but in line with other para- classes naming conventions.",
+        "related": [
+            "FPT",
+            "XP"
         ]
     },
     {

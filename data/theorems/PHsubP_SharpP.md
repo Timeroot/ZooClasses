@@ -1,5 +1,5 @@
 ---
-name: "PH⊆P_SharpP"
-content: "PH⊆P_SharpP"
+name: "PH⊆P^#P"
+content: "PH⊆P^#P"
 ref: "{ref:tod89}"
 ---

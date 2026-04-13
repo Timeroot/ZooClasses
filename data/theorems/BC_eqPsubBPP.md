@@ -1,5 +1,5 @@
 ---
-name: "BC_eqP⊆BPP"
-content: "BC_eqP⊆BPP"
+name: "BC_=P⊆BPP"
+content: "BC_=P⊆BPP"
 ref: "{ref:wat15}"
 ---

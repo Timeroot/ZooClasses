@@ -1,5 +1,5 @@
 ---
-name: "MP⊆P_SharpP1"
-content: "MP⊆P_SharpP1"
+name: "MP⊆P^SharpP[1]"
+content: "MP⊆P^SharpP[1]"
 ref: "{ref:gkr95}"
 ---

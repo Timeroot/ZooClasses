@@ -1,4 +1,4 @@
 ---
-name: "ZP_dot_L⊆RNC"
-content: "ZP_dot_L⊆RNC"
+name: "ZP·L⊆RNC"
+content: "ZP·L⊆RNC"
 ---

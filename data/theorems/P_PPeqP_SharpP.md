@@ -1,4 +1,4 @@
 ---
-name: "P^PP=P_SharpP"
-content: "P^PP=P_SharpP"
+name: "P^PP=P^#P"
+content: "P^PP=P^#P"
 ---

@@ -1,5 +1,5 @@
 ---
-name: "FNL_poly⊆SharpL_poly"
-content: "FNL_poly⊆SharpL_poly"
+name: "FNL/poly⊆SharpL/poly"
+content: "FNL/poly⊆SharpL/poly"
 ref: "{ref:ra00}"
 ---

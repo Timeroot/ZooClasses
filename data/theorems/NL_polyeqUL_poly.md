@@ -1,5 +1,5 @@
 ---
-name: "NL_poly=UL_poly"
-content: "NL_poly=UL_poly"
+name: "NL/poly=UL/poly"
+content: "NL/poly=UL/poly"
 ref: "{ref:ra00}"
 ---

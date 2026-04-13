@@ -1,5 +1,5 @@
 ---
-name: "NL⊆UL_poly"
-content: "NL⊆UL_poly"
+name: "NL⊆UL/poly"
+content: "NL⊆UL/poly"
 ref: "{ref:ra00}"
 ---

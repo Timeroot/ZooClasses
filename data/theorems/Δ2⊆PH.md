@@ -1,5 +1,5 @@
 ---
-name: Δ2⊆PH
-content: Δ2⊆PH
+name: Δ_2P⊆PH
+content: Δ_2P⊆PH
 impliedby: "P=Δ0⊆Δi⊆Πi∩Σi⊆Σi∪Πi⊆Δ{i+1}⊆PH"
 ---

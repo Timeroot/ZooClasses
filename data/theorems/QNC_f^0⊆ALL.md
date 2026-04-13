@@ -1,0 +1,5 @@
+---
+name: "QNC_f^0⊆ALL"
+content: "QNC_f^0⊆ALL"
+ref: "ALL is the class of all languages, trivially containing every complexity class."
+---

@@ -1,4 +1,4 @@
 ---
-name: "BH⊆Δ2"
-content: "BH⊆Δ2"
+name: "BH⊆Δ_2P"
+content: "BH⊆Δ_2P"
 ---

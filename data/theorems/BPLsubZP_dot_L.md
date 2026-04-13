@@ -1,5 +1,5 @@
 ---
-name: "BPL⊆ZP_dot_L"
-content: "BPL⊆ZP_dot_L"
+name: "BPL⊆ZP·L"
+content: "BPL⊆ZP·L"
 ref: "{ref:nis93}"
 ---

@@ -1,5 +1,5 @@
 ---
-name: ⊕L_poly⊇NL_poly
-content: ⊕L_poly⊇NL_poly
+name: ⊕L/poly⊇NL/poly
+content: ⊕L/poly⊇NL/poly
 ref: "{ref:gw96}"
 ---

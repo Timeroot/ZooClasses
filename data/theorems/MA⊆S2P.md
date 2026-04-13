@@ -1,5 +1,5 @@
 ---
-name: MA⊆S2P
-content: MA⊆S2P
+name: MA⊆S_2P
+content: MA⊆S_2P
 ref: "{ref:RS98}"
 ---

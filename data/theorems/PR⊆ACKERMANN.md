@@ -1,5 +1,5 @@
 ---
-name: PR⊆ACKERMANN
-content: PR⊆ACKERMANN
+name: PR⊆Ack
+content: PR⊆Ack
 impliedby: ObviousConstruction
 ---

@@ -1,5 +1,5 @@
 ---
-name: "{t}AW[t]=AW[star]"
-content: "{t}AW[t]=AW[star]"
+name: "{t}AW[t]=AW[*]"
+content: "{t}AW[t]=AW[*]"
 ref: "{ref:dft98}"
 ---

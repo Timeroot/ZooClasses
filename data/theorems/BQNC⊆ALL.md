@@ -1,0 +1,5 @@
+---
+name: "BQNC⊆ALL"
+content: "BQNC⊆ALL"
+ref: "ALL is the class of all languages, trivially containing every complexity class."
+---

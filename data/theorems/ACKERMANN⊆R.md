@@ -1,5 +1,5 @@
 ---
-name: ACKERMANN⊆R
-content: ACKERMANN⊆R
+name: Ack⊆R
+content: Ack⊆R
 impliedby: ObviousConstruction
 ---

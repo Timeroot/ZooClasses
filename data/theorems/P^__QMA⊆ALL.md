@@ -1,0 +1,5 @@
+---
+name: "P^||QMA⊆ALL"
+content: "P^||QMA⊆ALL"
+ref: "ALL is the class of all languages, trivially containing every complexity class."
+---

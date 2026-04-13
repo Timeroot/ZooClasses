@@ -1,4 +1,4 @@
 ---
-name: "BP_dot_NP=AM"
-content: "BP_dot_NP=AM"
+name: "BP•NP=AM"
+content: "BP•NP=AM"
 ---

@@ -1,4 +1,4 @@
 ---
-name: "P_SharpP⊆PSPACE"
-content: "P_SharpP⊆PSPACE"
+name: "P^#P⊆PSPACE"
+content: "P^#P⊆PSPACE"
 ---

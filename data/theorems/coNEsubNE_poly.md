@@ -1,4 +1,4 @@
 ---
-name: "coNE⊆NE_poly"
-content: "coNE⊆NE_poly"
+name: "coNE⊆NE/poly"
+content: "coNE⊆NE/poly"
 ---

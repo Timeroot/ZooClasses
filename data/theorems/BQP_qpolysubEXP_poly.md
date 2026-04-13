@@ -1,5 +1,5 @@
 ---
-name: "BQP_qpoly⊆EXP_poly"
-content: "BQP_qpoly⊆EXP_poly"
+name: "BQP/qpoly⊆EXP/poly"
+content: "BQP/qpoly⊆EXP/poly"
 ref: "{ref:aar04b}"
 ---

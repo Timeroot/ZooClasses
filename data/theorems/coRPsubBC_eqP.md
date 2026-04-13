@@ -1,5 +1,5 @@
 ---
-name: "coRP⊆BC_eqP"
-content: "coRP⊆BC_eqP"
+name: "coRP⊆BC_=P"
+content: "coRP⊆BC_=P"
 ref: "{ref:wat15}"
 ---

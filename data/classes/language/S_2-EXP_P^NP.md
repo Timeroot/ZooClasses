@@ -1,5 +1,6 @@
 ---
 name: S_2-EXP•P^NP
+concrete: false
 related:
   - "AM[polylog"
   - EH

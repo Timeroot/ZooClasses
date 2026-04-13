@@ -1,5 +1,5 @@
 ---
-name: "CFL⊂1NAuxPDA_p"
-content: "CFL⊂1NAuxPDA_p"
+name: "CFL⊂1NAuxPDA^p"
+content: "CFL⊂1NAuxPDA^p"
 ref: "{ref:bra77}"
 ---

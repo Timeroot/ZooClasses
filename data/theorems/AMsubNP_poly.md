@@ -1,4 +1,4 @@
 ---
-name: "AM⊆NP_poly"
-content: "AM⊆NP_poly"
+name: "AM⊆NP/poly"
+content: "AM⊆NP/poly"
 ---

@@ -1,4 +1,4 @@
 ---
-name: "BP_dot_L⊆BPP"
-content: "BP_dot_L⊆BPP"
+name: "BP•L⊆BPP"
+content: "BP•L⊆BPP"
 ---

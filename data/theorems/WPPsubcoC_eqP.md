@@ -1,5 +1,5 @@
 ---
-name: "WPP⊆coC_eqP"
-content: "WPP⊆coC_eqP"
+name: "WPP⊆coC_=P"
+content: "WPP⊆coC_=P"
 ref: "{ref:ffk94}"
 ---

@@ -1,4 +1,4 @@
 ---
-name: "O_2P⊆S2P"
-content: "O_2P⊆S2P"
+name: "O_2P⊆S_2P"
+content: "O_2P⊆S_2P"
 ---

@@ -1,5 +1,5 @@
 ---
-name: "NAuxPDA_p=LOGCFL"
-content: "NAuxPDA_p=LOGCFL"
+name: "NAuxPDA^p=LOGCFL"
+content: "NAuxPDA^p=LOGCFL"
 ref: "{ref:sud78}"
 ---

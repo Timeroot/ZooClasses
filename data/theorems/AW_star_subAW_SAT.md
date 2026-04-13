@@ -1,4 +1,4 @@
 ---
-name: "AW[star]⊆AW[SAT]"
-content: "AW[star]⊆AW[SAT]"
+name: "AW[*]⊆AW[SAT]"
+content: "AW[*]⊆AW[SAT]"
 ---

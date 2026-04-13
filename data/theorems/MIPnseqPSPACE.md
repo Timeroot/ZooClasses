@@ -1,5 +1,5 @@
 ---
-name: "MIPns=PSPACE"
-content: "MIPns=PSPACE"
+name: "MIP^ns=PSPACE"
+content: "MIP^ns=PSPACE"
 ref: "{ref:ito10}"
 ---

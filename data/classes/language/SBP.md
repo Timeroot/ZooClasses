@@ -4,7 +4,7 @@ related:
   - AM
   - MA
   - WAPP
-  - ExistsBPP
+  - ∃BPP
   - A_0PP
   - BPPpath
 ---
@@ -13,7 +13,7 @@ Small Bounded-Error Probability. The class of decision problems for which the fo
 2. If the answer is "no," f(x) < g(x)/2.
 
 Defined in {ref:bgm02}, where it was also shown that:
-- SBP contains {lang:MA}, WAPP, and {lang:ExistsBPP}.
+- SBP contains {lang:MA}, WAPP, and {lang:∃BPP}.
 - SBP is contained in {lang:AM} and BPP_path.
 - SBP is closed under union.
 - There exists an oracle relative to which SBP ⊄ Σ_2P.

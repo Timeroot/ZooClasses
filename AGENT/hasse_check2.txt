@@ -1,0 +1,25 @@
+﻿Real minimals (have successors, no predecessors):
+  AW[SAT]
+  BQL
+  EE
+  GCSL
+  HVPZK
+  HalfP
+  LIN
+  LOGLOG
+  MAC^0
+  MA_EXP
+  NE
+  PARITY
+  R
+  SF
+  SL
+  TALLY
+  UL
+  UP
+  WAPP
+  mP
+  mTC^0
+  ΓêâBPP
+
+NONE in class_names: True

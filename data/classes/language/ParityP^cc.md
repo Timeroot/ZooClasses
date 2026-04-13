@@ -6,6 +6,7 @@ related:
   - ZPP^cc
 properties:
   - communication
+concrete: false
 ---
 Communication Complexity ⊕P. The communication complexity analog of ⊕P.
 

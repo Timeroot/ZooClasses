@@ -1,0 +1,186 @@
+﻿Generating JSON from markdown files...
+  classes.json: 549 entries
+  theorems.json: 1748 entries
+  conjectures.json: 7 entries
+  references.json: 656 entries
+  problems.json: 9 entries
+  properties.json: copied
+  problem_types.json: copied
+Done. Output in C:\Users\Timeroot\Documents\GitHub\ZooClasses\generated/
+
+Validating references...
+  549 broken pointer(s): 0 {lang:}, 3 {thm:}, 546 {ref:}
+  WARN theorem 'AC=NC=TC': {thm:TC^iΓèåNC^{i+1} ΓÇö theorem not found
+  WARN theorem 'SBPΓèåA_0PP': {thm:SBPΓèåSBQP} ΓÇö theorem not found
+  WARN theorem 'SBPΓèåA_0PP': {thm:SBQP=A_0PP} ΓÇö theorem not found
+  (546 {ref:} warnings suppressed by --quiet-refs)
+
+Hasse (Language): 441 concrete classes, 1692 inclusion edges
+  441 classes in at least one inclusion; 0 completely isolated
+  NONE is the only minimal (440 known successors) Γ£ô
+  ALL is the only maximal (358 known predecessors) Γ£ô
+
+  146 bottom classes (just above NONE ΓÇö add lower bounds):
+    (NP Γê⌐ coNP)/poly
+    (NP,P-samplable)
+    0-1-NP_C
+    3SUM-hard
+    AW[*]
+    AlgP/poly
+    AmpP-BQP
+    AxP
+    AxPP
+    BPP-OBDD
+    BPP^KT
+    BQP-OBDD
+    BQP_tt/poly
+    CC^0
+    CLOG
+    CNP
+    CP
+    CSP
+    C_=AC^0
+    Check
+    Coh
+    D#P
+    DisNP
+    EQP_K
+    FPL
+    FPR
+    FPT_nu
+    FPT_su
+    FP^NP[log]
+    HO
+    HeurPP
+    IC[log,poly]
+    IPP
+    IP[polylog]
+    K
+    LOGLOG
+    LOGSNP
+    LogFew
+    LogFewNL
+    MA'
+    MA_E
+    MA_POLYLOG
+    MM
+    MMSNP
+    MPC
+    ModP
+    NC^0
+    NLO
+    NLOG
+    NLT
+    NMCL
+    NPC
+    NPI
+    NPMV_t-sel
+    NPSV_t-sel
+    NT
+    NT*
+    OIP
+    OMA
+    ONP
+    P-Close
+    P-LOCAL
+    P-OBDD
+    P-RLOCAL
+    P-Sel
+    PARITY
+    PBP
+    PDQP
+    PF
+    PINC
+    PIO
+    PKC
+    PLF
+    PLL
+    PL_1
+    PL_Γê₧
+    PODN
+    PQUERY
+    PSK
+    PTAPE
+    PT_1
+    P^NP[k]
+    P^||QMA
+    PermUP
+    PhP
+    PromiseP
+    PromiseUP
+    PureSuperQMA
+    QAC_f^0
+    QEPH
+    QL
+    QMA-plus
+    QMAM
+    QMA^+(2)
+    QMA_1
+    QMA_log
+    QMIP_ne
+    QNC^0/qpoly
+    QNC^0/≡ƒÉ▒
+    QPIP
+    QPLIN
+    QRL
+    RPP
+    R_HL
+    SAC
+    SE
+    SF
+    SKC
+    SLICEWISE PSPACE
+    SP
+    SQG
+    S^Γëá
+    S_2-EXPΓÇóP^NP
+    S_2E
+    SelfNP
+    TALLY
+    TC^0(FOLL)
+    TREE-REGULAR
+    UE
+    VC_or
+    WAPP
+    XNLP
+    XOR-MIP*[2,1]
+    XP_uniform
+    YACC
+    YP
+    YP*
+    YPP
+    YQP
+    YQP*
+    YQP*/poly
+    coSPARSE
+    coUCC
+    cq-╬ú_2
+    frIP
+    mTC^0
+    mcoNL
+    naCQP
+    para-P
+    qq-QAM
+    symP
+    ╬ª_2P
+    ╬┤-BPP
+    ╬┤-RP
+    ΓêâNISZK
+    ΓèòP^cc
+
+  15 top classes (just below ALL ΓÇö add upper bounds):
+    (NP Γê⌐ coNP)/poly
+    (NP,P-samplable)
+    3SUM-hard
+    AH
+    AW[P]
+    AxP
+    DiffAC^0
+    DisNP
+    FPT_nu
+    FPT_su
+    NT
+    NT*
+    PF
+    RPP
+    YACC

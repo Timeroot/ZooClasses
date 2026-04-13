@@ -1,4 +1,4 @@
 ---
-name: "IP_polylog_=AM_polylog_"
-content: "IP_polylog_=AM_polylog_"
+name: "IP/polylog_=AM[polylog]"
+content: "IP/polylog_=AM[polylog]"
 ---
