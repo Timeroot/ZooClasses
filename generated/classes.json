@@ -12,6 +12,17 @@
         ]
     },
     {
+        "name": "APX",
+        "type": "Function Problem",
+        "desc": "The subclass of NPO problems that admit constant-factor approximation algorithms.",
+        "related": [
+            "MaxNP",
+            "MaxSNP",
+            "NPO",
+            "PTAS"
+        ]
+    },
+    {
         "name": "CLS",
         "type": "Function Problem",
         "desc": "Continuous Local Search. Equal to PPAD ∩ PLS. Equal to EOPL.",
@@ -22,11 +33,33 @@
         ]
     },
     {
+        "name": "CL#P",
+        "type": "Function Problem",
+        "desc": "The class of #P function problems such that some underlying NP machine M witnessing membership in #P has\n\"clustered\" accepting paths.",
+        "related": [
+            "#P",
+            "NP"
+        ]
+    },
+    {
         "name": "EOPL",
         "type": "Function Problem",
         "desc": "End of Potential Line. Equal to CLS.",
         "related": [
             "P"
+        ]
+    },
+    {
+        "name": "EPTAS",
+        "type": "Function Problem",
+        "desc": "The class of optimization problems such that, given an instance of length n, we can find a solution within a factor 1+ε of the optimum in time f(ε)p(n), where p is a polynomial and f is arbitrary.",
+        "related": [
+            "FPT",
+            "FPTAS",
+            "PTAS",
+            "W[1]",
+            "W[P]",
+            "XP_uniform"
         ]
     },
     {
@@ -112,6 +145,23 @@
         ]
     },
     {
+        "name": "FPRAS",
+        "type": "Function Problem",
+        "desc": "The subclass of #P counting problems whose answer, y, is approximable in the following sense.",
+        "related": [
+            "#P"
+        ]
+    },
+    {
+        "name": "FPTAS",
+        "type": "Function Problem",
+        "desc": "The subclass of NPO problems that admit an approximation scheme in the following sense.",
+        "related": [
+            "NPO",
+            "PTAS"
+        ]
+    },
+    {
         "name": "Few",
         "type": "Function Problem",
         "desc": "FewP with Flexible Acceptance Mechanism. Also called FewPaths. The class of decision problems solvable by an NP machine such that: (1) the number of accepting paths a is bounded by a polynomial in the input size; (2) for some polynomial-time predicate Q, Q(x,a) is true iff the answer is \"yes.\"\n\nDefined in {ref:ch89}. Contains {lang:FewP}, and is contained in P^{FewP} {ref:kob89} and in {lang:SPP} {ref:ffk94}.",
@@ -146,6 +196,16 @@
         ]
     },
     {
+        "name": "GLO",
+        "type": "Function Problem",
+        "desc": "The class of NPO problems which have the property that for all locally optimal solutions, the ratio between the values of the local and global optima is upper-bounded by a constant.",
+        "related": [
+            "APX",
+            "MaxSNP",
+            "NPO"
+        ]
+    },
+    {
         "name": "GapAC^0",
         "type": "Function Problem",
         "desc": "The class of functions from {0,1}^n to integers computable by constant-depth, polynomial-size arithmetic circuits with addition and multiplication gates and the constants 0, 1, and -1.",
@@ -176,6 +236,49 @@
         ]
     },
     {
+        "name": "MaxNP",
+        "type": "Function Problem",
+        "desc": "Has the same relation to NP as MaxSNP does to SNP.",
+        "related": [
+            "APX",
+            "NP",
+            "PTAS",
+            "SNP"
+        ]
+    },
+    {
+        "name": "MaxPB",
+        "type": "Function Problem",
+        "desc": "The subclass of MaxNP problems for which the cost function is guaranteed always to be bounded by a polynomial.",
+        "related": [
+            "NPOPB",
+            "PTAS"
+        ]
+    },
+    {
+        "name": "MaxSNP",
+        "type": "Function Problem",
+        "desc": "The class of optimization problems reducible by an \"L-reduction\" to a problem in MaxSNP_0.",
+        "related": [
+            "APX",
+            "L",
+            "PTAS"
+        ]
+    },
+    {
+        "name": "MaxSNP_0",
+        "type": "Function Problem",
+        "desc": "The class of function problems expressible as \"find a relation such that the set of k-tuples for which a given SNP predicate holds has maximum cardinality.\"",
+        "related": [
+            "SNP"
+        ]
+    },
+    {
+        "name": "MinPB",
+        "type": "Function Problem",
+        "desc": "Same as MaxPB but for minimization instead of maximization problems."
+    },
+    {
         "name": "NPMV-sel",
         "type": "Function Problem",
         "desc": "Has the same relation to NPMV as P-Sel does to P.",
@@ -196,6 +299,24 @@
         "name": "NPMV_t",
         "type": "Function Problem",
         "desc": "The class of all (possibly multivalued) NPMV functions that are total (that is, defined for every input)."
+    },
+    {
+        "name": "NPO",
+        "type": "Function Problem",
+        "desc": "The class of function problems of the form, \"Find any n-bit string x that maximizes a cost function C(x), where C is computable in FP (i.e.",
+        "related": [
+            "APX",
+            "FP"
+        ]
+    },
+    {
+        "name": "NPOPB",
+        "type": "Function Problem",
+        "desc": "The subclass of NPO problems for which the cost function is guaranteed always to be bounded by a polynomial in n (the input size).",
+        "related": [
+            "MaxPB",
+            "PTAS"
+        ]
     },
     {
         "name": "NPSV-sel",
@@ -286,6 +407,16 @@
         ]
     },
     {
+        "name": "PTAS",
+        "type": "Function Problem",
+        "desc": "The subclass of NPO problems that admit an approximation scheme in the following sense.",
+        "related": [
+            "APX",
+            "FPTAS",
+            "NPO"
+        ]
+    },
+    {
         "name": "PTFNP",
         "type": "Function Problem",
         "desc": "Proof TFNP. Defined in https://doi.org/10.1016/j.jcss.2017.12.003 as a 'refinement' of TFNP to be naturally complete. Includes all the 'standard' classes: PLS, PPP, PPA.",
@@ -364,17 +495,6 @@
         ]
     },
     {
-        "name": "TALLY",
-        "type": "Function Problem",
-        "desc": "The class of decision problems for which every 'yes' instance has the form 0^n (i.e.",
-        "related": [
-            "NP",
-            "NPC",
-            "P",
-            "SPARSE"
-        ]
-    },
-    {
         "name": "TFNP",
         "type": "Function Problem",
         "desc": "Total Function NP. The class of function problems of the following form: given an input x and a polynomial-time predicate F(x,y), output any y satisfying F(x,y), where such a y is promised to exist.\n\nCan be viewed as the functional analogue of NP ∩ coNP. Defined in {ref:mp91}.\n\nContained in {lang:FNP}. Subclasses include {lang:PPA}, {lang:PPP}, and {lang:PLS}.",
@@ -396,6 +516,29 @@
             "CLS",
             "PPADS",
             "PLS"
+        ]
+    },
+    {
+        "name": "span-L",
+        "type": "Function Problem",
+        "desc": "The class of functions computable as |S|, where S is the set of output values returned by the accepting paths of an NL machine.",
+        "related": [
+            "#P",
+            "FP",
+            "FPRAS",
+            "NL",
+            "NP"
+        ]
+    },
+    {
+        "name": "span-P",
+        "type": "Function Problem",
+        "desc": "The class of functions computable as |S|, where S is the set of output values returned by the accepting paths of an NP machine.",
+        "related": [
+            "#P",
+            "NP",
+            "OptP",
+            "UP"
         ]
     },
     {
@@ -619,17 +762,6 @@
         "desc": "APSPACE is the class of decision problems solvable with polynomial space by an alternating Turing machine.",
         "related": [
             "EXP"
-        ]
-    },
-    {
-        "name": "APX",
-        "type": "Language",
-        "desc": "The subclass of NPO problems that admit constant-factor approximation algorithms.",
-        "related": [
-            "MaxNP",
-            "MaxSNP",
-            "NPO",
-            "PTAS"
         ]
     },
     {
@@ -1182,15 +1314,6 @@
         ]
     },
     {
-        "name": "CL#P",
-        "type": "Language",
-        "desc": "The class of #P function problems such that some underlying NP machine M witnessing membership in #P has\n\"clustered\" accepting paths.",
-        "related": [
-            "#P",
-            "NP"
-        ]
-    },
-    {
         "name": "CNP",
         "type": "Language",
         "desc": "A nondeterministic analog of CP. Defined in {ref:sf98}, which should be consulted for the definition (it has something to do with strange attractors, I think).",
@@ -1515,19 +1638,6 @@
         ]
     },
     {
-        "name": "EPTAS",
-        "type": "Language",
-        "desc": "The class of optimization problems such that, given an instance of length n, we can find a solution within a factor 1+ε of the optimum in time f(ε)p(n), where p is a polynomial and f is arbitrary.",
-        "related": [
-            "FPT",
-            "FPTAS",
-            "PTAS",
-            "W[1",
-            "W[P",
-            "XP_uniform"
-        ]
-    },
-    {
         "name": "EQP",
         "type": "Language",
         "desc": "Exact Quantum Polynomial-Time. Same as BQP except the quantum algorithm must return the correct answer with probability exactly 1, and run in polynomial time with probability 1.\n\nDefined in {ref:bv97}. EQP is in {lang:LWPP} {ref:fr98}. There is an oracle separating EQP from NP {ref:bv97}, and indeed from Δ_2P {ref:gp01}. There is also an oracle relative to which EQP is not in Mod_pP for prime p {ref:gv02}.\n\nSee also {lang:EQP_K} for the gate-set-parameterized version.",
@@ -1712,23 +1822,6 @@
         ]
     },
     {
-        "name": "FPRAS",
-        "type": "Language",
-        "desc": "The subclass of #P counting problems whose answer, y, is approximable in the following sense.",
-        "related": [
-            "#P"
-        ]
-    },
-    {
-        "name": "FPTAS",
-        "type": "Language",
-        "desc": "The subclass of NPO problems that admit an approximation scheme in the following sense.",
-        "related": [
-            "NPO",
-            "PTAS"
-        ]
-    },
-    {
         "name": "FPT_nu",
         "type": "Language",
         "desc": "Same as FPT except that the algorithm can vary with the parameter k (though its running time must always be O(p(|x|)), for a fixed polynomial p).",
@@ -1802,16 +1895,6 @@
         "related": [
             "GI",
             "GAK"
-        ]
-    },
-    {
-        "name": "GLO",
-        "type": "Language",
-        "desc": "The class of NPO problems which have the property that for all locally optimal solutions, the ratio between the values of the local and global optima is upper-bounded by a constant.",
-        "related": [
-            "APX",
-            "MaxSNP",
-            "NPO"
         ]
     },
     {
@@ -2320,61 +2403,6 @@
         ]
     },
     {
-        "name": "MaxNP",
-        "type": "Language",
-        "desc": "Has the same relation to NP as MaxSNP does to SNP.",
-        "related": [
-            "APX",
-            "NP",
-            "PTAS",
-            "SNP"
-        ],
-        "properties": [
-            "protocol"
-        ]
-    },
-    {
-        "name": "MaxPB",
-        "type": "Language",
-        "desc": "The subclass of MaxNP problems for which the cost function is guaranteed always to be bounded by a polynomial.",
-        "related": [
-            "NPOPB",
-            "PTAS"
-        ],
-        "properties": [
-            "protocol"
-        ]
-    },
-    {
-        "name": "MaxSNP",
-        "type": "Language",
-        "desc": "The class of optimization problems reducible by an \"L-reduction\" to a problem in MaxSNP_0.",
-        "related": [
-            "APX",
-            "L",
-            "PTAS"
-        ],
-        "properties": [
-            "protocol"
-        ]
-    },
-    {
-        "name": "MaxSNP_0",
-        "type": "Language",
-        "desc": "The class of function problems expressible as \"find a relation such that the set of k-tuples for which a given SNP predicate holds has maximum cardinality.\"",
-        "related": [
-            "SNP"
-        ],
-        "properties": [
-            "protocol"
-        ]
-    },
-    {
-        "name": "MinPB",
-        "type": "Language",
-        "desc": "Same as MaxPB but for minimization instead of maximization problems."
-    },
-    {
         "name": "ModL",
         "type": "Language",
         "desc": "Mod Logspace. A language L is in ModL if there exist functions f ∈ GapL and g ∈ FL such that for all strings x: there exist a prime p and natural number α such that g(x) = 0^{p^α}, and x ∈ L iff f(x) ≡ 0 (mod |g(x)|).\n\nThus Mod_{p^α}L ⊆ ModL for any prime p and natural number α. Moreover, FL^{ModL} = FL^{GapL} {ref:av04}.\n\nDefined in {ref:av04}.",
@@ -2764,24 +2792,6 @@
         "related": [
             "P",
             "P-Sel"
-        ]
-    },
-    {
-        "name": "NPO",
-        "type": "Language",
-        "desc": "The class of function problems of the form, \"Find any n-bit string x that maximizes a cost function C(x), where C is computable in FP (i.e.",
-        "related": [
-            "APX",
-            "FP"
-        ]
-    },
-    {
-        "name": "NPOPB",
-        "type": "Language",
-        "desc": "The subclass of NPO problems for which the cost function is guaranteed always to be bounded by a polynomial in n (the input size).",
-        "related": [
-            "MaxPB",
-            "PTAS"
         ]
     },
     {
@@ -3243,16 +3253,6 @@
         "name": "PTAPE",
         "type": "Language",
         "desc": "----"
-    },
-    {
-        "name": "PTAS",
-        "type": "Language",
-        "desc": "The subclass of NPO problems that admit an approximation scheme in the following sense.",
-        "related": [
-            "APX",
-            "FPTAS",
-            "NPO"
-        ]
     },
     {
         "name": "PT_1",
@@ -5623,29 +5623,6 @@
         "properties": [
             "quantum",
             "protocol"
-        ]
-    },
-    {
-        "name": "span-L",
-        "type": "Language",
-        "desc": "The class of functions computable as |S|, where S is the set of output values returned by the accepting paths of an NL machine.",
-        "related": [
-            "#P",
-            "FP",
-            "FPRAS",
-            "NL",
-            "NP"
-        ]
-    },
-    {
-        "name": "span-P",
-        "type": "Language",
-        "desc": "The class of functions computable as |S|, where S is the set of output values returned by the accepting paths of an NP machine.",
-        "related": [
-            "#P",
-            "NP",
-            "OptP",
-            "UP"
         ]
     },
     {
