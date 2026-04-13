@@ -1,0 +1,417 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Proof Query — ComplexityBase</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        body { background: #f4f7f6; }
+        .header {
+            background: #2c3e50;
+            color: white;
+            padding: 1rem;
+            text-align: center;
+        }
+        .header h1 { font-family: monospace; letter-spacing: 2px; }
+
+        .step {
+            background: white;
+            border-left: 4px solid #3498db;
+            border-radius: 4px;
+            padding: 0.6rem 1rem;
+            margin-bottom: 0.4rem;
+            font-family: monospace;
+            font-size: 1rem;
+        }
+        .step.eq-step  { border-left-color: #9b59b6; }
+        .step.first    { border-left-color: #27ae60; }
+
+        .step-arrow {
+            color: #aaa;
+            text-align: center;
+            font-size: 1.2rem;
+            line-height: 1;
+            margin: 0.1rem 0;
+        }
+        .thm-ref {
+            font-size: 0.82rem;
+            color: #555;
+            font-family: sans-serif;
+            margin-top: 0.2rem;
+        }
+        .thm-name-link { font-weight: bold; color: #2980b9; }
+
+        .result-box {
+            background: white;
+            border-radius: 8px;
+            padding: 1.5rem;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+        }
+        .verdict-yes  { color: #27ae60; font-weight: bold; font-size: 1.2rem; }
+        .verdict-no   { color: #e74c3c; font-weight: bold; font-size: 1.2rem; }
+        .verdict-same { color: #9b59b6; font-weight: bold; font-size: 1.2rem; }
+
+        #suggestions {
+            position: absolute;
+            background: white;
+            border: 1px solid #ccc;
+            border-top: none;
+            max-height: 200px;
+            overflow-y: auto;
+            z-index: 1000;
+            width: 100%;
+            border-radius: 0 0 4px 4px;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+        }
+        #suggestions-b {
+            position: absolute;
+            background: white;
+            border: 1px solid #ccc;
+            border-top: none;
+            max-height: 200px;
+            overflow-y: auto;
+            z-index: 1000;
+            width: 100%;
+            border-radius: 0 0 4px 4px;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+        }
+        .suggestion-item {
+            padding: 0.4rem 0.8rem;
+            cursor: pointer;
+            font-family: monospace;
+        }
+        .suggestion-item:hover, .suggestion-item.active { background: #e8f4ff; }
+        .autocomplete-wrap { position: relative; }
+
+        #status { color: #888; font-style: italic; }
+    </style>
+</head>
+<body>
+
+<div class="header">
+    <h1>ComplexityBase</h1>
+    <p class="mb-0">Inclusion Proof Explorer</p>
+</div>
+
+<div class="container mt-4" style="max-width:760px">
+    <p class="text-muted">
+        Enter two complexity class names to find a chain of theorems explaining
+        why <strong>A ⊆ B</strong> (or A = B). Useful for spotting erroneous theorems
+        that cause spurious equalities in the Hasse diagram.
+    </p>
+
+    <div class="card p-3 mb-3 shadow-sm">
+        <div class="row g-2 align-items-end">
+            <div class="col">
+                <label class="form-label mb-1">Class A</label>
+                <div class="autocomplete-wrap">
+                    <input id="input-a" type="text" class="form-control font-monospace"
+                           placeholder="e.g. BPP" autocomplete="off">
+                    <div id="suggestions"></div>
+                </div>
+            </div>
+            <div class="col-auto" style="padding-bottom:6px;font-size:1.4rem">⊆</div>
+            <div class="col">
+                <label class="form-label mb-1">Class B</label>
+                <div class="autocomplete-wrap">
+                    <input id="input-b" type="text" class="form-control font-monospace"
+                           placeholder="e.g. NP" autocomplete="off">
+                    <div id="suggestions-b"></div>
+                </div>
+            </div>
+            <div class="col-auto">
+                <button id="btn-query" class="btn btn-primary" disabled>Find Proof</button>
+            </div>
+        </div>
+        <div class="row g-2 mt-1">
+            <div class="col-auto">
+                <div class="form-check form-switch">
+                    <input class="form-check-input" type="checkbox" id="chk-all-classes" checked>
+                    <label class="form-check-label text-muted small" for="chk-all-classes">
+                        Search via all class types (not just Language)
+                    </label>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="status" class="mb-3">Loading data…</div>
+    <div id="output"></div>
+</div>
+
+<script>
+// ── Data loading ─────────────────────────────────────────────────────────────
+
+let allClasses = [];
+let allTheorems = [];
+let classNames = [];
+
+// Edge map: lhs → [ {rhs, thmName, thmRef} ]
+let edgeMap = new Map();  // built on demand
+
+Promise.all([
+    fetch('generated/classes.json').then(r => r.json()),
+    fetch('generated/theorems.json').then(r => r.json()),
+]).then(([classes, theorems]) => {
+    allClasses = classes;
+    allTheorems = theorems;
+    classNames = classes.filter(c => c.concrete !== false).map(c => c.name).sort();
+    buildEdgeMap();
+    document.getElementById('status').textContent = `Loaded ${allClasses.length} classes, ${allTheorems.length} theorems.`;
+    document.getElementById('btn-query').disabled = false;
+}).catch(err => {
+    document.getElementById('status').textContent = 'Error loading data: ' + err;
+});
+
+// ── Edge map construction ─────────────────────────────────────────────────────
+
+const UNICODE_RELS = /[\u2282\u2286\u2283\u2287\u228A]/;
+
+function buildEdgeMap() {
+    edgeMap.clear();
+    const nameSet = new Set(classNames);
+
+    for (const thm of allTheorems) {
+        const content = thm.content || '';
+        if (!content || content.startsWith('{')) continue;
+
+        for (let part of content.split('&&')) {
+            part = part.trim();
+            if (part.startsWith('{')) continue;
+
+            // Prefer Unicode subset/superset symbols; only fall back to '='
+            // if none found — avoids false matches in names like C_=AC^0.
+            let m = UNICODE_RELS.exec(part);
+            let useEquals = false;
+            if (!m) {
+                m = /=/.exec(part);
+                if (m) useEquals = true;
+            }
+            if (!m) continue;
+
+            const rel = m[0];
+            let lhs = part.slice(0, m.index).trim();
+            let rhs = part.slice(m.index + rel.length).trim();
+
+            if (!nameSet.has(lhs) || !nameSet.has(rhs)) continue;
+
+            const thmInfo = { thmName: thm.name, thmRef: thm.ref || '' };
+
+            // Normalise direction: always add lhs ⊆ rhs edges
+            if (rel === '\u228A' || rel === '\u2282' || rel === '\u2286') {
+                addEdge(lhs, rhs, thmInfo);
+            } else if (rel === '\u2283' || rel === '\u2287') {
+                addEdge(rhs, lhs, thmInfo);
+            } else if (rel === '=' && useEquals) {
+                addEdge(lhs, rhs, thmInfo);
+                addEdge(rhs, lhs, thmInfo);
+            }
+        }
+    }
+}
+
+function addEdge(lhs, rhs, info) {
+    if (!edgeMap.has(lhs)) edgeMap.set(lhs, []);
+    edgeMap.get(lhs).push({ rhs, ...info });
+}
+
+// ── BFS path finding ──────────────────────────────────────────────────────────
+
+/**
+ * Find a shortest path from `start` to `goal` in the inclusion graph.
+ * Returns an array of steps: [{from, to, thmName, thmRef}] or null if unreachable.
+ */
+function findProof(start, goal) {
+    if (start === goal) return [];
+
+    // BFS
+    const prev = new Map(); // node → {from, thmName, thmRef}
+    const queue = [start];
+    prev.set(start, null);
+
+    while (queue.length > 0) {
+        const node = queue.shift();
+        const edges = edgeMap.get(node) || [];
+        for (const edge of edges) {
+            if (prev.has(edge.rhs)) continue;
+            prev.set(edge.rhs, { from: node, thmName: edge.thmName, thmRef: edge.thmRef });
+            if (edge.rhs === goal) {
+                // Reconstruct path
+                const path = [];
+                let cur = goal;
+                while (cur !== start) {
+                    const p = prev.get(cur);
+                    path.unshift({ from: p.from, to: cur, thmName: p.thmName, thmRef: p.thmRef });
+                    cur = p.from;
+                }
+                return path;
+            }
+            queue.push(edge.rhs);
+        }
+    }
+    return null;
+}
+
+// ── Query ─────────────────────────────────────────────────────────────────────
+
+document.getElementById('btn-query').addEventListener('click', runQuery);
+document.getElementById('input-a').addEventListener('keydown', e => { if (e.key === 'Enter') runQuery(); });
+document.getElementById('input-b').addEventListener('keydown', e => { if (e.key === 'Enter') runQuery(); });
+
+function runQuery() {
+    const a = document.getElementById('input-a').value.trim();
+    const b = document.getElementById('input-b').value.trim();
+    const output = document.getElementById('output');
+    output.innerHTML = '';
+
+    if (!a || !b) { output.innerHTML = '<div class="alert alert-warning">Enter both class names.</div>'; return; }
+
+    const nameSet = new Set(classNames);
+    if (!nameSet.has(a)) { output.innerHTML = `<div class="alert alert-warning">Unknown class: <code>${escHtml(a)}</code></div>`; return; }
+    if (!nameSet.has(b)) { output.innerHTML = `<div class="alert alert-warning">Unknown class: <code>${escHtml(b)}</code></div>`; return; }
+
+    const pathAB = findProof(a, b);
+    const pathBA = findProof(b, a);
+
+    const box = document.createElement('div');
+    box.className = 'result-box';
+
+    if (a === b) {
+        box.innerHTML = `<p class="verdict-same">${escHtml(a)} = ${escHtml(b)} (trivially same class)</p>`;
+    } else if (pathAB !== null && pathBA !== null) {
+        box.innerHTML = `<p class="verdict-same">⚠ ${escHtml(a)} = ${escHtml(b)} — classes are provably <em>equal</em> by these theorems.</p>`;
+        box.appendChild(renderDirection(a, b, pathAB));
+        box.appendChild(document.createElement('hr'));
+        const h = document.createElement('p');
+        h.innerHTML = `<strong>Reverse direction (${escHtml(b)} ⊆ ${escHtml(a)}):</strong>`;
+        box.appendChild(h);
+        box.appendChild(renderDirection(b, a, pathBA));
+    } else if (pathAB !== null) {
+        const verdict = document.createElement('p');
+        verdict.className = 'verdict-yes';
+        verdict.textContent = `✓ ${a} ⊆ ${b}  (${pathAB.length} step${pathAB.length !== 1 ? 's' : ''})`;
+        box.appendChild(verdict);
+        box.appendChild(renderDirection(a, b, pathAB));
+    } else if (pathBA !== null) {
+        const verdict = document.createElement('p');
+        verdict.className = 'verdict-no';
+        verdict.textContent = `✗ ${a} ⊄ ${b}  (but ${b} ⊆ ${a} is provable — did you swap them?)`;
+        box.appendChild(verdict);
+        box.appendChild(renderDirection(b, a, pathBA));
+    } else {
+        box.innerHTML = `<p class="verdict-no">✗ No proof found for ${escHtml(a)} ⊆ ${escHtml(b)} (or the reverse).</p>
+            <p class="text-muted small">This may mean the inclusion is not known / not yet entered, or the classes are incomparable.</p>`;
+    }
+
+    output.appendChild(box);
+}
+
+function renderDirection(start, goal, path) {
+    const frag = document.createDocumentFragment();
+
+    if (path.length === 0) {
+        const p = document.createElement('p');
+        p.className = 'text-muted';
+        p.textContent = '(trivial — same class)';
+        frag.appendChild(p);
+        return frag;
+    }
+
+    // Show first node
+    const firstDiv = document.createElement('div');
+    firstDiv.className = 'step first';
+    firstDiv.innerHTML = `<span class="fw-bold font-monospace">${escHtml(start)}</span>`;
+    frag.appendChild(firstDiv);
+
+    for (const step of path) {
+        const arrow = document.createElement('div');
+        arrow.className = 'step-arrow';
+        arrow.textContent = '⊆';
+        frag.appendChild(arrow);
+
+        const stepDiv = document.createElement('div');
+        stepDiv.className = 'step';
+        const nameHtml = `<span class="fw-bold font-monospace">${escHtml(step.to)}</span>`;
+        const linkHtml = `<a class="thm-name-link" href="theorem.html?name=${encodeURIComponent(step.thmName)}">${escHtml(step.thmName)}</a>`;
+        stepDiv.innerHTML = nameHtml +
+            `<div class="thm-ref">via theorem ${linkHtml}` +
+            (step.thmRef ? ` — <em>${processRef(escHtml(step.thmRef))}</em>` : '') +
+            `</div>`;
+        frag.appendChild(stepDiv);
+    }
+    return frag;
+}
+
+// Process {ref:x}, {thm:x}, {lang:x} in ref text
+function processRef(html) {
+    return html
+        .replace(/\{lang:([^}]+)\}/g, (_, n) => `<a href="class.html?name=${encodeURIComponent(n)}">${n}</a>`)
+        .replace(/\{thm:([^}]+)\}/g, (_, n) => `<a href="theorem.html?name=${encodeURIComponent(n)}">${n}</a>`)
+        .replace(/\{ref:([^}]+)\}/g, (_, n) => `<a href="reference.html?name=${encodeURIComponent(n)}">[${n}]</a>`);
+}
+
+function escHtml(s) {
+    return s.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');
+}
+
+// ── Autocomplete ──────────────────────────────────────────────────────────────
+
+setupAutocomplete('input-a', 'suggestions');
+setupAutocomplete('input-b', 'suggestions-b');
+
+function setupAutocomplete(inputId, sugId) {
+    const input = document.getElementById(inputId);
+    const sug = document.getElementById(sugId);
+    let activeIdx = -1;
+    let currentItems = [];
+
+    input.addEventListener('input', () => {
+        const val = input.value.trim();
+        if (!val || classNames.length === 0) { sug.style.display = 'none'; return; }
+        const lower = val.toLowerCase();
+        currentItems = classNames.filter(n => n.toLowerCase().includes(lower)).slice(0, 30);
+        if (currentItems.length === 0) { sug.style.display = 'none'; return; }
+        sug.innerHTML = '';
+        activeIdx = -1;
+        currentItems.forEach((name, i) => {
+            const div = document.createElement('div');
+            div.className = 'suggestion-item';
+            div.textContent = name;
+            div.addEventListener('mousedown', e => {
+                e.preventDefault();
+                input.value = name;
+                sug.style.display = 'none';
+            });
+            sug.appendChild(div);
+        });
+        sug.style.display = 'block';
+    });
+
+    input.addEventListener('keydown', e => {
+        if (sug.style.display === 'none') return;
+        const items = sug.querySelectorAll('.suggestion-item');
+        if (e.key === 'ArrowDown') {
+            e.preventDefault();
+            activeIdx = Math.min(activeIdx + 1, items.length - 1);
+            items.forEach((el, i) => el.classList.toggle('active', i === activeIdx));
+        } else if (e.key === 'ArrowUp') {
+            e.preventDefault();
+            activeIdx = Math.max(activeIdx - 1, 0);
+            items.forEach((el, i) => el.classList.toggle('active', i === activeIdx));
+        } else if (e.key === 'Enter') {
+            if (activeIdx >= 0 && activeIdx < items.length) {
+                e.preventDefault();
+                input.value = items[activeIdx].textContent;
+                sug.style.display = 'none';
+            }
+        } else if (e.key === 'Escape') {
+            sug.style.display = 'none';
+        }
+    });
+
+    input.addEventListener('blur', () => setTimeout(() => { sug.style.display = 'none'; }, 150));
+}
+</script>
+</body>
+</html>

@@ -81,6 +81,16 @@
     ]
   },
   {
+    "name": "Distributional Problem",
+    "desc": "A distributional problem is a pair (L, D) where L is a decision problem (language) and D is a probability distribution over problem instances. The complexity of solving L is measured not in the worst case, but on average over instances drawn from D. The notion of polynomial-time solvability must be redefined carefully (see Levin's definition) to ensure closure properties hold.",
+    "isalso": [
+      [
+        "Language",
+        "By taking D to be the uniform distribution and asking only about worst-case hardness"
+      ]
+    ]
+  },
+  {
     "name": "Sampling Problem",
     "desc": "A sampling problem is a set of tuples (x,μ), where x is a string describing the instance, and μ is a probability distribution over output strings. The goal is to, given x, output samples from the distribution μ. A common relaxation is to allow the output distribution μ0 to differ slightly from μ, with the restriction that μ0 and μ must have distance at most ϵ (in total variation distance, KL divergence, or some other metric). In that case, the problem may be stated as described as tuples (x,ϵ,μ), and the performance of the algorithm may depend on ϵ as well as |x|. This task of outputting samples is known as _weak simulation_, while _strong simulation_ is the related function problem of outputting the output probabilities themselves.",
     "isalso": [

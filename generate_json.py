@@ -30,6 +30,7 @@ SUBFOLDER_TO_TYPE = {
     "promise": "Promise Problem",
     "function": "Function Problem",
     "parameterized": "Parameterized Language",
+    "distributional": "Distributional Problem",
     "sampling": "Sampling Problem",
     "integer": "Integer Problem",
     "optimization": "Optimization Problem",

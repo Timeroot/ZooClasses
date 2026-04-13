@@ -1,5 +1,93 @@
 [
     {
+        "name": "AvgP",
+        "type": "Distributional Problem",
+        "desc": "Average Polynomial-Time. A *distributional problem* consists of a decision problem A and a probability distribution μ over problem instances.\n\nA function f from strings to integers is *polynomial on μ-average* if there exists ε > 0 such that the expectation of f^ε(x) is finite when x is drawn from μ.\n\n(A, μ) is in AvgP if there exists an algorithm for A whose running time is polynomial on μ-average.\n\nThis definition is due to Levin {ref:Lev86}, who showed that simpler definitions lead to classes that fail to satisfy basic closure properties. See also {ref:Gol97}.\n\nIf AvgP = {lang:DistNP} then EXP = NEXP {ref:BCG92}.\n\nStrictly contained in {lang:HeurP} {ref:NS05}.",
+        "related": [
+            "DistNP",
+            "HeurP"
+        ]
+    },
+    {
+        "name": "DistNP",
+        "type": "Distributional Problem",
+        "desc": "Distributional NP (also called (NP,P-computable) or RNP). A *distributional problem* consists of a decision problem A and a probability distribution μ over problem instances.\n\n(A, μ) is in DistNP if A is in NP and μ is P-computable (meaning that its cumulative density function can be evaluated in polynomial time).\n\nDistNP has complete problems {ref:Lev86} (see also {ref:Gur87}), although unlike for NP this is not immediate.\n\nAny DistNP-complete problem is also complete for {lang:(NP,P-samplable)} {ref:IL90}.\n\nIf {lang:AvgP} = DistNP then EXP = NEXP {ref:BCG92}.",
+        "related": [
+            "AvgP",
+            "(NP,P-samplable)"
+        ]
+    },
+    {
+        "name": "HeurBPP",
+        "type": "Distributional Problem",
+        "desc": "Heuristic BPP. The class of problems for which a 1 - 1/poly(n) fraction of instances are solvable by a BPP machine.\n\nA strict hierarchy theorem holds for HeurBPP {ref:fs04}: HeurBPP does not equal HeurBPTIME(n^c) for any fixed constant c.",
+        "related": [
+            "BPP",
+            "HeurP"
+        ]
+    },
+    {
+        "name": "HeurBPTIME",
+        "type": "Distributional Problem",
+        "concrete": false,
+        "desc": "Heuristic BPTIME(f(n)). Parameterized by a time bound f(n).\n\nThe class of distributional problems (L, D) for which a 1 - 1/poly(n) fraction of instances are solvable by a BPTIME(f(n)) machine.\n\nHeurBPP = ∪_c HeurBPTIME(n^c).\n\nHas the same relationship to BPTIME as HeurDTIME has to DTIME {ref:BT06}.",
+        "related": [
+            "HeurBPP",
+            "HeurDTIME"
+        ]
+    },
+    {
+        "name": "HeurDTIME",
+        "type": "Distributional Problem",
+        "concrete": false,
+        "desc": "Heuristic DTIME_δ(f(n)). Parameterized by a time bound f(n) and error rate δ(n).\n\nFor functions f(n) and δ(n), (L, D) ∈ HeurDTIME_δ(f(n)) if there exists a heuristic deterministic algorithm A such that for all x in the support of D, A runs in time bounded by f(n) and fails with probability bounded by δ(n) {ref:BT06}.\n\nHeurP = ∪_c HeurDTIME_{1/poly}(n^c).",
+        "related": [
+            "HeurP",
+            "HeurNTIME",
+            "HeurBPTIME"
+        ]
+    },
+    {
+        "name": "HeurNTIME",
+        "type": "Distributional Problem",
+        "concrete": false,
+        "desc": "Heuristic NTIME_δ(f(n)). Parameterized by a time bound f(n) and error rate δ(n).\n\nDefined as HeurDTIME_δ(f(n)), but for non-deterministic heuristic algorithms.\n\nNP is not contained in HeurNTIME_{1/2 + 1/n^a}(n^c) for any constants a, c {ref:Per07}.",
+        "related": [
+            "HeurDTIME"
+        ]
+    },
+    {
+        "name": "HeurP",
+        "type": "Distributional Problem",
+        "desc": "Heuristic P. The class of distributional problems solvable by a P machine. Defined in {ref:imp95} (under the name HP).\n\nFormally ({ref:bt06}): HeurP is the set of pairs (L, D) where L is a language and D is a distribution over instances, such that there exists an algorithm A with: for every δ > 0, for every n and every x in the support of D, A(x; n, δ) runs in time poly(n/δ) and is a heuristic algorithm for (L, D) with error probability at most δ.",
+        "related": [
+            "P",
+            "HeurBPP"
+        ]
+    },
+    {
+        "name": "HeurPP",
+        "type": "Distributional Problem",
+        "desc": "Heuristic PP. The class of distributional problems solvable by a PP machine. Defined in {ref:ill95} (under the name HPP).",
+        "related": [
+            "PP",
+            "HeurP",
+            "HeurBPP"
+        ]
+    },
+    {
+        "name": "(NP,P-samplable)",
+        "type": "Distributional Problem",
+        "desc": "See AvgP for basic notions of average-case complexity.",
+        "related": [
+            "AvgP",
+            "DistNP"
+        ],
+        "properties": [
+            "protocol"
+        ]
+    },
+    {
         "name": "#P",
         "type": "Function Problem",
         "desc": "Sharp-P or Number-P. The class of function problems of the form \"compute f(x),\" where f is the number of accepting paths of an NP machine.\n\nThe canonical #P-complete problem is #SAT. Defined in {ref:val79}, where it was also shown that #Perfect Matching (equivalently, Permanent) is #P-complete. What makes this surprising is that the associated decision problem (Perfect Matching) is in P.\n\nPH ⊆ P^{#P} {ref:tod89}; a single query to #P suffices.\n\nAny function in #P can be approximated within a polynomial factor in BPP^NP {ref:sto85}.",
@@ -1897,34 +1985,6 @@
         ]
     },
     {
-        "name": "HeurBPP",
-        "type": "Language",
-        "desc": "Heuristic BPP. The class of problems for which a 1 - 1/poly(n) fraction of instances are solvable by a BPP machine.\n\nA strict hierarchy theorem holds for HeurBPP {ref:fs04}: HeurBPP does not equal HeurBPTIME(n^c) for any fixed constant c.",
-        "related": [
-            "BPP",
-            "HeurP"
-        ]
-    },
-    {
-        "name": "HeurP",
-        "type": "Language",
-        "desc": "Heuristic P. The class of distributional problems solvable by a P machine. Defined in {ref:imp95} (under the name HP).\n\nFormally ({ref:bt06}): HeurP is the set of pairs (L, D) where L is a language and D is a distribution over instances, such that there exists an algorithm A with: for every δ > 0, for every n and every x in the support of D, A(x; n, δ) runs in time poly(n/δ) and is a heuristic algorithm for (L, D) with error probability at most δ.",
-        "related": [
-            "P",
-            "HeurBPP"
-        ]
-    },
-    {
-        "name": "HeurPP",
-        "type": "Language",
-        "desc": "Heuristic PP. The class of distributional problems solvable by a PP machine. Defined in {ref:ill95} (under the name HPP).",
-        "related": [
-            "PP",
-            "HeurP",
-            "HeurBPP"
-        ]
-    },
-    {
         "name": "IC[log,poly]",
         "type": "Language",
         "desc": "Logarithmic Instance Complexity, Polynomial Time. The class of decision problems such that, for every n-bit string x, there exists a program A of size O(log n) that, given x as input, correctly decides the answer on x in polynomial time. Formally, A must:\n1. Return \"yes\", \"no\", or \"I don't know\" on any input in polynomial time.\n2. Whenever A returns \"yes\" or \"no\", it is correct.\n3. Return \"yes\" or \"no\" (not \"I don't know\") on x.\n\nDefined in {ref:oks94}; see also {ref:lv97}. Strictly contains {lang:P/log} and is strictly contained in {lang:P/poly}.\n\nIf NP ⊆ IC[log,poly], then P = NP {ref:oks94}. Indeed, any self-reducible problem in IC[log,poly] is in P.",
@@ -3526,20 +3586,6 @@
         ]
     },
     {
-        "name": "PromiseP",
-        "type": "Language",
-        "desc": "The class of promise problems solvable by a P machine."
-    },
-    {
-        "name": "PromiseUP",
-        "type": "Language",
-        "desc": "The class of promise problems solvable by an UP machine.",
-        "related": [
-            "NP",
-            "UP"
-        ]
-    },
-    {
         "name": "PureSuperQMA",
         "type": "Language",
         "desc": "Same as QMA, except now the witness is a pure state, and the verifier can directly obtain the probability that any one of a polynomial number of observables of the witness, if measured, would equal 1.",
@@ -5061,18 +5107,6 @@
         ]
     },
     {
-        "name": "(NP,P-samplable)",
-        "type": "Language",
-        "desc": "See AvgP for basic notions of average-case complexity.",
-        "related": [
-            "AvgP",
-            "DistNP"
-        ],
-        "properties": [
-            "protocol"
-        ]
-    },
-    {
         "name": "(NP ∩ coNP)/poly",
         "type": "Language",
         "desc": "Together with NP/poly ∩ coNP/poly, has the same relation to NP ∩ coNP as P/poly has to P.",
@@ -5842,6 +5876,11 @@
         ]
     },
     {
+        "name": "PromiseP",
+        "type": "Promise Problem",
+        "desc": "The class of promise problems solvable by a P machine."
+    },
+    {
         "name": "PromiseQCMA",
         "type": "Promise Problem",
         "desc": "Promise Quantum-Classical Merlin Arthur. Like QCMA, but with a promise on the acceptance probabilities",
@@ -5866,6 +5905,15 @@
         "desc": "Promise Randomized Polynomial time. Problems with a probabilistic polynomial-time Turing machine promised to have at least a 1/2 chance rejecting correctly (and that always accept).",
         "related": [
             "RP"
+        ]
+    },
+    {
+        "name": "PromiseUP",
+        "type": "Promise Problem",
+        "desc": "The class of promise problems solvable by an UP machine.",
+        "related": [
+            "NP",
+            "UP"
         ]
     },
     {
