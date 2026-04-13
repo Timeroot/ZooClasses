@@ -4,6 +4,7 @@ related:
   - P-OBDD
   - PBP
   - k-PBP
+concrete: false
 ---
 Polynomial-Size d-Times-Only Branching Program. Defined in {ref:weg88}. The class of decision problems solvable by a family of polynomial-size branching programs where each bit of the input is tested at most d times.
 

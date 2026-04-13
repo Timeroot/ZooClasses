@@ -4,6 +4,7 @@ related:
   - FPT
   - "#P"
   - W[t]
+concrete: false
 ---
 Sharp-W[t]. The analogue of #P for parameterized complexity: the class of parameterized counting problems fixed-parameter parsimonious reducible to #WSAT.
 

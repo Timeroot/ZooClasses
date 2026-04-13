@@ -8,6 +8,7 @@ related:
   - P
   - PSPACE
   - ParityP
+concrete: false
 ---
 Width-k Bottleneck Turing Machines. The class of decision problems solvable by a k-bottleneck Turing machine: a machine that, after a polynomial amount of time, erases everything on the tape except for a single k-valued "safe-storage." There is also a counter recording the number of erasings, which acts as a nondeterministic witness. For example, SF_2 contains both ⊕P and NP by using the counter as a witness.
 

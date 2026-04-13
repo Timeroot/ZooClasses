@@ -5,6 +5,7 @@ related:
   - NP
 properties:
   - circuit
+concrete: false
 ---
 Verification Class with a Circuit of Depth k:
 - VC_0 is the class of compressible languages.

@@ -326,7 +326,8 @@ document.addEventListener('DOMContentLoaded', function() {
         fetch('./generated/classes.json').then(res => res.json()),
         fetch('./generated/theorems.json').then(res => res.json())
     ]).then(([classes, theorems]) => {
-        data = buildPosetFromTheorems(classes, theorems, "Language");
+        const languageClasses = classes.filter(c => c.type === 'Language' && c.concrete !== false);
+        data = buildPosetFromTheorems(languageClasses, theorems, "Language");
         nodeNames = data.map(obj => obj["name"]);
         allProperties = Array.from(
             new Set(

@@ -4,6 +4,7 @@ related:
   - NP
   - PSPACE
   - Mod_kP
+concrete: false
 ---
 Acceptance Mechanism by Monoid M_k. A monoid is a set with an associative operation and an identity element (like a group but without requiring inverses).
 

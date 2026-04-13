@@ -4,6 +4,7 @@ related:
   - L_kP
   - NP
   - Sigma_kP
+concrete: false
 ---
 High Hierarchy in NP. The class of problems A in NP such that Σ_kP^A = Σ_{k+1}P; that is, adding A as an oracle increases the power of the k-th level of the polynomial hierarchy by a maximum amount.
 

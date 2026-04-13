@@ -189,6 +189,9 @@ def generate_classes():
             entry["name"] = fm["name"]
             entry["type"] = problem_type
 
+            if fm.get("concrete") is False or str(fm.get("concrete", "")).lower() == "false":
+                entry["concrete"] = False
+
             desc, notes = split_body_notes(body)
             entry["desc"] = desc
             if fm.get("related"):

@@ -6,6 +6,7 @@ related:
   - "W[t]"
   - "AW[*]"
   - "AW[SAT]"
+concrete: false
 ---
 Alternating W[t]. Has the same relation to {lang:W[t]} as PSPACE does to NP.
 

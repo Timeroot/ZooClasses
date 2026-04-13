@@ -5,5 +5,6 @@ related:
   - RG
   - RG(1)
   - RG(2)
+concrete: false
 ---
 Same as RG, except that now the verifier exchanges exactly k messages with each prover where k is a polynomial-bounded function of the input length.

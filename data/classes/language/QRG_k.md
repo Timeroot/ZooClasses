@@ -10,5 +10,6 @@ related:
   - SQG
 properties:
   - quantum
+concrete: false
 ---
 Same as QRG, except that now the verifier exchanges exactly k messages with each prover where k is a polynomial-bounded function of the input length.

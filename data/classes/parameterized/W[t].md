@@ -6,8 +6,8 @@ related:
   - "W^*[t]"
   - FPT
   - XP
----
-Nondeterministic Fixed-Parameter Hierarchy. The class of decision problems of the form (x, k) (k a parameter), fixed-parameter reducible to:
+concrete: false
+--- The class of decision problems of the form (x, k) (k a parameter), fixed-parameter reducible to:
 
 **Weighted Weft-t Depth-h Circuit-SAT**: Given a Boolean circuit C with a mixture of fanin-2 and unbounded-fanin gates, where the number of unbounded-fanin gates on any path to the root is at most t, and the total depth (fanin-2 and unbounded-fanin) is at most h. Does C have a satisfying assignment of Hamming weight k?
 

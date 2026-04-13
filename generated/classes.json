@@ -355,6 +355,7 @@
     {
         "name": "#W[t]",
         "type": "Function Problem",
+        "concrete": false,
         "desc": "Sharp-W[t]. The analogue of #P for parameterized complexity: the class of parameterized counting problems fixed-parameter parsimonious reducible to #WSAT.\n\nDefined in {ref:fg02}. There exist #W[1]-complete problems whose corresponding decision problems are in FPT {ref:fg02}.\n\nComplete problems for #W[1] include counting paths or cycles of a given length in a graph and counting chordless paths of a given length. Complete problems for #W[2] include the maximal chordless path problem {ref:cf07}.",
         "related": [
             "FPT",
@@ -683,6 +684,7 @@
     {
         "name": "AW[t]",
         "type": "Language",
+        "concrete": false,
         "desc": "Alternating W[t]. Has the same relation to {lang:W[t]} as PSPACE does to NP.\n\nSame as {lang:AW[SAT]}, except that the formula F has depth at most t. Defined in {ref:df99}.\n\nContained in {lang:AW[*]}. DFT98 {ref:dft98} showed that for all t, AW[t] = AW[*].",
         "related": [
             "NP",
@@ -924,6 +926,7 @@
     {
         "name": "BP_d(P)",
         "type": "Language",
+        "concrete": false,
         "desc": "Polynomial-Size d-Times-Only Branching Program. Defined in {ref:weg88}. The class of decision problems solvable by a family of polynomial-size branching programs where each bit of the input is tested at most d times.\n\nBP_d(P) strictly contains BP_{d-1}(P) for every d > 1 {ref:tha98}. Contained in {lang:PBP}.",
         "related": [
             "P-OBDD",
@@ -1224,6 +1227,7 @@
     {
         "name": "CSPACE",
         "type": "Language",
+        "concrete": false,
         "desc": "Catalytic Space. CSPACE(s, c) is the class of problems solvable by a catalytic Turing machine with work space s and catalytic space c. A catalytic Turing machine has an extra catalytic tape of size c, which must be returned to its initial configuration at the end of every computation path (regardless of the input).\n\nDefined in {ref:bckls14}. In most works c is exponential in s, since that is the largest amount of catalytic space addressable by the worktape. The main studied variant is {lang:CL} = CSPACE(O(log n), n^{O(1)}).",
         "related": [
             "CL"
@@ -1278,6 +1282,7 @@
     {
         "name": "C_kP",
         "type": "Language",
+        "concrete": false,
         "desc": "k-th Level of the Counting Hierarchy. Defined as: C_0P = P; C_1P = PP; C_2P = PP^PP; in general, C_{k+1}P = PP with C_kP oracle. The union of all C_kP is the counting hierarchy {lang:CH}.\n\nDefined in {ref:wag86}.",
         "related": [
             "CH",
@@ -1491,6 +1496,7 @@
     {
         "name": "EL_kP",
         "type": "Language",
+        "concrete": false,
         "desc": "Extended Low Hierarchy. An extension of the low hierarchy L_kP. The class of problems A such that Σ_kP^A ⊆ Σ_{k-1}P^{A,NP}.\n\nDefined in {ref:bbs86}.",
         "related": [
             "L_kP",
@@ -1811,6 +1817,7 @@
     {
         "name": "G[t]",
         "type": "Language",
+        "concrete": false,
         "desc": "(Basically) the class of decision problems of the form (x,k) (k a parameter), that are solvable by a parameterized family of circuits with unbounded fanin and depth t.",
         "related": [
             "FPT"
@@ -1854,6 +1861,7 @@
     {
         "name": "H_kP",
         "type": "Language",
+        "concrete": false,
         "desc": "High Hierarchy in NP. The class of problems A in NP such that Σ_kP^A = Σ_{k+1}P; that is, adding A as an oracle increases the power of the k-th level of the polynomial hierarchy by a maximum amount.\n\nFor all k, H_k is contained in H_{k+1}.\n\nH_0 consists exactly of the problems complete for NP under Cook reductions.\n\nH_1 consists exactly of the problems complete for NP under strong non-deterministic Turing reductions {ref:sch83}.\n\nDefined in {ref:sch83}. See also {lang:L_kP}.",
         "related": [
             "L_kP",
@@ -2086,6 +2094,7 @@
     {
         "name": "L_kP",
         "type": "Language",
+        "concrete": false,
         "desc": "Low Hierarchy in NP. The class of problems A such that Σ_kP^A = Σ_kP; that is, adding A as an oracle does not increase the power of the k-th level of the polynomial hierarchy.\n\nL_1P = NP ∩ coNP. For all k, L_k is contained in L_{k+1} and in NP.\n\nDefined in {ref:sch83}. See also {lang:H_kP}.",
         "related": [
             "H_kP",
@@ -2398,6 +2407,7 @@
     {
         "name": "ModZ_kL",
         "type": "Language",
+        "concrete": false,
         "desc": "The class of decision problems solvable by a nondeterministic logspace Turing machine, such that",
         "related": [
             "LogFewNL",
@@ -2407,6 +2417,7 @@
     {
         "name": "Mod_kL",
         "type": "Language",
+        "concrete": false,
         "desc": "Has the same relation to L as Mod_kP does to P.",
         "related": [
             "L",
@@ -2418,6 +2429,7 @@
     {
         "name": "Mod_kP",
         "type": "Language",
+        "concrete": false,
         "desc": "For any k>1: The class of decision problems solvable by an NP machine such that the number of accepting paths is divisible by k, if and only if the answer is \"no.\"",
         "related": [
             "EQP",
@@ -3003,6 +3015,7 @@
     {
         "name": "PCD(r(n),q(n))",
         "type": "Language",
+        "concrete": false,
         "desc": "The class of decision problems decidable by a probabilistically checkable debate system, as follows.",
         "related": [
             "GPCD"
@@ -3011,6 +3024,7 @@
     {
         "name": "PCP(r(n),q(n))",
         "type": "Language",
+        "concrete": false,
         "desc": "The class of decision problems such that a \"yes\" answer can be verified by a probabilistically checkable proof, as follows.",
         "related": [
             "EXP",
@@ -3049,6 +3063,7 @@
     {
         "name": "PFCHK(t(n))",
         "type": "Language",
+        "concrete": false,
         "desc": "The class of decision problems solvable in time O(t(n)) by a nondeterministic Turing machine, as follows.",
         "related": [
             "NP"
@@ -3555,6 +3570,7 @@
     {
         "name": "PrSPACE(f(n))",
         "type": "Language",
+        "concrete": false,
         "desc": "Has the same relation to DSPACE(f(n)) as PP does to P.",
         "related": [
             "DSPACE"
@@ -3563,6 +3579,7 @@
     {
         "name": "Pr_HSPACE(f(n))",
         "type": "Language",
+        "concrete": false,
         "desc": "Has the same relation to DSPACE(f(n)) as PP does to P.",
         "related": [
             "DSPACE"
@@ -4059,6 +4076,7 @@
     {
         "name": "QRG(k)",
         "type": "Language",
+        "concrete": false,
         "desc": "Same as QRG, except that now the verifier exchanges exactly k messages with each prover where k is a polynomial-bounded function of the input length.",
         "related": [
             "EXP",
@@ -4184,6 +4202,7 @@
     {
         "name": "RG(k)",
         "type": "Language",
+        "concrete": false,
         "desc": "Same as RG, except that now the verifier exchanges exactly k messages with each prover where k is a polynomial-bounded function of the input length.",
         "related": [
             "PSPACE",
@@ -4281,6 +4300,7 @@
     {
         "name": "RSPACE(f(n))",
         "type": "Language",
+        "concrete": false,
         "desc": "Same as RL, but for O(f(n))-space instead of logarithmic-space.",
         "related": [
             "BPSPACE(f(n))",
@@ -4299,6 +4319,7 @@
     {
         "name": "R_HSPACE(f(n))",
         "type": "Language",
+        "concrete": false,
         "desc": "Has the same relation to BP_HSPACE(f(n)) as RP does to BPP.",
         "related": [
             "BPP",
@@ -4308,6 +4329,7 @@
     {
         "name": "RevSPACE(f(n))",
         "type": "Language",
+        "concrete": false,
         "desc": "The class of decision problems solvable in space O(f(n)) by a reversible Turing machine (a deterministic Turing machine for which every configuration has at most one immediate predecessor).",
         "related": [
             "DSPACE"
@@ -4449,6 +4471,7 @@
     {
         "name": "SF_k",
         "type": "Language",
+        "concrete": false,
         "desc": "Width-k Bottleneck Turing Machines. The class of decision problems solvable by a k-bottleneck Turing machine: a machine that, after a polynomial amount of time, erases everything on the tape except for a single k-valued \"safe-storage.\" There is also a counter recording the number of erasings, which acts as a nondeterministic witness. For example, SF_2 contains both ⊕P and NP by using the counter as a witness.\n\nDefined in {ref:cf91}, where it was also shown that SF_5 = PSPACE.\n\nThe complexity of SF_2, SF_3, and SF_4 was studied in {ref:ogi94} and {ref:her97}. Among the results: SF_4 ⊆ BP·⊕P^{Mod_3P^{⊕P^{Mod_3P^{⊕P}}}}.",
         "related": [
             "AM",
@@ -4863,6 +4886,7 @@
     {
         "name": "VC_k",
         "type": "Language",
+        "concrete": false,
         "desc": "Verification Class with a Circuit of Depth k:\n- VC_0 is the class of compressible languages.\n- VC_1 is the class of languages with local verification: they can be verified by testing only a small part of the instance (polynomial in witness length and log of instance length).\n- VC_k for k ≥ 2 is the class of languages verifiable by a circuit of depth k, with size polynomial in witness length and instance length.\n\nVC_0 ⊆ VC_or ⊆ VC_1 ⊆ VC_2 ⊆ VC_3 ⊆ ...\n\nIntroduced in {ref:hn06}; see there for formal definitions.",
         "related": [
             "VC_or",
@@ -4926,16 +4950,6 @@
             "NP",
             "SPP"
         ]
-    },
-    {
-        "name": "W[SAT]",
-        "type": "Language",
-        "desc": "The class of decision problems of the form (x,k) (k a parameter), that are fixed-parameter reducible to the following problem, for some constant h:"
-    },
-    {
-        "name": "W^*[t]",
-        "type": "Language",
-        "desc": "Same as W[t], except that now the circuit depth can depend on the parameter k rather than being constant."
     },
     {
         "name": "XNLP",
@@ -5125,6 +5139,7 @@
     {
         "name": "(M_k)P",
         "type": "Language",
+        "concrete": false,
         "desc": "Acceptance Mechanism by Monoid M_k. A monoid is a set with an associative operation and an identity element (like a group but without requiring inverses).\n\n(M_k)P is the class of decision problems solvable by an NP machine where the i-th computation path outputs an element m_i of M_k, and the machine accepts iff m_1·m_2·...·m_s is the identity (where s is the number of paths).\n\nDefined by {ref:her97}. For the special case where M is a group:\n- If G is any nonsolvable group (e.g., S_5), then (G)P = PSPACE.\n- (Z_k)P = coMod_kP, where Z_k is the cyclic group on k elements.\n- If |G| = k, then (G)P contains coMod_kP.",
         "related": [
             "NP",
@@ -5199,6 +5214,7 @@
     {
         "name": "coMod_kP",
         "type": "Language",
+        "concrete": false,
         "desc": "----",
         "properties": [
             "complement"
@@ -5469,6 +5485,7 @@
     {
         "name": "k-BWBP",
         "type": "Language",
+        "concrete": false,
         "desc": "Alternate name for k-PBP.",
         "related": [
             "PBP"
@@ -5477,6 +5494,7 @@
     {
         "name": "k-EQBP",
         "type": "Language",
+        "concrete": false,
         "desc": "Width-k Polynomial-Time Exact Quantum Branching Programs. See k-PBP for the definition of a classical branching program. A quantum branching program is the natural quantum generalization: we have a quantum state in a Hilbert space of dimension k. Each step t consists of applying a unitary matrix U^(t)(x_i) depending on a single bit x_i of the input (these are the quantum analogues of \"oblivious\" branching programs). In the end we measure to decide whether to accept; there must be zero probability of error.\n\nDefined in {ref:amp02}, where it was also shown that NC^1 is contained in 2-EQBP.",
         "related": [
             "NC^1",
@@ -5717,7 +5735,8 @@
     {
         "name": "W[t]",
         "type": "Parameterized Language",
-        "desc": "Nondeterministic Fixed-Parameter Hierarchy. The class of decision problems of the form (x, k) (k a parameter), fixed-parameter reducible to:\n\n**Weighted Weft-t Depth-h Circuit-SAT**: Given a Boolean circuit C with a mixture of fanin-2 and unbounded-fanin gates, where the number of unbounded-fanin gates on any path to the root is at most t, and the total depth (fanin-2 and unbounded-fanin) is at most h. Does C have a satisfying assignment of Hamming weight k?\n\nSee {lang:W[1]} for the definition of fixed-parameter reducibility. Defined in {ref:df99}.\n\nContained in {lang:W[SAT]} and in W^*[t]. Generalizes W[1] (t=1) and W[2] (t=2).",
+        "concrete": false,
+        "desc": "The class of decision problems of the form (x, k) (k a parameter), fixed-parameter reducible to:\n\n**Weighted Weft-t Depth-h Circuit-SAT**: Given a Boolean circuit C with a mixture of fanin-2 and unbounded-fanin gates, where the number of unbounded-fanin gates on any path to the root is at most t, and the total depth (fanin-2 and unbounded-fanin) is at most h. Does C have a satisfying assignment of Hamming weight k?\n\nSee {lang:W[1]} for the definition of fixed-parameter reducibility. Defined in {ref:df99}.\n\nContained in {lang:W[SAT]} and in W^*[t]. Generalizes W[1] (t=1) and W[2] (t=2).",
         "related": [
             "W[1]",
             "W[SAT]",
@@ -5729,7 +5748,8 @@
     {
         "name": "W^*[t]",
         "type": "Parameterized Language",
-        "desc": "W[t] With Parameter-Dependent Depth. Same as {lang:W[t]}, except that the circuit depth can depend on the parameter k rather than being a fixed constant. The number of unbounded-fanin gates along any path to the root is still at most t.\n\nW^*[1] = W[1] {ref:dft96}. W^*[2] = W[2] {ref:df97}. The problem is open for larger t.",
+        "concrete": false,
+        "desc": "Same as {lang:W[t]}, except that the circuit depth can depend on the parameter k rather than being a fixed constant. The number of unbounded-fanin gates along any path to the root is still at most t.\n\nW^*[1] = W[1] {ref:dft96}. W^*[2] = W[2] {ref:df97}. The problem is open for larger t.",
         "related": [
             "W[t]",
             "FPT",

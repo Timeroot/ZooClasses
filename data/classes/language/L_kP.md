@@ -5,6 +5,7 @@ related:
   - NP
   - NP_cap_coNP
   - Sigma_kP
+concrete: false
 ---
 Low Hierarchy in NP. The class of problems A such that Σ_kP^A = Σ_kP; that is, adding A as an oracle does not increase the power of the k-th level of the polynomial hierarchy.
 
