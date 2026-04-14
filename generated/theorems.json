@@ -5,16 +5,6 @@
         "ref": "ALL is the class of all languages, trivially containing every complexity class."
     },
     {
-        "name": "(NP,P-samplable)⊆ALL",
-        "content": "(NP,P-samplable)⊆ALL",
-        "ref": "ALL is the class of all languages, trivially containing every complexity class."
-    },
-    {
-        "name": "(NP,P-samplable)⊆NP",
-        "content": "(NP,P-samplable)⊆NP",
-        "ref": "(NP,P-samplable) ⊆ NP: the language component of every distributional problem in (NP,P-samplable) is in NP by definition."
-    },
-    {
         "name": "(NP ∩ coNP)/poly⊆S_2P",
         "content": "(NP ∩ coNP)/poly⊆S_2P",
         "ref": "(NP ∩ coNP)/poly ⊆ S_2P: by Cai's result (from the class description)."
@@ -352,39 +342,14 @@
         "ref": "{ref:Vya03}. Is this obvious? Not sure..."
     },
     {
-        "name": "AW[P]⊆ALL",
-        "content": "AW[P]⊆ALL",
-        "ref": "ALL is the class of all languages, trivially containing every complexity class."
-    },
-    {
-        "name": "AW[P]⊆PSPACE",
-        "content": "AW[P]⊆PSPACE",
-        "ref": "AW[P] ⊆ PSPACE: alternating W[P] parameterized machines can be simulated in PSPACE."
-    },
-    {
-        "name": "AW[SAT]⊆ALL",
-        "content": "AW[SAT]⊆ALL",
-        "ref": "ALL is the class of all languages, trivially containing every complexity class."
-    },
-    {
         "name": "AW[SAT]⊆AW[P]",
         "content": "AW[SAT]⊆AW[P]",
         "ref": "AW[SAT] ⊆ AW[P]: stated in the AW[SAT] class description."
     },
     {
-        "name": "AW[*]⊆ALL",
-        "content": "AW[*]⊆ALL",
-        "ref": "ALL is the class of all languages, trivially containing every complexity class."
-    },
-    {
         "name": "AW[*]⊆AW[SAT]",
         "content": "AW[*]⊆AW[SAT]",
         "ref": "AW[*] ⊆ AW[SAT]: stated in the AW[SAT] class description."
-    },
-    {
-        "name": "AW[*]⊆PSPACE",
-        "content": "AW[*]⊆PSPACE",
-        "ref": "AW[*] ⊆ PSPACE (alternating Turing machine with all quantifiers)."
     },
     {
         "name": "AW[SAT]⊆AW[P]",
@@ -726,11 +691,6 @@
         "name": "BPP⊆Coh",
         "content": "BPP⊆Coh",
         "ref": "BPP ⊆ Coh: BPP machines decide L(x) without any oracle access to L; trivially they can query points different from x (and just ignore the answers)."
-    },
-    {
-        "name": "BPP⊆HeurBPP",
-        "content": "BPP⊆HeurBPP",
-        "ref": "BPP ⊆ HeurBPP: a BPP algorithm with 0 error is a heuristic with 0 error fraction."
     },
     {
         "name": "BPP⊆NISQ",
@@ -1704,43 +1664,13 @@
         "content": "FO_TC_=NL"
     },
     {
-        "name": "FPL⊆ALL",
-        "content": "FPL⊆ALL",
-        "ref": "ALL is the class of all languages, trivially containing every complexity class."
-    },
-    {
-        "name": "FPL⊆L",
-        "content": "FPL⊆L",
-        "ref": "FPL ⊆ L: fixed-parameter logspace ⊆ logspace."
-    },
-    {
-        "name": "FPR⊆ALL",
-        "content": "FPR⊆ALL",
-        "ref": "ALL is the class of all languages, trivially containing every complexity class."
-    },
-    {
-        "name": "FPR⊆BPP",
-        "content": "FPR⊆BPP",
-        "ref": "FPR (fixed-polynomial randomized) ⊆ BPP."
-    },
-    {
         "name": "FPTAS⊆EPTAS",
         "content": "FPTAS⊆EPTAS"
-    },
-    {
-        "name": "FPT_nu⊆ALL",
-        "content": "FPT_nu⊆ALL",
-        "ref": "ALL is the class of all languages, trivially containing every complexity class."
     },
     {
         "name": "FPT_nu⊆XP",
         "content": "FPT_nu⊆XP",
         "ref": "FPT_nu runs in f(k)·n^c time for each parameter k, so for each fixed k the algorithm is polynomial; hence FPT_nu ⊆ XP."
-    },
-    {
-        "name": "FPT_su⊆ALL",
-        "content": "FPT_su⊆ALL",
-        "ref": "ALL is the class of all languages, trivially containing every complexity class."
     },
     {
         "name": "FPT_su⊆FPT",
@@ -1813,9 +1743,19 @@
         "ref": "{ref:ch89}"
     },
     {
+        "name": "FewP⊆ALL",
+        "content": "FewP⊆ALL",
+        "ref": "ALL is the class of all languages, trivially containing every complexity class."
+    },
+    {
         "name": "Few⊆SPP",
         "content": "Few⊆SPP",
         "ref": "{ref:ffk94}"
+    },
+    {
+        "name": "Few⊆ALL",
+        "content": "Few⊆ALL",
+        "ref": "ALL is the class of all languages, trivially containing every complexity class."
     },
     {
         "name": "GAK⊆ALL",
@@ -1938,39 +1878,9 @@
         "ref": "HalfP ⊆ PP (exactly-half acceptance ⊆ majority)."
     },
     {
-        "name": "HeurBPP⊆ALL",
-        "content": "HeurBPP⊆ALL",
-        "ref": "ALL is the class of all languages, trivially containing every complexity class."
-    },
-    {
-        "name": "HeurBPP⊆BPP",
-        "content": "HeurBPP⊆BPP",
-        "ref": "HeurBPP ⊆ BPP: heuristic BPP ⊆ BPP."
-    },
-    {
-        "name": "HeurPP⊆ALL",
-        "content": "HeurPP⊆ALL",
-        "ref": "ALL is the class of all languages, trivially containing every complexity class."
-    },
-    {
-        "name": "HeurPP⊆PP",
-        "content": "HeurPP⊆PP",
-        "ref": "HeurPP ⊆ PP: heuristic PP ⊆ PP."
-    },
-    {
-        "name": "HeurP⊆ALL",
-        "content": "HeurP⊆ALL",
-        "ref": "ALL is the class of all languages, trivially containing every complexity class."
-    },
-    {
         "name": "HeurP⊆HeurBPP",
         "content": "HeurP⊆HeurBPP",
         "ref": "HeurP ⊆ HeurBPP: deterministic heuristics are a special case of BPP heuristics."
-    },
-    {
-        "name": "HeurP⊆P",
-        "content": "HeurP⊆P",
-        "ref": "HeurP ⊆ P: heuristic P problems are in P on typical inputs."
     },
     {
         "name": "IC[log,poly]⊆ALL",
@@ -3047,11 +2957,6 @@
         "ref": "There are only polynomially many states for an {lang:NL} machine, and a {lang:P} machine can enumerate all of them and check for a path."
     },
     {
-        "name": "NL⊆XNLP",
-        "content": "NL⊆XNLP",
-        "ref": "NL ⊆ XNLP: nondeterministic logspace is a special case of XNLP with f(k) = O(1), giving O(log n) space and polynomial time."
-    },
-    {
         "name": "NMCL⊆ALL",
         "content": "NMCL⊆ALL",
         "ref": "ALL is the class of all languages, trivially containing every complexity class."
@@ -3094,11 +2999,6 @@
     {
         "name": "NONE⊆(NP ∩ coNP)/poly",
         "content": "NONE⊆(NP ∩ coNP)/poly",
-        "ref": "NONE is the empty language, trivially contained in every complexity class."
-    },
-    {
-        "name": "NONE⊆(NP,P-samplable)",
-        "content": "NONE⊆(NP,P-samplable)",
         "ref": "NONE is the empty language, trivially contained in every complexity class."
     },
     {
@@ -3204,21 +3104,6 @@
     {
         "name": "NONE⊆AWPP",
         "content": "NONE⊆AWPP",
-        "ref": "NONE is the empty language, trivially contained in every complexity class."
-    },
-    {
-        "name": "NONE⊆AW[P]",
-        "content": "NONE⊆AW[P]",
-        "ref": "NONE is the empty language, trivially contained in every complexity class."
-    },
-    {
-        "name": "NONE⊆AW[SAT]",
-        "content": "NONE⊆AW[SAT]",
-        "ref": "NONE is the empty language, contained trivially in every complexity class."
-    },
-    {
-        "name": "NONE⊆AW[*]",
-        "content": "NONE⊆AW[*]",
         "ref": "NONE is the empty language, trivially contained in every complexity class."
     },
     {
@@ -3627,28 +3512,18 @@
         "ref": "NONE is the empty language, trivially contained in every complexity class."
     },
     {
-        "name": "NONE⊆FPL",
-        "content": "NONE⊆FPL",
-        "ref": "NONE is the empty language, trivially contained in every complexity class."
-    },
-    {
-        "name": "NONE⊆FPR",
-        "content": "NONE⊆FPR",
-        "ref": "NONE is the empty language, trivially contained in every complexity class."
-    },
-    {
-        "name": "NONE⊆FPT_nu",
-        "content": "NONE⊆FPT_nu",
-        "ref": "NONE is the empty language, trivially contained in every complexity class."
-    },
-    {
-        "name": "NONE⊆FPT_su",
-        "content": "NONE⊆FPT_su",
-        "ref": "NONE is the empty language, trivially contained in every complexity class."
-    },
-    {
         "name": "NONE⊆FP^NP[log]",
         "content": "NONE⊆FP^NP[log]",
+        "ref": "NONE is the empty language, trivially contained in every complexity class."
+    },
+    {
+        "name": "NONE⊆Few",
+        "content": "NONE⊆Few",
+        "ref": "NONE is the empty language, trivially contained in every complexity class."
+    },
+    {
+        "name": "NONE⊆FewP",
+        "content": "NONE⊆FewP",
         "ref": "NONE is the empty language, trivially contained in every complexity class."
     },
     {
@@ -3695,21 +3570,6 @@
         "name": "NONE⊆HalfP",
         "content": "NONE⊆HalfP",
         "ref": "NONE is the empty language, contained trivially in every complexity class."
-    },
-    {
-        "name": "NONE⊆HeurBPP",
-        "content": "NONE⊆HeurBPP",
-        "ref": "NONE is the empty language, trivially contained in every complexity class."
-    },
-    {
-        "name": "NONE⊆HeurP",
-        "content": "NONE⊆HeurP",
-        "ref": "NONE is the empty language, trivially contained in every complexity class."
-    },
-    {
-        "name": "NONE⊆HeurPP",
-        "content": "NONE⊆HeurPP",
-        "ref": "NONE is the empty language, trivially contained in every complexity class."
     },
     {
         "name": "NONE⊆IC[log,poly]",
@@ -4217,11 +4077,6 @@
         "ref": "NONE is the empty language, trivially contained in every complexity class."
     },
     {
-        "name": "NONE⊆PODN",
-        "content": "NONE⊆PODN",
-        "ref": "NONE is the empty language, trivially contained in every complexity class."
-    },
-    {
         "name": "NONE⊆PP",
         "content": "NONE⊆PP",
         "ref": "NONE is the empty language, trivially contained in every complexity class."
@@ -4249,11 +4104,6 @@
     {
         "name": "NONE⊆PR",
         "content": "NONE⊆PR",
-        "ref": "NONE is the empty language, trivially contained in every complexity class."
-    },
-    {
-        "name": "NONE⊆PSK",
-        "content": "NONE⊆PSK",
         "ref": "NONE is the empty language, trivially contained in every complexity class."
     },
     {
@@ -4369,16 +4219,6 @@
     {
         "name": "NONE⊆PostBQP",
         "content": "NONE⊆PostBQP",
-        "ref": "NONE is the empty language, trivially contained in every complexity class."
-    },
-    {
-        "name": "NONE⊆PromiseP",
-        "content": "NONE⊆PromiseP",
-        "ref": "NONE is the empty language, trivially contained in every complexity class."
-    },
-    {
-        "name": "NONE⊆PromiseUP",
-        "content": "NONE⊆PromiseUP",
         "ref": "NONE is the empty language, trivially contained in every complexity class."
     },
     {
@@ -4647,11 +4487,6 @@
         "ref": "NONE is the empty language, trivially contained in every complexity class."
     },
     {
-        "name": "NONE⊆RPP",
-        "content": "NONE⊆RPP",
-        "ref": "NONE is the empty language, trivially contained in every complexity class."
-    },
-    {
         "name": "NONE⊆RQP",
         "content": "NONE⊆RQP",
         "ref": "NONE is the empty language, trivially contained in every complexity class."
@@ -4720,11 +4555,6 @@
         "name": "NONE⊆SL",
         "content": "NONE⊆SL",
         "ref": "NONE is the empty language, contained trivially in every complexity class."
-    },
-    {
-        "name": "NONE⊆SLICEWISE PSPACE",
-        "content": "NONE⊆SLICEWISE PSPACE",
-        "ref": "NONE is the empty language, trivially contained in every complexity class."
     },
     {
         "name": "NONE⊆SNP",
@@ -4917,18 +4747,8 @@
         "ref": "NONE is the empty language, trivially contained in every complexity class."
     },
     {
-        "name": "NONE⊆XNLP",
-        "content": "NONE⊆XNLP",
-        "ref": "NONE is the empty language, trivially contained in every complexity class."
-    },
-    {
         "name": "NONE⊆XOR-MIP*[2,1]",
         "content": "NONE⊆XOR-MIP*[2,1]",
-        "ref": "NONE is the empty language, trivially contained in every complexity class."
-    },
-    {
-        "name": "NONE⊆XP_uniform",
-        "content": "NONE⊆XP_uniform",
         "ref": "NONE is the empty language, trivially contained in every complexity class."
     },
     {
@@ -5185,11 +5005,6 @@
     {
         "name": "NONE⊆nuACC^0",
         "content": "NONE⊆nuACC^0",
-        "ref": "NONE is the empty language, trivially contained in every complexity class."
-    },
-    {
-        "name": "NONE⊆para-P",
-        "content": "NONE⊆para-P",
         "ref": "NONE is the empty language, trivially contained in every complexity class."
     },
     {
@@ -5842,16 +5657,6 @@
         "ref": "{ref:pap90}"
     },
     {
-        "name": "PODN⊆ALL",
-        "content": "PODN⊆ALL",
-        "ref": "ALL is the class of all languages, trivially containing every complexity class."
-    },
-    {
-        "name": "PODN⊆NP",
-        "content": "PODN⊆NP",
-        "ref": "PODN (P with one-sided determinism) ⊆ NP."
-    },
-    {
         "name": "PPADS⊆PPP",
         "content": "PPADS⊆PPP",
         "ref": "{ref:pap94b}"
@@ -5910,11 +5715,6 @@
         "impliedby": "ObviousConstruction"
     },
     {
-        "name": "PP⊆HeurPP",
-        "content": "PP⊆HeurPP",
-        "ref": "PP ⊆ HeurPP: a PP machine that always succeeds is a heuristic PP machine with 0 error fraction."
-    },
-    {
         "name": "PP⊆PP/poly",
         "content": "PP⊆PP/poly",
         "ref": "Any language in X can be decided with polynomial advice by ignoring the advice."
@@ -5953,16 +5753,6 @@
         "name": "PSK=PPADS",
         "content": "PSK=PPADS",
         "ref": "{ref:pap90}"
-    },
-    {
-        "name": "PSK⊆ALL",
-        "content": "PSK⊆ALL",
-        "ref": "ALL is the class of all languages, trivially containing every complexity class."
-    },
-    {
-        "name": "PSK⊆NP",
-        "content": "PSK⊆NP",
-        "ref": "PSK (P-settable k-wise NP) ⊆ NP."
     },
     {
         "name": "PSPACE=NPSPACE",
@@ -6307,26 +6097,6 @@
         "ref": "ALL is the class of all languages, trivially containing every complexity class."
     },
     {
-        "name": "PromiseP⊆ALL",
-        "content": "PromiseP⊆ALL",
-        "ref": "ALL is the class of all languages, trivially containing every complexity class."
-    },
-    {
-        "name": "PromiseP⊆P",
-        "content": "PromiseP⊆P",
-        "ref": "PromiseP ⊆ P: promise problems in P."
-    },
-    {
-        "name": "PromiseUP⊆ALL",
-        "content": "PromiseUP⊆ALL",
-        "ref": "ALL is the class of all languages, trivially containing every complexity class."
-    },
-    {
-        "name": "PromiseUP⊆UP",
-        "content": "PromiseUP⊆UP",
-        "ref": "PromiseUP ⊆ UP."
-    },
-    {
         "name": "ProtocolSimulation",
         "content": "",
         "ref": "Placeholder theorem for the general argument that a public-coin interactive protocol can be simulated by a single 'player' with sufficient time and space. To be precise, if a protocol involves r rounds of classical (resp. quantum) messages of size m between an omniscient prover and M-machine verifier, then this protocol can be simulated with `r*m` classical (resp. quantum) space, plus however much memory is needed to simulate the M-machine. This implies that all of NP, coNP, MA, AM are in PSPACE, and QCMA and QMA are in BQPSPACE (which equals PSPACE); and analogous statements, that for instance coNEXP is in EXPSPACE. It does not apply to private-coin protocols like IP, MIP, or QIP, although these often turn out to be equivalent to their public-coin variants anyway."
@@ -6441,11 +6211,6 @@
         "name": "P⊆HalfP",
         "content": "P⊆HalfP",
         "ref": "P ⊆ HalfP: any P language can be accepted by a Turing machine accepting exactly half its inputs."
-    },
-    {
-        "name": "P⊆HeurP",
-        "content": "P⊆HeurP",
-        "ref": "P ⊆ HeurP: a P algorithm with 0 error is a heuristic P algorithm."
     },
     {
         "name": "P⊆IC[log,poly]",
@@ -6571,11 +6336,6 @@
         "name": "P⊆PhP",
         "content": "P⊆PhP",
         "ref": "P ⊆ PhP: polynomial-time algorithms can be implemented on physically constructible computers; so P ⊆ PhP by definition."
-    },
-    {
-        "name": "P⊆PromiseP",
-        "content": "P⊆PromiseP",
-        "ref": "P ⊆ PromiseP: any P language is a promise problem solvable by a P machine (where the promise is the trivial promise: all strings are valid inputs)."
     },
     {
         "name": "P⊆QMA_1",
@@ -7456,11 +7216,6 @@
         "impliedby": "ObviousConstruction"
     },
     {
-        "name": "RPP⊆ALL",
-        "content": "RPP⊆ALL",
-        "ref": "ALL is the class of all languages, trivially containing every complexity class."
-    },
-    {
         "name": "RPP⊆XP",
         "content": "RPP⊆XP",
         "ref": "RPP ⊆ XP: for each fixed value of the parameter m, the problem is solvable in polynomial time by nondeterminism, hence RPP ⊆ XP."
@@ -7668,16 +7423,6 @@
         "name": "SKC⊆NP",
         "content": "SKC⊆NP",
         "ref": "SKC ⊆ NP."
-    },
-    {
-        "name": "SLICEWISE PSPACE⊆ALL",
-        "content": "SLICEWISE PSPACE⊆ALL",
-        "ref": "ALL is the class of all languages, trivially containing every complexity class."
-    },
-    {
-        "name": "SLICEWISE PSPACE⊆NEXP",
-        "content": "SLICEWISE PSPACE⊆NEXP",
-        "ref": "Slicewise PSPACE ⊆ NEXP."
     },
     {
         "name": "SL⊆⊕L",
@@ -8187,11 +7932,6 @@
         "ref": "UP ⊆ NP: unambiguous nondeterminism ⊆ nondeterminism."
     },
     {
-        "name": "UP⊆PromiseUP",
-        "content": "UP⊆PromiseUP",
-        "ref": "UP ⊆ PromiseUP: any UP language is a promise problem solvable by a UP machine."
-    },
-    {
         "name": "US⊆ALL",
         "content": "US⊆ALL",
         "ref": "ALL is the class of all languages, trivially containing every complexity class."
@@ -8358,16 +8098,6 @@
         "impliedby": "ObviousConstruction"
     },
     {
-        "name": "XNLP⊆ALL",
-        "content": "XNLP⊆ALL",
-        "ref": "ALL is the class of all languages, trivially containing every complexity class."
-    },
-    {
-        "name": "XNLP⊆NEXP",
-        "content": "XNLP⊆NEXP",
-        "ref": "XNLP (XP for NL) ⊆ NEXP."
-    },
-    {
         "name": "XNLP⊆XP",
         "content": "XNLP⊆XP",
         "ref": "XNLP ⊆ XP: XNLP runs in space O(f(k) log n) and time O(f(k) n^c), so for each fixed k it is polynomial; hence XNLP ⊆ XP."
@@ -8386,16 +8116,6 @@
         "name": "XOR-MIP*[2,1]⊆NEXP",
         "content": "XOR-MIP*[2,1]⊆NEXP",
         "ref": "XOR-MIP*[2,1] is a restriction of MIP*[2,1] ⊆ NEXP (before MIP* = RE was proved); the restriction to XOR-outputs preserves this NEXP upper bound."
-    },
-    {
-        "name": "XP_uniform⊆ALL",
-        "content": "XP_uniform⊆ALL",
-        "ref": "ALL is the class of all languages, trivially containing every complexity class."
-    },
-    {
-        "name": "XP_uniform⊆PSPACE",
-        "content": "XP_uniform⊆PSPACE",
-        "ref": "XP_uniform ⊆ PSPACE."
     },
     {
         "name": "XP_uniform⊆XP",
@@ -9155,19 +8875,9 @@
         "impliedby": "ObviousConstruction"
     },
     {
-        "name": "para-P⊆ALL",
-        "content": "para-P⊆ALL",
-        "ref": "ALL is the class of all languages, trivially containing every complexity class."
-    },
-    {
         "name": "para-P⊆FPT",
         "content": "para-P⊆FPT",
         "ref": "para-P is an alternate name for FPT: para-P is defined to equal FPT by convention (see para-P class description)."
-    },
-    {
-        "name": "para-P⊆P",
-        "content": "para-P⊆P",
-        "ref": "para-P (parametrized P) ⊆ P: fixed-parameter tractable ⊆ P."
     },
     {
         "name": "polyL⊆ALL",

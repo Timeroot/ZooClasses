@@ -428,6 +428,76 @@ def validate_references(classes_data, theorems_data, references_data):
     return warnings
 
 
+def _extract_class_names_from_content(content: str) -> list[list[str]]:
+    """Return a list of per-part class-name lists found in a theorem content string.
+
+    Each item in the returned list corresponds to one '&&'-separated part and
+    contains the class names extracted from that part.  Template parts (starting
+    with '{') are skipped.
+
+    Handles chained relations (A⊆B⊆C) by splitting on *all* Unicode relation
+    symbols.  Falls back to '=' only when no Unicode relation is present, to
+    avoid splitting on '=' inside class names such as C_=AC^0.
+    """
+    result = []
+    if not content or content.startswith('{'):
+        return result
+    for part in content.split('&&'):
+        part = part.strip()
+        if not part or part.startswith('{'):
+            continue
+        # Split on Unicode relation symbols first (handles chained A⊆B⊆C)
+        segments = _HASSE_UNICODE_RE.split(part)
+        if len(segments) > 1:
+            names = [s.strip() for s in segments if s.strip()]
+        else:
+            # No Unicode relation — fall back to '=' (but only the first one)
+            m = re.search(r'=', part)
+            if m:
+                names = [s.strip() for s in [part[:m.start()], part[m.end():]] if s.strip()]
+            else:
+                names = []
+        if names:
+            result.append(names)
+    return result
+
+
+def validate_theorem_content_types(classes_data, theorems_data):
+    """Check that theorem content strings only reference:
+    (1) class names that actually exist in classes_data, and
+    (2) classes that are all the same type within a single theorem.
+
+    Returns a list of warning strings.
+    """
+    class_type = {c['name']: c.get('type', '') for c in classes_data}
+
+    warnings = []
+
+    for thm in theorems_data:
+        content = thm.get('content', '')
+        if not content or content.startswith('{'):
+            continue
+
+        label = f"theorem '{thm['name']}'"
+        per_part = _extract_class_names_from_content(content)
+        all_names = [n for part in per_part for n in part]
+
+        # (1) Unknown class names
+        unknown = [n for n in all_names if n not in class_type]
+        for n in unknown:
+            warnings.append(f"  WARN {label}: '{n}' — unknown class")
+
+        # (2) Cross-type comparison: check all *known* names share a single type
+        known_typed = [(n, class_type[n]) for n in all_names
+                       if n in class_type and class_type[n]]
+        types_seen = {t for _, t in known_typed}
+        if len(types_seen) > 1:
+            detail = ', '.join(f"{n}({t})" for n, t in known_typed)
+            warnings.append(f"  WARN {label}: mixes class types — {detail}")
+
+    return warnings
+
+
 # ── Hasse diagram analysis ────────────────────────────────────────────────
 
 # Matches any inclusion/equality/strict relation symbol
@@ -814,5 +884,18 @@ if __name__ == "__main__":
             print(f"  ({len(ref_warns)} {{ref:}} warnings suppressed by --quiet-refs)")
     else:
         print("  All {lang:}, {thm:}, {ref:} pointers OK ✓")
+
+    print("\nValidating theorem content classes...")
+    _content_warns = validate_theorem_content_types(_classes, _theorems)
+    if _content_warns:
+        unknown_warns = [w for w in _content_warns if '— unknown class' in w]
+        mixed_warns   = [w for w in _content_warns if 'mixes class types' in w]
+        print(f"  {len(_content_warns)} issue(s): "
+              f"{len(unknown_warns)} unknown class(es), "
+              f"{len(mixed_warns)} cross-type comparison(s)")
+        for w in _content_warns:
+            print(w)
+    else:
+        print("  All theorem content classes exist and are same-type ✓")
 
     analyse_hasse(_classes, _theorems, "Language")

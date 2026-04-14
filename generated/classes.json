@@ -263,17 +263,6 @@
         ]
     },
     {
-        "name": "Few",
-        "type": "Function Problem",
-        "desc": "FewP with Flexible Acceptance Mechanism. Also called FewPaths. The class of decision problems solvable by an NP machine such that: (1) the number of accepting paths a is bounded by a polynomial in the input size; (2) for some polynomial-time predicate Q, Q(x,a) is true iff the answer is \"yes.\"\n\nDefined in {ref:ch89}. Contains {lang:FewP}, and is contained in P^{FewP} {ref:kob89} and in {lang:SPP} {ref:ffk94}.",
-        "related": [
-            "FewP",
-            "NP",
-            "P",
-            "SPP"
-        ]
-    },
-    {
         "name": "FewEXP",
         "type": "Function Problem",
         "desc": "The class of decision problems solvable by an nexp machine such that, given a \"yes\" instance, no more than an exponential number of computation paths accept.",
@@ -282,18 +271,6 @@
             "MIP",
             "NEXP",
             "NP"
-        ]
-    },
-    {
-        "name": "FewP",
-        "type": "Function Problem",
-        "desc": "NP with Few Witnesses. The class of decision problems solvable by an NP machine such that: (1) if the answer is \"no,\" all computation paths reject; (2) if the answer is \"yes,\" the number of accepting paths is bounded by a polynomial in the input size.\n\nDefined in {ref:ar88}. Contained in ⊕P {ref:ch89}. There exist oracles relative to which P, UP, FewP, and NP are all distinct {ref:rub88}. Contained in {lang:Few}.",
-        "related": [
-            "NP",
-            "P",
-            "UP",
-            "⊕P",
-            "Few"
         ]
     },
     {
@@ -464,6 +441,15 @@
         ]
     },
     {
+        "name": "PODN",
+        "type": "Function Problem",
+        "concrete": false,
+        "desc": "The subclass of TFNP function problems that are guaranteed to have a solution because of the lemma that \"every finite graph has an even number of odd-degree nodes.\"",
+        "related": [
+            "TFNP"
+        ]
+    },
+    {
         "name": "PPA",
         "type": "Function Problem",
         "desc": "Polynomial Parity Argument. A subclass of {lang:TFNP} for problems guaranteed to have a solution by the lemma that \"all graphs of maximum degree 2 have an even number of leaves.\"\n\nMore precisely: there's a polynomial-time algorithm that, given any string, computes its \"neighbor\" strings (at most two). Given a leaf string (one with only one neighbor), find another leaf string.\n\nDefined in {ref:pap94b}. Contains {lang:PPAD}. There exist oracles relative to which PPA does not contain PLS {ref:bm04} or PPP {ref:bce95}, and PPA is not contained in PPP {ref:bce95}.\n\nExample problems in PPA: finding an Arrow-Debreu equilibrium {ref:pap94b}; computing square roots mod n and finding quadratic nonresidues mod n {ref:jer12}; integer factorization is in PPA under GRH {ref:jer12}. Complete: Sperner's lemma for non-orientable 3-manifolds {ref:gri01}.",
@@ -506,6 +492,12 @@
             "PLS",
             "PWPP"
         ]
+    },
+    {
+        "name": "PSK",
+        "type": "Function Problem",
+        "concrete": false,
+        "desc": "Polynomial Sink. (The S and K stand for \"Source\" and \"Sink.\") The class of total function problems of the following form: given a directed graph in which every vertex has in-degree and out-degree at most 1, and given a distinguished source vertex, find a sink (a vertex with out-degree 0).\n\nDefined in {ref:pap90}. Equals {lang:PPADS}."
     },
     {
         "name": "PTAS",
@@ -1874,6 +1866,29 @@
         "desc": "Given a graph, the problem of outputting the size of its maximum clique is complete for FP^NP[log]."
     },
     {
+        "name": "Few",
+        "type": "Language",
+        "desc": "FewP with Flexible Acceptance Mechanism. Also called FewPaths. The class of decision problems solvable by an NP machine such that: (1) the number of accepting paths a is bounded by a polynomial in the input size; (2) for some polynomial-time predicate Q, Q(x,a) is true iff the answer is \"yes.\"\n\nDefined in {ref:ch89}. Contains {lang:FewP}, and is contained in P^{FewP} {ref:kob89} and in {lang:SPP} {ref:ffk94}.",
+        "related": [
+            "FewP",
+            "NP",
+            "P",
+            "SPP"
+        ]
+    },
+    {
+        "name": "FewP",
+        "type": "Language",
+        "desc": "NP with Few Witnesses. The class of decision problems solvable by an NP machine such that: (1) if the answer is \"no,\" all computation paths reject; (2) if the answer is \"yes,\" the number of accepting paths is bounded by a polynomial in the input size.\n\nDefined in {ref:ar88}. Contained in ⊕P {ref:ch89}. There exist oracles relative to which P, UP, FewP, and NP are all distinct {ref:rub88}. Contained in {lang:Few}.",
+        "related": [
+            "NP",
+            "P",
+            "UP",
+            "⊕P",
+            "Few"
+        ]
+    },
+    {
         "name": "GA",
         "type": "Language",
         "desc": "Graph Automorphism. Languages that can be polynomial-time Turing reduced to Graph Automorphism. Compare with GI for isomorphism, and GAK for Karp reductions.",
@@ -3149,15 +3164,6 @@
         ]
     },
     {
-        "name": "PODN",
-        "type": "Language",
-        "concrete": false,
-        "desc": "The subclass of TFNP function problems that are guaranteed to have a solution because of the lemma that \"every finite graph has an even number of odd-degree nodes.\"",
-        "related": [
-            "TFNP"
-        ]
-    },
-    {
         "name": "PP",
         "type": "Language",
         "desc": "Probabilistic Polynomial-Time. The class of decision problems solvable by an NP machine such that:\n1. If the answer is \"yes,\" at least 1/2 of computation paths accept.\n2. If the answer is \"no,\" fewer than 1/2 of computation paths accept.\n\nDefined in {ref:gil77}. PP is closed under union and intersection {ref:brs91} (open for 14 years). More generally, P^{PP[log]} = PP; PP is closed under polynomial-time truth-table reductions.\n\nContains P^{NP[log]} {ref:bhw89} and QMA {ref:mw05}. BPP, BQP, and YQP* are all low for PP {ref:kst89b} {ref:fr98} {ref:yir24}. PH ⊆ P^PP {ref:tod89}.\n\nEquals PostBQP {ref:aar05b}. Equals PQP {ref:wat09}.\n\nFor any fixed k, PP contains a language without circuits of size n^k {ref:vin04b}; even without quantum circuits of size n^k with quantum advice {ref:aar06}.",
@@ -3220,12 +3226,6 @@
             "R",
             "TOWER"
         ]
-    },
-    {
-        "name": "PSK",
-        "type": "Language",
-        "concrete": false,
-        "desc": "Polynomial Sink. (The S and K stand for \"Source\" and \"Sink.\") The class of total function problems of the following form: given a directed graph in which every vertex has in-degree and out-degree at most 1, and given a distinguished source vertex, find a sink (a vertex with out-degree 0).\n\nDefined in {ref:pap90}. Equals {lang:PPADS}."
     },
     {
         "name": "PSPACE",

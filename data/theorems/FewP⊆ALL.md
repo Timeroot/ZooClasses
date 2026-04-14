@@ -1,5 +1,5 @@
 ---
-name: "(NP,P-samplable)⊆ALL"
-content: "(NP,P-samplable)⊆ALL"
+name: "FewP⊆ALL"
+content: "FewP⊆ALL"
 ref: "ALL is the class of all languages, trivially containing every complexity class."
 ---
