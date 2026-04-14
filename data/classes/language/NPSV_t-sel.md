@@ -4,4 +4,6 @@ related:
   - P
   - P-Sel
 ---
-Has the same relation to NPSV_t as P-Sel does to P.
+NPSV_t-Selective Sets. The class of total single-valued nondeterministic functions f ∈ NPSV_t (defined and single-valued on every input) for which there exists a polynomial-time computable selector: given any two inputs x, y, the selector outputs either x or y such that the selected element maps to a value under f.
+
+The total-single-valued analogue of {lang:NPMV_t-sel}.

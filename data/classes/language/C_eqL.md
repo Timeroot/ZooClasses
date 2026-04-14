@@ -5,6 +5,8 @@ related:
   - NL
   - C_eqP
 ---
-Exact-Counting Logspace. Has the same relation to L as {lang:C_eqP} does to P. The logspace analog of C_=P. (Usually written C_=L; we use C_eqL to avoid the = in filenames.)
+Exact-Counting Logspace. Also written C_=L. The class of decision problems solvable by a nondeterministic logspace Turing machine such that the number of accepting computation paths exactly equals the number of rejecting computation paths, if and only if the answer is 'yes.'
+
+This is the logspace analogue of {lang:C_eqP}: the same exact-counting acceptance condition but with a logspace rather than polynomial-time machine.
 
 C_eqL^{C_eqL} = L^{C_eqL} {ref:abo99}.

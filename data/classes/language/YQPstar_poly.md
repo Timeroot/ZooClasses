@@ -5,4 +5,6 @@ related:
 properties:
   - nonuniform
 ---
-Equal to BQP/qpoly {ref:ad14}.
+The nonuniform version of {lang:YQP*}: {lang:YQP*} augmented with a polynomial-size quantum advice state that can be verified without needing the specific input.
+
+Equal to {lang:BQP/qpoly} {ref:ad14}.

@@ -78,7 +78,7 @@
     {
         "name": "(NP,P-samplable)",
         "type": "Distributional Problem",
-        "desc": "See AvgP for basic notions of average-case complexity.",
+        "desc": "Average NP With Samplable Distributions. A *distributional problem* is a pair (L, μ) where L is a decision problem and μ is a probability distribution over inputs. See {lang:AvgP} for the basic definitions.\n\n(NP,P-samplable) is defined like {lang:DistNP}, except that the distribution μ only needs to be *samplable* in polynomial time: there is a polynomial-time randomized algorithm that generates instances according to μ. In DistNP, the stronger condition is that μ's cumulative density function must be polynomial-time *computable*. Since computability is harder to achieve than samplability, (NP,P-samplable) is (potentially) a larger class than DistNP.\n\nAny DistNP-complete problem is also complete for (NP,P-samplable) {ref:IL90}.",
         "related": [
             "AvgP",
             "DistNP"
@@ -153,7 +153,7 @@
     {
         "name": "FBPP",
         "type": "Function Problem",
-        "desc": "Has the same relation to BPP as FNP does to NP.",
+        "desc": "Function BPP. The class of function problems solvable by a probabilistic polynomial-time algorithm with bounded error: given an input x and a polynomial-time predicate F(x,y), if there exists a y satisfying F(x,y), output any such y with probability ≥ 2/3; otherwise output 'no' with probability ≥ 2/3.\n\nEquivalently, this is the class of search problems whose decision version is in BPP: the machine can use randomness and may err with probability at most 1/3. FBPP contains FP and is contained in FNP.",
         "related": [
             "BPP",
             "NP"
@@ -162,7 +162,7 @@
     {
         "name": "FBQP",
         "type": "Function Problem",
-        "desc": "Has the same relation to BQP as FNP does to NP.",
+        "desc": "Function BQP. The class of function problems solvable by a polynomial-time quantum algorithm with bounded error: given an input x and a polynomial-time verifiable predicate F(x,y), if there exists a y satisfying F(x,y), output any such y with probability ≥ 2/3; otherwise output 'no' with probability ≥ 2/3.\n\nThe quantum analogue of {lang:FBPP}, where the computing machine is a polynomial-time quantum computer (BQP machine). Contains FP and is contained in FNP.",
         "related": [
             "BQP",
             "NP",
@@ -305,7 +305,7 @@
     {
         "name": "GapL",
         "type": "Function Problem",
-        "desc": "Gap Logspace. Has the same relation to L as {lang:GapP} does to P (and same relation to #L as GapP does to #P).\n\nThe determinant of integer matrices is GapL-complete {ref:vin91} {ref:dam91} {ref:tod91}. See also the decision class {lang:DET}.",
+        "desc": "Gap Logspace. The class of functions f: {0,1}* → ℤ such that for some nondeterministic logspace Turing machine M, f(x) equals the number of accepting computation paths of M on input x minus the number of rejecting computation paths. Equivalently, GapL is the closure of the #L functions under subtraction.\n\nThe determinant of integer matrices is GapL-complete {ref:vin91} {ref:dam91} {ref:tod91}. See also the decision class {lang:DET}.",
         "related": [
             "#L",
             "GapP",
@@ -369,7 +369,7 @@
     {
         "name": "NPMV-sel",
         "type": "Function Problem",
-        "desc": "Has the same relation to NPMV as P-Sel does to P.",
+        "desc": "NPMV-Selective Sets. The class of function problems f ∈ NPMV for which there exists a polynomial-time computable selector: given any two inputs x, y, the selector outputs either x or y such that if one of f(x), f(y) is defined then the selected element's value is defined.\n\nThis is the NPMV analogue of {lang:P-Sel}: instead of a P selector distinguishing \"yes\" from \"no\" instances, we have a polynomial-time selector on nondeterministic multivalued functions.",
         "related": [
             "P",
             "P-Sel"
@@ -409,7 +409,7 @@
     {
         "name": "NPSV-sel",
         "type": "Function Problem",
-        "desc": "Has the same relation to NPSV as P-Sel does to P.",
+        "desc": "NPSV-Selective Sets. The class of single-valued functions f ∈ NPSV for which there exists a polynomial-time computable selector: given any two inputs x, y, the selector outputs either x or y such that if one of f(x), f(y) is defined, the selected element's value is defined.\n\nThe single-valued analogue of {lang:NPMV-sel}: the same selector condition but restricted to nondeterministic single-valued (NPSV) functions.",
         "related": [
             "P",
             "P-Sel"
@@ -987,7 +987,7 @@
     {
         "name": "BPE",
         "type": "Language",
-        "desc": "Has the same relation to E as BPP does to P.",
+        "desc": "Bounded-Error Probabilistic Exponential Time with Linear Exponent. The class of decision problems solvable by a probabilistic Turing machine in time 2^O(n) with error probability at most 1/3 on all inputs.\n\nEquivalently, a language L is in BPE if there is a deterministic Turing machine running in time 2^O(n) that, given an input x and a uniformly random string r of length 2^O(n), accepts with probability ≥ 2/3 if x ∈ L, and with probability ≤ 1/3 if x ∉ L.\n\nContains E, and is contained in EXP. BPP ⊆ BPE since polynomial time is bounded by 2^O(n).",
         "related": [
             "E",
             "EE",
@@ -998,7 +998,7 @@
     {
         "name": "BPEE",
         "type": "Language",
-        "desc": "Has the same relation to EE as BPP does to P.",
+        "desc": "Bounded-Error Probabilistic Double-Exponential Time with Linear Exponent. The class of decision problems solvable by a probabilistic Turing machine in time 2^(2^O(n)) with error probability at most 1/3 on all inputs.\n\nContains EE = DTIME(2^(2^O(n))), and is contained in EEXP.",
         "related": [
             "EE",
             "P"
@@ -1007,7 +1007,7 @@
     {
         "name": "BPL",
         "type": "Language",
-        "desc": "Bounded-Error Probabilistic Logspace. Has the same relation to L as BPP does to P. The machine uses logarithmic space and must halt on every input and every random tape setting. The random bits are read-once (one-way tape), unlike {lang:BP•L}.\n\nContained in {lang:SC} {ref:nis92}, {lang:PL}, BP•L, ZP•L {ref:nis93}, {lang:DET} {ref:coo85}, {lang:NC^2}, and P {ref:bcp83}.",
+        "desc": "Bounded-Error Probabilistic Logspace. The class of decision problems solvable by a probabilistic Turing machine using O(log n) space with error probability at most 1/3 on every input. The machine must halt on every input and every random tape setting. The random bits are read once (one-way tape), unlike {lang:BP•L}, which allows two-way access to randomness.\n\nContained in {lang:SC} {ref:nis92}, {lang:PL}, BP•L, ZP•L {ref:nis93}, {lang:DET} {ref:coo85}, {lang:NC^2}, and P {ref:bcp83}.",
         "related": [
             "ZPL",
             "RL",
@@ -1433,7 +1433,7 @@
     {
         "name": "C_eqL",
         "type": "Language",
-        "desc": "Exact-Counting Logspace. Has the same relation to L as {lang:C_eqP} does to P. The logspace analog of C_=P. (Usually written C_=L; we use C_eqL to avoid the = in filenames.)\n\nC_eqL^{C_eqL} = L^{C_eqL} {ref:abo99}.",
+        "desc": "Exact-Counting Logspace. Also written C_=L. The class of decision problems solvable by a nondeterministic logspace Turing machine such that the number of accepting computation paths exactly equals the number of rejecting computation paths, if and only if the answer is 'yes.'\n\nThis is the logspace analogue of {lang:C_eqP}: the same exact-counting acceptance condition but with a logspace rather than polynomial-time machine.\n\nC_eqL^{C_eqL} = L^{C_eqL} {ref:abo99}.",
         "related": [
             "L",
             "NL",
@@ -1820,7 +1820,7 @@
     {
         "name": "FNL",
         "type": "Language",
-        "desc": "Has the same relation to NL as FNP does to NP.",
+        "desc": "Function Nondeterministic Logspace. The class of function problems solvable by nondeterministic logspace computation: given an input x and a logspace-checkable predicate F(x,y), if there exists a y satisfying F(x,y) then output any such y, otherwise output 'no.'\n\nEquivalently, FNL is to {lang:NL} as {lang:FNP} is to NP: it is the function analogue of nondeterministic logspace, where the output (the witness y) has length polynomial in n and can be verified in logspace.\n\nContained in #L and contains {lang:UL}.",
         "related": [
             "#L",
             "NL",
@@ -1831,7 +1831,7 @@
     {
         "name": "FNL/poly",
         "type": "Language",
-        "desc": "Has the same relation to FNL as P/poly does to P.",
+        "desc": "Nonuniform FNL. The class of function problems solvable by an {lang:FNL} machine (nondeterministic logspace function computation) that additionally receives a polynomial-length classical advice string depending only on the input length.\n\nThe advice allows the machine to \"hard-code\" information about each input size, just as {lang:P/poly} extends P with nonuniform advice. Contained in #L/poly.",
         "related": [
             "#L/poly",
             "P",
@@ -2205,7 +2205,7 @@
     {
         "name": "LogFewNL",
         "type": "Language",
-        "desc": "Logspace-Bounded FewP. Same as {lang:FewP} but for logspace-bounded (NL) machines.\n\nDefined in {ref:bdh92}, where it was also shown that LogFewNL is contained in ModZ_kL for all k > 1.",
+        "desc": "Logspace-Bounded Few. The class of decision problems solvable by a nondeterministic logspace Turing machine such that: (1) if the answer is \"no,\" all computation paths reject; (2) if the answer is \"yes,\" the number of accepting paths is bounded by a polynomial in the input size.\n\nThis is the logspace analogue of {lang:FewP}: the same few-witnesses condition but with a logspace (NL) machine rather than a polynomial-time machine.\n\nDefined in {ref:bdh92}, where it was also shown that LogFewNL ⊆ ModZ_kL for all k > 1.",
         "related": [
             "FewP",
             "ModZ_kL",
@@ -2438,7 +2438,7 @@
         "name": "Mod_kL",
         "type": "Language",
         "concrete": false,
-        "desc": "Has the same relation to L as Mod_kP does to P.",
+        "desc": "Mod_k Logspace, parameterized by an integer k > 1. The class of decision problems solvable by a nondeterministic logspace Turing machine such that the number of accepting computation paths is divisible by k, if and only if the answer is \"no.\"\n\nThis is the logspace analogue of {lang:Mod_kP}: the same modular-counting acceptance condition but with a logspace rather than polynomial-time machine. Contains {lang:SL} for every prime k {ref:kw93}.",
         "related": [
             "L",
             "LogFew",
@@ -2534,7 +2534,7 @@
     {
         "name": "NE",
         "type": "Language",
-        "desc": "Nondeterministic exponential time with linear exponent (i.e.",
+        "desc": "Nondeterministic exponential time with linear exponent (i.e. NTIME(2^O(n))). The nondeterministic analogue of {lang:E}.\n\nContains NP (since polynomial time is bounded by 2^O(n)), and is contained in NEXP.",
         "related": [
             "MIP",
             "P"
@@ -2780,7 +2780,7 @@
     {
         "name": "NPMV_t-sel",
         "type": "Language",
-        "desc": "Has the same relation to NPMV_t as P-Sel does to P.",
+        "desc": "NPMV_t-Selective Sets. The class of total nondeterministic multivalued functions f ∈ NPMV_t (defined on every input) for which there exists a polynomial-time computable selector: given any two inputs x, y, the selector outputs either x or y and the selected element's image under f is nonempty.\n\nThe total-function analogue of {lang:NPMV-sel}: the same selector condition but restricted to total NPMV functions (where a value always exists).",
         "related": [
             "P",
             "P-Sel"
@@ -2798,7 +2798,7 @@
     {
         "name": "NPSV_t-sel",
         "type": "Language",
-        "desc": "Has the same relation to NPSV_t as P-Sel does to P.",
+        "desc": "NPSV_t-Selective Sets. The class of total single-valued nondeterministic functions f ∈ NPSV_t (defined and single-valued on every input) for which there exists a polynomial-time computable selector: given any two inputs x, y, the selector outputs either x or y such that the selected element maps to a value under f.\n\nThe total-single-valued analogue of {lang:NPMV_t-sel}.",
         "related": [
             "P",
             "P-Sel"
@@ -2980,7 +2980,7 @@
     {
         "name": "P-Sel",
         "type": "Language",
-        "desc": "The class of decision problems for which there's a polynomial-time algorithm with the following property.",
+        "desc": "The class of decision problems for which there's a polynomial-time algorithm with the following property: whenever given two instances, one a \"yes\" instance and one a \"no\" instance, the algorithm can always correctly identify which is the \"yes\" instance. (It acts as a \"selector\" between two candidates.)\n\nDefined in {ref:sel79}, where it was also shown that if NP ⊆ P-Sel then P = NP.\n\nThere exist P-selective sets that are not recursive (i.e. not in R).",
         "related": [
             "NP",
             "R"
@@ -3061,7 +3061,7 @@
         "name": "PF",
         "type": "Language",
         "concrete": false,
-        "desc": "----"
+        "desc": "Alternate name for {lang:FP} (Function Polynomial-time), the class of functions computable in deterministic polynomial time. See {lang:FP} for the definition."
     },
     {
         "name": "PFCHK(t(n))",
@@ -3123,7 +3123,7 @@
         "name": "PLF",
         "type": "Language",
         "concrete": false,
-        "desc": "Defined in {ref:pap90}."
+        "desc": "Polynomial Leaf. Defined in {ref:pap90}. Believed to equal {lang:PPA}, the class of total function problems whose solution is guaranteed by a parity argument on a graph where every vertex has degree at most 2 (i.e., the existence of a second leaf whenever one leaf is given)."
     },
     {
         "name": "PLL",
@@ -3225,7 +3225,7 @@
         "name": "PSK",
         "type": "Language",
         "concrete": false,
-        "desc": "Yeah, I'm told that's what the S and K stand for."
+        "desc": "Polynomial Sink. (The S and K stand for \"Source\" and \"Sink.\") The class of total function problems of the following form: given a directed graph in which every vertex has in-degree and out-degree at most 1, and given a distinguished source vertex, find a sink (a vertex with out-degree 0).\n\nDefined in {ref:pap90}. Equals {lang:PPADS}."
     },
     {
         "name": "PSPACE",
@@ -3251,7 +3251,7 @@
         "name": "PTAPE",
         "type": "Language",
         "concrete": false,
-        "desc": "----"
+        "desc": "Archaic name for {lang:PSPACE}. No longer in common use; PSPACE is the standard name for the class of languages decidable by a deterministic Turing machine in polynomial space."
     },
     {
         "name": "PT_1",
@@ -3445,7 +3445,7 @@
     {
         "name": "⊕L/poly",
         "type": "Language",
-        "desc": "Nonuniform ⊕L. Has the same relation to ⊕L as P/poly does to P.",
+        "desc": "Nonuniform ⊕L. The class of decision problems solvable by a {lang:⊕L} machine (parity logspace — answering \"yes\" iff the number of accepting paths of a nondeterministic logspace machine is odd) that additionally receives a polynomial-length classical advice string depending only on the input length.",
         "related": [
             "NL/poly",
             "P",
@@ -4797,7 +4797,7 @@
     {
         "name": "UE",
         "type": "Language",
-        "desc": "Has the same relation to E as UP does to P.",
+        "desc": "Unambiguous Exponential Time with Linear Exponent. The class of decision problems solvable by a nondeterministic Turing machine in time 2^O(n) such that:\n1. If the answer is \"yes,\" exactly one computation path accepts.\n2. If the answer is \"no,\" all computation paths reject.\n\nContains E (every deterministic computation has exactly one path), and is contained in NE. The unambiguity condition restricts the nondeterminism to \"unique witnesses,\" just as UP does for polynomial time.",
         "related": [
             "E",
             "P"
@@ -4806,7 +4806,7 @@
     {
         "name": "UL",
         "type": "Language",
-        "desc": "Has the same relation to L as UP does to P.",
+        "desc": "Unambiguous Logspace. The class of decision problems solvable by a nondeterministic Turing machine using O(log n) space such that:\n1. If the answer is \"yes,\" there is exactly one accepting computation path.\n2. If the answer is \"no,\" there are no accepting computation paths.\n\nThis is the logspace analogue of {lang:UP}: the nondeterminism is \"unambiguous\" in the sense of unique witnesses. Contained in {lang:NL} and contains {lang:L}.",
         "related": [
             "#L",
             "FNL",
@@ -4818,7 +4818,7 @@
     {
         "name": "UL/poly",
         "type": "Language",
-        "desc": "Has the same relation to UL as P/poly does to P.",
+        "desc": "Nonuniform UL. The class of decision problems solvable by a {lang:UL} machine (unambiguous nondeterministic logspace) that additionally receives a polynomial-length classical advice string depending only on the input length.\n\nContained in {lang:NL/poly}.",
         "related": [
             "BQP/mpoly",
             "NL/poly",
@@ -4940,7 +4940,7 @@
     {
         "name": "YP",
         "type": "Language",
-        "desc": "The class of decision problems for which there exists a polynomial-time machine M such that:",
+        "desc": "The class of decision problems for which there exists a polynomial-time machine M such that:\n1. For all input sizes n, there exists a polynomial-size advice string s_n such that M(x, s_n) outputs the correct answer for all inputs x of size n.\n2. For all inputs x and advice strings s, M(x, s) outputs either the correct answer or \"I don't know.\"\n\nThe name stands for \"Your Polynomial-time\" or \"Yaroslav-Percival.\" Defined in a blog post by Scott Aaronson.\n\nContains {lang:ZPP} (by the same argument placing BPP in P/poly) and P with a TALLY ∩ NP ∩ coNP oracle. Contained in NP ∩ coNP and {lang:YPP}. Equals ONP ∩ coONP.",
         "related": [
             "BPP",
             "NP",
@@ -4975,7 +4975,7 @@
     {
         "name": "YQP",
         "type": "Language",
-        "desc": "Is to YPP as BQP is to BPP, and QMA is to MA.",
+        "desc": "Yaroslav BQP. The quantum analogue of {lang:YPP}: the class of decision problems for which there exists a polynomial-time quantum machine M such that:\n1. For all input sizes n, there exists a polynomial-size quantum advice state |ψ_n⟩ such that M(x, |ψ_n⟩) outputs the correct answer with probability ≥ 2/3 for all inputs x of size n.\n2. For all inputs x and quantum advice states |ψ⟩, the probability that M(x, |ψ⟩) outputs the incorrect answer is at most 1/3 (it may output \"I don't know\").\n\nContains {lang:BQP} and {lang:YPP}, and is contained in QMA and P/poly {ref:ad14}.",
         "related": [
             "BPP",
             "BQP",
@@ -4990,7 +4990,7 @@
     {
         "name": "YQP*",
         "type": "Language",
-        "desc": "Is to YQP as YP* is to YP {ref:ad14}.",
+        "desc": "{lang:YQP} except the quantum advice state |ψ_n⟩ can be verified — in the sense that its validity can be confirmed by a quantum polynomial-time procedure — without needing any specific input x {ref:ad14}.",
         "related": [
             "APP",
             "PP",
@@ -5000,7 +5000,7 @@
     {
         "name": "YQP*/poly",
         "type": "Language",
-        "desc": "Equal to BQP/qpoly {ref:ad14}.",
+        "desc": "The nonuniform version of {lang:YQP*}: {lang:YQP*} augmented with a polynomial-size quantum advice state that can be verified without needing the specific input.\n\nEqual to {lang:BQP/qpoly} {ref:ad14}.",
         "related": [
             "BQP/qpoly"
         ],
@@ -5162,7 +5162,7 @@
         "name": "coMod_kP",
         "type": "Language",
         "concrete": false,
-        "desc": "----",
+        "desc": "Complement of {lang:Mod_kP}, parameterized by an integer k > 1. A language L is in coMod_kP if and only if its complement L̄ is in Mod_kP.\n\nEquivalently, L ∈ coMod_kP if there is a nondeterministic polynomial-time machine such that the number of accepting paths is divisible by k if and only if the answer is \"yes.\" (For Mod_kP the divisibility-by-k condition signals \"no\"; for coMod_kP it signals \"yes.\")",
         "properties": [
             "complement"
         ]
@@ -5170,7 +5170,7 @@
     {
         "name": "coNE",
         "type": "Language",
-        "desc": "----",
+        "desc": "Complement of {lang:NE}. A language L is in coNE if and only if its complement L̄ is in NE, i.e., NE = NTIME(2^O(n)). Equivalently, coNE is the class of languages whose \"no\" instances can be verified in nondeterministic exponential time with linear exponent.\n\ncoNE is contained in NEEXP and contains coE. By padding arguments, the question of whether NE = coNE is related to (but not equivalent to) NP = coNP.",
         "properties": [
             "complement"
         ]
@@ -5315,7 +5315,7 @@
     {
         "name": "coSL",
         "type": "Language",
-        "desc": "----",
+        "desc": "Complement of {lang:SL}. A language L is in coSL if and only if its complement L̄ is in SL.\n\nSince SL = coSL {ref:nt95} (the symmetric logspace hierarchy collapses), and furthermore SL = L {ref:rei04} (Reingold's theorem), coSL = L as well. This entry is kept for historical completeness.",
         "properties": [
             "complement"
         ]
@@ -5332,7 +5332,7 @@
     {
         "name": "coUCC",
         "type": "Language",
-        "desc": "{ref:tor00} showed the following problem complete for coUCC under L reductions:",
+        "desc": "Complement of UCC (Unique Connected Component). A language is in coUCC if and only if its complement is in UCC, which is the class of problems reducible in L to deciding whether an undirected graph has a unique connected component.\n\nThe following problem is complete for coUCC under L-reductions {ref:tor00}: given a colored graph G in which at most two vertices share any given color, does G have any nontrivial automorphism?\n\nSince UCC = L {ref:rei04}, and L is closed under complement (a deterministic machine can just flip accept/reject states), coUCC = L as well.",
         "related": [
             "L"
         ],
@@ -5343,7 +5343,7 @@
     {
         "name": "coUP",
         "type": "Language",
-        "desc": "----",
+        "desc": "Complement of {lang:UP}. A language L is in coUP if and only if its complement L̄ is in UP. Equivalently, there exists a nondeterministic polynomial-time machine such that:\n1. If x ∉ L (the \"no\" case for L), exactly one computation path accepts.\n2. If x ∈ L (the \"yes\" case for L), all computation paths reject.\n\nThe name \"coUP\" reflects this: UP enforces uniqueness of accepting witnesses for \"yes\" instances; coUP enforces uniqueness of rejecting witnesses (equivalently, accepting witnesses on the complement) for \"no\" instances.\n\nContains {lang:coRP} and is contained in {lang:coNP}. Contains P. Known to equal UP relative to a random oracle.\n\nOne-way permutations exist (in the worst-case sense) if and only if P ≠ UP ∩ coUP {ref:ht03}.",
         "properties": [
             "complement"
         ]
@@ -5351,7 +5351,7 @@
     {
         "name": "cofrIP",
         "type": "Language",
-        "desc": "----",
+        "desc": "Complement of {lang:frIP}. A language L is in cofrIP if and only if its complement L̄ is in frIP.\n\nSince frIP has a function-restriction condition on the verifier's oracle, cofrIP corresponds to problems whose complement has a decider of that form. Contained in MIP = NEXP.",
         "properties": [
             "protocol"
         ]

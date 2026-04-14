@@ -8,4 +8,6 @@ related:
 properties:
   - nonuniform
 ---
-Has the same relation to UL as P/poly does to P.
+Nonuniform UL. The class of decision problems solvable by a {lang:UL} machine (unambiguous nondeterministic logspace) that additionally receives a polynomial-length classical advice string depending only on the input length.
+
+Contained in {lang:NL/poly}.
