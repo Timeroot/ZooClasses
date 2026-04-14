@@ -26,8 +26,14 @@ function createLinkList(container, items, urlGenerator) {
 // ── Poset computation from theorems ─────────────────────────────────────
 
 // When multiple classes are equal, prefer these as the canonical representative.
+// Must be kept in sync with _EXPECTED_EQUALITIES in generate_json.py.
 const CANONICAL_FORMS = [
-    "PSPACE","BPP","NC","L","NL","NLINSPACE","NC^0","QAC","RE","NEXP","SAC^1","coNQP"
+    // First group: initial legacy list
+    "PSPACE", "BPP", "NC", "L", "NL", "NLINSPACE", "NC^0", "QAC", "RE", "NEXP", "SAC^1", "C_eqP",
+    // Additional known equalities / alternate names
+    "P", "NC^1", "EXP", "NEEXP", "PP", "S_2P", "Δ_2P", "P^#P", "P^||NP",
+    "AM", "QMA", "SZK", "BH", "NL/poly", "PH", "PAC^0", "RP", "NNLT", "NMCL",
+    "mP", "QNC^0", "A_0PP", "BQP/qpoly",
 ];
 
 const RELATION_RE = /[\u2282\u2286\u2283\u2287\u2288\u2289\u228A\u2260=]/;
