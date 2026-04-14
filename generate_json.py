@@ -435,10 +435,60 @@ _HASSE_REL_RE     = re.compile(r'[\u2282\u2286\u2283\u2287\u2288\u2289\u228A\u22
 # Unicode subset/superset symbols only (no =) — used to avoid = in class names confusing the parser
 _HASSE_UNICODE_RE = re.compile(r'[\u2282\u2286\u2283\u2287\u2288\u2289\u228A]')
 
-_CANONICAL_FORMS = frozenset([
-    "PSPACE", "BPP", "NC", "L", "NL", "NLINSPACE",
-    "NC^0", "QAC", "RE", "NEXP", "SAC^1", "coNQP",
-])
+# Each entry: (canonical_name, frozenset_of_all_known_equal_classes).
+# The canonical name is the preferred representative for that equivalence class.
+# These equalities are *asserted* to hold; generate_json will:
+#   (a) warn for any expected equality that is not yet provable in the Hasse, and
+#   (b) warn for any *unexpected* equality it finds (i.e. a computed equivalence
+#       class with more than one member that is not a subset of any expected group).
+_EXPECTED_EQUALITIES: list[tuple[str, frozenset]] = [
+    # User-specified canonical equalities
+    ("RE",        frozenset(["RE",        "MIP*",    "QMIP"])),
+    ("NEXP",      frozenset(["NEXP",      "MIP",     "IOP",    "QMIP_ne"])),
+    ("PSPACE",    frozenset(["PSPACE",    "AP",      "IP",     "NPSPACE", "QIP",
+                              "BQPSPACE", "PPSPACE",  "BQP_CTC", "P_CTC",
+                              "MIP^ns",   "SAPTIME",  "SQG",
+                              "RG(2)",    "QRG(2)"])),
+    ("C_eqP",     frozenset(["C_eqP",     "coNQP"])),
+    ("BPP",       frozenset(["BPP",       "FH^1",    "AVBPP",  "δ-BPP"])),
+    ("QAC",       frozenset(["QAC",       "QNC",     "BQNC"])),
+    ("NC",        frozenset(["NC",        "AC",      "TC",     "SAC"])),
+    ("NLINSPACE", frozenset(["NLINSPACE", "CSL"])),
+    ("NL",        frozenset(["NL",        "coNL"])),
+    ("L",         frozenset(["L",         "SL",      "coSL"])),
+    ("SAC^1",     frozenset(["SAC^1",     "LOGCFL",  "NAuxPDA^p"])),
+    ("NC^0",      frozenset(["NC^0",      "RNC^0",   "LC^0",   "WLC0"])),
+    # Additional known equalities / alternate names
+    ("P",         frozenset(["P",         "AL",      "AuxPDA"])),
+    ("NC^1",      frozenset(["NC^1",      "ALOGTIME", "LH"])),
+    ("EXP",       frozenset(["EXP",       "APSPACE", "RG",     "QRG"])),
+    ("NEEXP",     frozenset(["NEEXP",     "MIP_EXP"])),
+    ("PP",        frozenset(["PP",        "PostBQP", "PQP"])),
+    ("S_2P",      frozenset(["S_2P",      "Φ_2P"])),
+    ("Δ_2P",      frozenset(["Δ_2P",      "P^NP"])),
+    ("P^#P",      frozenset(["P^#P",      "P^PP"])),
+    ("P^||NP",    frozenset(["P^||NP",    "P^NP[log]", "P^NP[log^2]"])),
+    ("AM",        frozenset(["AM",        "BP•NP"])),
+    ("QMA",       frozenset(["QMA",       "BQNP"])),
+    ("SZK",       frozenset(["SZK",       "HVSZK",   "SZK_h"])),
+    ("BH",        frozenset(["BH",        "QH"])),
+    ("NL/poly",   frozenset(["NL/poly",   "UL/poly"])),
+    ("PH",        frozenset(["PH",        "SO"])),
+    ("PAC^0",     frozenset(["PAC^0",     "TC^0"])),
+    ("RP",        frozenset(["RP",        "δ-RP"])),
+    ("NNLT",      frozenset(["NNLT",      "NQL",     "S^≠"])),
+    ("NMCL",      frozenset(["NMCL",      "QRL"])),
+    ("mP",        frozenset(["mP",        "mAL"])),
+    ("QNC^0",     frozenset(["QNC^0",     "QNC_f^0"])),
+    ("A_0PP",     frozenset(["A_0PP",     "SBQP"])),
+    ("BQP/qpoly", frozenset(["BQP/qpoly", "YQP*/poly"])),
+]
+
+# Reverse lookup: class name → its canonical representative.
+_CANONICAL_FROM_EXPECTED: dict[str, str] = {}
+for _canon, _members in _EXPECTED_EQUALITIES:
+    for _m in _members:
+        _CANONICAL_FROM_EXPECTED[_m] = _canon
 
 
 def _parse_inclusion_edges(theorems_data, class_names):
@@ -527,7 +577,21 @@ def analyse_hasse(classes_data, theorems_data, class_type='Language'):
             continue
         eq_class = [n for n in class_names
                     if name in reachable[n] and n in reachable[name]]
-        canon = next((n for n in eq_class if n in _CANONICAL_FORMS), None)
+        # Choose canonical: prefer the expected canonical if any member is known.
+        canon = next(
+            (_CANONICAL_FROM_EXPECTED[n] for n in eq_class
+             if n in _CANONICAL_FROM_EXPECTED
+             and _CANONICAL_FROM_EXPECTED[n] in eq_class),
+            None,
+        )
+        # Fallback: any expected canonical that appears in this eq_class.
+        if not canon:
+            canon = next(
+                (_CANONICAL_FROM_EXPECTED[n] for n in eq_class
+                 if n in _CANONICAL_FROM_EXPECTED),
+                None,
+            )
+        # Last resort: lexicographic minimum.
         if not canon:
             canon = min(eq_class)
         for member in eq_class:
@@ -625,6 +689,59 @@ def analyse_hasse(classes_data, theorems_data, class_type='Language'):
         print(f"\n  {len(top_classes)} top classes (just below ALL — add upper bounds):")
         for name in top_classes:
             print(f"    {name}")
+
+    # ── Equality checks ───────────────────────────────────────────────────
+
+    # Build a set of frozensets from the expected equalities, filtering to
+    # only members actually present in this Hasse (some classes may live in
+    # a different type folder and won't appear here).
+    expected_groups = []
+    for canon, members in _EXPECTED_EQUALITIES:
+        present = members & class_names
+        if len(present) < 2:
+            continue   # nothing to verify if fewer than 2 members are in this Hasse
+        expected_groups.append((canon, present))
+
+    # (a) Check each expected equality group is actually provable.
+    missing_equalities = []
+    for canon, present in expected_groups:
+        proven_eq = {m for m in present
+                     if canon_rep.get(m) == canon_rep.get(canon, canon)}
+        not_yet = present - proven_eq
+        if not_yet:
+            missing_equalities.append((canon, present, not_yet))
+
+    if missing_equalities:
+        print(f"\n  {len(missing_equalities)} expected equality group(s) not yet fully proven:")
+        for canon, present, not_yet in missing_equalities:
+            have = sorted(present - not_yet)
+            need = sorted(not_yet)
+            print(f"    {canon}: proven {{{', '.join(have)}}}, "
+                  f"missing proof for {{{', '.join(need)}}}")
+    else:
+        n_expected = sum(len(p) for _, p in expected_groups)
+        print(f"\n  All {len(expected_groups)} expected equality group(s) "
+              f"({n_expected} classes) proven ✓")
+
+    # (b) Warn about unexpected equalities.
+    # An equivalence class is "expected" if it is a subset of some expected group.
+    all_expected_members = set().union(*(m for _, m in _EXPECTED_EQUALITIES))
+    unexpected = []
+    for canon, members in equiv_members.items():
+        if len(members) < 2:
+            continue
+        member_set = frozenset(members)
+        # Is this a subset of any expected group?
+        is_expected = any(member_set <= exp_members
+                         for _, exp_members in _EXPECTED_EQUALITIES)
+        if not is_expected:
+            unexpected.append(sorted(members))
+
+    if unexpected:
+        print(f"\n  WARNING: {len(unexpected)} unexpected equality class(es) found "
+              f"— check for erroneous theorems:")
+        for group in sorted(unexpected):
+            print(f"    {{ {', '.join(group)} }}")
 
 
 # ── Copy static JSON ─────────────────────────────────────────────────────

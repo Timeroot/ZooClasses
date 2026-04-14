@@ -19,4 +19,4 @@ The definition is symmetric: the prover and disprover submit simultaneous moves 
 
 Defined independently in {ref:rs98} and {ref:can96}. Contains {lang:MA} and Δ_2P {ref:rs98}. Contained in ZPP^NP {ref:cai01}.
 
-Φ_2P = S_2P (alternate definition) {ref:can96}. Also written symP. If NP ⊆ P/poly then PH = S_2P (Sengupta; see {ref:cai01}), and even PH = O_2P {ref:cr06}.
+Φ_2P = S_2P (alternate definition) {ref:can96}. Sometimes written "symP" in the literature (an alternate name, not a distinct definition). If NP ⊆ P/poly then PH = S_2P (Sengupta; see {ref:cai01}), and even PH = O_2P {ref:cr06}.

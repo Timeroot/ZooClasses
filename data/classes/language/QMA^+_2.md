@@ -1,7 +1,10 @@
 ---
 name: QMA^+(2)
+concrete: false
 properties:
   - quantum
   - protocol
 ---
-Same as QMA(2), except now *each* witness must contain a state with non-negative amplitudes in the computational basis.
+The two-prover variant of QMA^+: same as QMA(2), except each witness must be a state with non-negative real amplitudes in the standard basis. The relationship to QMA(2) is not well understood and may depend on the completeness/soundness gap.
+
+Not concrete: the equivalence of different completeness/soundness gap parameters is not known, so this is a family of classes parameterized by the gap, not a single well-defined class.

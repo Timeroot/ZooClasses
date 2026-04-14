@@ -184,11 +184,6 @@
         "impliedby": "AC^i⊆NC^{i+1}"
     },
     {
-        "name": "AC^1⊆⊕SAC^1",
-        "content": "AC^1⊆⊕SAC^1",
-        "ref": "AC^1 ⊆ ⊕SAC^1."
-    },
-    {
         "name": "AC^i⊆AC^{i+1}⊆AC",
         "content": "{i}AC^i⊆AC^(i+1)⊆AC",
         "impliedby": "ObviousConstruction"
@@ -299,11 +294,6 @@
         "name": "AM⊆Π_2P",
         "content": "AM⊆Π_2P",
         "notes": "Can't find a reference for this but also not obvious to me. (Maybe it should be obvious?)"
-    },
-    {
-        "name": "AM⊆∃BPP",
-        "content": "AM⊆∃BPP",
-        "ref": "∃BPP = AM."
     },
     {
         "name": "AP=PSPACE",
@@ -1076,11 +1066,6 @@
         "ref": "CFL ⊆ QCFL: quantum context-free automata can recognize all classical CFL languages."
     },
     {
-        "name": "CFL⊆VPL",
-        "content": "CFL⊆VPL",
-        "ref": "CFL ⊆ VPL: context-free ⊆ visibly pushdown languages."
-    },
-    {
         "name": "CH⊆ALL",
         "content": "CH⊆ALL",
         "ref": "ALL is the class of all languages, trivially containing every complexity class."
@@ -1814,16 +1799,6 @@
         "ref": "FP^NP[log] ⊆ P^NP[log] (functional ⊆ decision)."
     },
     {
-        "name": "FQMA⊆ALL",
-        "content": "FQMA⊆ALL",
-        "ref": "ALL is the class of all languages, trivially containing every complexity class."
-    },
-    {
-        "name": "FQMA⊆QMA",
-        "content": "FQMA⊆QMA",
-        "ref": "FQMA (functional QMA) ⊆ QMA."
-    },
-    {
         "name": "FewP⊆APP",
         "content": "FewP⊆APP",
         "ref": "{ref:li93}"
@@ -2339,11 +2314,6 @@
         "name": "MA'⊆MA",
         "content": "MA'⊆MA",
         "ref": "MA' ⊆ MA (variant of MA)."
-    },
-    {
-        "name": "MAC^0⊆AC^0",
-        "content": "MAC^0⊆AC^0",
-        "ref": "MAC^0 ⊆ AC^0: monotone AC^0 ⊆ AC^0."
     },
     {
         "name": "MAC^0⊆ALL",
@@ -3682,11 +3652,6 @@
         "ref": "NONE is the empty language, trivially contained in every complexity class."
     },
     {
-        "name": "NONE⊆FQMA",
-        "content": "NONE⊆FQMA",
-        "ref": "NONE is the empty language, trivially contained in every complexity class."
-    },
-    {
         "name": "NONE⊆GA",
         "content": "NONE⊆GA",
         "ref": "NONE is the empty language, trivially contained in every complexity class."
@@ -4492,11 +4457,6 @@
         "ref": "NONE is the empty language, trivially contained in every complexity class."
     },
     {
-        "name": "NONE⊆QMA-plus",
-        "content": "NONE⊆QMA-plus",
-        "ref": "NONE is the empty language, trivially contained in every complexity class."
-    },
-    {
         "name": "NONE⊆QMA",
         "content": "NONE⊆QMA",
         "ref": "NONE is the empty language, trivially contained in every complexity class."
@@ -5243,11 +5203,6 @@
         "ref": "NONE is the empty language, trivially contained in every complexity class."
     },
     {
-        "name": "NONE⊆symP",
-        "content": "NONE⊆symP",
-        "ref": "NONE is the empty language, trivially contained in every complexity class."
-    },
-    {
         "name": "NONE⊆Δ_2P",
         "content": "NONE⊆Δ_2P",
         "ref": "NONE is the empty language, trivially contained in every complexity class."
@@ -5949,11 +5904,6 @@
         "ref": "ALL is the class of all languages, trivially containing every complexity class."
     },
     {
-        "name": "PP⊆AWPP",
-        "content": "PP⊆AWPP",
-        "ref": "PP ⊆ AWPP: PP is contained in Almost Wide PP (AWPP) by the definition of AWPP."
-    },
-    {
         "name": "PP⊆CH",
         "content": "PP⊆CH",
         "ref": "The {lang:CH} hierarchy is built by taking {lang:P} and repeatedly giving {lang:PP} oracles, so {lang:PP} is the first level.",
@@ -5968,11 +5918,6 @@
         "name": "PP⊆PP/poly",
         "content": "PP⊆PP/poly",
         "ref": "Any language in X can be decided with polynomial advice by ignoring the advice."
-    },
-    {
-        "name": "PP⊆PostBPP",
-        "content": "PP⊆PostBPP",
-        "ref": "PP ⊆ PostBPP = PP."
     },
     {
         "name": "PQP=PP",
@@ -6075,19 +6020,9 @@
         "ref": "PSPACE ⊆ QPSPACE since poly ≤ 2^{polylog}."
     },
     {
-        "name": "PSPACE⊆QRG(1)",
-        "content": "PSPACE⊆QRG(1)",
-        "ref": "QRG(1) = PSPACE: one-round quantum refereed games also characterize PSPACE."
-    },
-    {
         "name": "PSPACE⊆QRG(2)",
         "content": "PSPACE⊆QRG(2)",
         "ref": "QRG(2) = PSPACE: two-round quantum refereed games characterize PSPACE."
-    },
-    {
-        "name": "PSPACE⊆RG(1)",
-        "content": "PSPACE⊆RG(1)",
-        "ref": "RG(1) = PSPACE: one-round refereed games (with one message from each prover) characterize PSPACE (Feige-Killian 1997 style results)."
     },
     {
         "name": "PSPACE⊆RG(2)",
@@ -6157,11 +6092,6 @@
         "name": "P^K⊆ALL",
         "content": "P^K⊆ALL",
         "ref": "ALL is the class of all languages, trivially containing every complexity class."
-    },
-    {
-        "name": "P^K⊆P^NP",
-        "content": "P^K⊆P^NP",
-        "ref": "P^K ⊆ P^NP (if K is an NP-complete set)."
     },
     {
         "name": "P^NP[k]⊆ALL",
@@ -6921,26 +6851,6 @@
         "ref": "QMA(2) ⊆ NEXP: 2-prover QMA can be checked in nondeterministic exp time."
     },
     {
-        "name": "QMA-plus⊆ALL",
-        "content": "QMA-plus⊆ALL",
-        "ref": "ALL is the class of all languages, trivially containing every complexity class."
-    },
-    {
-        "name": "QMA-plus⊆PP",
-        "content": "QMA-plus⊆PP",
-        "ref": "QMA-plus ⊆ PP: the extra observable-query power does not exceed PP by an argument based on semidefinite programming simulation."
-    },
-    {
-        "name": "QMA-plus⊆PSPACE",
-        "content": "QMA-plus⊆PSPACE",
-        "ref": "QMA-plus ⊆ PSPACE."
-    },
-    {
-        "name": "QMA-plus⊆QMA",
-        "content": "QMA-plus⊆QMA",
-        "ref": "QMA-plus ⊆ QMA: QMA with extra structure is still in QMA."
-    },
-    {
         "name": "QMAM⊆ALL",
         "content": "QMAM⊆ALL",
         "ref": "ALL is the class of all languages, trivially containing every complexity class."
@@ -7027,11 +6937,6 @@
         "ref": "QMA = BQNP (bounded-error quantum NP) by convention."
     },
     {
-        "name": "QMA⊆FQMA",
-        "content": "QMA⊆FQMA",
-        "ref": "QMA ⊆ FQMA: any QMA decision problem can be viewed as a FQMA search problem (find a witness that satisfies the verifier)."
-    },
-    {
         "name": "QMA⊆PP",
         "content": "QMA⊆PP",
         "ref": "C. Marriott and J. Watrous. Quantum Arthur-Merlin Games, Computational Complexity, 14(2):122-152, 2005. doi:10.1007/s00037-005-0194-x.\n [MW05] at https://complexityzoo.net/Complexity_Zoo_References#mw05",
@@ -7057,11 +6962,6 @@
         "name": "QMA⊆QMA(2)",
         "content": "QMA⊆QMA(2)",
         "ref": "QMA ⊆ QMA(2): a single-prover QMA protocol can be simulated with two provers (let one prover send a dummy witness)."
-    },
-    {
-        "name": "QMA⊆QMA-plus",
-        "content": "QMA⊆QMA-plus",
-        "ref": "QMA ⊆ QMA-plus: QMA-plus has a more powerful verifier that can directly obtain observable probabilities, so any QMA protocol is also a QMA-plus protocol."
     },
     {
         "name": "QMA⊆QMA/qpoly",
@@ -7426,6 +7326,11 @@
         "ref": "REG ⊆ TREE-REGULAR: string languages (REG) are a special case of tree languages (strings are degenerate path-trees), so REG ⊆ TREE-REGULAR."
     },
     {
+        "name": "REG⊆VPL",
+        "content": "REG⊆VPL",
+        "ref": "REG ⊆ VPL: every regular language is visibly pushdown (use an empty stack alphabet; the pushdown machine never pushes or pops)."
+    },
+    {
         "name": "RE⊆AH",
         "content": "RE⊆AH",
         "ref": "RE = Σ_1 is the first level of the arithmetic hierarchy."
@@ -7494,11 +7399,6 @@
         "name": "RL⊆NL",
         "content": "RL⊆NL",
         "impliedby": "ObviousConstruction"
-    },
-    {
-        "name": "RL⊆R_HL",
-        "content": "RL⊆R_HL",
-        "ref": "R_HL = RL: R_HL has the same relation to L as RP does to P, which is exactly RL (randomized logspace = one-sided error logspace)."
     },
     {
         "name": "RL⊆SC",
@@ -7609,12 +7509,12 @@
     {
         "name": "R_HL⊆NL",
         "content": "R_HL⊆NL",
-        "ref": "R_HL has the same relation to L as RP does to P; by analogy, R_HL ⊆ NL."
+        "ref": "R_HL ⊆ RL ⊆ NL: R_HL ⊆ RL by the halting condition, and RL ⊆ NL by standard simulation."
     },
     {
         "name": "R_HL⊆RL",
         "content": "R_HL⊆RL",
-        "ref": "R_HL = RL: R_HL has the same relation to L as RP does to P, which is exactly RL (randomized logspace = one-sided error logspace)."
+        "ref": "R_HL ⊆ RL: R_HL machines must halt on every random tape, while RL only requires halting with probability 1; every R_HL computation is therefore a valid RL computation."
     },
     {
         "name": "R⊆AH",
@@ -8020,11 +7920,6 @@
         "ref": "S_2P ⊆ S_2E: S_2E relaxes S_2P by allowing the predicate to be exponential-time instead of polynomial-time, so every S_2P problem is also in S_2E."
     },
     {
-        "name": "S_2P⊆symP",
-        "content": "S_2P⊆symP",
-        "ref": "symP is an alternate name for S_2P."
-    },
-    {
         "name": "S_2P⊆Φ_2P",
         "content": "S_2P⊆Φ_2P",
         "ref": "S_2P ⊆ Φ_2P: Φ_2P is an alternative definition of the second level of the symmetric hierarchy; S_2P (which uses both ∃∀ and ∀∃ conditions) ⊆ Φ_2P."
@@ -8337,6 +8232,11 @@
         "ref": "VPL ⊆ CFL: visibly pushdown ⊆ context-free languages."
     },
     {
+        "name": "VPL⊆DCFL",
+        "content": "VPL⊆DCFL",
+        "ref": "VPL ⊆ DCFL: every visibly pushdown language is deterministic context-free, since the visible push/pop structure allows deterministic parsing [AM04]."
+    },
+    {
         "name": "WAPP⊆AWPP",
         "content": "WAPP⊆AWPP",
         "ref": "{ref:bgm02}"
@@ -8540,19 +8440,9 @@
         "ref": "ALL is the class of all languages, trivially containing every complexity class."
     },
     {
-        "name": "YP*⊆P",
-        "content": "YP*⊆P",
-        "ref": "YP* ⊆ P."
-    },
-    {
         "name": "YP⊆ALL",
         "content": "YP⊆ALL",
         "ref": "ALL is the class of all languages, trivially containing every complexity class."
-    },
-    {
-        "name": "YP⊆P",
-        "content": "YP⊆P",
-        "ref": "YP (YP = P for problems with a unique accepting path) ⊆ P."
     },
     {
         "name": "YP⊆YP*",
@@ -8580,19 +8470,9 @@
         "ref": "ALL is the class of all languages, trivially containing every complexity class."
     },
     {
-        "name": "YQP*⊆BQP",
-        "content": "YQP*⊆BQP",
-        "ref": "YQP* ⊆ BQP."
-    },
-    {
         "name": "YQP⊆ALL",
         "content": "YQP⊆ALL",
         "ref": "ALL is the class of all languages, trivially containing every complexity class."
-    },
-    {
-        "name": "YQP⊆BQP",
-        "content": "YQP⊆BQP",
-        "ref": "YQP (Y-quantum-P) ⊆ BQP."
     },
     {
         "name": "YQP⊆QMA",
@@ -9063,11 +8943,6 @@
         "ref": "ALL is the class of all languages, trivially containing every complexity class."
     },
     {
-        "name": "cq-Σ_2⊆Sigma_2P",
-        "content": "cq-Σ_2⊆Sigma_2P",
-        "ref": "cq-Σ_2 ⊆ Σ_2P."
-    },
-    {
         "name": "frIP⊆ALL",
         "content": "frIP⊆ALL",
         "ref": "ALL is the class of all languages, trivially containing every complexity class."
@@ -9300,29 +9175,14 @@
         "ref": "ALL is the class of all languages, trivially containing every complexity class."
     },
     {
-        "name": "polyL⊆NC",
-        "content": "polyL⊆NC",
-        "ref": "polyL ⊆ NC (polylogspace ⊆ NC^{polylog} ⊆ NC)."
+        "name": "polyL⊆PSPACE",
+        "content": "polyL⊆PSPACE",
+        "ref": "polyL = DSPACE((log n)^c) ⊆ DSPACE(n) ⊆ PSPACE."
     },
     {
         "name": "qq-QAM⊆ALL",
         "content": "qq-QAM⊆ALL",
         "ref": "ALL is the class of all languages, trivially containing every complexity class."
-    },
-    {
-        "name": "qq-QAM⊆QMA",
-        "content": "qq-QAM⊆QMA",
-        "ref": "qq-QAM (quantum-quantum AM) ⊆ QMA ⊆ PSPACE."
-    },
-    {
-        "name": "symP⊆ALL",
-        "content": "symP⊆ALL",
-        "ref": "ALL is the class of all languages, trivially containing every complexity class."
-    },
-    {
-        "name": "symP⊆S_2P",
-        "content": "symP⊆S_2P",
-        "ref": "symP is an alternate name for S_2P."
     },
     {
         "name": "{t}AW[t]=AW[*]",
@@ -9333,11 +9193,6 @@
         "name": "Δ_2P⊆PH",
         "content": "Δ_2P⊆PH",
         "impliedby": "P=Δ0⊆Δi⊆Πi∩Σi⊆Σi∪Πi⊆Δ{i+1}⊆PH"
-    },
-    {
-        "name": "Δ_2P⊆S_2P",
-        "content": "Δ_2P⊆S_2P",
-        "ref": "{ref:RS98}"
     },
     {
         "name": "Δ_2P⊆Π_2P",
@@ -9410,19 +9265,14 @@
         "ref": "δ-RP ⊆ RP: approximate RP is contained in RP."
     },
     {
-        "name": "∃BPP⊆SBP",
-        "content": "∃BPP⊆SBP",
-        "ref": "{ref:bgm02}"
-    },
-    {
         "name": "∃BPP⊆ALL",
         "content": "∃BPP⊆ALL",
         "ref": "ALL is the class of all languages, trivially containing every complexity class."
     },
     {
-        "name": "∃BPP⊆AM",
-        "content": "∃BPP⊆AM",
-        "ref": "∃BPP = AM: existential BPP equals AM."
+        "name": "∃BPP⊆MA",
+        "content": "∃BPP⊆MA",
+        "ref": "∃BPP ⊆ MA: the existential witness sent by Merlin combined with Arthur's BPP verification is exactly the definition of MA."
     },
     {
         "name": "∃BPP⊆Sigma_2P",
@@ -9509,19 +9359,9 @@
         "ref": "⊕P ⊆ ⊕EXP: parity-P ⊆ parity-EXP by time hierarchy."
     },
     {
-        "name": "⊕SAC^0⊆AC^0",
-        "content": "⊕SAC^0⊆AC^0",
-        "ref": "⊕SAC^0 ⊆ AC^0 (parity-SAC^0 is a subclass of AC^0)."
-    },
-    {
         "name": "⊕SAC^0⊆ALL",
         "content": "⊕SAC^0⊆ALL",
         "ref": "ALL is the class of all languages, trivially containing every complexity class."
-    },
-    {
-        "name": "⊕SAC^1⊆AC^1",
-        "content": "⊕SAC^1⊆AC^1",
-        "ref": "⊕SAC^1 ⊆ AC^1."
     },
     {
         "name": "⊕SAC^1⊆ALL",
